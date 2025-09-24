@@ -1,12 +1,12 @@
-# simple-graph-sharer
+# multivector-graph-sharer
 
-Editor de gráficos para compartición rápida.
+Editor de gráficos multivectoriales para compartición rápida.
 
 ## Aplicación online
 
 Accede a la aplicación aquí:
 
-- [https://allnulled.github.io/simple-graph-sharer/index.html](https://allnulled.github.io/simple-graph-sharer/index.html)
+- [https://allnulled.github.io/multivector-graph-sharer/index.html](https://allnulled.github.io/multivector-graph-sharer/index.html)
 
 ## Documentación
 
