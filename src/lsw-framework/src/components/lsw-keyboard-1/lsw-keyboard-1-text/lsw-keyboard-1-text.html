@@ -1,0 +1,43 @@
+<div class="lsw_keyboard_1_text">
+    <div class="keyboard_text_container"
+        :class="{activated: keyboard.hasFocus}"
+        v-on:click="setFocusToKeyboard">
+        <div class="keyboard_text"
+            tab-index="0">
+            <div class="line"
+                :class="{activated: cursorLine === lineIndex}"
+                v-for="line, lineIndex in textMatrix"
+                v-bind:key="'keyboard_text_line_' + lineIndex">
+                <div class="line_number">
+                    {{ lineIndex + 1 }}
+                </div>
+                <div class="character"
+                    :class="{selected: isSelectedPosition(character.pos)}"
+                    :data-cursor-position="character.pos"
+                    :data-cursor-line="lineIndex"
+                    :data-cursor-character="characterIndex"
+                    v-for="character, characterIndex in line"
+                    v-bind:key="'keyboard_text_line_' + lineIndex + '_character_' + characterIndex"
+                    v-on:click="() => onKeyClicked(character.pos)">
+                    <div v-if="cursorPosition === character.pos"
+                        class="cursor"
+                        ref="cursor"
+                        :data-cursor-position="character.pos"
+                        :data-cursor-line="lineIndex"
+                        :data-cursor-character="characterIndex">|</div>
+                    {{ character.ch }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <td>{{ cursorLine }}:{{ cursorColumn }}|{{ cursorPosition }}</td>
+        </tr>
+        <tr colspan="1000"
+            class="smallest_font">
+            {{ currentText }}
+            {{ textMatrix }}
+        </tr>
+    </table>
+</div>

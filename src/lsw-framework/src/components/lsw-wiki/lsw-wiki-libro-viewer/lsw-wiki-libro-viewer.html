@@ -1,0 +1,37 @@
+<div class="lsw_wiki_libro_viewer" :class="{}">
+    <div class="flex_row centered list_buttons" v-if="indiceDeArbol !== 0" :style="'padding-left: ' + ((idHeredado.length-1)*8) + 'px;'">
+        <div class="flex_100 list_button"
+            :class="{activated: isSelected}"
+            v-on:click="() => abrirLink(arbol)">
+            {{ indiceDeArbol }}. {{arbol.id}}
+        </div>
+        <div class="flex_1 list_button cursor_pointer linkable_button margin_left_1"
+            style="min-width: 25px; min-height: 20px; padding-top: 4px; padding-left: 7px; display: none;"
+            v-on:click="() => abrirClip(arbol)">
+            📎
+        </div>
+    </div>
+    <div class="flex_row" v-if="isShowingTree">
+        <pre class="codeblock">{{ arbol }}</pre>
+    </div>
+    <div class="flex_row" v-if="isShowingDefinition">
+        <pre class="codeblock">{{ arbol.definition }}</pre>
+    </div>
+    <div v-if="isSelected">
+        <slot :arbol="arbol" />
+    </div>
+    <template v-if="arbol.subtree">
+        <div class=""
+            v-for="subnode, subnodeIndex in arbol.subtree"
+            v-bind:key="'subnode_' + subnodeIndex">
+            <lsw-wiki-libro-viewer
+                :arbol="subnode"
+                :indice-de-arbol="subnodeIndex+1"
+                :on-click-clip="onClickClip"
+                :on-click-link="onClickLink"
+                :id-heredado="getIdFor(subnode)">
+                <slot :arbol="subnode" />
+            </lsw-wiki-libro-viewer>
+        </div>
+    </template>
+</div>

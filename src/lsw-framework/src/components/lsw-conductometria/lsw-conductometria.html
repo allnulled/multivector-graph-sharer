@@ -1,0 +1,50 @@
+<div class="LswConductometria">
+  <template>
+    <div class="flex_row centered">
+      <div class="flex_100" v-if="isLoaded === false">
+        <button class="supermini width_100 text_align_left" v-on:click="reloadEverything">🔮 Iniciar conductometría</button>
+      </div>
+      <div class="flex_100" v-else>
+        <h4>🔮 Conductometría</h4>
+      </div>
+      <div class="flex_1 pad_left_1" v-if="isLoaded === true">
+        <button class="supermini" v-on:click="reloadEverything">🔄</button>
+      </div>
+      <div class="flex_1 pad_left_1">
+        <button class="supermini" v-on:click="goToScripts">📂🔮</button>
+      </div>
+      <div class="flex_1 pad_left_1">
+        <button class="supermini" v-on:click="goToReports">📂📊</button>
+      </div>
+    </div>
+  </template>
+  <template v-if="isLoaded === null">
+    <div class="pad_top_1">⏳ Cargando, un momento, por favor. ⏳</div>
+  </template>
+  <template v-else-if="isLoaded === true">
+    <div class="pad_top_1">
+      <h4>
+        <div class="flex_row centered">
+          <div class="flex_100">
+            📊 Reportes disponibles:
+          </div>
+          <div class="flex_1 pad_left_1">
+            <button class="supermini" v-on:click="reloadEverything">🛜</button>
+          </div>
+        </div>
+      </h4>
+      <div v-for="reporte, reporteIndex in reportes"
+        v-bind:key="'reporte_' + reporteIndex">
+        <div class="flex_row centered pad_top_1">
+          <div class="flex_100">
+            <button class="supermini width_100 shortable_text text_align_left nowrap" v-on:click="() => openReport(reporte)">
+              <span class="float_left">{{ reporte }}</span><span class="float_right">🎥</span></button>
+          </div>
+          <div class="flex_1 pad_left_1">
+            <button class="supermini" v-on:click="() => editReport(reporte)">📄 ↗️</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</div>

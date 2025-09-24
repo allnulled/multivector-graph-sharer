@@ -1,0 +1,8 @@
+<div class="lsw_sourceable">
+    <template v-if="!isLoaded">
+        Cargando componente. Por favor, aguarde...
+    </template>
+    <template>
+        <component :is="componentId" />
+    </template>
+</div>

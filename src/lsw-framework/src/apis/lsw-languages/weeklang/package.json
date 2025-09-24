@@ -1,0 +1,16 @@
+{
+  "name": "weeklang",
+  "version": "1.0.0",
+  "description": "",
+  "main": "weeklang.bundled.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "bash build.sh",
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,5 @@
+.lsw_simple_chart {}
+.lsw_simple_chart .chart_holder {
+    border: 3px double black;
+    box-shadow: 0 0 4px black;
+}

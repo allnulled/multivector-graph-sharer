@@ -1,0 +1,51 @@
+.filesystem_ui {
+    min-height: 230px;
+}
+.lsw_filesystem_editor {
+    min-height: 230px;
+    padding: 1px;
+}
+.absolute_version .lsw_filesystem_editor {
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 0px;
+    right: 0px;
+    padding: 0px;
+
+    top: -3px;
+    bottom: -3px;
+    left: -3px;
+    right: -5px;
+}
+
+.lsw_filesystem_editor .editor {
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    resize: vertical;
+    border: 3px double #000;
+    border-radius: 0pt;
+    box-shadow: 0 0 2px black;
+    box-shadow: 0px 0px 8px black;
+    outline: none;
+    min-height: 230px;
+    overflow-x: scroll;
+    white-space: pre;
+    background-color: #E0E0E0;
+}
+.absolute_version .lsw_filesystem_editor .editor {
+    
+}
+.lsw_filesystem_editor .editor:focus {
+    background-color: #FFFFFF;
+}
+
+.lsw_filesystem_editor .editor_position_box {
+    background-color: rgba(255,255,255,0.5);
+    color: rgb(30, 30, 30);
+    border: 1px solid rgb(30, 30, 30);
+    padding: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    text-shadow: 0 0 0px transparent;
+}

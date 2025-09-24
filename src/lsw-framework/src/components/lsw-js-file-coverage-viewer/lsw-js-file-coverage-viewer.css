@@ -1,0 +1,57 @@
+.coverage-table {
+    font-family: monospace;
+    font-size: 9px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.coverage-table table {
+    border-collapse: collapse;
+    border: none;
+}
+
+.line-row {
+    vertical-align: top;
+}
+
+.line-number {
+    width: 40px;
+    text-align: right;
+    padding-right: 2px;
+    user-select: none;
+    border-right: 1px solid #525252;
+}
+
+.line-code {
+    white-space: pre;
+}
+
+/* Ejemplo de estilos — tú los ajustarás luego */
+.hit {
+    color: #043304;
+    background-color: rgba(129, 226, 129, 0.4);
+}
+
+.miss {
+    color: #550a0a;
+    background-color: rgba(210, 96, 96, 0.4);
+}
+
+.statement-marker,
+.function-marker,
+.branch-marker {
+    border-bottom: 1px dashed gray;
+    cursor: zoom-in;
+    box-shadow: 0 0 2px black;
+    border-radius: 2pt;
+}
+
+.container_to_view {
+    max-height: 950px;
+    max-width: 95vw;
+    overflow: scroll;
+}
+
+button.supermini.for_line_coverage {
+    padding: 0px;
+    font-size: 8px !important;
+}

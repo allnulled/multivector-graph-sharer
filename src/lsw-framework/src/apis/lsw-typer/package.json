@@ -1,0 +1,17 @@
+{
+  "name": "@allnulled/lsw-typer",
+  "version": "1.0.0",
+  "description": "JSON extension to support external types",
+  "main": "lsw-typer.js",
+  "scripts": {
+    "build": "npx pegjs lsw-typer.parser.pegjs && node fix.js",
+    "test": "npm run build && npx mocha test.js",
+    "up": "bash up.sh"
+  },
+  "keywords": [
+    "json",
+    "extension"
+  ],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

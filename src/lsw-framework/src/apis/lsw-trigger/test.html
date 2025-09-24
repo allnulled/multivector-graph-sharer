@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <title>Triggers Class API Test</title>
+    <script src="triggers-class.js"></script>
+</head>
+
+<body>
+    <script>
+        window.addEventListener("load", async function () {
+            console.log(TriggersClass.globMatch([
+                "crud.insert.*.users",
+                "crud.*.many.users"
+            ], [
+                "crud.select.one.users",
+                "crud.select.many.users",
+                "crud.insert.one.users",
+                "crud.insert.many.users",
+                "crud.update.one.users",
+                "crud.update.many.users",
+                "crud.delete.one.users",
+                "crud.delete.many.users",
+            ]));
+            const triggers = new TriggersClass();
+            let counter = 0;
+            triggers.register("crud.insert.one.tabla1", "temp1", function () {
+                console.log("triggering temp1");
+                counter -= 2;
+                return 100;
+            }, {
+                priority: 20
+            });
+            triggers.register("crud.insert.one.tabla1", "temp2", function () {
+                console.log("triggering temp2");
+                counter *= 10;
+                return 10;
+            }, {
+                priority: 10
+            });
+            triggers.register("crud.insert.one.tabla1", "temp3", function () {
+                console.log("triggering temp3");
+                counter += 5;
+                return 1;
+            }, {
+                priority: 30
+            });
+            const output = await triggers.emit("crud.insert.one.tabla1", { in: 500 });
+            const outputSum = output.reduce((o,i) => {
+                o += i;
+                return o;
+            }, 0);
+            setTimeout(() => {
+                console.log(counter);
+                console.log(outputSum);
+                if(counter !== 30) {
+                    throw new Error("Triggers order is not as expected");
+                }
+                if(outputSum !== 111) {
+                    throw new Error("Emit is not working as expected");
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>

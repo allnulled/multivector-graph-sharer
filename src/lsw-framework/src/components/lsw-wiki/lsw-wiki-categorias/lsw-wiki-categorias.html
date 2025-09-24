@@ -1,0 +1,10 @@
+<div class="lsw_wiki_categorias">
+    <div class="">
+        <lsw-wiki-libro-viewer :arbol="categorias" :indice-de-arbol="0" :on-click-link="abrirCategoria">
+            <template v-slot:default="{ arbol }">
+                {{ arbol }}
+                <!--lsw-wiki-articulo-viewer :articulo-id="arbol.link" /-->
+            </template>
+        </lsw-wiki-libro-viewer>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+{
+  "name": "lsw-tester",
+  "version": "1.0.0",
+  "description": "Testing tool for LSW",
+  "main": "lsw-tester.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

@@ -1,0 +1,15 @@
+{
+    "name": "@allnulled/lsw-compromiser",
+    "version": "1.0.0",
+    "description": "Promise manager tool for LSW",
+    "main": "lsw-compromiser.js",
+    "scripts": {
+      "build": "echo 'no building for node.js from @allnulled/lsw-compromiser'",
+      "test": "npx universal-tester test.js",
+      "versionate": "echo 'no versionate for node.js from @allnulled/lsw-compromiser'"
+    },
+    "keywords": [],
+    "author": "allnulled",
+    "license": "WTFPL"
+  }
+  

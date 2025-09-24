@@ -1,0 +1,17 @@
+<div class="lsw_fast_date_control">
+    <div class="flex_row">
+        <div class="flex_1">
+            <button :class="{activated: isEditable}" v-on:click="toggleEditable">📅</button>
+        </div>
+        <div class="flex_100 pad_left_1">
+            <input class="width_100 margin_bottom_1px" type="text" v-model="value" />
+        </div>
+    </div>
+    <div class="" v-if="isEditable">
+        <lsw-calendario
+            modo="date"
+            :valor-inicial="initialValue"
+            :al-cambiar-valor="setValue"
+        />
+    </div>
+</div>

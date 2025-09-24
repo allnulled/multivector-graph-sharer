@@ -1,0 +1,14 @@
+{
+  "name": "lsw-configurer",
+  "version": "1.0.0",
+  "description": "Database virtualizer tool for LSW.",
+  "main": "lsw-configurer.js",
+  "scripts": {
+    "build": "echo 'no building for @allnulled/lsw-configurer'",
+    "versionate": "echo 'no versionate for @allnulled/lsw-configurer'",
+    "test": "echo 'no test for @allnulled/configurer'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

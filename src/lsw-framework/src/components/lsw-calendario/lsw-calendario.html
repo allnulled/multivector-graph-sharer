@@ -1,0 +1,131 @@
+<div class="Component LswCalendario">
+
+  <lsw-typical-title class="margin_bottom_1" v-if="accionesViewer" :buttons="[{
+    event: openNewTaskDialog,
+    text: '➕🐾'
+  }]">
+    📆 Calendario:
+  </lsw-typical-title>
+  <div class="flex_row align_self_start">
+    <div class="flex_1">
+      <div class="visor_de_calendario">
+        <table class="tabla_de_calendario"
+          v-if="fecha_seleccionada">
+          <tbody>
+            <tr>
+              <td>
+                <button class="boton_de_mover_mes"
+                  v-on:click="ir_a_mes_anterior"> ◀ </button>
+              </td>
+              <td colspan="5"
+                style="width:auto; vertical-align: middle;">
+                <div class="chivato_de_fecha">{{ obtener_fecha_formateada(fecha_seleccionada) }}</div>
+                <div class="chivato_de_fecha"
+                  v-if="(!es_solo_fecha) && fecha_seleccionada">a las {{ obtener_expresion_de_hora(fecha_seleccionada) }}
+                </div>
+              </td>
+              <td>
+                <button class="boton_de_mover_mes"
+                  v-on:click="ir_a_mes_siguiente"> ▶ </button>
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr class="fila_de_dias_de_semana">
+              <td>
+                <div class="">Lu</div>
+              </td>
+              <td>
+                <div class="">Ma</div>
+              </td>
+              <td>
+                <div class="">Mi</div>
+              </td>
+              <td>
+                <div class="">Ju</div>
+              </td>
+              <td>
+                <div class="">Vi</div>
+              </td>
+              <td>
+                <div class="">Sá</div>
+              </td>
+              <td>
+                <div class="">Do</div>
+              </td>
+            </tr>
+          </tbody>
+          <tbody class="dias_de_calendario">
+            <tr v-for="semana, semana_index in celdas_del_mes_actual"
+              v-bind:key="'semana-' + semana_index">
+              <td v-for="dia, dia_index in semana"
+                v-bind:key="'dia-' + dia_index">
+                <span v-if="dia && (dia instanceof Date)">
+                  <button class="boton_de_calendario boton_de_dia_de_calendario position_relative"
+                    :class="{
+                      active: dia.getDate() === fecha_seleccionada.getDate(),
+                      current: (dia_actual === dia.getDate())
+                        && (mes_actual === dia.getMonth())
+                        && (anio_actual === dia.getFullYear())
+                    }"
+                    v-on:click="() => seleccionar_dia(dia)">
+                    <div class="dia_de_calendario_texto">{{ dia.getDate() }}</div>
+                    <div v-if="dia.getDate() in marcadores_del_mes"
+                      class="total_de_tareas_de_dia">
+                      <div>
+                        {{ marcadores_del_mes[dia.getDate()].length }}
+                      </div>
+                    </div>
+                  </button>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="text_align_center"
+          v-if="modo === 'datetime' || modo === 'time'">
+
+          <hr class="dashed" />
+
+          <div class="pad_bottom_1 text_align_center">
+            <div class="flex_row centered">
+              <div class="flex_1">Selección: </div>
+              <div class="flex_100 text_align_right"
+                v-if="fecha_seleccionada">
+                {{ LswTimer.utils.fromDateToHour(fecha_seleccionada) }}
+              </div>
+            </div>
+          </div>
+
+          <lsw-clocktime-picker
+            :initial-hour="fecha_seleccionada.getHours()"
+            :initial-minute="fecha_seleccionada.getMinutes()"
+            :on-change="(clocktime) => {
+              $window.console.log('triggerChange', fecha_seleccionada);
+              fecha_seleccionada.setHours(clocktime.hour);
+              fecha_seleccionada.setMinutes(clocktime.minute);
+              fecha_seleccionada = new Date(fecha_seleccionada);
+            }"
+          />
+
+        </div>
+      </div>
+    </div>
+    <div class="flex_1">
+      <div class="pad_1 pad_top_0 pad_right_0">
+        <div
+          class="pad_bottom_1"
+          v-for="rightButton, rightButtonIndex in rightButtons"
+          v-bind:key="'right-button-' + rightButtonIndex">
+          <button
+            class="width_100 boton_derecha_de_calendario"
+            v-on:click="rightButton.event">
+            {{ rightButton.text }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="flex_100"></div>
+  </div>
+
+</div>

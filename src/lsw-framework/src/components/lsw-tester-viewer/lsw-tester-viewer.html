@@ -1,0 +1,156 @@
+<div class="lsw_tester_viewer">
+    <div class="typical_title_1 margin_bottom_1">
+        <div class="flex_row centered">
+            <div class="flex_100">🧪 Tests de <b><u>{{ tester.$composition.id }}</u></b></div>
+            <div class="flex_1 pad_left_1" v-if="loadingError || runningError || isRun">
+                <button class="supermini" v-on:click="resetTester">🔄</button>
+            </div>
+            <div class="flex_1 pad_left_1" v-if="isCompleted && isSuccessfullyCompleted">
+                <button class="supermini" disabled="true">🧪 ✅</button>
+            </div>
+            <div class="flex_1 pad_left_1" v-else-if="isCompleted && (!isSuccessfullyCompleted)">
+                <button class="supermini" disabled="true">🧪 ❗️</button>
+            </div>
+            <div class="flex_1 pad_left_1" v-if="loadingError || runningError">
+                <button class="supermini" disabled="true">💥 Crashing</button>
+            </div>
+            <div class="flex_1 pad_left_1" v-if="(!isRun) && (!isStarted)">
+                <button class="supermini" v-on:click="runTester">🧪 ▶️</button>
+            </div>
+            <div class="flex_1 pad_left_1" v-if="(!isRun) && (isStarted)">
+                <button class="supermini" v-on:click="runTester" disabled="true">🧪 💤</button>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini" v-on:click="goToCoverage">🪖</button>
+            </div>
+        </div>
+    </div>
+    <div v-if="isLoaded">
+        <table class="width_100">
+            <tbody>
+                <tr>
+                    <td class="nowrap" style="min-width: 114px;">#️⃣ Identificador: </td>
+                    <td class="width_100">{{ tester.$composition.id }}</td>
+                </tr>
+                <tr>
+                    <td class="nowrap">🎁 Tipo: </td>
+                    <td>{{ tester.$composition.fromType }}</td>
+                </tr>
+                <tr>
+                    <td class="nowrap">🔋 Cargado: </td>
+                    <td>{{ tester.$isLoaded ? "sí" : "no" }}</td>
+                </tr>
+                <tr>
+                    <td class="nowrap">▶️ Corrido: </td>
+                    <td>{{ tester.$isExecuted ? "sí" : "no" }}</td>
+                </tr>
+                <tr>
+                    <td class="nowrap">🚨 En errores: </td>
+                    <td>{{ tester.$options.continueOnErrors ? 'continuará reportando errores' : 'interrumpirá el test' }}</td>
+                </tr>
+                <tr>
+                    <td class="nowrap" style="vertical-align: top;">🧩 Submódulos: </td>
+                    <td class="">
+                        {{ Object.keys(tester.$definitions).length }} submódulos
+                        <span class="like_link dark"
+                            :class="{activated:isShowingSubmodules}"
+                            v-on:click="toggleSubmodules">(ver)</span>
+                    </td>
+                </tr>
+                <tr v-show="isShowingSubmodules">
+                    <td class="small_font" colspan="100">
+                        <ul class="list_style_0">
+                            <li v-for="definition, definitionId in Object.keys(tester.$definitions)"
+                                v-bind:key="'test_definition_id_' + definitionId">
+                                🔹 "{{ definition }}"
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <template>
+                    <tr class="pad_top_1">
+                        <td class="nowrap">
+                            <div class="pad_bottom_1">⚜️ Eventos del test: 
+                        </td>
+                        <td>
+                            <span class="like_link dark"
+                                :class="{activated:isShowingEventsConsole}"
+                                v-on:click="toggleEventsConsole">(ver)</span>
+                        </td>
+                    </tr>
+                    <tr class="pad_top_1" v-show="isShowingEventsConsole">
+                        <td class="width_100" colspan="2">
+                            <pre class="consola_de_eventos_de_test codeblock pad_1" style="max-height: 75px;" ref="eventsConsole">[Consola de eventos de tester]</pre>
+                        </td>
+                    </tr>
+                </template>
+                <tr class="pad_top_1">
+                    <td class="nowrap">
+                        <span>❗️ Fallos acumulados:</span>
+                    </td>
+                    <td>
+                        <span>{{ currentErrors.length }}</span>
+                        <span class="like_link dark"
+                            :class="{activated:isShowingErrors}"
+                            v-on:click="toggleErrors">(ver)</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pad_left_1">
+            <div class="pad_top_1" v-if="isShowingErrors">
+                <div class="pad_left_2 pad_bottom_2" v-if="!currentErrors.length">
+                    No hay errores acumulados.
+                </div>
+                <div class="errors_box" v-else>
+                    <div v-for="event, eventIndex in currentErrors"
+                        v-bind:key="'tester_error_' + eventIndex"
+                        class="pad_top_1">
+                        <template v-if="(typeof event.error === 'object') && event.error.name && event.error.message && event.error.stack">
+                            <lsw-error-box
+                                :error="event.error"
+                                :context="'Error ' + (eventIndex+1) + ' en: ' + event.value.id + ''"
+                            />
+                        </template>
+                        <template v-else>
+                            {{ eventIndex }}. ({{ typeof event }}) {{ event }}
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pad_left_1">
+            <div class="pad_top_1">📡 Estado de tests: {{ currentState }}</div>
+            <div class="esquema_de_tests" ref="esquema_de_tests">
+                <lsw-tester-module-viewer
+                    :test="tester.$composition"
+                    :tester="this"
+                    :data-test-module="tester.$composition.id"
+                />
+            </div>
+        </div>
+    </div>
+    <div v-else>
+        <div>⏳ El tester está siendo cargado. Un momento, por favor... ⏳</div>
+    </div>
+    <lsw-error-box
+        v-if="loadingError"
+        :error="loadingError"
+        context="Fase de carga de tests"
+        :on-clear-error="() => loadingError = false"
+    />
+    <lsw-error-box
+        v-if="runningError"
+        :error="runningError"
+        context="Fase de ejecución de tests"
+        :on-clear-error="() => runningError = false"
+    />
+    <div v-if="isRun">
+        <div v-if="isCompleted && isSuccessfullyCompleted">
+            <button class="supermini width_100" disabled="true">🎉 Tests correctos 🎉</button>
+        </div>
+        <div v-else-if="isCompleted && (!isSuccessfullyCompleted)">
+            <button class="supermini width_100" disabled="true"> 💥 Tests fallando 💥</button>
+        </div>
+    </div>
+</div>

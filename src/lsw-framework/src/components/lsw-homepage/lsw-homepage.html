@@ -1,0 +1,44 @@
+<div class="lsw_homepage">
+    <div class="typical_title_1 flex_row centered">
+        <div class="flex_100">📟 Apps instaladas 📟</div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini"
+                v-on:click="openAppsDirectory">↗️📂</button>
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini"
+                v-on:click="loadOwnApps">🛜</button>
+        </div>
+    </div>
+    <div class="pad_vertical_1 flex_row">
+        <div class="flex_100">
+            <input class="width_100 supermini"
+                type="text"
+                placeholder="Busca aquí"
+                v-on:keypress.enter="filterApps"
+                v-model="filterSearchText" />
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini"
+                v-on:click="filterApps">🔎</button>
+        </div>
+    </div>
+    <div class="supermini pad_vertical_1"
+        v-if="lastAppliedFilter">
+        Filtrando por «{{ lastAppliedFilter }}».
+    </div>
+    <div class="lista_apps">
+        <div class="item_app"
+            v-for="app, appIndex in filteredApps"
+            v-bind:key="'app_' + appIndex">
+            <div class="nombre_app flex_row centered"
+                v-on:click="() => {
+                    app.event(app.launchable);
+                    onOpenApplicationEvent(app);
+                }">
+                <div class="flex_100">{{ app.label }}</div>
+                <div class="flex_1 nowrap pad_left_1">↗️</div>
+            </div>
+        </div>
+    </div>
+</div>

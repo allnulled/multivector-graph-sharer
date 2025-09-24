@@ -1,0 +1,26 @@
+.lsw_error_box {
+    position: relative;
+    border: 1px solid #6b0505;
+    border-radius: 3pt;
+    background-color: rgba(222, 151, 151, 0.4);
+    box-shadow: 0 0 4px white;
+    color: black;
+}
+.lsw_error_box_container {
+    
+}
+.error_main_block {
+    text-decoration: underline;
+    font-style: italic;
+    font-size: 11px;
+    padding: 4px;
+}
+.error_topbar {
+    border-bottom: 1px solid #6b0505;
+    background-color: #480b0b75;
+    padding: 4px;
+}
+.error_stack {
+    padding: 4px;
+    font-size: 11px;
+}

@@ -1,0 +1,33 @@
+<div class="">
+    <div class="pad_bottom_1">
+        <div class="flex_row centered">
+            <div class="flex_1 pad_right_1">
+                <button class="supermini" v-on:click="event => pickEmoji(event.target.textContent.trim().substr(1))">
+                    ♻️{{ LswRandomizer.getRandomItem(ALL_EMOJIS) }}
+                </button>
+            </div>
+            <div class="flex_100">
+                <input type="text"
+                    class="supermini width_100"
+                    v-model="pickedText"
+                />
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini"
+                    v-on:click="copyText">📎</button>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini"
+                    v-on:click="clearText">❌</button>
+            </div>
+        </div>
+    </div>
+    <div class="emojis_list">
+        <button class="emoji_button"
+            v-for="emoji, emojiIndex in allEmojis"
+            v-bind:key="'emoji_' + emojiIndex"
+            v-on:click="() => pickEmoji(emoji)">
+            {{ emoji }}
+        </button>
+    </div>
+</div>

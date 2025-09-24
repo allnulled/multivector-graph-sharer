@@ -1,0 +1,92 @@
+.lsw_apps_viewer_button {
+
+}
+.scrollable_panel_viewer {
+    min-height: 3px;
+    max-height: 460px;
+    overflow: scroll;
+    border-top: 3px double #333;
+    border-bottom: 3px double #333;
+}
+.tarjetas_de_accion {
+    border-top: 0px solid #222;
+    border-right: 0px solid #222;
+}
+.tarjeta_de_accion {
+    display: flex;
+    flex-direction: row;
+    border-top: 0px solid #222;
+    border-right: 0px solid #222;
+}
+.tarjeta_de_accion > div {
+    white-space: no-wrap;
+    padding: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-top: 1px;
+    border: 0px solid #222;
+    border-right: 0px solid #222;
+    border-top: 0px solid #222;
+}
+.tarjeta_de_accion > div:first-child {
+    
+}
+.tarjeta_de_accion > .cell_en_concepto {
+    
+}
+.tarjeta_de_accion > .cell_en_estado {
+    color: black;
+    text-shadow: 0 0 1px black;
+    border-radius: 8pt;
+    cursor: pointer;
+}
+.tarjeta_de_accion > .cell_en_estado.estado_pendiente {
+    background-color: yellow;
+}
+.tarjeta_de_accion > .cell_en_estado.estado_completada {
+    background-color: rgb(30, 255, 0);
+}
+.tarjeta_de_accion > .cell_en_estado.estado_fallida {
+    background-color: red;
+}
+
+.application_button {
+    background-color: rgba(81, 175, 218, 0.5);
+}
+.application_button.activated,
+.application_button:hover {
+    background-color: rgba(3, 150, 218, 0.7);
+    border: 1px solid rgb(4, 4, 54);
+}
+.section_button {
+    background-color: rgba(68, 68, 68, 0.5);
+}
+.section_button.activated,
+.section_button:hover {
+    background-color: rgba(64, 64, 64, 0.764);
+    border: 1px solid rgb(4, 4, 54);
+}
+
+.side_panel .side_button {
+    min-width: 50px;
+    margin-bottom: 4px;
+}
+.top_panel {
+
+}
+.top_panel .top_button_cell {
+    padding-right: 4px;
+}
+.top_panel .top_button {
+    min-width: 50px;
+}
+
+.lsw_apps_button {
+    
+}
+
+.main_topbar_button {
+    border: 1px solid #333 !important;
+    border-radius: 0pt !important;
+    background-color: rgba(255,255,255,0.0);
+}

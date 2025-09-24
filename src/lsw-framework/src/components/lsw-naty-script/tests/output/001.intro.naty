@@ -1,0 +1,167 @@
+{
+  "tree": [
+    [
+      {
+        "r": "NOT",
+        "c": [
+          {
+            "r": "NOT",
+            "c": [
+              "Yo"
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "r": "NOT",
+        "c": [
+          {
+            "r": "GROUP",
+            "c": [
+              {
+                "r": "NOT",
+                "c": [
+                  "Yo"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "r": "NOT",
+        "c": [
+          {
+            "r": "NOT",
+            "c": [
+              {
+                "r": "GROUP",
+                "c": [
+                  {
+                    "r": "NOT",
+                    "c": [
+                      {
+                        "r": "NOT",
+                        "c": [
+                          "Yo"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      "Yo",
+      {
+        "r": "NOT",
+        "c": [
+          {
+            "r": "GROUP",
+            "c": [
+              {
+                "r": "DOES",
+                "c": [
+                  "hacer",
+                  {
+                    "r": "GROUP",
+                    "c": [
+                      "nada",
+                      {
+                        "r": "OR",
+                        "c": [
+                          "algo"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "r": "EQUAL",
+        "c": [
+          "hacer",
+          "hago",
+          "haces",
+          "hace",
+          "hacemos",
+          "haceis",
+          "hacen"
+        ]
+      }
+    ]
+  ],
+  "indexes": {
+    "hago": [
+      "root=>hacer",
+      "4.0.c.1"
+    ],
+    "haces": [
+      "root=>hacer",
+      "4.0.c.2"
+    ],
+    "hace": [
+      "root=>hacer",
+      "4.0.c.3"
+    ],
+    "hacemos": [
+      "root=>hacer",
+      "4.0.c.4"
+    ],
+    "haceis": [
+      "root=>hacer",
+      "4.0.c.5"
+    ],
+    "hacen": [
+      "root=>hacer",
+      "4.0.c.6"
+    ],
+    "Yo": [
+      "0.0.c.0.c.0",
+      "1.0.c.0.c.0.c.0",
+      "2.0.c.0.c.0.c.0.c.0.c.0",
+      "3.0"
+    ],
+    "hacer": [
+      "3.1.c.0.c.0.c.0",
+      "4.0.c.0"
+    ],
+    "nada": [
+      "3.1.c.0.c.0.c.1.c.0"
+    ],
+    "algo": [
+      "3.1.c.0.c.0.c.1.c.1.c.0"
+    ]
+  },
+  "roots": {
+    "hacer": [
+      "hago",
+      "haces",
+      "hace",
+      "hacemos",
+      "haceis",
+      "hacen"
+    ]
+  },
+  "sentences": {
+    "0": "¬¬Yo.\n",
+    "1": "¬{ ¬Yo }.\n",
+    "2": "¬¬{ ¬¬ Yo }.\n",
+    "3": "Yo ¬{ > hacer { nada | algo } }.\n",
+    "4": "hacer = hago | haces | hace | hacemos | haceis | hacen"
+  }
+}

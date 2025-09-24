@@ -1,0 +1,9 @@
+.lsw_code_viewer {}
+.lsw_code_viewer_area {
+    box-shadow: 0 0 4px black;
+    border: 1px solid black;
+    border-radius: 4pt;
+    overflow: hidden;
+    margin: 0px;
+    margin-top: 4px;
+}

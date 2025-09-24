@@ -1,0 +1,13 @@
+{
+  "id": "lsw.test",
+  "fromCollection": [
+    {
+      "id": "lsw.test.framework.lsw.can-find-all-globals",
+      "fromUrl": "assets/tests/cases/framework/lsw.can-find-all-globals.js"
+    },
+    {
+      "id": "lsw.test.app.start-your-test-here",
+      "fromUrl": "assets/tests/cases/app/start-your-test-here.js"
+    }
+  ]
+}

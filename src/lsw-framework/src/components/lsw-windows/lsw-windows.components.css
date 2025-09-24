@@ -1,0 +1,58 @@
+
+.lsw_windows_pivot_button {
+    position: fixed;
+    top: auto;
+    bottom: 9px;
+    left: 9px;
+    right: auto;
+    background-color: transparent;
+    padding: 0px;
+    border: 1px solid #000;
+    border-radius: 3pt;
+    background-color: #AFFF00;
+    box-shadow: 0 0 4px black;
+    cursor: pointer;
+}
+.lsw_windows_pivot_button:hover {
+}
+
+.lsw_windows_pivot_button > button {
+    max-height: 22px;
+    min-width: 22px;
+    vertical-align: middle;
+    border: none;
+    background-color: transparent;
+}
+
+.lsw_windows_pivot_button > button:hover {
+    background-color: transparent;
+}
+.lsw_windows_pivot_button:hover > button {
+    
+}
+.lsw_windows_main_tab {
+    position: fixed;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    background-color: white;
+    color: black;
+}
+.lsw_windows_main_tab .main_tab_topbar {
+    border-bottom: 1px solid black;
+    padding: 4px;
+    padding-bottom: 3px;
+    background-color: #DFDFDF;
+    text-align: right;
+}
+.main_tab_topbar_button {
+    
+}
+.pad_normal {
+    padding: 4px;
+}
+
+.dialog_title {
+    
+}

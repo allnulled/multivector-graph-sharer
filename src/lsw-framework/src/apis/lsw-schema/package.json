@@ -1,0 +1,14 @@
+{
+  "name": "@allnulled/lsw-schema",
+  "version": "1.0.0",
+  "description": "Error manager tool for LSW.",
+  "main": "lsw-schema.js",
+  "scripts": {
+    "build": "echo 'no building for node.js of lsw-schema'",
+    "versionate": "echo 'no versionate for node.js of lsw-schema'",
+    "test": "echo 'no test for node.js of lsw-schema'"
+  },
+  "keywords": ["error"],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

@@ -1,0 +1,271 @@
+module.exports = [{
+  name: "@allnulled/lsw-tester",
+  path: "src/lsw-framework/src/apis/lsw-tester",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-tester.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-importer",
+  path: "src/lsw-framework/src/apis/lsw-importer",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-importer.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-logger",
+  path: "src/lsw-framework/src/apis/lsw-logger",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-logger.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-database",
+  path: "src/lsw-framework/src/apis/lsw-database",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-database.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-commander",
+  path: "src/lsw-framework/src/apis/lsw-commander",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-commander.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-trigger",
+  path: "src/lsw-framework/src/apis/lsw-trigger",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-trigger.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-store",
+  path: "src/lsw-framework/src/apis/lsw-store",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-store.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-utils",
+  path: "src/lsw-framework/src/apis/lsw-utils",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-utils.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-ensurer",
+  path: "src/lsw-framework/src/apis/lsw-ensurer",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-ensurer.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-timer",
+  path: "src/lsw-framework/src/apis/lsw-timer",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-timer.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-circuiter",
+  path: "src/lsw-framework/src/apis/lsw-circuiter",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-circuiter.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-returner",
+  path: "src/lsw-framework/src/apis/lsw-returner",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-returner.git",
+  version: "last"
+}, {
+  name: "@allnulled/v-focus",
+  path: "src/lsw-framework/src/directives/v-focus",
+  sourceType: "git",
+  source: "https://github.com/allnulled/v-focus.git",
+  version: "last"
+}, {
+  name: "@allnulled/v-descriptor",
+  path: "src/lsw-framework/src/directives/v-descriptor",
+  sourceType: "git",
+  source: "https://github.com/allnulled/v-descriptor.git",
+  version: "last"
+}/*, {
+  name: "@allnulled/v-call",
+  path: "src/lsw-framework/src/apis/v-call",
+  sourceType: "git",
+  source: "https://github.com/allnulled/v-call.git",
+  version: "last"
+}*/, {
+  name: "@allnulled/lsw-reloader",
+  path: "src/lsw-framework/src/apis/lsw-reloader",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-reloader.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-error-manager",
+  path: "src/lsw-framework/src/apis/lsw-error-manager",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-error-manager.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-cycler",
+  path: "src/lsw-framework/src/apis/lsw-cycler",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-cycler.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-compromiser",
+  path: "src/lsw-framework/src/apis/lsw-compromiser",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-compromiser.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-dialogs",
+  path: "src/lsw-framework/src/components/lsw-dialogs",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-dialogs.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-windows",
+  path: "src/lsw-framework/src/components/lsw-windows",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-windows.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-calendario",
+  path: "src/lsw-framework/src/components/lsw-calendario",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-calendario.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-toasts",
+  path: "src/lsw-framework/src/components/lsw-toasts",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-toasts.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-console-hooker",
+  path: "src/lsw-framework/src/components/lsw-console-hooker",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-console-hooker.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-filesystem",
+  path: "src/lsw-framework/src/apis/lsw-filesystem",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-filesystem.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-filesystem-explorer",
+  path: "src/lsw-framework/src/components/lsw-filesystem-explorer",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-filesystem-explorer.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-wiki",
+  path: "src/lsw-framework/src/components/lsw-wiki",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-wiki.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-agenda",
+  path: "src/lsw-framework/src/components/lsw-agenda",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-agenda.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-form-controls",
+  path: "src/lsw-framework/src/components/lsw-form-controls",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-form-controls.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-table",
+  path: "src/lsw-framework/src/components/lsw-table",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-table.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-proxifier",
+  path: "src/lsw-framework/src/apis/lsw-proxifier",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-proxifier.git",
+  version: "last"
+}, {
+  name: "@allnulled/v-form",
+  path: "src/lsw-framework/src/directives/v-form",
+  sourceType: "git",
+  source: "https://github.com/allnulled/v-form.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-class-register",
+  path: "src/lsw-framework/src/apis/lsw-class-register",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-class-register.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-configurer",
+  path: "src/lsw-framework/src/apis/lsw-configurer",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-configurer.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-database-virtualizer",
+  path: "src/lsw-framework/src/apis/lsw-database-virtualizer",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-database-virtualizer.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-depender",
+  path: "src/lsw-framework/src/apis/lsw-depender",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-depender.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-dom",
+  path: "src/lsw-framework/src/apis/lsw-dom",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-dom.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-lifecycle",
+  path: "src/lsw-framework/src/apis/lsw-lifecycle",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-lifecycle.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-randomizer",
+  path: "src/lsw-framework/src/apis/lsw-randomizer",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-randomizer.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-schema",
+  path: "src/lsw-framework/src/apis/lsw-schema",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-schema.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-database-ui",
+  path: "src/lsw-framework/src/components/lsw-database-ui",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-database-ui.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-formtypes",
+  path: "src/lsw-framework/src/components/lsw-formtypes",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-formtypes.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-schema-based-form",
+  path: "src/lsw-framework/src/components/lsw-schema-based-form",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-schema-based-form.git",
+  version: "last"
+}, {
+  name: "@allnulled/v-xform",
+  path: "src/lsw-framework/src/directives/v-xform",
+  sourceType: "git",
+  source: "https://github.com/allnulled/v-xform.git",
+  version: "last"
+}, {
+  name: "@allnulled/lsw-typer",
+  path: "src/lsw-framework/src/apis/lsw-typer",
+  sourceType: "git",
+  source: "https://github.com/allnulled/lsw-typer.git",
+  version: "last"
+}]

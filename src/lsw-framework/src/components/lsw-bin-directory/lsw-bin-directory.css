@@ -1,0 +1,17 @@
+.lsw_bin_directory {}
+
+.binaries_list {}
+.binaries_list .binarie_item {
+    margin-top: 2px;
+}
+.binaries_list .binarie_item button {
+    min-height:25px;
+    border: 1px solid rgb(215, 222, 27);
+}
+.binaries_list .binarie_item button:hover {
+    border: 1px solid rgb(215, 222, 27);
+}
+
+.binaries_list.is_searching .binaries_searcher_input {
+    background-color: #dec275;
+}

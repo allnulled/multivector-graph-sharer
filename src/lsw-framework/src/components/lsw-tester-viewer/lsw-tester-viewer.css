@@ -1,0 +1,42 @@
+.esquema_de_tests {
+    font-size: 11px;
+}
+.like_link {
+    text-decoration: underline;
+    cursor: pointer;
+    outline: none;
+}
+
+.like_link.activated {
+    font-weight: bold;
+}
+
+.like_link.light {
+    color: rgb(163, 163, 201);
+}
+.like_link.light.activated {
+    
+}
+
+.like_link.dark {
+    color: rgb(6, 6, 51);
+}
+.like_link.dark.activated {
+    
+}
+
+.codeblock.consola_de_eventos_de_test {
+    /*max-height: 200px;*/
+    overflow: scroll;
+    background-color: #312e2e61;
+    color: #FFF;
+    resize: vertical;
+}
+
+.errors_box {
+    border: 1px solid #111;
+    box-shadow: 0 0 3px black;
+    border-radius: 3pt;
+    padding: 4px;
+    padding-top: 0px;
+}

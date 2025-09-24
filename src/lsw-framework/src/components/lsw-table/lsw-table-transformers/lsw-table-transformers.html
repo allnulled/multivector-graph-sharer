@@ -1,0 +1,13 @@
+<div class="lsw_table_transformers">
+    Transformers here.
+    {{ table.transformers }}
+    <div class="flex_row">
+        <button class="button_separation" v-on:click="table.showTransformers">All: {{ table.transformers.length }}</button>
+        <button class="button_separation" v-on:click="table.askForFilter">+Filter</button>
+        <button class="button_separation" v-on:click="table.askForMapper">+Mapper</button>
+        <button class="button_separation" v-on:click="table.askForReducer">+Reducer</button>
+        <button class="button_separation" v-on:click="table.askForSorter">+Sorter</button>
+        <button class="button_separation" v-on:click="table.askForGrouper">+Grouper</button>
+        <div style="flex: 100;"></div>
+    </div>
+</div>

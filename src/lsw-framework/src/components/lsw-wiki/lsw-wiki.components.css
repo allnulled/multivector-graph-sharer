@@ -1,0 +1,21 @@
+.lsw_wiki {
+    
+}
+.lsw_wiki .wiki_searcher_1_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.lsw_wiki .wiki_searcher_1_input_cell {
+    flex: 100;
+    padding: 2px;
+}
+.lsw_wiki .wiki_searcher_1_input {
+    width: 100%;
+
+}
+.lsw_wiki .wiki_searcher_1_button_cell {
+    flex: 1;
+    padding: 2px;
+    padding-left: 0px;
+}

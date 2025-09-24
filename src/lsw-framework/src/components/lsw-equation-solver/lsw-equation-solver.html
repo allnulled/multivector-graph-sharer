@@ -1,0 +1,36 @@
+<div class="lsw_equation_solver">
+    <lsw-typical-title :buttons="equationSolverButtons">
+        √ Calculador de ecuaciones
+    </lsw-typical-title>
+    <div class="pad_top_1">Solución: </div>
+    <div class="width_100 pad_top_1 flex_row">
+        <div class="flex_100">
+            <textarea class="supermini width_100" type="text" disabled="true" v-model="solution"></textarea>
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini height_100" v-on:click="solve"> √ </button>
+        </div>
+    </div>
+    <div class="pad_top_1">
+        <div>Ecuación:</div>
+    </div>
+    <div class="pad_vertical_1">
+        <textarea class="" v-model="equation" :placeholder="'Example: ' + currentExample"></textarea>
+    </div>
+    <div class="flex_row centered pad_bottom_1"
+        v-for="incognite, incogniteIndex in incognites"
+        v-bind:key="'incognite_' + incogniteIndex">
+        <div class="flex_1">
+            <input class="supermini width_1" style="min-width: 50px;" type="text" v-model="incognite.name">
+        </div>
+        <div class="flex_1 pad_left_1"> = </div>
+        <div class="flex_100 pad_left_1">
+            <input class="supermini width_100" type="text" v-model="incognite.value">
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini" v-on:click="() => dropIncognite(incogniteIndex)">❌</button>
+        </div>
+    </div>
+    <button class="supermini width_100"
+        v-on:click="addIncognite">➕ Incógnita</button>
+</div>

@@ -1,0 +1,125 @@
+<div class="app app_component position_relative">
+    <div class="panel_principal">
+        <div class="panel_de_botones">
+            <div class="flex_row centered pad_top_1 pad_right_1">
+                <div class="flex_100 pad_left_1" style="color: white;">Multivector graph sharer</div>
+                <div class="flex_1 pad_left_1">
+                    <button class="" v-on:click="() => $window.open('https://observablehq.com/plot/getting-started', '_blank')">Info</button>
+                </div>
+                <div class="flex_1 pad_left_1">
+                    <button class="" v-on:click="exportAsLink">Exportar</button>
+                </div>
+                <template v-if="selectedPanel === 'edicion'">
+                    <div class="flex_1 pad_left_1">
+                        <button class="" v-on:click="visualize">Compilar</button>
+                    </div>
+                </template>
+                <template v-else>
+                    <div class="flex_1 pad_left_1">
+                        <button class="" v-on:click="() => selectPanel('edicion')">Editar</button>
+                    </div>
+                </template>
+            </div>
+        </div>
+        <div class="panel_de_edicion color_white"
+            v-show="selectedPanel === 'edicion'">
+            <div class="pad_1">
+                <div class="pad_bottom_1">Formato de datos:</div>
+                <div class="flex_row centered">
+                    <div class="flex_1 pad_left_1 nowrap cursor_pointer" v-on:click="() => entrada_formato_datos = 'json'">
+                        <span class="" v-if="entrada_formato_datos === 'json'">✅ </span>
+                        <span class="" v-else>🔘 </span>
+                        <span> JSON</span>
+                    </div>
+                    <div class="flex_1 pad_left_1 nowrap cursor_pointer" v-on:click="() => entrada_formato_datos = 'csv'">
+                        <span class="" v-if="entrada_formato_datos === 'csv'">✅ </span>
+                        <span class="" v-else>🔘 </span>
+                        <span> CSV</span>
+                    </div>
+                    <div class="flex_100"></div>
+                </div>
+            </div>
+            <div class="pad_1" v-if="entrada_formato_datos === 'csv'">
+                <div class="pad_bottom_1">Columnas CSV por orden:</div>
+                <input type="text"
+                    class="width_100 supermini"
+                    v-model="entrada_cabeceras_csv"
+                    spellcheck="false" />
+            </div>
+            <div class="pad_1">
+                <div class="pad_bottom_1">
+                    <span>Datos</span>
+                    <span v-if="entrada_formato_datos === 'json'"> en formato JSON</span>
+                    <span v-if="entrada_formato_datos === 'csv'"> en formato CSV</span>
+                    <span>:</span></div>
+                <textarea
+                    class="width_100"
+                    v-model="entrada_datos"
+                    spellcheck="false"></textarea>
+            </div>
+            <div class="pad_1">
+                <div class="pad_bottom_1">Columna del eje Y: (nombre)</div>
+                <input type="text"
+                    class="supermini width_100"
+                    v-model="entrada_eje_y"
+                    spellcheck="false" />
+            </div>
+            <div class="pad_1">
+                <div class="pad_bottom_1">Columnas del eje X: (cantidad1, cantidad2, ...)</div>
+                <input type="text"
+                    class="supermini width_100"
+                    v-model="entrada_eje_x"
+                    spellcheck="false" />
+            </div>
+            <div class="flex_row centered pad_1">
+                <div class="flex_100"></div>
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini" v-on:click="() => isShowingAvanzados = !isShowingAvanzados">
+                        <span v-if="isShowingAvanzados">Ocultar</span>
+                        <span v-else>Mostrar</span>
+                        <span>parámetros avanzados</span>
+                    </button>
+                </div>
+            </div>
+            <template v-if="isShowingAvanzados">
+                <div class="pad_1" v-if="entrada_formato_datos === 'csv'">
+                    <div class="pad_bottom_1">Caracter separador de CSV:</div>
+                    <input type="text"
+                        class="supermini width_100"
+                        v-model="entrada_separador_columnas_csv"
+                        spellcheck="false" />
+                </div>
+                <div class="pad_1">
+                    <div class="pad_bottom_1">
+                        <span>Código de gráfico:</span>
+                    </div>
+                    <textarea
+                        class="width_100"
+                        style="min-height: 470px;"
+                        v-model="source"
+                        spellcheck="false"></textarea>
+                </div>
+            </template>
+            <div v-if="error">{{ error }}</div>
+        </div>
+        <div class="panel_de_visualizacion"
+            v-show="selectedPanel === 'visualizacion'">
+            <div class="marco_de_visualizacion_container">
+                <div class="marco_de_visualizacion">
+                    <div ref="graphRenderer" id="graph_renderer" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--lsw-home-top-panel ref="desktop" />
+    <lsw-desktop-bottom-panel /-->
+    <div>
+        <!--lsw-console-hooker />
+        <lsw-windows-viewer /-->
+        <lsw-debugger />
+        <lsw-toasts />
+    </div>
+    <!--lsw-home-bottom-panel />
+    <lsw-clockwatcher /-->
+    <div style="min-height: 100px;"></div>
+</div>

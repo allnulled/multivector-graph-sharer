@@ -1,0 +1,14 @@
+{
+  "name": "@allnulled/lsw-database-ui",
+  "version": "1.0.0",
+  "description": "Database UI tool for LSW",
+  "main": "lsw-database-ui.js",
+  "scripts": {
+    "build": "node bundler.js",
+    "test": "echo 'no test for lsw-database-ui'",
+    "versionate": "echo 'no versionate for lsw-database-ui'"
+  },
+  "keywords": [],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

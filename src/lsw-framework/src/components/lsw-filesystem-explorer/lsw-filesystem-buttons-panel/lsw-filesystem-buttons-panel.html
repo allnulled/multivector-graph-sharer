@@ -1,0 +1,8 @@
+<div class="lsw_filesystem_buttons_panel">
+    <div class="buttons_panel centered" :class="'flex_' + orientation + ' orientation_' + orientation">
+        <div class="button_cell flex_1" v-for="button, buttonIndex in buttons" v-bind:key="'button_index_' + buttonIndex">
+            <button class="supermini nowrap" :class="button.classes || ''" v-on:click="button.click">{{ button.text }}</button>
+        </div>
+        <div class="flex_100"></div>
+    </div>
+</div>

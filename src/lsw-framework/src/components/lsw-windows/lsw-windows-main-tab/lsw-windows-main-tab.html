@@ -1,0 +1,101 @@
+<div class="lsw_windows_main_tab">
+    <div class="dialog_window process_manager_window"
+        v-bind:key="'main_dialog'"
+        :style="{ zIndex: 501 }">
+        <div class="dialog_topbar">
+            <div class="dialog_title">
+                <div>Procesos</div>
+            </div>
+            <div class="dialog_topbar_buttons">
+                <button class=""
+                    style="white-space: nowrap;flex: 1;"
+                    v-on:click="showConsole">💻</button>
+                <button class=""
+                    v-on:click="viewer.toggleState">❌</button>
+            </div>
+        </div>
+        <div class="dialog_body">
+            <div class="main_tab_topbar">
+                <button class=""
+                    v-on:click="toggleApps">📟 Aplicaciones 📟</button>
+                <div class="hidden_menu"
+                    v-if="isShowingApps">
+                    <div class="hidden_menu_fixed_layer"
+                        v-on:click="toggleApps"></div>
+                    <div class="hidden_menu_box"
+                        style="max-width: 100%; left: auto; right: 0px; padding: 0px; padding-top:4px;">
+                        <div class="hidden_menu_items flex_column">
+                            <div class="title">
+                                <div class="flex_100 pad_left_1 pad_right_1">
+                                    Las apps instaladas:
+                                </div>
+                                <div class="flex_1">
+                                    <button class="supermini"
+                                        v-on:click="toggleApps">❌</button>
+                                </div>
+                            </div>
+                            <div style="white-space: wrap;">
+                                <lsw-homepage :on-open-application-event="() => { toggleApps(); }" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--button class="mini main_tab_topbar_button"
+                    v-on:click="openAgenda">📆</button>
+                <button class="mini main_tab_topbar_button"
+                    v-on:click="openWiki">🔬</button>
+                <button class="mini main_tab_topbar_button"
+                    v-on:click="openRest">📦</button>
+                <button class="mini main_tab_topbar_button"
+                    v-on:click="openFilesystem">📂</button>
+                <button class="mini main_tab_topbar_button"
+                    v-on:click="openNoteUploader">💬</button>
+                <button class="mini main_tab_topbar_button"
+                    v-on:click="openConfigurationsPage">🔧</button-->
+            </div>
+            <div class="pad_normal">
+                <div class="typical_title_1">
+                    <div class="flex_row centered">
+                        <div class="flex_100">
+                            🚥 Procesos
+                        </div>
+                        <div class="flex_1">
+                            <button class="supermini visibility_hidden">ok</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="pad_normal"
+                    v-if="!Object.keys($lsw.dialogs.opened).length">
+                    <span>Sin procesos actualmente.</span>
+                </div>
+                <div class="pad_normal"
+                    v-else>
+                    <div v-for="dialog, dialogIndex, dialogCounter in $lsw.dialogs.opened"
+                        v-bind:key="'dialog-' + dialogIndex"
+                        class="pad_bottom_1">
+                        <div class="flex_row centered">
+                            <div class="flex_100">
+                                <button class="supermini width_100 text_align_left"
+                                    v-on:click="() => viewer.selectDialog(dialogIndex)">
+                                    <a href="javascript:void(0)">{{ dialogCounter + 1 }}. {{ dialog.title }} [{{ dialog.id }}]</a>
+                                </button>
+                            </div>
+                            <div class="flex_1 pad_left_1">
+                                <button class="supermini danger_button"
+                                    v-on:click="() => closeProcess(dialog)">❌</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pad_normal pad_top_0"
+                    v-if="false">
+                    <lsw-homepage :apps-thrower="this" />
+                </div>
+            </div>
+        </div>
+        <div class="dialog_footer">
+            <button class="mini"
+                v-on:click="viewer.toggleState">❌ Cancelar</button>
+        </div>
+    </div>
+</div>

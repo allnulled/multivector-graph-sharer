@@ -1,0 +1,41 @@
+.lsw_home_top_panel {
+    
+}
+
+
+.automensaje_block {
+    border: 1px solid #333;
+    border-radius: 3pt;
+    padding: 0px;
+    font-weight: bold;
+    font-weight: normal;
+    text-shadow: 0 0 1px #000;
+    text-align: center;
+    cursor: pointer;
+    min-height: calc(var(--button_height) - 8px);
+    box-shadow: 0 0 2px black;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.37);
+    transition: background-color 0.2s linear;
+}
+
+.automensaje_block:hover {}
+
+.app_main_topbar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: auto;
+    background-color: #000000D8;
+    border-bottom: 1px solid #333;
+    box-shadow: 0 0 4px black;
+    padding-top: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    z-index: 999;
+}
+
+.app_main_panel {
+    margin-top: 54px;
+}

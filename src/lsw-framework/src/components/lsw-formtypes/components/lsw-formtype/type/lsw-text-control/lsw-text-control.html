@@ -1,0 +1,25 @@
+<div class="lsw_text_control lsw_formtype lsw_form_control">
+    <lsw-control-label :settings="settings" :parent-formtype="this" v-if="skipLabel === false" />
+    <div v-show="isEditable">
+        <div ref="controller" v-xform.control="{
+            name: settings.name,
+            onValidate: settings.column?.hasValidator || $noop,
+            onSetError: () => {
+                isEditable = true;
+            }
+        }">
+            <div class="flex_row">
+                <input class="flex_100"
+                    type="text"
+                    v-model="value"
+                    v-on="getSettingsInputEvents"
+                    v-bind="getSettingsInputProps"
+                    v-xform.input="{name: '*',onValidate: settings.input?.onValidate || $noop}"
+                    spellcheck="false"
+                    ref="textInput" />
+            </div>
+            <lsw-control-error :error="submitError" v-if="submitError" />
+            <lsw-control-error :error="validateError" v-if="validateError" />
+        </div>
+    </div>
+</div>

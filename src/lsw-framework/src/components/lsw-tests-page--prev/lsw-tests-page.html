@@ -1,0 +1,107 @@
+<div class="lsw_tests_page">
+    <div v-if="section === 'available'">
+        <div class="flex_row centered typical_title_1">
+            <div class="flex_100">🩺 Tests disponibles</div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini"
+                    v-on:click="selectAllTests">*</button>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini"
+                    v-on:click="() => goToSection('downloadable')">
+                    ➡️
+                </button>
+            </div>
+        </div>
+        <div class="pad_bottom_1">
+            <div class="pad_top_1"
+                v-for="test, testIndex in available"
+                v-bind:key="'available_test_' + testIndex">
+                <div class="flex_row centered cursor_pointer"
+                    v-on:click="() => selectTest(test)">
+                    <button class="supermini"
+                        v-if="selected.indexOf(test) !== -1">✅</button>
+                    <button class="supermini"
+                        v-else>🔘</button>
+                    <div class="pad_left_1 smallest_font">
+                        Test: <b class="resource_path">{{ shortSubpath(test) }}</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="supermini width_100"
+                v-on:click="() => goToSection('downloadable')">
+                ➡️ Continuar a orden de carga
+            </button>
+        </div>
+    </div>
+    <div v-if="section === 'downloadable'">
+        <div class="flex_row centered typical_title_1">
+            <div class="flex_100">🩺 Tests seleccionados</div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini"
+                    v-on:click="resetSelectedTests">🔄</button>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini"
+                    v-on:click="() => goToSection('available')">⬅️</button>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini"
+                    v-on:click="runTests">▶️</button>
+            </div>
+        </div>
+        <div class="pad_bottom_1">
+            <draggable tag="div"
+                handle=".handle"
+                :list="selected">
+                <div class=""
+                    v-for="test, testIndex in selected"
+                    v-bind:key="'selected_test_' + testIndex">
+                    <div class="flex_row centered">
+                        <div class="flex_1 pad_top_1">
+                            <button class="supermini handle"
+                                style="cursor: grab;">☰</button>
+                        </div>
+                        <div class="flex_100 pad_left_2">{{ testIndex+1 }}. <b class="resource_path">{{ shortSubpath(test) }}</b></div>
+                        <div class="flex_1"></div>
+                    </div>
+
+                </div>
+            </draggable>
+        </div>
+        <div>
+            <button class="supermini width_100"
+                v-if="!isRunning"
+                v-on:click="runTests">
+                ➡️ Iniciar tests
+            </button>
+        </div>
+    </div>
+    <div class=""
+        v-if="section === 'running'">
+        <div class="flex_row centered typical_title_1">
+            <div class="flex_100">🩺 Tests corriendo</div>
+            <div class="flex_1 pad_left_1"
+                v-if="isRunning">
+                <button class="supermini"
+                    v-on:click="interruptTests">◼️</button>
+            </div>
+            <template v-else>
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini"
+                    v-on:click="() => goToSection('downloadable')">⬅️</button>
+                </div>
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini"
+                        v-on:click="runTests">▶️</button>
+                </div>
+            </template>
+        </div>
+        <div>⚠️Sección en construcción</div>
+        <div class="pad_top_1">
+          <pre class="codeblock">{{ downloaded }}</pre>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="lsw_wiki_articulo_viewer">
+    <div class="pad_2" v-if="error">
+        {{ error.name }}: {{ error.message }}
+    </div>
+    <template v-if="isLoaded">
+        <template v-if="selectedArticulos && selectedArticulos.length">
+            <div class="pad_2">
+                <div v-for="articulo, articuloIndex in selectedArticulos" v-bind:key="'articulo_' + articuloIndex">
+                    - Mostrando artículo {{ articuloIndex + 1 }}. «{{ articulo.tiene_titulo }}»
+                </div>
+            </div>
+            <div class="pad_2 pad_top_0" v-if="markdownContent">
+                <div class="texto_markdown rutiner_box pad_1" v-html="markdownContent"></div>
+            </div>
+        </template>
+    </template>
+</div>

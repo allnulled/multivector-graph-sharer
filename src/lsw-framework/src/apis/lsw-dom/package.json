@@ -1,0 +1,14 @@
+{
+  "name": "lsw-dom",
+  "version": "1.0.0",
+  "description": "DOM utilities for LSW.",
+  "main": "lsw-dom.js",
+  "scripts": {
+    "build": "echo 'no building for @allnulled/lsw-dom'",
+    "versionate": "echo 'no versionate for @allnulled/lsw-dom'",
+    "test": "echo 'no test for @allnulled/dom'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

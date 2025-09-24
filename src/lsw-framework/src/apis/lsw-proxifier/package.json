@@ -1,0 +1,14 @@
+{
+  "name": "lsw-proxifier",
+  "version": "1.0.0",
+  "description": "Class proxifier tool for Lite Starter Webkit.",
+  "main": "proxifier.unbundled.js",
+  "scripts": {
+    "build": "echo 'no building for @allnulled/lsw-proxifier'",
+    "versionate": "echo 'no versionate for @allnulled/lsw-proxifier'",
+    "test": "node test.js"
+  },
+  "keywords": ["proxifier"],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

@@ -1,0 +1,270 @@
+<div class="lsw_agenda_acciones_viewer">
+
+    
+    <div class="tasks_viewer" v-if="!isLoading">
+        <div class="pad_bottom_1">
+            <div class="typical_title_1 flex_row centered">
+                <div class="flex_100">
+                    <span v-if="selectedDate">
+                        <span v-if="selectedSorterStrategy === 'antes'">⬅️🕓 Antes de las {{ LswTimer.utils.fromDateToHour(selectedDate) }}:</span>
+                        <span v-else-if="selectedSorterStrategy === 'despues'">🕓➡️ Después de las {{ LswTimer.utils.fromDateToHour(selectedDate) }}:</span>
+                        <span v-else>⬅️🕓➡️ En todo el día</span>
+                    </span>
+                </div>
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini has_light_bg"
+                        v-on:click="toggleSorterStrategy">
+                        <span v-if="selectedSorterStrategy === 'antes'">⬅️🕓</span>
+                        <span v-else-if="selectedSorterStrategy === 'despues'">🕓➡️</span>
+                        <span v-else>⬅️🕓➡️</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="selected_day_title"
+            v-if="selectedDate">
+            <div class="flex_row centered">
+                <div class="flex_1 margin_right_1">
+                    <button class="remarked_button"
+                        v-on:click="openNewRowDialog"
+                        :class="{activated: selectedForm === 'new'}">➕🐾</button>
+                </div>
+                <div class="flex_100 text_align_center selected_date_on_tasks_viewer">
+                    {{ getDateIcon(selectedDate) }} {{ $lsw.timer.utils.formatDateToSpanish(selectedDate, true) }} {{ getDateIcon(selectedDate) }}
+                </div>
+                <div class="flex_1 pad_left_1 nowrap">
+                    <button class=""
+                        :class="{activated:isShowingRandomizer}"
+                        v-on:click="toggleRandomizer">🎲</button>
+                    <div class="hidden_menu"
+                        v-if="isShowingRandomizer">
+                        <div class="hidden_menu_fixed_layer"
+                            v-on:click="toggleRandomizer"></div>
+                        <div class="hidden_menu_box"
+                            style="min-width: 160px; left: auto; right: 0px; padding: 0px; padding-top:4px;">
+                            <div class="hidden_menu_items flex_column">
+                                <div class="title">
+                                    <div class="flex_100 pad_left_1 pad_right_1">
+                                        El randomizador:
+                                    </div>
+                                    <div class="flex_1">
+                                        <button class="supermini"
+                                            v-on:click="toggleRandomizer">❌</button>
+                                    </div>
+                                </div>
+                                <button class="flex_1 pad_bottom_1 text_align_left supermini"
+                                    v-on:click="openRandomizerFile">
+                                    <div class="flex_row centered">
+                                        <div class="flex_1">
+                                            🎲↗️
+                                        </div>
+                                        <div class="flex_100 text_align_right">
+                                            Editar randomizables
+                                        </div>
+                                    </div>
+                                </button>
+                                <button class="flex_1 pad_bottom_1 text_align_left supermini"
+                                    v-on:click="randomizeDay">
+                                    <div class="flex_row centered">
+                                        <div class="flex_1">
+                                            +🎲
+                                        </div>
+                                        <div class="flex_100 text_align_right">
+                                            Inflar día
+                                        </div>
+                                    </div>
+                                </button>
+                                <button class="flex_1 pad_bottom_1 text_align_left supermini"
+                                    v-on:click="cleanRandomizedDays">
+                                    <div class="flex_row centered">
+                                        <div class="flex_1">
+                                            🔥🎲
+                                        </div>
+                                        <div class="flex_100 text_align_right">
+                                            Limpiar día
+                                        </div>
+                                    </div>
+                                </button>
+                                <button class="flex_1 pad_bottom_1 text_align_left supermini"
+                                    v-on:click="showAllHours"
+                                    style="display: none;">🔓*</button>
+                                <button class="flex_1 pad_bottom_1 text_align_left supermini"
+                                    v-on:click="hideAllHours"
+                                    style="display: none;">🔒*</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="no_tasks_message"
+            v-if="isLoading">
+            Por favor, aguarde hasta recuperar los datos.
+        </div>
+        <div class="tasks_area" v-if="(!isLoading) && selectedDateTasksSorted && selectedDateTasksSorted.length">
+            <div v-for="accion, accionIndex in selectedDateTasksSorted">
+                <div class="hour_task_block"
+                    v-if="accion.tiene_estado === 'trackeada'">
+                    <div class="accion_row flex_row centered"
+                        style="padding-top: 2px;">
+                        <div class="flex_1 celda_de_hora"
+                            v-on:click="$noop">
+                            <div class="padded_vertically_1 pad_left_1">
+                                {{
+                                $lsw.timer.utils.formatHourFromMomentoCode(accion.tiene_inicio, false) ?? '💩'
+                                }}
+                            </div>
+                        </div>
+                        <div class="">
+                            <button class="supermini padded_vertically_1">
+                                🎥
+                            </button>
+                        </div>
+                        <div class="flex_1 celda_de_duracion pad_right_1">{{ accion.tiene_duracion || '🤔' }}</div>
+                        <button class="supermini flex_100 text_align_left pad_0 margin_right_1 nowrap shortable_text"
+                            disabled="true"
+                            style="min-width: 80px;">
+                            <b>{{ accion.en_concepto }}</b><span v-if="accion.tiene_comentarios">: {{ accion.tiene_comentarios }}</span>
+                        </button>
+                        <button class="supermini flex_1"
+                            v-on:click="() => openEditRowDialog(accion)">
+                            ↗️
+                        </button>
+                        <div class="flex_1">
+                            <button class="supermini danger_button padded_vertically_1"
+                                v-on:click="(e) => openDeleteTaskDialog(accion, e)">❌</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="hour_task_block"
+                    v-else
+                    :class="{is_completed: accion.tiene_estado === 'completada', is_failed: accion.tiene_estado === 'fallida', is_pending: accion.tiene_estado === 'pendiente'}"
+                    v-bind:key="'accion_' + accionIndex">
+                    <div class="accion_row flex_row centered"
+                        style="padding-top: 2px;">
+                        <div class="flex_1 celda_de_hora"
+                            v-on:click="() => toggleShowAccion(accion.id)">
+                            <div class="padded_vertically_1 pad_left_1">{{
+                                $lsw.timer.utils.formatHourFromMomentoCode(accion.tiene_inicio, false) ?? '💩'
+                                }}
+                            </div>
+                        </div>
+                        <div>
+                            <button class="supermini padded_vertically_1"
+                                v-on:click="(e) => toggleAutogeneration(accion)">{{ accion.tiene_parametros.startsWith("[*autogenerada]") ?
+                                "🤖" : accion.tiene_parametros.startsWith("[*semanal]") ? "🏁" : "✍️" }}</button>
+                        </div>
+                        <div class="flex_1 celda_de_duracion pad_right_1">{{ accion.tiene_duracion || '🤔' }}</div>
+                        <div class="flex_100 celda_de_concepto shortable_text">
+                            <div class=" pad_left_1 pad_right_1 padded_vertically_1"
+                                :class="{activated: shownAcciones.indexOf(accion.id) !== -1}"
+                                v-on:click="() => advanceTaskState(accion)"> {{ accion.en_concepto || '🤔' }}
+                            </div>
+                        </div>
+                        <div class="flex_1">
+                            <button class="supermini padded_vertically_1"
+                                :class="{activated: selectedForm === accion.id}"
+                                v-on:click="() => openEditRowDialog(accion)">↗️</button>
+                        </div>
+                        <div class="flex_1">
+                            <button class="supermini danger_button padded_vertically_1"
+                                v-on:click="(e) => openDeleteTaskDialog(accion, e)">❌</button>
+                        </div>
+                    </div>
+                    <div class="detalles_de_accion"
+                        v-if="shownAcciones.indexOf(accion.id) !== -1">
+                        <div class="tabla_de_detalles">
+                            <div class="campo"
+                                v-if="accion.en_concepto">
+                                <div class="clave">Concepto: </div>
+                                <div class="valor"><u>{{ accion.en_concepto }}</u></div>
+                            </div>
+                            <div class="campo"
+                                v-if="accion.tiene_estado">
+                                <div class="clave">Estado: </div>
+                                <div class="valor valor_de_estado">{{ accion.tiene_estado }}</div>
+                            </div>
+                            <div class="campo"
+                                v-if="accion.tiene_inicio">
+                                <div class="clave">Inicio: </div>
+                                <div class="valor">{{ accion.tiene_inicio }}</div>
+                            </div>
+                            <div class="campo"
+                                v-if="accion.tiene_duracion">
+                                <div class="clave">Duración: </div>
+                                <div class="valor">{{ accion.tiene_duracion }}</div>
+                            </div>
+                            <div class="campo"
+                                v-if="accion.tiene_parametros">
+                                <div class="clave">Parámetros: </div>
+                                <div class="valor texto_markdown sin_decorar"
+                                    v-html="LswMarkdown.global.parse(accion.tiene_parametros)"></div>
+                            </div>
+                            <div class="campo"
+                                v-if="accion.tiene_comentarios">
+                                <div class="clave">Comentarios: </div>
+                                <div class="valor texto_markdown sin_decorar"
+                                    v-html="(accion.tiene_comentarios)"></div>
+                            </div>
+                            <div class="campo"
+                                v-if="accion.tiene_resultados">
+                                <div class="clave">Resultados: </div>
+                                <div class="valor texto_markdown sin_decorar"
+                                    v-html="(accion.tiene_resultados)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--div class="pad_top_1">
+                <button class="remarked_button width_100 supermini"
+                    v-on:click="openNewRowDialog">➕🐾</button>
+            </div-->
+        </div>
+        <div class="no_tasks_message small_font"
+            v-else>
+            <div class="notificacion_de_peligro">
+                <div>☢️ <b>Empty Task Stack Attack</b> ☢️</div>
+                <template v-if="selectedSorterMoment">
+                    <div v-if="selectedSorterStrategy === 'antes'">
+                        ...para antes de <b>las {{ LswTimer.utils.fromDateToHour(selectedSorterMoment) }}</b>...
+                    </div>
+                    <div v-else-if="selectedSorterStrategy === 'despues'">
+                        ...para después de <b>las {{ LswTimer.utils.fromDateToHour(selectedSorterMoment) }}</b>...
+                    </div>
+                </template>
+                <div>
+                    ...en el <b>día {{ LswTimer.utils.fromDateToDatestring(selectedDate, true) }}</b>.
+                </div>
+            </div>
+        </div>
+        <div class="pad_top_1">
+            <button class="remarked_button width_100 supermini"
+                v-on:click="openNewRowDialog">➕🐾</button>
+        </div>
+    </div>
+
+    <template v-if="true || (selectedSorterStrategy === 'despues')">
+        <template v-if="!isLoading">
+            <template v-if="isShowingGoals">
+                <div class="pad_vertical_1">
+                    <lsw-typical-title class="">📊 Métricas del día:</lsw-typical-title>
+                </div>
+                <lsw-goals-viewer ref="goalsViewer"
+                    :on-close="() => {isShowingGoals = false;}"
+                    :day-to-analize="selectedDate" />
+            </template>
+        </template>
+    </template>
+
+    <div class="">
+        <lsw-calendario
+            ref="calendario"
+            modo="date"
+            :al-iniciar="(v, cal) => loadDateTasks(v, cal)"
+            :al-cambiar-valor="(v, cal) => loadDateTasks(v, cal)"
+            :acciones-viewer="this"
+        />
+    </div>
+
+</div>

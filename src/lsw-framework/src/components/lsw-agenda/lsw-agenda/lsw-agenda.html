@@ -1,0 +1,21 @@
+<div class="lsw_agenda">
+
+    <lsw-typical-title :buttons="agendaButtons">📒 Agenda</lsw-typical-title>
+
+    <div v-if="selectedContext === 'conductometria'" class="pad_top_1">
+        <lsw-conductometria />
+    </div>
+    
+    <div class="calendar_viewer"
+        style="padding-top: 6px;"
+        v-show="(selectedContext === 'agenda') && (selectedAction === 'calendario')">
+        <div class="">
+            <lsw-agenda-acciones-viewer
+                :agenda="this"
+                :initial-date="selectedDate"
+                ref="calendario"
+            />
+        </div>
+    </div>
+
+</div>

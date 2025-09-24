@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Importer</title>
+    <script src="importer.js"></script>
+</head>
+<body>
+    <pre id="test"></pre>
+    <div id="intersitial">
+        <div id="intersitial_loader">
+            <div id="intersitial_loader_bar"></div>
+            <div id="intersitial_message">
+                <span>Loaded <span id="intersitial_modules_loaded"></span> out of <span id="intersitial_modules_all"></span> modules</span>
+            </div>
+        </div>
+        <pre  id="intersitial_modules_trace"></pre>
+    </div>
+    <pre id="error"></pre>
+        <style>
+            #intersitial {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                font-family: Arial;
+                font-size: 12px;
+                z-index: 98999;
+            }
+            #intersitial_message {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+                font-size: 12px;
+                color: gold:
+                font-family: Arial;
+                font-size: 12px;
+                border: 1px solid #888;
+            }
+            #intersitial_loader {
+                position: relative;
+                font-family: Arial;
+                min-height: 14px;
+                background-color: #333;
+            }
+            #intersitial_loader_bar {
+                height: 100%;
+                min-height: 15px;
+                font-size: 12px;
+                background-color: #0F0;
+                width: 0%;
+            }
+            #intersitial_modules_trace {
+                font-family: Arial;
+                font-size: 12px;
+                border: 1px solid #888;
+                margin: 0;
+                padding: 4px;
+                margin-bottom: 1px;
+            }
+        </style>
+        <script>
+            window.addTest = function(text) {
+                document.querySelector("#test").textContent += text + "\n";
+            };
+            window.setError = function(text) {
+                document.querySelector("#error").textContent += text + "\n";
+            };
+            const test = async function() {
+                try {
+                    addTest("Test of Importer class");
+                    importer.options.trace = true;
+                    importer.setTimeout(1000 * 4);
+                    importer.setTotal(3);
+                    await importer.scriptSrc("test/scriptSrc.js");
+                    await importer.scriptSrcModule("test/scriptSrcModule.js");
+                    await importer.linkStylesheet("test/linkStylesheet.css");
+                    const txt = await importer.text("test/text.txt");
+                    if(txt.startsWith("...")) {
+                        addTest("Test of importer.text completed");
+                    } else {
+                        throw new Error("Text failed");
+                    }
+                    addTest("Test of importer.linkStylesheet completed");
+                    addTest("Test completed successfully!");
+                } catch (error) {
+                    setError(error.name + ": " + error.message + "\n" + error.stack);
+                }
+            };
+            window.addEventListener("load", test);
+        </script>
+</body>
+</html>

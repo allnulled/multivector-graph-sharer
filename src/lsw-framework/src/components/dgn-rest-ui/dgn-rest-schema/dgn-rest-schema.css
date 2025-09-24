@@ -1,0 +1,13 @@
+.dgn_rest_schema {}
+
+.dgn_rest_schema .columna_item {
+    border: 1px solid black;
+    border-radius: 2pt;
+    box-shadow: 0 0 4px black;
+    padding: 4px;
+    margin-top: 2px;
+}
+
+.dgn_rest_schema .columna_item:first-child {
+    margin-top: 0px;
+}

@@ -1,0 +1,30 @@
+* {
+    set 06:00 * 5min = despertarse
+    set 06:05 = reflexionar unos segundos
+    set 07:00 * 1h = desayunar [con ajo]
+}
+
+2025/06/01-2025/07/01:
+
+* {
+    req programar > 5h !10
+    req ejercicio físico > 1h !10
+    req pasear > 2h !10
+    req paisaje > 1 !1
+    req cosa mala 1 < 5 !11
+    req cosa mala 2 < 2h !11
+}
+
+lun {
+    set 10:00 = ok
+    req w3hate >4h !2
+}
+
+*-*:
+
+* {
+    req actividad física >3h !10
+    req actividad intelectual >3h !10
+    req aprender algo > 1h !10
+    req crear algo > 2h !10
+}

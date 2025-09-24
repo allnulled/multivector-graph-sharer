@@ -1,0 +1,41 @@
+<div class="lsw_debugger">
+    <div class="lsw_debugger_container"
+        v-if="currentMessages.length">
+        <div class="lsw_debugger_content pad_2 position_relative">
+            <div class="dialog_window process_manager_window"
+                style="z-index: 501;top:7px;">
+                <div class="dialog_topbar">
+                    <div class="dialog_title">
+                        <div>Live debugger</div>
+                    </div>
+                    <div class="dialog_topbar_buttons">
+                        <button class="mini"
+                            v-on:click="clearMessages">❌</button>
+                    </div>
+                </div>
+                <div class="dialog_body">
+                    <div class="lsw_debugger_message"
+                        v-for="data, dataIndex in currentMessages"
+                        v-bind:key="'debugger_data_' + dataIndex">
+                        <div class=""
+                            v-if="data.title">{{ data.title }}</div>
+                        <div class="pad_bottom_1">
+                            <div class="pad_top_1 pad_horizontal_1">
+                                <span class="smallest_font"> [{{ data.created_at }}] </span>
+                                <span class=""> ({{ typeof data.data }}) </span>
+                                <span class="smallest_font"> [for {{ (data.timeout/1000).toFixed(3) }}s]: </span>
+                            </div>
+                            <div class="pad_top_1 pad_horizontal_1">
+                                <span class="font_weight_bold"> {{ data.data }} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dialog_footer">
+                    <button class="mini"
+                        v-on:click="clearMessages">❌ Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

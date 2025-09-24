@@ -1,0 +1,12 @@
+<div class="LswAgendaConceptoAdd">
+  <template>
+    <lsw-schema-based-form
+      :on-submit="insertConcepto"
+      :model="{
+        databaseId: 'lsw_default_database',
+        tableId: 'Concepto',
+        rowId: -1,
+      }"
+    />
+  </template>
+</div>

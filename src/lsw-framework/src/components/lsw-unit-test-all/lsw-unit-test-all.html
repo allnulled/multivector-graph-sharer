@@ -1,0 +1,32 @@
+<div class="lsw_unit_test_all">
+    <div class="flex_row centered">
+        <div class="flex_1 pad_bottom_1 pad_right_1">
+            <button class="supermini"
+                :style="'visibility: ' + (typeof mode === 'string' ? 'visible' : 'hidden')"
+                v-on:click="goBack">⬅️</button>
+        </div>
+        <div class="flex_100 text_align_right">
+            <b>🕸 All unit test 🕸</b>
+        </div>
+    </div>
+    <div class="flex_row centered width_100" v-if="typeof mode !== 'string'">
+        <div class="flex_100">
+            <button class="supermini width_100"
+                v-on:click="openTests">
+                📂 Ver todos los tests
+            </button>
+        </div>
+        <div class="flex_100 pad_left_1">
+            <button class="supermini width_100"
+                v-on:click="runTests">
+                ▶️ Correr todos los tests
+            </button>
+        </div>
+    </div>
+    <template v-else>
+        <lsw-unit-tester-collection
+            :all-tests="LswTests.all()"
+            :autorun="autorunOption"
+        />
+    </template>
+</div>

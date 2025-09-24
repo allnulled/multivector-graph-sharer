@@ -1,0 +1,157 @@
+:root {
+    --altura_de_dias_de_calendario: 40px;
+}
+.visor_de_calendario {
+    max-width: 260px;
+    max-width: 100%;
+    border: 1px solid black;
+    border-radius: 2pt;
+    box-shadow: 0 0 4px black;
+    background-color: rgba(0,0,0,0.3);
+    padding: 4px;
+}
+.LswCalendario .like_table {
+    display: table;
+    width: 100%;
+}
+.LswCalendario .like_row {
+    display: table-row;
+}
+.LswCalendario .like_cell {
+    display: table-cell;
+}
+table.tabla_de_calendario {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+    margin-left: 1px;
+}
+button.boton_de_calendario {
+    min-width: auto;
+    width: auto;
+    padding: 2px;
+    min-width: 25px;
+}
+button.boton_de_dia_de_calendario {
+    min-width: 32px;
+}
+button.boton_de_dia_de_calendario.current {
+    background-color: rgb(97, 48, 46);
+    border-radius: 2pt;
+}
+
+button.boton_de_dia_de_calendario.active {
+    background-color: white;
+    color: black;
+    border: 2px solid #6fff00;
+    box-shadow: 0 0 8px rgb(255, 251, 0);
+}
+button.boton_de_dia_de_calendario.active.current {
+    
+}
+
+button.boton_de_mover_mes {
+    width: 100%;
+    min-width: 25px;
+}
+input.entrada_de_calendario {
+    min-width: auto;
+    width: auto;
+    text-align: center;
+}
+.chivato_de_fecha {
+    font-size: 10px;
+    font-family: Arial;
+    text-align: center;
+    vertical-align: midle;
+}
+table.tabla_para_horas {
+    width: 100%;
+    border-left: 1px solid white;
+}
+table.tabla_para_horas button {
+    width: 100%;
+    height: 100%;
+}
+table.tabla_para_horas input {
+    width: 100%;
+}
+.Component.LswCalendario button {
+    
+}
+tr.fila_de_dias_de_semana > td > div {
+    background-color: rgba(6, 2, 51, 0.4);
+    color: white;
+    text-align: center;
+    padding: 4px;
+    border: 1px solid transparent;
+    border-radius: 2pt;
+}
+tbody.dias_de_calendario > tr > td {
+    padding: 0px;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+tbody.dias_de_calendario > tr > td > span {
+    display: inline-block;
+    color: black;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    min-height: var(--altura_de_dias_de_calendario);
+}
+tbody.dias_de_calendario > tr > td > span > button {
+    width: 100%;
+    height: 100%;
+    min-height: var(--altura_de_dias_de_calendario);
+}
+.no_borders_table {
+    border-collapse: collapse;
+    border: none;
+}
+.fila_de_digito {
+    text-align: center;
+}
+.fila_de_digito > td {
+    vertical-align: middle;
+    padding-right: 1px;
+}
+.boton_de_ajuste_de_hora {
+    width: 100%;
+}
+.total_de_tareas_de_dia {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    font-size: 10px;
+}
+.total_de_tareas_de_dia > div {
+    text-align: center;
+    background-color: #336;
+    color: white;
+    text-shadow: 0 0 1px black;
+    min-width: 10px;
+    min-height: 10px;
+    border-radius: 1pt;
+    padding: 4px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+button.active > .total_de_tareas_de_dia > div {
+    background-color: #FFF;
+    color: black;
+}
+
+.dia_de_calendario_texto {
+    margin-top: -12px;
+}
+.subtitulo_de_seccion_de_calendario {
+    padding-top: 25px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.panel_de_hora_de_calendario {
+    background-color: rgba(255, 255, 255, 0.61);
+    border: 1px solid white;
+}

@@ -1,0 +1,14 @@
+{
+  "name": "lsw-wiki",
+  "version": "1.0.0",
+  "description": "Wiki UI tool for LSW",
+  "main": "lsw-wiki.js",
+  "scripts": {
+    "build": "node bundler.js",
+    "test": "echo 'no tests for lsw-wiki'",
+    "versionate": "echo 'no versionate for lsw-wiki'"
+  },
+  "keywords": [],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

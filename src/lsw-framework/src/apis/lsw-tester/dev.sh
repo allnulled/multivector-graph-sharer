@@ -1,0 +1,1 @@
+npx nodemon -x 'node test.js' -w 'lsw-tester.js' -w 'test.js' -e js

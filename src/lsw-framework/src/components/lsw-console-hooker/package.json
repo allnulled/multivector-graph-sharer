@@ -1,0 +1,13 @@
+{
+  "name": "@allnulled/lsw-console-hooker",
+  "version": "1.0.0",
+  "description": "Console hooker UI tool for LSW",
+  "main": "console-hooker.compiled.js",
+  "scripts": {
+    "test": "node test.js",
+    "versionate": "echo 'no versionate for lsw-console-hooker'"
+  },
+  "keywords": [],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

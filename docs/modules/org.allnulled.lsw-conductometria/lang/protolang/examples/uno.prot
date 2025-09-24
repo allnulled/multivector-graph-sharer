@@ -1,0 +1,11 @@
+fun propagación estándar {}
+fun propagación estándar {}
+fun propagación estándar {}
+rel correr
+  > ansiedad * 0.1
+  > calma * 0.3
+  > musculación * 0.2
+  >> multiplicador de tiempo: "ansiedad", 0.1
+  >> multiplicador de tiempo: "calma", 0.3
+  >> multiplicador de tiempo: "musculacion", 0.2
+

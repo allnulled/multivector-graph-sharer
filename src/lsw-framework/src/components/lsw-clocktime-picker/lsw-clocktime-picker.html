@@ -1,0 +1,89 @@
+<div class="lsw_clocktime_picker">
+    <div class="current_clocktime_picked flex_row centered">
+        <button :class="{activated: isSelected === 'hours'}" class="hour_picked flex_100" v-on:click="() => toggleSelection('hours')">{{ hour_picked }}</button>
+        <div class="flex_1 pad_horizontal_1">:</div>
+        <button :class="{activated: isSelected === 'minutes'}" class="minute_picked flex_100" v-on:click="() => toggleSelection('minutes')">{{ minute_picked }}</button>
+    </div>
+    <div class="lsw_hour_picker" v-if="isSelected === 'hours'">
+        <div class="hours_list">
+            <div class="pad_top_1">Selecciona la hora:</div>
+            <hr />
+            <div class="text_align_right">
+                <button class="supermini has_light_bg hour_item" v-on:click="() => specifyHour()">✏️</button>
+                <button class="supermini has_light_bg hour_item" v-on:click="() => increaseHour(-1)">🔽</button>
+                <button class="supermini has_light_bg hour_item" v-on:click="() => increaseHour(1)">🔼</button>
+            </div>
+            <hr />
+            <div class="text_align_right">
+                <div>
+                    <button :class="{activated: hour_picked === '00'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('00')">00</button>
+                    <button :class="{activated: hour_picked === '01'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('01')">01</button>
+                    <button :class="{activated: hour_picked === '02'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('02')">02</button>
+                    <button :class="{activated: hour_picked === '03'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('03')">03</button>
+                    <button :class="{activated: hour_picked === '04'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('04')">04</button>
+                    <button :class="{activated: hour_picked === '05'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('05')">05</button>
+                </div>
+                <div>
+                    <button :class="{activated: hour_picked === '06'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('06')">06</button>
+                    <button :class="{activated: hour_picked === '07'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('07')">07</button>
+                    <button :class="{activated: hour_picked === '08'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('08')">08</button>
+                    <button :class="{activated: hour_picked === '09'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('09')">09</button>
+                    <button :class="{activated: hour_picked === '10'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('10')">10</button>
+                    <button :class="{activated: hour_picked === '11'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('11')">11</button>
+                </div>
+                <div>
+                    <button :class="{activated: hour_picked === '12'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('12')">12</button>
+                    <button :class="{activated: hour_picked === '13'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('13')">13</button>
+                    <button :class="{activated: hour_picked === '14'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('14')">14</button>
+                    <button :class="{activated: hour_picked === '15'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('15')">15</button>
+                    <button :class="{activated: hour_picked === '16'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('16')">16</button>
+                    <button :class="{activated: hour_picked === '17'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('17')">17</button>
+                </div>
+                <div>
+                    <button :class="{activated: hour_picked === '18'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('18')">18</button>
+                    <button :class="{activated: hour_picked === '19'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('19')">19</button>
+                    <button :class="{activated: hour_picked === '20'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('20')">20</button>
+                    <button :class="{activated: hour_picked === '21'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('21')">21</button>
+                    <button :class="{activated: hour_picked === '22'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('22')">22</button>
+                    <button :class="{activated: hour_picked === '23'}" class="supermini has_light_bg hour_item" v-on:click="() => selectHour('23')">23</button>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+    <div class="lsw_minute_picker" v-else-if="isSelected === 'minutes'">
+        <div class="minutes_list">
+            <div class="pad_top_1">Selecciona el minuto:</div>
+            <hr />
+            <div class="text_align_right">
+                <button class="supermini has_light_bg hour_item" v-on:click="() => specifyMinute()">✏️</button>
+                <button class="supermini has_light_bg hour_item" v-on:click="() => increaseMinute(-1)">🔽</button>
+                <button class="supermini has_light_bg hour_item" v-on:click="() => increaseMinute(1)">🔼</button>
+            </div>
+            <hr />
+            <div class="text_align_right">
+                <div>
+                    <button :class="{activated: minute_picked === '00'}" class="supermini has_light_bg hour_item" v-on:click="() => selectMinute('00')">00</button>
+                    <button :class="{activated: minute_picked === '05'}" class="supermini has_light_bg hour_item" v-on:click="() => selectMinute('05')">05</button>
+                    <button :class="{activated: minute_picked === '10'}" class="supermini has_light_bg hour_item" v-on:click="() => selectMinute('10')">10</button>
+                </div>
+                <div>
+                    <button :class="{activated: minute_picked === '15'}" class="supermini has_light_bg hour_item" v-on:click="() => selectMinute('15')">15</button>
+                    <button :class="{activated: minute_picked === '20'}" class="supermini has_light_bg hour_item" v-on:click="() => selectMinute('20')">20</button>
+                    <button :class="{activated: minute_picked === '25'}" class="supermini has_light_bg hour_item" v-on:click="() => selectMinute('25')">25</button>
+                </div>
+                <div>
+                    <button :class="{activated: minute_picked === '30'}" class="supermini has_light_bg hour_item" v-on:click="() => selectMinute('30')">30</button>
+                    <button :class="{activated: minute_picked === '35'}" class="supermini has_light_bg hour_item" v-on:click="() => selectMinute('35')">35</button>
+                    <button :class="{activated: minute_picked === '40'}" class="supermini has_light_bg hour_item" v-on:click="() => selectMinute('40')">40</button>
+                </div>
+                <div>
+                    <button :class="{activated: minute_picked === '45'}" class="supermini has_light_bg hour_item" v-on:click="() => selectMinute('45')">45</button>
+                    <button :class="{activated: minute_picked === '50'}" class="supermini has_light_bg hour_item" v-on:click="() => selectMinute('50')">50</button>
+                    <button :class="{activated: minute_picked === '55'}" class="supermini has_light_bg hour_item" v-on:click="() => selectMinute('55')">55</button>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>

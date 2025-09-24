@@ -1,0 +1,73 @@
+.colorize_for_type_function {
+    background-color: #5e2323;
+    color: #ccc;
+    text-shadow: 0 0 1px black;
+}
+button.colorize_for_type_function:hover {
+    background-color: #8e3737;
+}
+
+.colorize_for_type_object {
+    background-color: #b0b04e;
+    color: #222;
+    text-shadow: 0 0 1px black;
+}
+button.colorize_for_type_object:hover {
+    background-color: #d4d440;
+}
+
+.colorize_for_type_number {
+    background-color: #335e23;
+    color: #ccc;
+    text-shadow: 0 0 1px black;
+}
+button.colorize_for_type_number:hover {
+    background-color: #558e37;
+}
+
+.colorize_for_type_string {
+    background-color: #5b6fc8;
+    color: #000;
+    text-shadow: 0 0 1px black;
+}
+button.colorize_for_type_string:hover {
+    background-color: #2b3f98;
+}
+
+.colorize_for_type_boolean {
+    background-color: #b45fa0;
+    color: #000;
+    text-shadow: 0 0 1px black;
+}
+button.colorize_for_type_boolean:hover {
+    background-color: #782966;
+}
+
+.property_enumerator {
+    font-size: 7px;
+}
+
+div.codeblock {
+    background-color: rgb(160, 160, 197);
+    color: #111;
+    text-shadow: 0 0 1px black;
+    border-radius: 2pt;
+    padding: 4px;
+    border: 1px solid #333;
+    white-space: pre-wrap;
+}
+
+.js_inspector_typeof_box {
+    border: 1px solid #CCC;
+    border-radius: 3pt;
+    margin-top: 0px;
+    margin-bottom: 4px;
+    padding: 4px;
+}
+.js_inspector_value_box {
+    border: 1px solid #CCC;
+    border-radius: 3pt;
+    min-height: 25px;
+    display: block;
+    padding: 4px;
+}

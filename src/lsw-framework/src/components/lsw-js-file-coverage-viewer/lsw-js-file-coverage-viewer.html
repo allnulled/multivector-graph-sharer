@@ -1,0 +1,47 @@
+<div class="lsw_js_file_coverage_viewer">
+    <!--
+    <div class="position_relative">
+        <div class="position_absolute_fixed"
+            style="left: auto; right: 7px; top: 7px;">
+            <button class="supermini"
+                :class="{activated:isExpanded}"
+                v-on:click="toggleExpansion">
+                ↕️
+            </button>
+        </div>
+        <div v-if="isLoaded"
+            class="js_viewer_tag hljs"
+            :class="isExpanded ? 'expanded' : ''"
+            ref="sourceTag"
+            v-on:dblclick="toggleExpansion">{{ beautifiedSource || source }}</div>
+        <div class="pad_1"
+            v-else>
+            Cargando...
+        </div>
+    </div>
+    <div>{{ coverage }}</div>
+-->
+    <div class="coverage-table">
+        <div class="container_to_view">
+            <div class="typical_title_1">{{ ast.path }}</div>
+            <table>
+                <tbody>
+                    <tr v-for="(lineContent, index) in lines"
+                        :key="index"
+                        class="line-row">
+                        <td class="line-number">
+                            <span :class="{ hit: isLineHit(index), miss: !isLineHit(index) }">
+                                <button class="supermini for_line_coverage"
+                                    v-on:click="() => showLineInfo(index)">{{ index }}</button>
+                            </span>
+                        </td>
+                        <td class="line-code">
+                            <!-- Aquí se colocarían decoradores por statement, branch o function -->
+                            <span v-html="decorateLine(index + 1, lineContent)"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="dgn_rest_schema">
+    <lsw-typical-title :buttons="schemaButtons">📦 Esquema de la REST</lsw-typical-title>
+    <div v-if="schema">
+        <div class="pad_top_1"
+            v-for="tableContent, tableId, tableCounter in schema"
+            v-bind:key="'schema_table_' + tableId">
+            <div class="flex_row centered">
+                <div class="flex_100 like_link" v-on:click="() => homepage.goToTable(tableId)">{{ tableCounter + 1 }}. {{ tableId }}</div>
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini" v-on:click="() => selectTable(tableId)"
+                        :class="{activated: selectedTables.indexOf(tableId) !== -1}">ℹ️</button>
+                </div>
+            </div>
+            <div class="" v-if="selectedTables.indexOf(tableId) !== -1">
+                <div class="pad_vertical_1">
+                    <div class="pad_bottom_1">
+                        <div class="flex_row centered">
+                            <div class="flex_100">ℹ️ Columnas:</div>
+                            <div class="flex_1 pad_left_1">
+                                <button class="supermini"
+                                    v-on:click="() => addColumn(tableId)">➕</button>
+                            </div>
+                            <div class="flex_1 pad_left_1">
+                                <button class="supermini"
+                                    v-on:click="() => deleteTable(tableId)">🔥 ❌</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="columna_item"
+                            v-for="column, columnIndex in schema[tableId].columns"
+                            v-bind:key="'table_' + tableId + '_column_' + columnIndex">
+                            <div class="position_relative">
+                                <span class="font_weight_bold">Nombre: </span>
+                                <span>{{ column.nombre }}</span>
+                                <div class="position_absolute" style="top: 0px; left: auto; right: 0px; bottom: auto;">
+                                    <div class="flex_row centered">
+                                        <div class="flex_100"></div>
+                                        <div class="flex_1 pad_left_1">
+                                            <button class="supermini"
+                                                v-on:click="() => deleteColumn(tableId, column.nombre)">❌</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <span class="font_weight_bold">Tipo: </span>
+                                <span>{{ column.tipo }}</span>
+                            </div>
+                            <div class="">
+                                <span class="font_weight_bold">No nulable: </span>
+                                <span>{{ column.notNull }}</span>
+                            </div>
+                            <div class="">
+                                <span class="font_weight_bold">Clave primaria: </span>
+                                <span>{{ column.pk }}</span>
+                            </div>
+                            <div class="">
+                                <span class="font_weight_bold">Por defecto: </span>
+                                <span>{{ column.default }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pad_vertical_2">ℹ️ Claves foráneas:</div>
+                    <div class="pad_left_2">
+                        <template v-if="schema[tableId].foreignKeys.length">
+                            <div v-for="foreignKey, foreignKeyIndex in schema[tableId].foreignKeys"
+                                v-ind:key="'foreign_key_' + foreignKeyIndex">
+                                <div>{{ foreignKey }}</div>
+                            </div>
+                        </template>
+                        <div v-else>Ninguna.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="lsw_sqlite_console">
+    <lsw-typical-title :buttons="[{event: executeCode,text: '⚡️'}]">💻 Consola de SQLite</lsw-typical-title>
+    <div class="">
+        <textarea class="width_100 sqlite_console input_console"
+            v-model="code"
+            v-on:keypress.ctrl.enter="executeCode"
+            spellcheck="false"></textarea>
+        <hr/>
+        <div v-if="executionError">
+            <lsw-error-box
+                :error="executionError"
+                context="Error ejecutando SQL"
+                :on-clear-error="() => {executionError = false;}"
+            />
+        </div>
+        <div class="sqlite_console output_console">{{ output }}</div>
+        <div v-if="Array.isArray(output)">
+            <lsw-table
+                :initial-input="output"
+                :initial-settings="{title:'Salida de consola'}"
+            />
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,1 @@
+$lswTyper.define("duration", $lswTyper.$types["org.allnulled.lsw/type/duration.js"]);

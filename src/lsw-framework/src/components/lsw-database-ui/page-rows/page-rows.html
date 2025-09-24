@@ -1,0 +1,24 @@
+<div>
+    <div>
+        <div class="flex_row centered">
+            <div class="flex_1">
+                <button v-on:click="goBack">⬅️</button>
+            </div>
+            <div class="flex_100 pad_left_1">
+                <h3 class="display_inline_block nowrap"> 📦 {{ args.table }} [*]</h3>
+                <div class="display_inline_block">[{{ args.database }}]</div>
+            </div>
+        </div>
+    </div>
+    <lsw-database-breadcrumb :breadcrumb="breadcrumb" :database-explorer="databaseExplorer" />
+    <lsw-table
+        :storage-id="getTableId()"
+        :initial-input="rows" v-if="rows"
+        :initial-settings="{
+            title: 'Registros de ' + args.table,
+            columnsOrder: ['id'],
+            ...(args.initialSettings || {})
+        }"
+        :row-buttons="[{ header: '', text: '↗️', event: (row) => openRow(row.id) }]"
+        :table-buttons="databaseExplorer.showBreadcrumb ? [{ text: '➕', event() { openRow(-1) }}] : []"></lsw-table>
+</div>

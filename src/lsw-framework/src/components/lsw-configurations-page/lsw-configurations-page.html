@@ -1,0 +1,195 @@
+<div class="configurations_page">
+    <div class="pad_bottom_1">
+        <div class="typical_title_1 flex_row centered">
+            <div class="flex_100">🔧 Configuraciones:</div>
+            <div class="flex_1">
+                <button class="visibility_hidden supermini">ok</button>
+            </div>
+        </div>
+    </div>
+    <div class="flex_row centered">
+        <div class="flex_1 nowrap pad_right_2">📌 Sección: </div>
+        <select class="flex_100" v-model="selectedSection">
+            <option value="datos">Base de datos</option>
+            <option value="preferencias">Preferencias de usuario</option>
+            <option value="documentacion">Documentación</option>
+        </select>
+    </div>
+    <div class="section margin_top_1" v-if="selectedSection === 'documentacion'">
+        <h3>Configuraciones » Documentación</h3>
+        <hr />
+        <h4>Links de documentación</h4>
+        <div class="margin_top_1">
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="startCodeReference">Ir a referencia del código</button>
+                </div>
+                <div class="flex_100 explanation_text">te lleva a la documentación oficial del código de <a href="https://github.com/carlosjimenohernandez/lsw-one">carlosjimenohernandez@lsw-one</a>.</div>
+            </div>
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="startGithubHomepage">Ir a repositorio del código</button>
+                </div>
+                <div class="flex_100 explanation_text">te lleva a la página oficial del proyecto de <a href="https://github.com/carlosjimenohernandez/lsw-one">carlosjimenohernandez@lsw-one</a>.</div>
+            </div>
+        </div>
+        <hr />
+    </div>
+    <div class="section margin_top_1" v-if="selectedSection === 'datos'">
+        <h3>Configuraciones » Base de datos</h3>
+        <hr />
+        <h4>Importar/Exportar base de datos</h4>
+        <div class="margin_top_1">
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="startExportarAJson">Exportar a JSON</button>
+                </div>
+                <div class="flex_100 explanation_text">muestra una copia del estado actual en un JSON.</div>
+            </div>
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="startExportarAJsonFile">Exportar a fichero</button>
+                </div>
+                <div class="flex_100 explanation_text">descarga una copia del estado actual en un fichero JSON.</div>
+            </div>
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="startImportarDeJson">Importar de JSON</button>
+                </div>
+                <div class="flex_100 explanation_text">permite pasar un JSON para insertar masivamente en el estado actual.</div>
+            </div>
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="startImportarDeJsonFile">Importar de fichero</button>
+                </div>
+                <div class="flex_100 explanation_text">permite importar un JSON para <u style="color:rgb(63, 12, 12); text-shadow: 0 0 1px white;">insertar masivamente</u> en el estado actual.</div>
+            </div>
+        </div>
+        <hr />
+        <h4>Gestionar copia de seguridad de base de datos</h4>
+        <div class="margin_top_1">
+            <div class="flex_row centered">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="saveBackup">Guardar estado</button>
+                </div>
+                <div class="flex_100 explanation_text">sobreescribirá la copia de seguridad anterior con el estado actual de datos.</div>
+            </div>
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="loadBackup">Inyectar copia</button>
+                </div>
+                <div class="flex_100 explanation_text">insertará los datos de la copia de seguridad anterior en el estado actual de datos.</div>
+            </div>
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="showCurrentBackup">Ver copia actual</button>
+                </div>
+                <div class="flex_100 explanation_text">mostrará en un diálogo el JSON de la copia de seguridad actual.</div>
+            </div>
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini danger_button margin_right_1" v-on:click="deleteCurrentBackup">Eliminar copia actual</button>
+                </div>
+                <div class="flex_100 explanation_text">eliminará la copia de seguridad actual.</div>
+            </div>
+        </div>
+        <hr />
+        <h4>Resetear base de datos</h4>
+        <div class="margin_top_1">
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1 danger_button" v-on:click="startResetearBaseDeDatos">Resetear</button>
+                </div>
+                <div class="flex_100 explanation_text">eliminará la base de datos por completo, forzando que al reiniciar se vuelva a crear.</div>
+            </div>
+        </div>
+    </div>
+    <div class="section margin_top_1" v-if="selectedSection === 'preferencias'">
+        <h3>Configuraciones » Preferencias de usuario</h3>
+        <hr />
+        <h4>Preferencias de usuario simples</h4>
+        <div class="margin_top_1">
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="startConfigureUserIdentity">Configurar</button>
+                </div>
+                <div class="flex_100 explanation_text">permite cambiar el nombre de usuario y otros datos simples (1 línea) como el mensaje debajo del reloj.</div>
+            </div>
+        </div>
+        <hr />
+        <h4>Debugger</h4>
+        <div class="margin_top_1">
+            <div class="flex_row centered margin_top_1" v-if="isDebuggerLoaded">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="toggleTracer">
+                        <span v-if="$lsw.logger.$options.active">Activado</span>
+                        <span v-else="$lsw.logger.$options.active">Desactivado</span>
+                    </button>
+                </div>
+                <div class="flex_100 explanation_text">permite activar/desactivar las trazas de la aplicación.</div>
+            </div>
+        </div>
+        <hr />
+        <h4>Fondos de pantalla</h4>
+        <div class="margin_top_1">
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="startConfigureBackgrounds">Configurar</button>
+                </div>
+                <div class="flex_100 explanation_text">permite introducir nuevas URLs para fondos.</div>
+            </div>
+        </div>
+        <hr />
+        <h4>Automensajes de fondo</h4>
+        <div class="margin_top_1">
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="startConfigureAutomessages">Configurar</button>
+                </div>
+                <div class="flex_100 explanation_text">permite cambiar los automensajes que se muestran en el home.</div>
+            </div>
+        </div>
+        <hr />
+        <h4>Acciones randomizables</h4>
+        <div class="margin_top_1">
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="startConfigureRandomizables">Configurar</button>
+                </div>
+                <div class="flex_100 explanation_text">permite cambiar las acciones randomizables de la agenda.</div>
+            </div>
+        </div>
+        <hr />
+        <h4>Mensaje rutinario</h4>
+        <div class="margin_top_1">
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="startConfigureRutiner">Configurar</button>
+                </div>
+                <div class="flex_100 explanation_text">permite cambiar el mensaje que se muestra al cabo de aprox. 2 minutos de estar navegando.</div>
+            </div>
+        </div>
+        <hr />
+        <h4>Frecuencia de mensaje rutinario</h4>
+        <div class="margin_top_1">
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="startConfigureRutinerTimeout">Configurar</button>
+                </div>
+                <div class="flex_100 explanation_text">permite cambiar la frecuencia (2 minutos, díce) del <b>mensaje rutinario</b>.</div>
+            </div>
+        </div>
+        <hr />
+        <h4>Evento de arranque</h4>
+        <div class="margin_top_1">
+            <div class="flex_row centered margin_top_1">
+                <div class="flex_1">
+                    <button class="supermini margin_right_1" v-on:click="startConfigureBoot">Configurar</button>
+                </div>
+                <div class="flex_100 explanation_text">permite inyectar JavaScript al entrar en la app.</div>
+            </div>
+        </div>
+        <hr />
+        
+    </div>
+</div>

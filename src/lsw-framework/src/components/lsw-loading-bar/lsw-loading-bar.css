@@ -1,0 +1,24 @@
+.lsw_loading_space {
+    position: relative;
+    background-color: #0000FF;
+    min-height: 30px;
+    padding: 1px;
+    border-radius: 4pt;
+}
+.lsw_loaded_space {
+    border-radius: 4pt;
+    height: 100%;
+    min-height: 28px;
+    background-color: #00FF00;
+}
+.lsw_loading_text {
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding-top: 7px;
+    font-size: 12px;
+    font-weight: bold;
+}

@@ -1,0 +1,45 @@
+<div class="lsw_wiki_libros">
+    <div class="">
+        <template v-for="libro, libroIndex in libros">
+            <div class=""
+                v-bind:key="'libro_boton_' + libroIndex">
+                <div class="flex_row" :class="libroIndex === 0 ? '' : ''">
+                    <div class="flex_100 list_buttons">
+                        <button class="supermini list_button width_100 text_align_left"
+                            v-on:click="() => toggleLibro(libro)"
+                            :class="{activated: selectedLibros.indexOf(libro) !== -1}">
+                            <div class="flex_row">
+                                <div class="flex_100">{{ getLibroName(libro) }}</div>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="flex_1 pad_left_1">
+                        <button class="supermini list_button width_100 text_align_left"
+                            v-on:click="() => printLibro(libro)">
+                            <div class="flex_row">
+                                <div class="flex_100 small_font">🖨️</div>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="flex_1 pad_left_1">
+                        <button class="supermini list_button width_100 text_align_left"
+                            v-on:click="() => editLibro(libro)">
+                            <div class="flex_row">
+                                <div class="flex_100 small_font">↗️</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="pad_vertical_1" v-if="selectedLibros.indexOf(libro) !== -1">
+                    <div class="" v-if="libro in loadedLibros">
+                        <lsw-wiki-libro-viewer :arbol="loadedLibros[libro]" :indice-de-arbol="0" :on-click-link="abrirArticulo">
+                            <template v-slot:default="{ arbol }">
+                                <lsw-wiki-articulo-viewer :articulo-id="arbol.link || arbol.id" />
+                            </template>
+                        </lsw-wiki-libro-viewer>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+</div>

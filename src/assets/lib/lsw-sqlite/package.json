@@ -1,0 +1,13 @@
+{
+  "name": "lsw-sqlite",
+  "version": "1.0.0",
+  "description": "Con esta clase interactúas con los bindings en C de WASM de SQLite desde JS.",
+  "main": "lsw-sqlite.dist.js",
+  "scripts": {
+    "dev": "npx nodemon -w '.' -i 'lsw-sqlite.dist.js' -e 'js' -x 'node builder.js'",
+    "build": "node builder.js"
+  },
+  "keywords": [],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

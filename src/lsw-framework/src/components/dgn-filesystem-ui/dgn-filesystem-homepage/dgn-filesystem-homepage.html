@@ -1,0 +1,41 @@
+<div class="dgn_filesystem_homepage">
+    <lsw-typical-title>📁 Ficheros en línea</lsw-typical-title>
+    <div class="flex_row centered pad_top_1">
+        <div class="flex_100">
+            <span>🔹 {{ typeof content === 'string' ? '📄' : '📁' }} </span>
+            <span> {{ selectedNode }}</span>
+        </div>
+        <template v-if="selectedNode !== '/'">
+            <template v-if="typeof content === 'object'">
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini"
+                        v-on:click="createFile">➕📄</button>
+                </div>
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini"
+                        v-on:click="createDirectory">➕📁</button>
+                </div>
+            </template>
+            <template v-else-if="typeof content === 'string'">
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini"
+                        v-on:click="saveFile">💾</button>
+                </div>
+            </template>
+        </template>
+        <template v-else>
+            <div class="flex_1 pad_left_1 visibility_hidden">
+                <button class="supermini"
+                    v-on:click="saveFile">💾</button>
+            </div>
+        </template>
+    </div>
+    <div class="pad_top_1" v-if="selectedNode !== '/'">
+        <button class="supermini text_align_left width_100"
+            v-on:click="() => goUp()">
+            <span>📁 ⬆️</span>
+        </button>
+    </div>
+    <dgn-filesystem-editor :homepage="this" v-if="typeof content === 'string'" />
+    <dgn-filesystem-explorer :homepage="this" v-else />
+</div>

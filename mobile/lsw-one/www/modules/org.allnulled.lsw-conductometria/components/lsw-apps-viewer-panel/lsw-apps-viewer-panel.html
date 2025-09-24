@@ -1,0 +1,200 @@
+<div class="lsw_apps_viewer_panel">
+    <div class="desktop_free_area">
+        <div class=""
+            v-if="selectedApplication !== 'none'">
+            <div class="desktop_free_available_area">
+                <div class="pad_1"
+                    v-if="selectedApplication === 'antes'"
+                    v-bind:key="'app_acciones_anteriores'">
+                    <h4 class="pad_bottom_1">
+                        <div class="flex_row centered">
+                            <div class="flex_100">⬅️ 🕓 Antes de las {{ horaActual }}:</div>
+                            <div class="flex_1">
+                                <button class="supermini"
+                                    v-on:click="() => selectApplication('calendario')">📅</button>
+                            </div>
+                            <div class="flex_1 pad_left_1">
+                                <button class="supermini"
+                                    v-on:click="() => selectApplication('despues')">🕓➡️</button>
+                            </div>
+                        </div>
+                    </h4>
+                    <lsw-agenda-acciones-viewer :initial-date="new Date()"
+                        sorter-strategy="antes" />
+                    <div v-else
+                        class="pad_top_0 pad_bottom_0">No hay acciones anteriores.</div>
+                </div>
+                <div class="pad_1"
+                    v-if="selectedApplication === 'despues'"
+                    v-bind:key="'app_acciones_posteriores'">
+                    <h4 class="pad_bottom_1">
+                        <div class="flex_row centered">
+                            <div class="flex_100">🕓 ➡️ Después de las {{ horaActual }}:</div>
+                            <div class="flex_1">
+                                <button class="supermini"
+                                    v-on:click="() => selectApplication('calendario')">📅</button>
+                            </div>
+                            <div class="flex_1 pad_left_1">
+                                <button class="supermini"
+                                    v-on:click="() => selectApplication('antes')">⬅️🕓</button>
+                            </div>
+                        </div>
+                    </h4>
+                    <lsw-agenda-acciones-viewer :initial-date="new Date()"
+                        sorter-strategy="despues" />
+                </div>
+
+                <div class="pad_1"
+                    v-if="selectedApplication === 'calendario'"
+                    v-bind:key="'app_calendario'">
+                    <div class="pad_top_0 pad_bottom_0">
+                        <h4 class="margin_bottom_1">
+                            <div class="flex_row centered">
+                                <div class="flex_100">📅 Calendario:</div>
+                                <div class="flex_1">
+                                    <button class="supermini"
+                                        v-on:click="() => selectApplication('antes')">⬅️🕓</button>
+                                </div>
+                                <div class="flex_1 pad_left_1">
+                                    <button class="supermini"
+                                        v-on:click="() => selectApplication('despues')">🕓➡️</button>
+                                </div>
+                            </div>
+                        </h4>
+                        <lsw-agenda />
+                    </div>
+                </div>
+
+                <div class="pad_1"
+                    v-if="selectedApplication === 'notas'"
+                    v-bind:key="'app_nueva_nota'">
+                    <div class="pad_top_0 pad_bottom_0">
+                        <lsw-spontaneous-table-nota />
+                    </div>
+                </div>
+
+                <div class="pad_1"
+                    v-if="selectedApplication === 'enciclopedia'"
+                    v-bind:key="'enciclopedia'">
+                    <div class="pad_top_0 pad_bottom_0">
+                        <lsw-wiki />
+                    </div>
+                </div>
+
+                <div class="pad_1"
+                    v-if="selectedApplication === 'base de datos'"
+                    v-bind:key="'base de datos'">
+                    <div class="pad_top_0 pad_bottom_0">
+                        <lsw-database-explorer />
+                    </div>
+                </div>
+
+                <div class="pad_0"
+                    v-if="selectedApplication === 'sistema de ficheros'"
+                    v-bind:key="'sistema de ficheros'">
+                    <div class="position_relative pad_top_0 pad_bottom_0">
+                        <lsw-filesystem-explorer :absolute-layout="false" />
+                    </div>
+                </div>
+
+                <div class="pad_0"
+                    v-if="selectedApplication === 'automensajes'"
+                    v-bind:key="'automensajes'">
+                    <div class="position_relative pad_top_0 pad_bottom_0">
+                        <lsw-spontaneous-table-automensajes />
+                    </div>
+                </div>
+
+                <div class="pad_0"
+                    v-if="selectedApplication === 'recordatorios'"
+                    v-bind:key="'recordatorios'">
+                    <div class="position_relative pad_top_0 pad_bottom_0">
+                        <lsw-spontaneous-table-recordatorios />
+                    </div>
+                </div>
+
+                <div class="pad_0"
+                    v-if="selectedApplication === 'listas'"
+                    v-bind:key="'listas'">
+                    <div class="position_relative pad_top_0 pad_bottom_0">
+                        <lsw-spontaneous-table-lista />
+
+                    </div>
+                </div>
+
+                <div class="pad_0"
+                    v-if="selectedApplication === 'nuevo recordatorio'"
+                    v-bind:key="'nuevo recordatorio'">
+                    <div class="position_relative pad_top_0 pad_bottom_0">
+                        <lsw-spontaneous-form-recordatorio />
+                    </div>
+                </div>
+
+                <div class="pad_0"
+                    v-if="selectedApplication === 'nueva lista'"
+                    v-bind:key="'nueva lista'">
+                    <div class="position_relative pad_top_0 pad_bottom_0">
+                        <lsw-spontaneous-form-lista />
+                    </div>
+                </div>
+
+                <div class="pad_0"
+                    v-if="selectedApplication === 'nueva nota'"
+                    v-bind:key="'nueva nota'">
+                    <div class="position_relative pad_top_0 pad_bottom_0">
+                        <lsw-spontaneous-form-nota :on-submitted="() => selectApplication('notas')" />
+                    </div>
+                </div>
+
+                <div class="pad_0"
+                    v-if="selectedApplication === 'nuevo articulo'"
+                    v-bind:key="'nuevo articulo'">
+                    <div class="position_relative pad_top_0 pad_bottom_0">
+                        <lsw-spontaneous-form-articulo />
+                    </div>
+                </div>
+
+                <div class="pad_0"
+                    v-if="selectedApplication === 'nueva accion'"
+                    v-bind:key="'nuevo accion'">
+                    <div class="position_relative pad_top_0 pad_bottom_0">
+                        <lsw-spontaneous-form-accion />
+                    </div>
+                </div>
+
+                <div class="pad_1"
+                    v-if="selectedApplication === 'configuraciones'"
+                    v-bind:key="'configuraciones'">
+                    <div class="position_relative pad_top_0 pad_bottom_0">
+                        <lsw-configurations-page />
+                    </div>
+                </div>
+
+                <div class="pad_1"
+                    v-if="selectedApplication === 'homepage'"
+                    v-bind:key="'homepage'">
+                    <div class="position_relative pad_top_0 pad_bottom_0">
+                        <lsw-homepage :apps-viewer="this" />
+                    </div>
+                </div>
+
+                <div class="pad_1"
+                    v-if="selectedApplication === 'binarios'"
+                    v-bind:key="'binarios'">
+                    <div class="position_relative pad_top_0 pad_bottom_0">
+                        <lsw-bin-directory directory="/kernel/bin" />
+                    </div>
+                </div>
+
+                <div class="pad_1"
+                    v-if="selectedApplication === 'event-tracker'"
+                    v-bind:key="'event-tracker'">
+                    <div class="position_relative pad_top_0 pad_bottom_0">
+                        <lsw-event-tracker />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div><!-- End of «Free Desktop Area» -->
+</div>

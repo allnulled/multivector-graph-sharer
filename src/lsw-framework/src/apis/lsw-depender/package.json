@@ -1,0 +1,14 @@
+{
+  "name": "@allnulled/lsw-depender",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lsw-depender.js",
+  "scripts": {
+    "build": "echo 'no build for @allnulled/lsw-depender'",
+    "test": "utest test.js",
+    "versionate": "echo 'no versionate for @allnulled/lsw-depender'"
+  },
+  "keywords": [],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

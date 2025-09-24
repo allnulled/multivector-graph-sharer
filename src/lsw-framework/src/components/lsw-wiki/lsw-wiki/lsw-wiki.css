@@ -1,0 +1,89 @@
+:root {
+    --wiki_articulos_color_borde: rgb(233, 236, 66);
+    --wiki_articulos_color_borde: rgb(0, 0, 0);
+    --wiki_articulos_color_borde_2: rgb(0, 0, 0);
+    --wiki_articulos_color_borde_2: rgba(0, 0, 0, 0.6);
+    --wiki_articulos_color_fondo: rgba(33, 240, 10, 0.3);
+    --wiki_articulos_color_fondo_activado: rgba(33, 240, 10, 0.6);
+    --wiki_articulos_color_letra: rgb(0, 0, 0);
+    --wiki_articulos_detalles_color_fondo: rgba(255, 255, 255, 0.7);
+
+}
+
+.lsw_wiki {}
+
+.lsw_wiki .wiki_searcher_1_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.lsw_wiki .wiki_searcher_1_input_cell {
+    flex: 100;
+    padding: 2px;
+}
+
+.lsw_wiki .wiki_searcher_1_input {
+    width: 100%;
+
+}
+
+.lsw_wiki .wiki_searcher_1_button_cell {
+    flex: 1;
+    padding: 2px;
+    padding-left: 0px;
+}
+
+.lsw_wiki .wiki_buscador input.wiki_buscador_texto {
+    background-color: white;
+    border: 1px solid #333;
+    border-radius: 2pt !important;
+}
+
+.lsw_wiki .wiki_buscador.esta_buscando input.wiki_buscador_texto {
+    background-color: rgb(233, 230, 194);
+    border: 1px solid #666;
+}
+
+.lsw_wiki .caja_de_mensaje_sobre_articulos {
+    box-shadow: 0 0 4px black;
+    border-radius: 2pt;
+    background-color: #ffffff69;
+    color: #000;
+    text-shadow: 0 0 1px black;
+    padding: 4px;
+    font-size: 10px;
+}
+
+.lista_articulos {
+    border-top: 1px solid var(--wiki_articulos_color_borde);
+    box-shadow: 0 0 4px black;
+}
+
+.item_articulo {
+    margin-bottom: 0px;
+    border: 1px solid var(--wiki_articulos_color_borde);
+    border-top: 0px solid white;
+    background-color: var(--wiki_articulos_color_fondo);
+    color: var(--wiki_articulos_color_letra);
+    text-shadow: 1px solid blue;
+    cursor: pointer;
+}
+
+.item_articulo.activated {
+    background-color: var(--wiki_articulos_color_fondo_activado);
+}
+
+.celda_articulo {
+    padding: 2px;
+}
+
+.articulo_detalles {
+    text-align: left;
+    background-color: var(--wiki_articulos_detalles_color_fondo);
+    border-top: 1px solid var(--wiki_articulos_color_borde_2);
+}
+
+.item_articulo .secondary_text_color {
+    color: rgb(234, 234, 234);
+}

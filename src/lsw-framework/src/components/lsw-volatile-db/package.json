@@ -1,0 +1,12 @@
+{
+  "name": "volatile-db",
+  "version": "1.0.0",
+  "description": "Volatile database",
+  "main": "volatile-db.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

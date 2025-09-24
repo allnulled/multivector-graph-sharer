@@ -1,0 +1,3 @@
+table.top_aligned > tbody > tr > td {
+    vertical-align: top;
+}

@@ -1,0 +1,38 @@
+<div class="lsw_filesystem_explorer" :class="{absolute_version: absoluteLayout}">
+    <div>
+        <div class="typical_title_1 flex_row centered">
+            <div class="flex_100">📁 Sistema de ficheros:</div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini visibility_hidden">ok</button>
+            </div>
+        </div>
+    </div>
+    <div class="current_node_box pad_vertical_1">
+        <span class="previous_node_path" :class="current_node !== '/' ? '' : 'visibility_hidden'">
+            <button class="previous_node_button supermini" v-on:click="goUp"
+            style="transform: rotate(180deg); margin: 1px;">➜</button>
+        </span>
+        <span class="current_node_path">{{ current_node_basedir }}</span>
+        <span class="current_node_filename">{{ current_node_basename }}</span>
+    </div>
+    <div class="filesystem_ui">
+        <div class="leftside" v-if="false">
+            <lsw-filesystem-buttons-panel :explorer="this" ref="panelLeft" orientation="column" />
+        </div>
+        <div class="middleside">
+            <div class="headerside">
+                <lsw-filesystem-buttons-panel :explorer="this" ref="panelTop" />
+            </div>
+            <div class="bodyside" v-if="is_ready">
+                <lsw-filesystem-treeviewer v-if="current_node_is_directory" :explorer="this" ref="treeviewer" />
+                <lsw-filesystem-editor v-else-if="current_node_is_file" :explorer="this" ref="editor" :filecontents="current_node_contents" />
+            </div>
+            <div class="footerside">
+                <lsw-filesystem-buttons-panel :explorer="this" ref="panelBottom" />
+            </div>
+        </div>
+        <div class="rightside">
+            <lsw-filesystem-buttons-panel :explorer="this" ref="panelRight" orientation="column" />
+        </div>
+    </div>
+</div>

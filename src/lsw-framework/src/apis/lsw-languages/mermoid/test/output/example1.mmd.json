@@ -1,0 +1,333 @@
+{
+  "type": "graph",
+  "direction": "TD",
+  "statements": [
+    {
+      "id": "M",
+      "shape": {
+        "type": "default",
+        "text": "Mathematics"
+      }
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "M",
+        "shape": null
+      },
+      "to": {
+        "id": "A",
+        "shape": {
+          "type": "rect",
+          "text": "Algebra"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "M",
+        "shape": null
+      },
+      "to": {
+        "id": "G",
+        "shape": {
+          "type": "rect",
+          "text": "Geometry"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "M",
+        "shape": null
+      },
+      "to": {
+        "id": "C",
+        "shape": {
+          "type": "rect",
+          "text": "Calculus"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "M",
+        "shape": null
+      },
+      "to": {
+        "id": "S",
+        "shape": {
+          "type": "rect",
+          "text": "Statistics"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "M",
+        "shape": null
+      },
+      "to": {
+        "id": "D",
+        "shape": {
+          "type": "rect",
+          "text": "Discrete Mathematics"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "M",
+        "shape": null
+      },
+      "to": {
+        "id": "N",
+        "shape": {
+          "type": "rect",
+          "text": "Number Theory"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "A",
+        "shape": null
+      },
+      "to": {
+        "id": "LA",
+        "shape": {
+          "type": "rect",
+          "text": "Linear Algebra"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "A",
+        "shape": null
+      },
+      "to": {
+        "id": "AA",
+        "shape": {
+          "type": "rect",
+          "text": "Abstract Algebra"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "G",
+        "shape": null
+      },
+      "to": {
+        "id": "EG",
+        "shape": {
+          "type": "rect",
+          "text": "Euclidean Geometry"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "G",
+        "shape": null
+      },
+      "to": {
+        "id": "NG",
+        "shape": {
+          "type": "rect",
+          "text": "Non-Euclidean Geometry"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "C",
+        "shape": null
+      },
+      "to": {
+        "id": "DI",
+        "shape": {
+          "type": "rect",
+          "text": "Differential Calculus"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "C",
+        "shape": null
+      },
+      "to": {
+        "id": "IN",
+        "shape": {
+          "type": "rect",
+          "text": "Integral Calculus"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "S",
+        "shape": null
+      },
+      "to": {
+        "id": "PS",
+        "shape": {
+          "type": "rect",
+          "text": "Probability"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "S",
+        "shape": null
+      },
+      "to": {
+        "id": "DS",
+        "shape": {
+          "type": "rect",
+          "text": "Descriptive Stats"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "S",
+        "shape": null
+      },
+      "to": {
+        "id": "IS",
+        "shape": {
+          "type": "rect",
+          "text": "Inferential Stats"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "D",
+        "shape": null
+      },
+      "to": {
+        "id": "CO",
+        "shape": {
+          "type": "rect",
+          "text": "Combinatorics"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "D",
+        "shape": null
+      },
+      "to": {
+        "id": "GR",
+        "shape": {
+          "type": "rect",
+          "text": "Graph Theory"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "D",
+        "shape": null
+      },
+      "to": {
+        "id": "LG",
+        "shape": {
+          "type": "rect",
+          "text": "Logic"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "N",
+        "shape": null
+      },
+      "to": {
+        "id": "PT",
+        "shape": {
+          "type": "rect",
+          "text": "Prime Theory"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    },
+    {
+      "type": "link",
+      "from": {
+        "id": "N",
+        "shape": null
+      },
+      "to": {
+        "id": "MF",
+        "shape": {
+          "type": "rect",
+          "text": "Modular Forms"
+        }
+      },
+      "arrow": "-->",
+      "label": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+<div class="coverage-report">
+
+    <table class="width_100">
+        <tbody>
+            <tr class="nowrap">
+                <td class="width_100"></td>
+                <td>🥊S</td>
+                <td>🌲B</td>
+                <td>💈F</td>
+                <td>📏L</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <template v-for="(coverageItem, file) in coverageData">
+                <tr class=""
+                    style="color: black;"
+                    v-bind:key="'row_overview_file_' + file">
+                    <td class="">
+                        📜 <span class="small_font like_link" v-on:click="() => selectFile(file)">{{ getPathRelativeToProject(file) }}</span>
+                    </td>
+                    <td class="small_font coverage_report_status_box" :class="coverageClass(calcPercent(coverageItem.s, coverageItem.statementMap))">
+                        {{ calcPercent(coverageItem.s, coverageItem.statementMap) }}%
+                    </td>
+                    <td class="small_font coverage_report_status_box" :class="coverageClass(calcPercent(coverageItem.b, coverageItem.branchMap))">
+                        {{ calcPercent(coverageItem.b, coverageItem.branchMap) }}%
+                    </td>
+                    <td class="small_font coverage_report_status_box" :class="coverageClass(calcPercent(coverageItem.f, coverageItem.fnMap))">
+                        {{ calcPercent(coverageItem.f, coverageItem.fnMap) }}%
+                    </td>
+                    <td class="small_font coverage_report_status_box" :class="coverageClass(calcLineCoverage(coverageItem))">
+                        {{ calcLineCoverage(coverageItem) }}%
+                    </td>
+                </tr>
+                <tr class=""
+                    v-bind:key="'row_sourcecode_file_' + file"
+                    v-if="selectedFiles.indexOf(file) !== -1">
+                    <td colspan="100" v-if="typeof sourceCodeOf[file] === 'string'">
+                        <lsw-js-file-coverage-viewer :source="sourceCodeOf[file]" :coverage="coverageItem" />
+                    </td>
+                </tr>
+            </template>
+        </tbody>
+    </table>
+
+</div>

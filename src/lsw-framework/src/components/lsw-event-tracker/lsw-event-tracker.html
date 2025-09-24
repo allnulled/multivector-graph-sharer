@@ -1,0 +1,72 @@
+<div class="lsw_event_tracker">
+    <div class="typical_title_1">
+        <div class="flex_row centered">
+            <div class="flex_100">📹 Trackeables:</div>
+            <div class="flex_1 pad_right_1">
+                <button class="supermini"
+                    v-on:click="loadTrackables">🛜</button>
+            </div>
+            <div class="flex_1">
+                <button class="supermini"
+                    v-on:click="editTrackables">📄↗️</button>
+            </div>
+        </div>
+    </div>
+    <template v-if="!isLoaded">
+        Cargando componente. Por favor, aguarde...
+    </template>
+    <template>
+        <div class="flex_row centered pad_top_1">
+            <div class="flex_100">
+                <input type="text"
+                    class="supermini width_100"
+                    :class="{ is_searching: isSearching }"
+                    v-model="searchText"
+                    v-on:keypress.enter="digestOutput"
+                    placeholder="Búsqueda rápida de trackeable"
+                />
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini"
+                    v-on:click="insertTrackable">➕</button>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini"
+                    v-on:click="digestOutput">🔎</button>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini"
+                    v-on:click="clearSearchText">❌</button>
+            </div>
+        </div>
+        <template v-if="Object.keys(trackables).length === 0">
+            <div class="pad_top_1">No se encontraron eventos con ese patrón de búsqueda.</div>
+        </template>
+        <template v-for="trackable, trackableIndex, trackableCounter in trackables">
+            <div v-bind:key="'trackable-' + trackableIndex"
+                class="pad_top_1">
+                <div class="flex_row centered">
+                    <div class="flex_100 shortable_text">
+                        <div class="">{{ trackableIndex }}</div>
+                    </div>
+                    <div class="flex_1 pad_left_1">
+                        <button class="supermini"
+                            v-on:click="() => deleteTrackable(trackableIndex)">➖</button>
+                    </div>
+                    <div class="flex_1 pad_left_1 text_align_center"
+                        style="min-width:20px;">
+                        {{ trackable.length }}
+                    </div>
+                    <div class="flex_1 pad_left_1">
+                        <button class="supermini"
+                            v-on:click="() => addTrackableWithComment(trackableIndex)">💬</button>
+                    </div>
+                    <div class="flex_1 pad_left_1">
+                        <button class="supermini"
+                            v-on:click="() => addTrackable(trackableIndex)">➕</button>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </template>
+</div>

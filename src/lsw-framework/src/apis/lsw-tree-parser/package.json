@@ -1,0 +1,13 @@
+{
+  "name": "tripilang",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tripilang.parser.js",
+  "scripts": {
+    "build-parser": "npx pegjs --format globals --export-var TripilangParser --output tripilang.parser.js tripilang.pegjs",
+    "build": "npm run build-parser && node build.js && node test.js"
+  },
+  "keywords": [],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

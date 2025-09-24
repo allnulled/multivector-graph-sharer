@@ -1,0 +1,118 @@
+<div class="lsw_keyboard_1">
+    <div class=""
+        v-if="isShowingText">
+        <lsw-keyboard-1-text :text="initialText" :keyboard="this" ref="keyboardText" />
+    </div>
+    <div class="keyboard_layer_1"
+        v-on:keydown="pressKey"
+        v-on:keyup="releaseKey"
+        v-on:focus="notifyFocus"
+        v-on:blur="notifyBlur"
+        ref="keyboardMainElement"
+        tabindex="0">
+        <div class="vertically">
+            <div class="horizontally">
+                <div class="button_holder_type"
+                    v-for="botonTop, botonTopIndex in botonesTop"
+                    v-bind:key="'boton_top_' + botonTopIndex">
+                    <div class=" button_type">
+                        {{ botonTop.text }}
+                    </div>
+                </div>
+                <div class="flex_100"></div>
+            </div>
+            <div class="horizontally keyboard_layer_2">
+                <div class="">
+                    <div class="button_holder_type"
+                        v-for="botonLeft, botonLeftIndex in botonesLeft"
+                        v-bind:key="'boton_left_' + botonLeftIndex">
+                        <div class="width_100 button_type">
+                            {{ botonLeft.text }}
+                        </div>
+                    </div>
+                </div>
+                <div class="flex_100">
+                    <div class="">
+                        <div class="horizontally"
+                            v-for="fila, filaIndex in teclado"
+                            v-bind:key="'teclado_fila_' + filaIndex">
+                            <div class="button_holder_type"
+                                v-for="celda, celdaIndex in fila"
+                                v-bind:key="'teclado_fila_' + filaIndex + '_celda_' + celdaIndex"
+                                :style="celda.style ?? ''">
+                                <div class="width_100 button_type"
+                                    :class="{pressed:hasPressedKey(celda.keys)}"
+                                    v-on:click="(event) => dispatchKeyPress(celda, event)">
+                                    <div class="position_relative">
+                                        <div :style="celda.fontSize?('font-size:'+celda.fontSize):''"
+                                            class="central_text">{{ celda.text }}</div>
+                                        <div :style="celda.fontSize?('font-size:'+celda.fontSize):''"
+                                            class="position_absolute corner_top_left">{{ celda.topLeftText }}</div>
+                                        <div :style="celda.fontSize?('font-size:'+celda.fontSize):''"
+                                            class="position_absolute corner_top_right">{{ celda.topRightText }}</div>
+                                        <div :style="celda.fontSize?('font-size:'+celda.fontSize):''"
+                                            class="position_absolute corner_bottom_left">{{ celda.bottomLeftText }}</div>
+                                        <div :style="celda.fontSize?('font-size:'+celda.fontSize):''"
+                                            class="position_absolute corner_bottom_right">{{ celda.bottomRightText }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertically">
+                    <div class="button_holder_type"
+                        v-on:click="$noop">
+                        <div class="width_100 button_type smallest_font"
+                            :class="{pressed:hasPressedKey(['Backspace'])}">
+                            Ret
+                        </div>
+                    </div>
+                    <div class="button_holder_type height_100"
+                        v-on:click="$noop"
+                        style="flex:2;">
+                        <div class="height_100 width_100 button_type smallest_font"
+                            :class="{pressed:hasPressedKey(['Enter'])}">
+                            Enter
+                        </div>
+                    </div>
+                    <div class="button_holder_type"
+                        v-on:click="$noop">
+                        <div class="width_100 button_type smallest_font"
+                            :class="{pressed:hasPressedKey(['Shift'])}">
+                            Shift
+                        </div>
+                    </div>
+                    <div class="button_holder_type"
+                        v-on:click="$noop">
+                        <div class="width_100 button_type smallest_font"
+                            :class="{pressed:hasPressedKey(['Control'])}">
+                            Ctrl
+                        </div>
+                    </div>
+                </div>
+                <div class="vertically">
+                    <div class="button_holder_type"
+                        v-for="botonRight, botonRightIndex in botonesRight"
+                        v-bind:key="'boton_right_' + botonRightIndex">
+                        <div class="width_100 height_100 button_type">
+                            {{ botonRight.text }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="horizontally">
+                <div class="button_holder_type"
+                    v-for="botonBottom, botonBottomIndex in botonesBottom"
+                    v-bind:key="'boton_bottom_' + botonBottomIndex">
+                    <div class="width_100 button_type">
+                        {{ botonBottom.text }}
+                    </div>
+                </div>
+                <div class="flex_100"></div>
+            </div>
+        </div>
+    </div>
+    <div class="">⌨️</div>
+</div>

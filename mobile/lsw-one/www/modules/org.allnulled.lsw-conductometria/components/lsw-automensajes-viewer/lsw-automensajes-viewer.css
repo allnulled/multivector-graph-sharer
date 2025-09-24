@@ -1,0 +1,22 @@
+.lsw_automensajes_viewer {
+    
+}
+
+
+.automensaje_block {
+    border: 1px solid #ffffff;
+    border-radius: 3pt;
+    padding: 0px;
+    font-weight: bold;
+    font-weight: normal;
+    text-shadow: 0 0 1px #000;
+    text-align: center;
+    cursor: pointer;
+    min-height: calc(var(--button_height) - 8px);
+    box-shadow: 0 0 2px black;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.37);
+    transition: background-color 0.2s linear;
+}
+
+.automensaje_block:hover {}

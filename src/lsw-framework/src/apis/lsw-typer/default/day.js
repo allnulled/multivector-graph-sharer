@@ -1,0 +1,1 @@
+$lswTyper.define("day", $lswTyper.$types["org.allnulled.lsw/type/day.js"]);

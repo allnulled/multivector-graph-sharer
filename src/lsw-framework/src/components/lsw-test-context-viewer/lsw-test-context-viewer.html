@@ -1,0 +1,35 @@
+<div class="lsw_test_context_viewer">
+    <lsw-typical-title :buttons="testContextButtons">
+        <div>✅ Tester global</div>
+    </lsw-typical-title>
+    <div class="pad_top_1">
+        <button class="width_100 supermini" v-on:click="startTests" v-if="!isStarted">▶️ Iniciar tests</button>
+        <div class="" v-else>
+            <div class="" v-if="!isFinished"></div>
+                <lsw-typical-title>▶️ Ejecutando tests</lsw-typical-title>
+                <div class="test_context_assertions_list pad_top_1">
+                    <div class="test_context_assertion_item" v-for="assertion, assertionIndex in testAssertions"
+                        v-bind:key="'test_assertion_' + assertionIndex">
+                        <div class="flex_row centered" v-if="assertion.title">
+                            <div class="test_title">✅ {{ assertion.title }}</div>
+                        </div>
+                        <div class="flex_row centered" v-else>
+                            <div class="flex_1">
+                                {{ assertion.value === true ? "🟢" : "🔴"  }}
+                            </div>
+                            <div class="flex_100 pad_left_1 test_context_assertion_text">
+                                <span>
+                                    {{ assertion.text }}
+                                </span>
+                                <span class="test_cronometer_time">[{{ assertion.moment }}s]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="" v-else>
+                <lsw-typical-title>✅ Finalizados tests</lsw-typical-title>
+            </div>
+        </div>
+    </div>
+</div>

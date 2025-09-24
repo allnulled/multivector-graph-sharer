@@ -1,0 +1,25 @@
+<div class="lsw_filesystem_editor">
+    <textarea class="editor"
+        :style="{
+            fontSize: currentFontsize + 'px',
+            fontFamily: currentFontfamily
+        }"
+        v-model="contents"
+        spellcheck="false"
+        ref="editorTextarea"
+        v-on:keydown.ctrl.enter.prevent="executeDocument"
+        v-on:keydown.ctrl.m.prevent="executeMobileDocument"
+        v-on:keydown.ctrl.s.prevent="saveDocument"
+        v-on:keydown.ctrl.b.prevent="beautifyDocument"
+        v-on:keydown.ctrl.f.prevent="searchReplace"
+        v-on:input="synchronizeCursor"
+        v-on:keyup="synchronizeCursor"
+        v-on:click="synchronizeCursor"
+        v-on:select="synchronizeCursor"
+        v-on:focus="synchronizeCursor" />
+    <div class="position_absolute editor_position_box"
+        style="top:auto; left:auto; right: 10px; bottom: 10px;"
+        v-if="cursorPosition">
+        {{ cursorPosition.start.line }}:{{ cursorPosition.start.column }}-{{ cursorPosition.end.line }}:{{ cursorPosition.end.column }}|{{ cursorPosition.start.offset }}-{{ cursorPosition.end.offset }}
+    </div>
+</div>

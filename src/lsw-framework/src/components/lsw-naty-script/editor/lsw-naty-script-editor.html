@@ -1,0 +1,56 @@
+<div class="lsw_naty_script_editor">
+    <div v-show="currentPage === 'editor'">
+        <lsw-typical-title>🧶 NatyScript / compilador 🔩</lsw-typical-title>
+        <div class="flex_row centered pad_vertical_1">
+            <div class="flex_1 pad_right_1">
+                <button class="supermini" v-on:click="openSearcher">⬅️🔎</button>
+            </div>
+            <template v-if="!isOpenedFile">
+                <div class="flex_100">
+                    <button class="supermini width_100 text_align_left" v-on:click="runTest">🔩 Compilar</button>
+                </div>
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini" v-on:click="exportAsFile">📃↗️</button>
+                </div>
+            </template>
+            <template v-else>
+                <div class="flex_100">
+                    <button class="supermini width_100 text_align_left" v-on:click="runTest">🔩 Compilar</button>
+                </div>
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini width_100" v-on:click="saveFile">💾 {{ isOpenedFile }}</button>
+                </div>
+            </template>
+        </div>
+        <textarea class="width_100" style="height: 100px;" v-model="input" v-on:keydown.ctrl.enter="runTest" spellcheck="false"></textarea>
+        <div v-if="error" class="overflow_scroll">
+            <pre class="small_font" v-on:click="() => setError(false)">Error: {{ error }}</pre>
+        </div>
+        <div v-else-if="output" class="overflow_scroll">
+            <pre class="small_font">{{ output }}</pre>
+        </div>
+    </div>
+    <div v-show="currentPage === 'buscador'">
+        <lsw-typical-title>🧶 NatyScript / buscador 🔎</lsw-typical-title>
+        <div class="flex_row centered pad_vertical_1">
+            <div class="flex_1 pad_right_1">
+                <button class="supermini" v-on:click="openEditor">⬅️🔩</button>
+            </div>
+            <div class="flex_100">
+                <input class="supermini width_100" type="text" v-focus placeholder="Buscar concepto" v-model="searchText" />
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini" v-on:click="digestSearch">🔎</button>
+            </div>
+        </div>
+        <div v-if="hasSearched">{{ searchOutput }}</div>
+        <div v-else>
+            <div class="naty_files_list" v-if="Array.isArray(natyFiles)">
+                <div class="naty_file_item" v-for="file, fileIndex in natyFiles"
+                    v-bind:key="'naty_file_' + fileIndex">
+                    <div class="naty_file_link" v-on:click="() => openFile(file)">{{ fileIndex + 1}}. {{ file }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

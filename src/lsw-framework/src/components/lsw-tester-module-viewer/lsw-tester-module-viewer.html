@@ -1,0 +1,43 @@
+<div class="lsw_tester_module_viewer" keep-alive>
+    <div class="flex_row centered">
+        <div class="flex_1 pad_right_1">
+            <div v-if="tester.states[test.id] === 'not started'">⬜️</div>
+            <div v-else-if="tester.states[test.id] === 'started'">🟨</div>
+            <div v-else-if="tester.states[test.id] === 'ignored'">🟦</div>
+            <div v-else-if="tester.states[test.id] === 'passed'">🟩</div>
+            <div v-else-if="tester.states[test.id] === 'failed'">🟥</div>
+            <div v-else>⚫️</div>
+        </div>
+        <div class="flex_100">
+            {{ test.id }} <span class="smallest_font">[{{ test.fromType }}]</span>
+        </div>
+    </div>
+    <ul class="list_style_1">
+        <li v-for="assertion, assertionIndex in assertions"
+            v-bind:key="'assertion_' + assertionIndex">
+            <div class="">{{ assertion.result ? "🟢" : "🔴" }}: {{ assertion.text }} {{ assertion.timeoff }}</div>
+        </li>
+    </ul>
+    <div v-if="test.fromType === 'collection'">
+        <div v-for="submodule, submoduleIndex in test.fromCollection"
+            v-bind:key="'test_module_' + submoduleIndex">
+            <lsw-tester-module-viewer
+                :test="submodule"
+                :tester="tester"
+                :data-test-module="submodule.id"
+            />
+        </div>
+    </div>
+    <div v-else-if="test.fromType === 'callback'">
+        <!--div>Function test</div-->
+    </div>
+    <div v-else-if="test.fromType === 'url'">
+        <!--div>URL test: {{ test.fromUrl }}</div-->
+    </div>
+    <div v-else-if="test.fromType === 'file'">
+        <!--div>File test: {{ test.fromFile }}</div-->
+    </div>
+    <div v-else style="white-space: pre-wrap;">
+        {{ test }}
+    </div>
+</div>

@@ -1,0 +1,254 @@
+{
+  "tree": [
+    [
+      {
+        "r": "EQUAL",
+        "c": [
+          "decir",
+          "digo",
+          "dices",
+          "dice",
+          "decimos",
+          "decís",
+          "dicen",
+          "decía",
+          "decías",
+          "decíamos",
+          "decíais",
+          "decían",
+          "dije",
+          "dijistes",
+          "dijo",
+          "dijimos",
+          "dijisteis",
+          "dijeron"
+        ]
+      }
+    ],
+    [
+      {
+        "r": "EQUAL",
+        "c": [
+          "hablar",
+          "hablo",
+          "hablas",
+          "habla",
+          "hablamos",
+          "hablais",
+          "hablan",
+          "hablaba",
+          "hablabas",
+          "hablábamos",
+          "hablabais",
+          "hablaban",
+          "hablé",
+          "hablastes",
+          "habló",
+          "hablamos",
+          "hablasteis",
+          "hablaron"
+        ]
+      }
+    ],
+    [
+      {
+        "r": "EQUAL",
+        "c": [
+          "decir",
+          "hablar"
+        ]
+      }
+    ]
+  ],
+  "indexes": {
+    "digo": [
+      "root=>decir",
+      "0.0.c.1"
+    ],
+    "dices": [
+      "root=>decir",
+      "0.0.c.2"
+    ],
+    "dice": [
+      "root=>decir",
+      "0.0.c.3"
+    ],
+    "decimos": [
+      "root=>decir",
+      "0.0.c.4"
+    ],
+    "decís": [
+      "root=>decir",
+      "0.0.c.5"
+    ],
+    "dicen": [
+      "root=>decir",
+      "0.0.c.6"
+    ],
+    "decía": [
+      "root=>decir",
+      "0.0.c.7"
+    ],
+    "decías": [
+      "root=>decir",
+      "0.0.c.8"
+    ],
+    "decíamos": [
+      "root=>decir",
+      "0.0.c.9"
+    ],
+    "decíais": [
+      "root=>decir",
+      "0.0.c.10"
+    ],
+    "decían": [
+      "root=>decir",
+      "0.0.c.11"
+    ],
+    "dije": [
+      "root=>decir",
+      "0.0.c.12"
+    ],
+    "dijistes": [
+      "root=>decir",
+      "0.0.c.13"
+    ],
+    "dijo": [
+      "root=>decir",
+      "0.0.c.14"
+    ],
+    "dijimos": [
+      "root=>decir",
+      "0.0.c.15"
+    ],
+    "dijisteis": [
+      "root=>decir",
+      "0.0.c.16"
+    ],
+    "dijeron": [
+      "root=>decir",
+      "0.0.c.17"
+    ],
+    "hablo": [
+      "root=>hablar",
+      "1.0.c.1"
+    ],
+    "hablas": [
+      "root=>hablar",
+      "1.0.c.2"
+    ],
+    "habla": [
+      "root=>hablar",
+      "1.0.c.3"
+    ],
+    "hablamos": [
+      "root=>hablar",
+      "root=>hablar",
+      "1.0.c.4",
+      "1.0.c.15"
+    ],
+    "hablais": [
+      "root=>hablar",
+      "1.0.c.5"
+    ],
+    "hablan": [
+      "root=>hablar",
+      "1.0.c.6"
+    ],
+    "hablaba": [
+      "root=>hablar",
+      "1.0.c.7"
+    ],
+    "hablabas": [
+      "root=>hablar",
+      "1.0.c.8"
+    ],
+    "hablábamos": [
+      "root=>hablar",
+      "1.0.c.9"
+    ],
+    "hablabais": [
+      "root=>hablar",
+      "1.0.c.10"
+    ],
+    "hablaban": [
+      "root=>hablar",
+      "1.0.c.11"
+    ],
+    "hablé": [
+      "root=>hablar",
+      "1.0.c.12"
+    ],
+    "hablastes": [
+      "root=>hablar",
+      "1.0.c.13"
+    ],
+    "habló": [
+      "root=>hablar",
+      "1.0.c.14"
+    ],
+    "hablasteis": [
+      "root=>hablar",
+      "1.0.c.16"
+    ],
+    "hablaron": [
+      "root=>hablar",
+      "1.0.c.17"
+    ],
+    "hablar": [
+      "root=>decir",
+      "1.0.c.0",
+      "2.0.c.1"
+    ],
+    "decir": [
+      "0.0.c.0",
+      "2.0.c.0"
+    ]
+  },
+  "roots": {
+    "decir": [
+      "digo",
+      "dices",
+      "dice",
+      "decimos",
+      "decís",
+      "dicen",
+      "decía",
+      "decías",
+      "decíamos",
+      "decíais",
+      "decían",
+      "dije",
+      "dijistes",
+      "dijo",
+      "dijimos",
+      "dijisteis",
+      "dijeron",
+      "hablar"
+    ],
+    "hablar": [
+      "hablo",
+      "hablas",
+      "habla",
+      "hablamos",
+      "hablais",
+      "hablan",
+      "hablaba",
+      "hablabas",
+      "hablábamos",
+      "hablabais",
+      "hablaban",
+      "hablé",
+      "hablastes",
+      "habló",
+      "hablamos",
+      "hablasteis",
+      "hablaron"
+    ]
+  },
+  "sentences": {
+    "0": "decir = digo\n        | dices\n        | dice\n        | decimos\n        | decís\n        | dicen\n        | decía\n        | decías\n        | decíamos\n        | decíais\n        | decían\n        | dije\n        | dijistes\n        | dijo\n        | dijimos\n        | dijisteis\n        | dijeron.\n",
+    "1": "hablar = hablo\n        | hablas\n        | habla\n        | hablamos\n        | hablais\n        | hablan\n        | hablaba\n        | hablabas\n        | hablábamos\n        | hablabais\n        | hablaban\n        | hablé\n        | hablastes\n        | habló\n        | hablamos\n        | hablasteis\n        | hablaron.\n",
+    "2": "decir = hablar."
+  }
+}

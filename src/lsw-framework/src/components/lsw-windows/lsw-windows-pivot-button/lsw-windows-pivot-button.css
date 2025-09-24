@@ -1,0 +1,48 @@
+.lsw_windows_pivot_button {
+    position: fixed;
+    top: auto;
+    bottom: calc(env(safe-area-inset-bottom, 0) + 46px + 10px);
+    left: 9px;
+    right: auto;
+    padding: 0px;
+    border: 0px solid #000;
+    border-radius: 3pt;
+    cursor: default;
+    z-index: 500;
+}
+
+.lsw_windows_pivot_button:hover {}
+
+.lsw_windows_pivot_button>button {
+    max-height: 22px;
+    min-width: 22px;
+    vertical-align: middle;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent !important;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.lsw_windows_pivot_button>button:hover {
+    background-color: transparent;
+}
+
+.lsw_windows_pivot_button:hover>button {}
+
+.lsw_time_box {
+    text-decoration: underline;
+    color: black;
+    text-shadow: 0 0 2px white;
+    text-align: center;
+    margin-left: 5px;
+    border-radius: 0pt;
+    box-shadow: 0 0 2px black;
+    border: 0px solid #222;
+    border-radius: 8pt;
+    background-color: #FFFFFF30;
+    padding: 3px;
+    padding-left: 18px;
+    padding-right: 18px;
+    text-align: center;
+}

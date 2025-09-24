@@ -1,0 +1,7 @@
+{
+    "search.exclude": {
+        "**/src/lsw-framework/lsw-framework.js": true,
+        "**/src/lsw-framework/lsw-framework.css": true,
+        "docs/**": true
+    }
+}

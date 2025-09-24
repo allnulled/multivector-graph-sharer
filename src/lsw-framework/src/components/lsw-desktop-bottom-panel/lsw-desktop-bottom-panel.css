@@ -1,0 +1,7 @@
+.lsw_desktop_bottom_panel {
+    position: fixed;
+    top: auto;
+    bottom: 55px;
+    left: auto;
+    right: 9px;
+}

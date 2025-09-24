@@ -1,0 +1,5 @@
+<div class="dgn_rest_homepage">
+    <dgn-rest-schema :homepage="this" v-if="selectedPage === 'esquema'" />
+    <dgn-rest-table :homepage="this" v-else-if="selectedPage === 'tabla'" />
+    <dgn-rest-row :homepage="this" v-else-if="selectedPage === 'fila'" />
+</div>

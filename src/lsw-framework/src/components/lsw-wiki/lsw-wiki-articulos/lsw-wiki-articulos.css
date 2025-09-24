@@ -1,0 +1,14 @@
+.lsw_wiki_articulos {}
+
+.articulo_detalles {
+    min-height: 40px;
+}
+
+.articulo_categorias_box {
+    color: rgb(0, 0, 0);
+    text-shadow: 0 0 1px black;
+    font-style: italic;
+    font-size: 10px;
+    padding: 1px;
+    padding-top: 4px;
+}

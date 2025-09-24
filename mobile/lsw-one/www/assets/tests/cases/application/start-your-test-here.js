@@ -1,0 +1,1 @@
+asserts.as("assertion 1").that(true);

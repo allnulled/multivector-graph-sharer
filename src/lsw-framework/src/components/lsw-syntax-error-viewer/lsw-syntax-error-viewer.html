@@ -1,0 +1,26 @@
+<div class="lsw_error_viewer">
+    <div class="position_relative">
+        <div class="position_absolute top_0" style="right: 20px;">
+            <div class="pad_1">
+                <button v-on:click="() => setError()">❎</button>
+            </div>
+        </div>
+        <div class="">
+            <div class="errorMessage">
+                <div v-if="typeof currentError.location !== 'undefined'">
+                    <span>{{ currentError.name }}</span>
+                    <span>{{ currentError.location.start.offset }}-{{ currentError.location.end.offset }}</span>
+                    <span> | </span>
+                    <span></span>
+                    <span>{{ currentError.location.start.line }}:{{ currentError.location.start.column }}-{{ currentError.location.end.line }}:{{ currentError.location.end.column }}</span>
+                    <span>{{ currentError.found }}</span>
+                    <span>{{ currentError.message }}</span>
+                    <pre style="font-size:10px;">  - {{ currentError.expected.map(it => JSON.stringify(it.text)).join("\n  - ") }}</pre>
+                </div>
+                <div v-else>
+                    <div>{{ currentError }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

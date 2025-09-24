@@ -1,0 +1,13 @@
+{
+  "name": "mermoid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mermoid.api.js",
+  "scripts": {
+    "build": "bash build.sh",
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

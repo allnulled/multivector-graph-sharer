@@ -1,0 +1,163 @@
+[
+  {
+    "from": "*",
+    "to": "*",
+    "weekday": "*",
+    "type": "SET",
+    "concept": "despertarse",
+    "duration": "5min",
+    "hour": "06",
+    "minute": "00"
+  },
+  {
+    "from": "*",
+    "to": "*",
+    "weekday": "*",
+    "type": "SET",
+    "concept": "reflexionar unos segundos",
+    "duration": null,
+    "hour": "06",
+    "minute": "05"
+  },
+  {
+    "from": "*",
+    "to": "*",
+    "weekday": "*",
+    "type": "SET",
+    "concept": "desayunar [con ajo]",
+    "duration": "1h",
+    "hour": "07",
+    "minute": "00"
+  },
+  {
+    "from": "2025/06/01",
+    "to": "2025/07/01",
+    "weekday": "*",
+    "type": "REQ",
+    "concept": "programar",
+    "limit": ">",
+    "value": "5h",
+    "condition": "> 5h",
+    "urgency": "10"
+  },
+  {
+    "from": "2025/06/01",
+    "to": "2025/07/01",
+    "weekday": "*",
+    "type": "REQ",
+    "concept": "ejercicio físico",
+    "limit": ">",
+    "value": "1h",
+    "condition": "> 1h",
+    "urgency": "10"
+  },
+  {
+    "from": "2025/06/01",
+    "to": "2025/07/01",
+    "weekday": "*",
+    "type": "REQ",
+    "concept": "pasear",
+    "limit": ">",
+    "value": "2h",
+    "condition": "> 2h",
+    "urgency": "10"
+  },
+  {
+    "from": "2025/06/01",
+    "to": "2025/07/01",
+    "weekday": "*",
+    "type": "REQ",
+    "concept": "paisaje",
+    "limit": ">",
+    "value": "1",
+    "condition": "> 1",
+    "urgency": "1"
+  },
+  {
+    "from": "2025/06/01",
+    "to": "2025/07/01",
+    "weekday": "*",
+    "type": "REQ",
+    "concept": "cosa mala 1",
+    "limit": "<",
+    "value": "5",
+    "condition": "< 5",
+    "urgency": "11"
+  },
+  {
+    "from": "2025/06/01",
+    "to": "2025/07/01",
+    "weekday": "*",
+    "type": "REQ",
+    "concept": "cosa mala 2",
+    "limit": "<",
+    "value": "2h",
+    "condition": "< 2h",
+    "urgency": "11"
+  },
+  {
+    "from": "2025/06/01",
+    "to": "2025/07/01",
+    "weekday": "lun",
+    "type": "SET",
+    "concept": "ok",
+    "duration": null,
+    "hour": "10",
+    "minute": "00"
+  },
+  {
+    "from": "2025/06/01",
+    "to": "2025/07/01",
+    "weekday": "lun",
+    "type": "REQ",
+    "concept": "w3hate",
+    "limit": ">",
+    "value": "4h",
+    "condition": ">4h",
+    "urgency": "2"
+  },
+  {
+    "from": "*",
+    "to": "*",
+    "weekday": "*",
+    "type": "REQ",
+    "concept": "actividad física",
+    "limit": ">",
+    "value": "3h",
+    "condition": ">3h",
+    "urgency": "10"
+  },
+  {
+    "from": "*",
+    "to": "*",
+    "weekday": "*",
+    "type": "REQ",
+    "concept": "actividad intelectual",
+    "limit": ">",
+    "value": "3h",
+    "condition": ">3h",
+    "urgency": "10"
+  },
+  {
+    "from": "*",
+    "to": "*",
+    "weekday": "*",
+    "type": "REQ",
+    "concept": "aprender algo",
+    "limit": ">",
+    "value": "1h",
+    "condition": "> 1h",
+    "urgency": "10"
+  },
+  {
+    "from": "*",
+    "to": "*",
+    "weekday": "*",
+    "type": "REQ",
+    "concept": "crear algo",
+    "limit": ">",
+    "value": "2h",
+    "condition": "> 2h",
+    "urgency": "10"
+  }
+]

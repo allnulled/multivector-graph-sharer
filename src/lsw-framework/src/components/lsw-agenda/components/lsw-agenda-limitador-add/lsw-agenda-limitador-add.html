@@ -1,0 +1,12 @@
+<div class="LswAgendaLimitadorAdd">
+  <template>
+    <lsw-schema-based-form
+      :on-submit="insertLimitador"
+      :model="{
+        databaseId: 'lsw_default_database',
+        tableId: 'Limitador',
+        rowId: -1,
+      }"
+    />
+  </template>
+</div>

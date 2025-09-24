@@ -1,0 +1,21 @@
+<div class="lsw_tests_page">
+    <div class="" v-if="initializationError">
+        <lsw-error-box :error="initializationError" />
+    </div>
+    <div v-if="selectedSection === 'coverage'">
+        <div class="typical_title_1">
+            <div class="flex_row centered">
+                <div class="flex_100">🪖 Cobertura de código</div>
+                <div class="flex_1">
+                    <button class="supermini" v-on:click="() => selectedSection = 'tester'">🧪 ↗️</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div v-show="selectedSection === 'tester'">
+        <lsw-test-context-viewer :tests-page="this" />
+    </div>
+    <div v-show="selectedSection === 'coverage'">
+        <lsw-coverage-viewer />
+    </div>
+</div>

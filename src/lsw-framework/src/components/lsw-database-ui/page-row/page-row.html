@@ -1,0 +1,37 @@
+<div>
+    <h3>
+        <span>
+            <span>
+                <button v-on:click="goBack">⬅️</button>
+            </span>
+            <span> 📦 </span>
+            <span>{{ args.table }}</span>
+        </span>
+        <span v-if="(args.rowId && args.rowId !== -1)">
+            [#{{ args.rowId }}]
+        </span>
+        <span v-else-if="args.row && args.row.id">
+            [#{{ args.row.id }}]
+        </span>
+        <span v-else>
+            [new]
+        </span>
+        <span>
+            [{{ args.database }}]
+        </span>
+    </h3>
+    <lsw-database-breadcrumb :breadcrumb="breadcrumb"
+        :database-explorer="databaseExplorer" />
+    <div v-if="!isLoaded">Un momento, por favor, está cargando...</div>
+    <lsw-schema-based-form v-else
+        :on-submit="upsertRow"
+        :model="{
+            connection: $lsw.database,
+            databaseId: args.database,
+            tableId: args.table,
+            rowId: args.rowId || row.id,
+            row: row,
+            databaseExplorer,
+        }"
+    />
+</div>

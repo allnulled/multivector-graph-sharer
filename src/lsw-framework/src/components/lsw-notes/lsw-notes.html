@@ -1,0 +1,64 @@
+<div class="lsw_notes pad_0 pad_top_0">
+    <lsw-typical-title :buttons="notasButtons">💬 Notas</lsw-typical-title>
+    <div v-if="allNotes && allNotes.length"
+        class="pad_top_1">
+        <div class=""
+            v-if="isLoaded">
+            <template v-for="nota, notaIndex in allNotes">
+                <div class=""
+                    :class="{activated: openedNotes.indexOf(nota.id) !== -1}"
+                    v-bind:key="'nota_de_wiki_' + nota.id">
+                    <div class="pad_bottom_1">
+                        <div class="flex_row">
+                            <button class="width_100 text_align_left supermini list_button flex_100 flex_row centered"
+                                v-on:click="() => toggleNote(nota.id)">
+                                <div class="flex_1">
+                                    {{ notaIndex + 1 }}.
+                                </div>
+                                <div class="flex_100">
+                                    {{ nota.tiene_titulo }}
+                                </div>
+                                <div class="flex_1 smallest_font margin_right_1 pad_1" style="border: 1px solid black; border-radius: 2pt;" v-if="nota.tiene_estado">
+                                    {{ nota.tiene_estado.substr(0,3).toUpperCase() }}
+                                </div>
+                                <div class="flex_1 smallest_font">
+                                    {{ nota.tiene_contenido?.length }}B
+                                </div>
+                            </button>
+                            <div class="flex_1 pad_left_1">
+                                <button class="supermini"
+                                    v-on:click="() => editNote(nota)">↗️</button>
+                            </div>
+                        </div>
+                        <div class="articulo_categorias_box" v-if="nota.tiene_categorias">
+                            <div>🧲 {{ nota.tiene_categorias }}</div>
+                        </div>
+                        <div class="pad_top_1"
+                            v-if="openedNotes.indexOf(nota.id) !== -1">
+                            <div class="texto_markdown position_relative">
+                                <lsw-markdown-viewer :source="nota.tiene_contenido" />
+                                <div class="position_absolute top_0 right_0 flex_row centered pad_right_1" style="padding-top: 2px;">
+                                    <div class="flex_100"></div>
+                                    <!--div class="flex_1">
+                                        <button class="supermini"
+                                        v-on:click="() => moveNoteToArticulo(nota)">➡️🔬</button>
+                                    </div-->
+                                    <div class="flex_1 pad_left_1">
+                                        <button class="supermini"
+                                        v-on:click="() => deleteNote(nota)">❌</button>
+                                    </div>
+                                    <div class="flex_1 pad_left_1">
+                                        <button class="supermini"
+                                            v-on:click="() => editNote(nota)">✏️</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+    <div class="pad_1"
+        v-else>No hay notas actualmente.</div>
+</div>

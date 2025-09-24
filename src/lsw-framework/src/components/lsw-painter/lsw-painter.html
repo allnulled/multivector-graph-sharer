@@ -1,0 +1,23 @@
+<div class="lsw_painter">
+    <lsw-typical-title :buttons="false">
+        <div class="flex_row centered">
+            <div class="flex_100">🎨 Pinturas</div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini" v-on:click="() => LswUtils.copyToClipboard('https://pixijs.download/release/docs/index.html')">ℹ️</button>
+            </div>
+            <div class="flex_1 pad_left_1" v-if="selectedPage === 'canvas'">
+                <button class="supermini" v-on:click="goToEditor">⬅️ ✏️</button>
+            </div>
+            <div class="flex_1 pad_left_1" v-else-if="selectedPage === 'editor'">
+                <button class="supermini" v-on:click="goToCanvas">⬅️ 🎥</button>
+            </div>
+        </div>
+    </lsw-typical-title>
+    <div class="" v-if="selectedPage === 'editor'">
+        <textarea class="" spellcheck="false" v-model="source" :placeholder="placeholder" style="height: 120px;"></textarea>
+    </div>
+    <div class="" v-else-if="selectedPage === 'canvas'">
+        <div v-if="error">{{ error }}</div>
+        <div class="canvas_holder" ref="paintHolder"></div>
+    </div>
+</div>

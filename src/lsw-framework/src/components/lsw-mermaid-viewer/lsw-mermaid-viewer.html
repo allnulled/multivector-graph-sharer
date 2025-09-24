@@ -1,0 +1,43 @@
+<div class="lsw_mermaid_viewer">
+    <lsw-typical-title :buttons="false">
+        <div class="flex_row centered">
+            <div class="flex_100">🪄📊 Visualizador de diagramas</div>
+            <div class="flex_1 flex_row centered">
+                <div class="flex_1 pad_right_1">
+                    <button class="supermini"
+                        v-on:click="() => LswUtils.copyToClipboard('https://mermaid.js.org/intro/syntax-reference.html')">
+                        ℹ️
+                    </button>
+                </div>
+                <div class="flex_1">
+                    <button class="supermini"
+                        v-on:click="() => abrirEditor()"
+                        v-if="currentPage === 'visualizador'">
+                        ⬅️ ✏️
+                    </button>
+                    <button class="supermini"
+                        v-on:click="() => abrirVisualizador()"
+                        v-if="currentPage === 'editor'">
+                        ⬅️ 🔭 
+                    </button>
+                </div>
+            </div>
+        </div>
+    </lsw-typical-title>
+    <div class="position_relative">
+        <div class=""
+            v-show="currentPage === 'visualizador'">
+            <lsw-error-box class="" v-if="error" :error="error" />
+            <div class=""
+                v-else-if="!isLoaded">
+                <lsw-loading-bar />
+            </div>
+            <div class="mermaid_contents"
+                ref="mermaidTargetTag"></div>
+        </div>
+        <div class=""
+            v-show="currentPage === 'editor'">
+            <textarea spellcheck="false" v-model="source" style="height: 120px;"></textarea>
+        </div>
+    </div>
+</div>

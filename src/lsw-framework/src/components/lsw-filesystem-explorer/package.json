@@ -1,0 +1,14 @@
+{
+  "name": "lsw-filesystem-explorer",
+  "version": "1.0.0",
+  "description": "Filesystem explorer UI tool for LSW",
+  "main": "lsw-filesystem-explorer.js",
+  "scripts": {
+    "build": "node bundler.js",
+    "test": "echo 'no tests for lsw-filesystem-explorer'",
+    "versionate": "echo 'no versionate for lsw-filesystem-explorer'"
+  },
+  "keywords": [],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

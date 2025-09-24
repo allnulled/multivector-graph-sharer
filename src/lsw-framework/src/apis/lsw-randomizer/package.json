@@ -1,0 +1,14 @@
+{
+  "name": "lsw-randomizer",
+  "version": "1.0.0",
+  "description": "Randomizer utilities for LSW.",
+  "main": "lsw-randomizer.js",
+  "scripts": {
+    "build": "echo 'no building for @allnulled/lsw-randomizer'",
+    "versionate": "echo 'no versionate for @allnulled/lsw-randomizer'",
+    "test": "echo 'no test for randomizer'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,32 @@
+.lsw_goals_viewer {
+    
+}
+
+.lsw_goals_panel {
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 3pt;
+    padding: 4px;
+    border: 3px double rgb(1, 1, 56);
+    box-shadow: 0 0 2px black;
+    height: 200px;
+    overflow: scroll;
+    resize: vertical;
+}
+
+@keyframes changeBorder {
+    0% {
+      border-color: #26ff00;
+    }
+    25% {
+      border-color: #ffbb00;
+    }
+    50% {
+      border-color: #0084ff;
+    }
+    75% {
+      border-color: #9000ff;
+    }
+    100% {
+      border-color: #26ff00;
+    }
+  }

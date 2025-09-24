@@ -1,0 +1,20 @@
+<div class="lsw_molecules_renderer">
+    <lsw-typical-title :buttons="moleculesRendererButtons">
+        ⚛️ Renderizador de moléculas
+    </lsw-typical-title>
+    <div class="flex_row pad_top_1">
+        <div class="flex_100">
+            <textarea class=""
+                v-model="source"></textarea>
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini height_100 pad_horizontal_1"
+                v-on:click="renderSmileScript">⚛️</button>
+        </div>
+    </div>
+    <div class="pad_top_1 text_align_center">
+        <div class="display_inline_block" style="max-width: 230px;">
+            <canvas class="molecules_canvas" width="500" height="500" ref="smilesCanvas" />
+        </div>
+    </div>
+</div>

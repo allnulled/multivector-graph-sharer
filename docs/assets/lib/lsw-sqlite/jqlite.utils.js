@@ -1,0 +1,7 @@
+const jQliteUtils = class {
+
+  constructor() {
+    
+  }
+
+};

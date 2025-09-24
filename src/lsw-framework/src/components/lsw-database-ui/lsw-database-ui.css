@@ -1,0 +1,30 @@
+/*
+  @artifact:  Lite Starter Web Dependency
+  @url:       https://github.com/allnulled/lsw-database-ui.git
+  @name:      @allnulled/lsw-database-ui
+  @version:   1.0.0
+*/
+
+.database_breadcrumb {
+    padding: 4px;
+}
+.database_breadcrumb_box {
+    padding: 4px;
+    border: 1px solid #999;
+    background-color: #DDD;
+    text-shadow: 0 0 1px black;
+}
+
+.hideBreadcrumb > div > .database_breadcrumb {
+    display: none;
+}
+
+table.top_aligned > tbody > tr > td {
+    vertical-align: top;
+}
+
+
+.page_tables.page .lsw_table_itself > tbody > tr > td {
+    vertical-align: top !important;
+}
+

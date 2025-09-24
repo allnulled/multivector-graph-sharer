@@ -1,0 +1,22 @@
+<div class="lsw_typical_title">
+    <div class="typical_title_1 flex_row centered">
+        <div class="flex_100">
+            <slot></slot>
+        </div>
+        <template v-if="(!Array.isArray(buttons))"></template>
+        <div class="flex_1 pad_left_1" v-else-if="(buttons.length === 0)">
+            <button class="supermini visibility_hidden">
+                !
+            </button>
+        </div>
+        <template>
+            <div class="flex_1 pad_left_1"
+                v-for="button, buttonIndex in buttons"
+                v-bind:key="'title_button_' + buttonIndex">
+                <button class="supermini" v-on:click="button.event">
+                    {{ button.text }}
+                </button>
+            </div>
+        </template>
+    </div>
+</div>

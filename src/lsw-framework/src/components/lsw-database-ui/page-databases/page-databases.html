@@ -1,0 +1,9 @@
+<div>
+    <h3> 📦 Todas las bases de datos</h3>
+    <lsw-database-breadcrumb :breadcrumb="breadcrumb"
+        :database-explorer="databaseExplorer" />
+    <lsw-table v-if="databases && databases.length"
+        :initial-input="databases"
+        :initial-settings="{title: 'Lista de todas las bases de datos:', itemsPerPage: 50 }"
+        :row-buttons="[{ header: '', text: '↗️', event: (row) => openDatabase(row.name) }]"></lsw-table>
+</div>

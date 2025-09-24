@@ -1,0 +1,54 @@
+<div class="lsw_pegjs_tester">
+    <div class="flex_row"
+        v-if="showingPaneOf === 'parser'">
+        <div class="flex_100">
+            <textarea placeholder="// PEGjs syntax here"
+                spellcheck="false"
+                v-model="currentParserSource" />
+        </div>
+        <div class="flex_1 position_relative"
+            style="min-width:44px;">
+            <button class="height_100 position_absolute_fixed"
+                style="left:3px;"
+                v-on:click="compileParser">
+                ➡️
+            </button>
+        </div>
+        <lsw-syntax-error-viewer
+            ref="parserErrorViewer"
+            :error="false" />
+    </div>
+    <div v-if="showingPaneOf === 'snippet'">
+        <div class="flex_row">
+            <div class="flex_1 position_relative"
+                style="min-width:44px;">
+                <button class="height_100 position_absolute_fixed"
+                    style="right:3px;"
+                    v-on:click="() => showingPaneOf = 'parser'">
+                    ⬅️
+                </button>
+            </div>
+            <div class="flex_100">
+                <textarea placeholder="// Your syntax snippet here"
+                    spellcheck="false"
+                    v-model="currentSnippet" />
+            </div>
+            <div class="flex_1 position_relative"
+                style="min-width:44px;">
+                <button class="height_100 position_absolute_fixed"
+                    style="left:3px;"
+                    v-on:click="testSnippet">
+                    ❓
+                </button>
+            </div>
+        </div>
+        <div class="width_100"
+            v-if="currentAst">
+            <div class="">Salida:</div>
+            <pre class="codeblock">{{ currentAst }}</pre>
+        </div>
+        <lsw-syntax-error-viewer
+            ref="snippetErrorViewer"
+            :error="false" />
+    </div>
+</div>

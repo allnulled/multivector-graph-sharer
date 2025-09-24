@@ -1,0 +1,14 @@
+<div class="lsw_spontaneos_form_nota pad_1">
+    <h4 class="margin_bottom_1px">📒 Añadir nota:</h4>
+    <div class="flex_row">
+        <div class="flex_100">
+            <lsw-fast-datetime-control class="margin_bottom_1px" mode="datetime" :on-change-date="v => tiene_fecha = LswTimer.utils.fromDateToDatestring(v, false)" :initial-value="new Date()"/>
+            <input class="width_100 margin_bottom_1px margin_top_0" type="text" placeholder="Título de nota" v-model="tiene_titulo" />
+            <textarea class="width_100 margin_top_0 margin_bottom_1px" placeholder="Contenido de nota." style="min-height: 230px;" v-model="tiene_contenido" spellcheck="false" ref="tiene_contenido"></textarea>
+            <textarea class="width_100 margin_bottom_0 margin_top_0" placeholder="categoría 1; categoria 2" v-model="tiene_categorias"></textarea>
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="mini" style="height: 100%; min-width: 30px;" v-on:click="addNota">🟢</button>
+        </div>
+    </div>
+</div>

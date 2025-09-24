@@ -1,0 +1,18 @@
+.new_canvas_experiment_1 {
+
+}
+.new_canvas_experiment_1_canvas_container {
+    border: 1px solid black;
+    text-align: center;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: rgb(0, 0, 0, 0.5);
+}
+.new_canvas_experiment_1_canvas {
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+    vertical-align: middle;
+    background-color: white;
+}

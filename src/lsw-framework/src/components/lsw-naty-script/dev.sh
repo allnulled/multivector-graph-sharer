@@ -1,0 +1,1 @@
+npx nodemon -w naty-script-parser.pegjs -w test.js -w tests/input -e "naty,pegjs" -x 'bash build.sh'

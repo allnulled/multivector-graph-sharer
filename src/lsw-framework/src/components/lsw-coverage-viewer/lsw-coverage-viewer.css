@@ -1,0 +1,45 @@
+.coverage-report {
+    font-family: sans-serif;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.summary-table th,
+.summary-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.summary-table th {
+    
+}
+
+.high {
+    background-color: #5fe57e;
+    /* green */
+}
+
+.medium {
+    background-color: #dcbd58;
+    /* yellow */
+}
+
+.low {
+    background-color: #e7515e;
+    /* red */
+}
+
+.coverage_report_item {
+    margin-top: 4px;
+    padding: 4px;
+    box-shadow: 0 0 2px black;
+}
+.coverage_report_status_box {
+    padding: 2px;
+    border-radius: 3pt;
+    box-shadow: 0 0 3px black;
+}

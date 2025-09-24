@@ -1,0 +1,37 @@
+# lsw-tree-parser
+
+Para encontrarlo tienes que importar solamente:
+
+```js
+TripilangParser.parse(`
+
+@{
+  "mensaje": "Tripilang solo soportará 1 árbol por parseo"
+}
+Título del árbol [Link asociado al árbol] {
+    Branca 1  [] {
+        Branca 1.1  [] {
+            Branca 1.1.1 []
+            Branca 1.1.2 []
+            Branca 1.1.3 []
+            Branca 1.1.4 []
+        }
+        Branca 1.2  [] {}
+        Branca 1.3  [] {}
+        Branca 1.4  [] {}
+        Branca 1.5  [] {}
+        Branca 1.6  [] {}
+    }
+    Branca 2  [] {}
+    Branca 3  [] {}
+    Branca 4  [] {}
+    Branca 5  [] {}
+    Branca 6  [] {}
+    Branca 7  [] {}
+    Branca 8  [] {}
+    Branca 9  [] {}
+    Branca 10 [] {}
+}
+
+`);
+```

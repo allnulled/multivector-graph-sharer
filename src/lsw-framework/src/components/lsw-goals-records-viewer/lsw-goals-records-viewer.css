@@ -1,0 +1,59 @@
+.lsw_goals_records_viewer {
+    
+}
+
+.titulo_de_record {
+  background-color: #847fb7e0;
+  color: black;
+  padding: 4px;
+  margin-bottom: 4px;
+  border-radius: 2pt;
+  border: 1px solid #333;
+}
+
+.carta_de_record {
+  display: inline-block;
+  margin-right: 4px;
+  border: 1px solid #222;
+  padding: 1px;
+  text-align: center;
+}
+
+.celda_de_concepto_de_record {
+  background-color: #111;
+  color: white;
+  margin-bottom: 1px;
+  padding: 4px;
+  font-weight: bold;
+}
+.celda_de_regla_de_record {
+  background-color: #111;
+  color: white;
+  margin-top: 1px;
+}
+
+/* Widget de checkbox */
+button.button_checkbox {
+  padding: 0px !important;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  vertical-align: top;
+  cursor: pointer;
+}
+button.button_checkbox > label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+button.button_checkbox > label > input[type="checkbox"] {
+  flex: 1;
+  min-height: auto;
+  cursor: pointer;
+}
+
+button.button_checkbox > label > span {
+  flex: 100;
+  white-space: nowrap;
+  cursor: pointer;
+}

@@ -1,0 +1,1 @@
+addTest("Test of Importer.scriptSrcModule completed");

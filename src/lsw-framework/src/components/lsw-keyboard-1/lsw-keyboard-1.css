@@ -1,0 +1,79 @@
+.lsw_keyboard_1 {
+    
+}
+.lsw_keyboard_1 .keyboard_layer_1 {
+    position: fixed;
+    top: auto;
+    bottom: 1px;
+    left: 1px;
+    right: 2px;
+    z-index: 9999;
+    background-color: #333;
+    color: #FFF;
+    border: 2px solid #333;
+}
+.lsw_keyboard_1 .keyboard_layer_1:focus {
+    border: 2px solid #000;
+}
+.lsw_keyboard_1 .keyboard_layer_2 {
+    width: 100%;
+    height: 100%;
+    border: 0px solid black;
+    border-radius: 2pt;
+    box-shadow: 0 0 4px black;
+    background-color: #00000070;
+}
+
+.horizontally {
+    display: flex;
+    flex-direction: row;
+    justify-items: stretch;
+    width: 100%;
+}
+
+.vertically {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.horizontally > * {
+    flex: 1;
+}
+.vertically > * {
+    flex: 1;
+}
+
+.lsw_keyboard_1 .button_holder_type {
+    padding-bottom: 1px;
+    padding-right: 1px;
+}
+
+.lsw_keyboard_1 .button_type {
+    height: 100%;
+    width: 100%;
+    padding: 4px;
+    min-height: 20px;
+    min-width: 20px;
+    background-color: #000;
+    color: white;
+    white-space: nowrap;
+}
+.lsw_keyboard_1 .button_type:hover {
+    background-color: #115;
+    cursor: pointer;
+}
+.lsw_keyboard_1 .button_type.pressed {
+    background-color: rgb(5, 5, 69);
+}
+.lsw_keyboard_1 .button_type > .position_relative {
+    height: 100%;
+    width: 100%;
+    text-align: right;
+}
+
+.lsw_keyboard_1 .corner_top_left,
+.lsw_keyboard_1 .corner_top_right,
+.lsw_keyboard_1 .corner_bottom_left,
+.lsw_keyboard_1 .corner_bottom_right {
+    font-size: 8px;
+}

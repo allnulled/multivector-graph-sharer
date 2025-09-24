@@ -1,0 +1,14 @@
+<div class="lsw_bars_graph_bar">
+    <div class="barra_box"
+        v-on:click="onClick">
+        <div class="barra_box_2">
+            <div class="barra_box_3">
+                <div class="barra_filler"
+                    :style="{ width: value + '%', backgroundColor: color ?? 'inherit', }"></div>
+                <div class="barra_text pad_left_1">
+                    <div class="texto_de_barra">{{ text }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

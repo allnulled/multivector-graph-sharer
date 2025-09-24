@@ -1,0 +1,5 @@
+<div class="lsw_database_ui database_explorer" :class="{hideBreadcrumb: !showBreadcrumb}">
+    <template v-if="!isLoading">
+        <component :is="selectedPage" :args="selectedArgs" :database-explorer="this" />
+    </template>
+</div>

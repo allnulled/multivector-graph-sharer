@@ -1,0 +1,10 @@
+<div class="lsw_wiki_tree">
+    <div v-for="node, nodeIndex in treeData"
+        v-bind:key="'tree_node_' + nodeIndex">
+        
+        <button v-on:click="() => toggleNode(nodeIndex)">{{ nodeIndex }}</button>
+        <div class="subtree" v-if="selectedNodes.indexOf(nodeIndex) !== -1">
+            <lsw-wiki-treenode initial-input="node" />
+        </div>
+    </div>
+</div>

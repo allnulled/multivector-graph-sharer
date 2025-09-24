@@ -1,0 +1,20 @@
+.lsw_duration_control {
+    
+}
+
+.duration_control_details_panel {
+    white-space: wrap;
+}
+
+.duration_control_option {
+    display: inline-block;
+    border: 1px solid #FFF4;
+    padding: 4px;
+    margin-right: 4px;
+    margin-top: 4px;
+    border-radius: 2pt;
+    cursor: pointer;
+}
+.duration_control_option:hover {
+    background-color: #FFF8;
+}

@@ -1,0 +1,15 @@
+.sqlite_console {
+    font-family: monospace;
+    font-size: 10px;
+}
+.input_console {
+    background-color: black;
+    color: #0F0;
+    height: 150px;
+}
+.output_console {
+    white-space: pre;
+    background-color: black;
+    color: #FF0;
+    min-height: 150px;
+}

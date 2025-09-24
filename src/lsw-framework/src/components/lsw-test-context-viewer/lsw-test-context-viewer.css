@@ -1,0 +1,17 @@
+.test_cronometer_time {
+    font-size: 9px;
+    color: #444;
+}
+.test_title {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    border-bottom: 1px solid #333;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    color: rgb(51, 6, 6);
+}
+.test_context_assertion_text {
+    font-size: 11px;
+}

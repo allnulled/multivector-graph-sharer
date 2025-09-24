@@ -1,0 +1,28 @@
+.nota_button {
+    color: black;
+    text-shadow: 0 0 1px white;
+    background-color: rgba(200, 200, 200, 0.5);
+}
+
+.nota_title_text {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.celda_de_estado_de_nota {
+    background-color: #cfcfcf;
+    color: #000;
+    border: 1px solid #666;
+    box-shadow: 0 0 2px white;
+    padding-left: 1px;
+    padding-right: 1px;
+    border-radius: 2pt;
+}
+
+.celda_de_estado_de_nota.estado_urgente {
+    background-color: rgb(226, 141, 141);
+    color: black;
+    border: 1px solid rgb(64, 9, 9);
+    box-shadow: 0 0 2px white;
+    font-weight: bold;
+}

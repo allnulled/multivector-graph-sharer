@@ -1,0 +1,1 @@
+Vue.prototype.$lsw = {};

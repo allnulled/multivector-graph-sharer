@@ -1,0 +1,9 @@
+<div class="dgn_rest_table">
+    <lsw-typical-title :buttons="tableButtons">📦 Tabla de la REST</lsw-typical-title>
+    <div v-if="rows">
+        <lsw-table
+            :initial-input="rows"
+            :row-buttons="buttonsPerRow"
+        />
+    </div>
+</div>

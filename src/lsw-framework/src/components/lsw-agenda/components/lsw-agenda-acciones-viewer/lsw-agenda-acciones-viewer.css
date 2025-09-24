@@ -1,0 +1,38 @@
+.lsw_agenda_acciones_viewer {
+  
+}
+
+.fondo_clarito {
+    background-color: rgba(255,255,255,0.4) !important;
+}
+
+
+.border_circled {
+    border-radius: 50%;
+}
+.width_25px {
+    width: 25px;
+}
+.height_25px {
+    height: 25px;
+}
+
+.selected_date_on_tasks_viewer {
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    border-radius: 2pt;
+    border: 1px solid black;
+    padding-top: 1px;
+    font-size: 12px;
+    min-height: 40px;
+    padding-top: 12px;
+}
+.tasks_area {
+    min-height: 140px;
+}
+.notificacion_de_peligro {
+    min-height: 85px;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 12px;
+}

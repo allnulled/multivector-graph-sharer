@@ -1,0 +1,47 @@
+<div class="lsw_book_factory">
+    <div class="typical_title_1">
+        <div class="flex_row centered">
+            <div class="flex_100">
+                📚 Libros disponibles:
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini"
+                    v-on:click="loadTitles">
+                    🛜
+                </button>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini"
+                    v-on:click="openLibrosDirectory">
+                    ↗️
+                </button>
+            </div>
+        </div>
+    </div>
+    <table class="width_100"
+        v-if="titles && titles.length">
+        <tbody>
+            <tr class=""
+                v-for="title, titleIndex in titles"
+                v-bind:key="'title_' + titleIndex">
+                <td>
+                    <button class="supermini"
+                        v-on:click="() => openLibro(title)">
+                        ▶️
+                    </button>
+                </td>
+                <td>
+                    <button class="supermini"
+                        v-on:click="() => editLibro(title)">
+                        ↗️
+                    </button>
+                </td>
+                <td>{{ titleIndex + 1 }}.</td>
+                <td class="width_100">{{ title }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="" v-else>
+        No hay libros disponibles actualmente.
+    </div>
+</div>

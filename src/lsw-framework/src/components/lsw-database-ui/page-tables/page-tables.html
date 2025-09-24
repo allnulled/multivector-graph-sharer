@@ -1,0 +1,51 @@
+<div class="page_tables page">
+    <div class="typical_title_1 flex_row centered">
+        <div class="flex_100">
+            <div class="display_inline_block nowrap">📦 Tablas de {{ args.database }}</div>
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini visibility_hidden">ok</button>
+        </div>
+    </div>
+    <lsw-database-breadcrumb :breadcrumb="breadcrumb"
+        :database-explorer="databaseExplorer" />
+    <div v-if="tablesAsList">
+        <div class="pad_bottom_1">
+            <div class="h4">Tablas disponibles:</div>
+        </div>
+        <div class="lista_de_tablas_disponibles">
+            <div class=""
+                style="padding-bottom:1px;"
+                v-for="tableData, tableIndex, tableCounter in tablesAsList"
+                v-bind:key="'table_id_' + tableData.id">
+                <button class="supermini width_100 text_align_left"
+                    v-on:click="() => openTable(tableData.id)">
+                    <span class="table_index">{{ tableIndex + 1 }}. </span>
+                    <span class="table_name">{{ tableData.id }}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div v-if="tablesAsList && tablesAsList.length">
+        <div class="pad_top_1 flex_row">
+            <div class="h4 flex_100">Esquema de tablas:</div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini" v-on:click="toggleSchema">💡</button>
+            </div>
+        </div>
+        <div v-if="isShowingSchema">
+            <lsw-table :initial-input="tablesAsList"
+                :initial-settings="{
+                    title: 'Tablas de ' + args.database,
+                    itemsPerPage: 50,
+                    columnsAsList: ['indexes'],
+                    columnsOrder: ['name', 'indexes', 'keyPath']
+                }"
+                :row-buttons="[{
+                header: '',
+                text: '↗️',
+                event: (row, i) => openTable(row.name)
+            }]"></lsw-table>
+        </div>
+    </div>
+</div>

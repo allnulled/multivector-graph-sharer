@@ -1,0 +1,15 @@
+{
+  "name": "lsw-trigger",
+  "version": "1.0.0",
+  "description": "Trigger tool for Lite Starter Webkit.",
+  "main": "triggers-class.js",
+  "scripts": {
+    "build": "echo 'no building for @allnulled/lsw-trigger'",
+    "versionate": "echo 'no versionate for @allnulled/lsw-trigger'",
+    "test": "echo 'no test for @allnulled/lsw-trigger'",
+    "test-browser": "npx http-server -c-1 . -o test.html"
+  },
+  "keywords": ["triggers", "event-emitter"],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

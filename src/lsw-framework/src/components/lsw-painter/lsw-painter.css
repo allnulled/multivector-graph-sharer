@@ -1,0 +1,4 @@
+.lsw_painter {}
+.lsw_painter .canvas_holder {
+    min-height: 250px;
+}

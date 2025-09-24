@@ -1,0 +1,59 @@
+<div class="">
+    <div class="lsw_error_box_container">
+        <div class="lsw_error_box">
+            <div class="position_absolute_fixed"
+                style="bottom: auto; left: auto; top: 0px; right: 0px;">
+                <div class="flex_row centered pad_1">
+                    <div class="flex_1">
+                        <button class="supermini"
+                            v-on:click="toggleTrace">
+                            <span>{{ isShowingTrace ? '➖' : '➕' }}</span>
+                        </button>
+                    </div>
+                    <div class="flex_1 pad_left_1"
+                        v-if="typeof onClearError === 'function'">
+                        <button class="supermini"
+                            v-on:click="clearError">❎</button>
+                    </div>
+                </div>
+            </div>
+            <div v-if="typeof error === 'object'">
+                <div v-if="typeof error.location !== 'undefined'">
+                    <lsw-syntax-error-viewer :error="error" />
+                </div>
+                <div v-else-if="error instanceof Error">
+                    <div class="error_clue">
+                        <div class="error_topbar">
+                            <button class="supermini"
+                                v-on:click="toggleTrace">
+                                <span>⚠️</span>
+                            </button>
+                            <span v-if="context"> 🔩 {{context}}.</span>
+                        </div>
+                        <div class="error_main_block">
+                            <span class="error_name">{{ error.name }}: </span>
+                            <span class="error_message">
+                                {{ error.message }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="error_stack"
+                        v-if="isShowingTrace">
+                        <div v-for="line, lineIndex in error.summarized().stack"
+                            v-bind:key="'error_line_' + lineIndex">
+                            <div>
+                                <div>{{ line[1] }} @ {{ line[0] }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-else>
+                    <pre class="codeblock">Error (non-error) of type {{ typeof error }}: {{ error }}</pre>
+                </div>
+            </div>
+            <div v-else>
+                <pre class="codeblock">Error (non-object) of type {{ typeof error }}: {{ error }}</pre>
+            </div>
+        </div>
+    </div>
+</div>

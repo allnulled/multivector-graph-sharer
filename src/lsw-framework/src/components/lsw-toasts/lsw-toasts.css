@@ -1,0 +1,42 @@
+.lsw_toasts {
+    position: fixed;
+    top: auto;
+    left: 30px;
+    right: 30px;
+    bottom: 10px;
+}
+.lsw_toasts .toasts_box {
+    position: relative;
+}
+.lsw_toasts .toasts_box > .toast_list {
+    position: absolute;
+    top: auto;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+}
+
+.lsw_toasts .toast_box {
+    text-align: center;
+}
+.lsw_toasts .toast_box > .toast_item {
+    display: block;
+    width: auto;
+}
+.lsw_toasts .toast_box > .toast_item > .toast {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    border: 3px double black;
+    border-radius: 0pt;
+    box-shadow: 0 0 4px black;
+    min-height: 30px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding: 10px;
+    margin-bottom: 2px;
+    cursor: pointer;
+}

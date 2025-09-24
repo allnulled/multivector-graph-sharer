@@ -1,0 +1,19 @@
+{
+  "name": "@allnulled/lsw-reloader",
+  "version": "1.0.0",
+  "description": "Reloader/reloadable tool for LSW",
+  "main": "reloader.js",
+  "scripts": {
+    "build": "echo 'no building for node.js of @allnulled/lsw-reloader'",
+    "test": "echo 'no test for node.js of @allnulled/lsw-reloader'",
+    "versionate": "echo 'no versionate for node.js of @allnulled/lsw-reloader'"
+  },
+  "keywords": [],
+  "author": "allnulled",
+  "license": "WTFPL",
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}

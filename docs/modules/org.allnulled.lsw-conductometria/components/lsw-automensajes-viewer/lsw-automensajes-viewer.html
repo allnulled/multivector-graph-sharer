@@ -1,0 +1,25 @@
+<div class="lsw_automensajes_viewer">
+    <div class="pad_0 pad_top_1 pad_right_1">
+        <div class="flex_row centered">
+            <div class="flex_1 pad_right_1 pad_left_1" v-if="isMounted">
+                <lsw-apps-viewer-button :viewer="$refs.appPanel" />
+            </div>
+            <div class="flex_100 automensaje_block position_relative" :style="{ fontSize: selectedFontsize + 'px' }" v-on:click="refreshAutomessaging">
+                <div class="position_absolute_fixed flex_row centered">
+                    <div class="flex_1" v-if="selectedAutomensaje">
+                        {{ selectedAutomensaje }}
+                    </div>
+                    <div class="flex_1" v-else>
+                        Eslóganes para ti aquí.
+                    </div>
+                </div>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="rounded superbig" id="the_picas_button" v-on:click="procedureForPicas">{{ simboloActual }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="pad_1">
+        <lsw-apps-viewer-panel ref="appPanel" />
+    </div>
+</div>

@@ -1,0 +1,215 @@
+<div class="lsw_js_inspector">
+    <lsw-typical-title :buttons="[{text:'💻',event:() => openConsole()}]">🪲 JS inspector</lsw-typical-title>
+    <div class="flex_row centered pad_top_1">
+        <div class="flex_1">📋: </div>
+        <div class="flex_100 pad_left_1">
+            <select class="width_100 supermini"
+                v-model="selectedTab">
+                <option v-for="tab, tabIndex in tabs"
+                    v-bind:key="'js_inspector_tab_option_' + tabIndex"
+                    :value="tab.uid">
+                    {{ tab.id }} ({{ tab.uid }})
+                </option>
+            </select>
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini"
+                v-on:click="cloneTab">
+                🐑🐑
+            </button>
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini"
+                v-on:click="addTab">
+                ➕
+            </button>
+        </div>
+    </div>
+    <div>
+        <div class="inspector_tabs"
+            v-for="tab, tabIndex in tabs"
+            v-bind:key="'js_inspector_tab_option_' + tabIndex">
+            <template v-if="selectedTab === tab.uid">
+                <div class="flex_row pad_top_1">
+                    <div class="flex_100">
+                        <div>
+                            <div>
+                                <div class="flex_row centered">
+                                    <div class="flex_100 flex_row centered">
+                                        <div class="flex_1 pad_right_1">#️⃣: </div>
+                                        <div class="flex_100">
+                                            <input class="width_100 supermini"
+                                                type="text"
+                                                v-model="tab.id"
+                                                v-on:keypress.enter="digestInput" />
+                                        </div>
+                                        <div class="flex_1 pad_left_1">
+                                            <button class="supermini"
+                                                v-on:click="() => resetTabId(tabIndex)">❎</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex_row centered pad_top_1">
+                                    <div class="flex_1 pad_right_1 align_self_start">
+                                        🪲:
+                                    </div>
+                                    <div class="flex_1 pad_right_1 align_self_start">
+                                        <button class="supermini"
+                                            v-on:click="() => backProperty(tabIndex)">⬅️</button>
+                                    </div>
+                                    <div class="flex_100">
+                                        <input class="width_100 supermini"
+                                            type="text"
+                                            v-model="tab.inputSource"
+                                            v-on:keypress.enter="digestInput" />
+                                    </div>
+                                    <div class="flex_1 pad_left_1">
+                                        <button class="supermini"
+                                            v-on:click="() => resetTabInput(tabIndex)">❎</button>
+                                    </div>
+                                </div>
+                                <lsw-error-box v-if="errorGettingInput"
+                                    :error="errorGettingInput"
+                                    :on-clear-error="() => errorGettingInput = false" />
+                            </div>
+                            <div v-if="(typeof outputValue === 'object') || (typeof outputValue === 'function')">
+                                <div>
+                                    <div class="flex_row centered pad_top_1">
+                                        <div class="flex_1 pad_right_1 align_self_start pad_top_1">
+                                            🎯:
+                                        </div>
+                                        <div class="flex_100">
+                                            <input class="supermini width_100"
+                                                type="text"
+                                                v-model="tab.pathSource"
+                                                placeholder="Jmespath, ej: list.*.property"
+                                                v-on:keypress.enter="digestInput" />
+                                        </div>
+                                        <div class="flex_1 pad_left_1">
+                                            <button class="supermini"
+                                                v-on:click="() => resetTabPath(tabIndex)">❎</button>
+                                        </div>
+                                    </div>
+                                    <template v-if="errorPathingInput">
+                                        <lsw-error-box :error="errorPathingInput"
+                                            :on-clear-error="() => errorPathingInput = false" />
+                                    </template>
+                                </div>
+                                <div>
+                                    <div class="flex_row pad_top_1">
+                                        <div class="flex_1 pad_right_1 align_self_start pad_top_1">
+                                            💉:
+                                        </div>
+                                        <div class="flex_100">
+                                            <textarea class=""
+                                                spellcheck="false"
+                                                v-model="tab.transformerSource"
+                                                placeholder="Js transformer, ej: return it.map(row => row.field)"
+                                                v-on:keypress.ctrl.enter="digestInput" />
+                                        </div>
+                                        <div class="flex_1 pad_left_1 align_self_stretch">
+                                            <button class="supermini height_100"
+                                                v-on:click="() => resetTabTransformer(tabIndex)">❎</button>
+                                        </div>
+                                    </div>
+                                    <lsw-error-box v-if="errorTransformingInput"
+                                        :error="errorTransformingInput"
+                                        :on-clear-error="() => errorTransformingInput = false" />
+                                </div>
+                                <div>
+                                    <div class="flex_row centered pad_top_1">
+                                        <div class="flex_1 pad_right_1 align_self_start pad_top_1">
+                                            🔎:
+                                        </div>
+                                        <div class="flex_100">
+                                            <input class="width_100 supermini"
+                                                type="text"
+                                                :value="tab.searchSource"
+                                                placeholder="Filtra propiedades por texto"
+                                                v-on:input="(e) => updateSearchWithDelay(tab, e.target.value)"
+                                                v-on:keypress.enter="digestInput" />
+                                        </div>
+                                        <div class="flex_1 pad_left_1">
+                                            <button class="supermini"
+                                                v-on:click="() => resetTabSearch(tabIndex)">❎</button>
+                                        </div>
+                                    </div>
+                                    <lsw-error-box v-if="errorTransformingInput"
+                                        :error="errorTransformingInput"
+                                        :on-clear-error="() => errorTransformingInput = false" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex_1 pad_left_1"
+                        style="min-width: 30px;">
+                        <button class="supermini"
+                            style="min-width: 26px; left: 4px; height: 100%;"
+                            v-on:click="digestInput">
+                            🛜
+                        </button>
+                    </div>
+                </div>
+                <div class="pad_top_1"
+                    v-if="isDigesting">
+                    Cargando nuevas referencias. Por favor, aguarde...
+                </div>
+                <div v-else>
+                    <div class="flex_row centered pad_top_1"
+                        v-if="output !== emptyOutput">
+                        <div class="flex_1 pad_right_1 align_self_start pad_top_1">
+                            🔦:
+                        </div>
+                        <div class="flex_100">
+                            <button class="supermini vertical_align_top margin_bottom_1"
+                                :class="'colorize_for_type_default'"
+                                v-on:click="() => backProperty(tabIndex)">
+                                ⬅️ Ir a anterior
+                            </button>
+                            <template v-if="typeof outputValue === 'object' && outputValue === null">
+                                <span class="colorize_for_type_object">null</span>
+                            </template>
+                            <template v-else-if="(typeof outputValue === 'function') || (typeof outputValue === 'object')">
+                                <template v-for="outputKey, outputIndex in LswJsInspector.keysFrom(outputValue)">
+                                    <div class="display_inline_block pad_bottom_1 pad_right_1"
+                                        v-if="(tab.searchSource.trim() === '') || (outputKey.toLowerCase().indexOf(tab.searchSource.toLowerCase()) !== -1)"
+                                        v-bind:key="'tab_' + tabIndex + '_function_prop_' + outputIndex">
+                                        <button class="supermini"
+                                            :class="'colorize_for_type_' + typeof outputValue[outputKey]"
+                                            v-on:click="() => openProperty(tabIndex, outputKey)">
+                                            <span class="property_enumerator">[{{ outputIndex }}]</span>
+                                            <span>{{ outputKey }}</span>
+                                        </button>
+                                    </div>
+                                </template>
+                                <div v-if="typeof outputValue === 'function'">
+                                    <div class="js_inspector_typeof_box"
+                                        :class="'colorize_for_type_' + typeof outputValue">Type of <b>{{ typeof outputValue }}</b>:</div>
+                                    <div>
+                                        <lsw-js-viewer :source="beautifier.js(outputValue.toString())" />
+                                    </div>
+                                </div>
+                            </template>
+                            <template v-else>
+                                <div class="">
+                                    <div class="js_inspector_typeof_box"
+                                        :class="'colorize_for_type_' + typeof outputValue">Type of <b>{{ typeof outputValue }}:</b></div>
+                                        <template>
+                                            <div class="js_inspector_value_box"
+                                                :class="'colorize_for_type_' + typeof outputValue"
+                                                v-if="typeof outputValue !== 'string'">{{ output }}</div>
+                                            <template v-else>
+                                                <lsw-js-viewer :source="outputValue" />
+                                            </template>
+                                        </template>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</div>

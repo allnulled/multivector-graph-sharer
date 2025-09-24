@@ -1,0 +1,48 @@
+<div class="lws_dialogs_root">
+    <div class="lsw_dialogs"
+        v-if="openedLength && notMinimizedLength">
+        <div class="lsw_dialogs_box">
+            <template v-for="dialog, dialog_index in opened">
+                <template v-if="!dialog.minimized">
+                    <div class="dialog_window"
+                        v-bind:key="'dialog_' + dialog_index"
+                        :style="{ zIndex: dialog.priority }">
+                        <div class="dialog_topbar">
+                            <div class="dialog_title">
+                                {{ dialog.title }}
+                            </div>
+                            <div class="dialog_topbar_buttons">
+                                <button
+                                    class=""
+                                    v-if="enabledWindowsSystem"
+                                    v-on:click="goHome">🔵</button>
+                                <button
+                                    class=""
+                                    v-on:click="minimize(dialog.id)">➖</button>
+                                <button
+                                    class=""
+                                    v-on:click="close(dialog.id)">❌</button>
+                            </div>
+                        </div>
+                        <div class="dialog_body">
+                            <component :is="dialog.name" :ref="'currentDialogComponent_' + dialog_index" />
+                        </div>
+                        <div class="dialog_footer">
+                            <button v-if="dialog && dialog.acceptButton"
+                                class="mini"
+                                v-on:click="() => dialog.acceptButton.callback ? dialog.acceptButton.callback($refs['currentDialogComponent_' + dialog_index][0], dialog, dialog.id, this) : resolve(dialog.id).close()">{{
+                                dialog.acceptButton.text || "✔️ Aceptar" }}</button>
+                            <button v-if="dialog && dialog.cancelButton"
+                                class="mini"
+                                v-on:click="() => dialog.cancelButton.callback ? dialog.cancelButton.callback($refs['currentDialogComponent_' + dialog_index][0], dialog, dialog.id, this) : close(dialog.id)">{{
+                                dialog.cancelButton.text || "❌ Cancelar" }}</button>
+                            <button v-else
+                                class="mini"
+                                v-on:click="() => close(dialog.id)">{{ dialog?.cancelButton?.text || "❌ Cancelar" }}</button>
+                        </div>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </div>
+</div>

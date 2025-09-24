@@ -1,0 +1,14 @@
+{
+  "name": "@allnulled/lsw-table",
+  "version": "1.0.0",
+  "description": "Table UI tool for LSW",
+  "main": "lsw-table.compiled.js",
+  "scripts": {
+    "build": "node bundler.js",
+    "test": "echo 'no tests for lsw-table'",
+    "versionate": "echo 'no versionate for lsw-table'"
+  },
+  "keywords": [],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

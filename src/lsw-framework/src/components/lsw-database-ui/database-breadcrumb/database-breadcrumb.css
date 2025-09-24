@@ -1,0 +1,14 @@
+.database_breadcrumb {
+    padding: 4px;
+}
+.database_breadcrumb_box {
+    padding: 4px;
+    border: 1px solid #999;
+    background-color: #DDD;
+    text-shadow: 0 0 1px black;
+}
+
+.hideBreadcrumb > div > h3,
+.hideBreadcrumb > div > .database_breadcrumb {
+    display: none;
+}

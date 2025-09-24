@@ -1,0 +1,26 @@
+# instalar cordova
+
+npx install cordova
+npx cordova create open-editor com.allnulled.openEditor
+cd open-editor
+npx cordova platform add android
+npx cordova build android
+
+# salta error
+# instalar android studio
+# instalar las commandline-tools de android studio
+# en el .bashrc:
+export ANDROID_HOME=/home/carlos/Android/last-sdk
+export ANDROID_SDK_ROOT=/home/carlos/Android/last-sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin
+# seguimos probando lo que nos daba error:
+
+npx cordova build android
+
+# ahora falla el gradle porque no lo encuentra
+# instalamos gradle con apt
+# ahora falla el gradle y no sabemos por qué
+# desinstalamos gradle de apt
+# encontramos el gradle de ~/.gradle/dist/...
+# ponemos el path para este gradle que es de versión 8
+# y compila finalmente.

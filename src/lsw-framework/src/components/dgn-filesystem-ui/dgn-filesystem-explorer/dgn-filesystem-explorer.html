@@ -1,0 +1,23 @@
+<div class="dgn_filesystem_explorer">
+    <div class=""
+        v-for="subnode, subnodeIndex in homepage.content"
+        v-bind:key="'subnode_' + subnodeIndex">
+        <div class="flex_row centered pad_top_1">
+            <div class="flex_100">
+                <button class="supermini text_align_left width_100"
+                    v-on:click="() => homepage.goTo(subnode[2])">
+                    <span>{{ subnode[1] === 'file' ? '📄' : '📁' }} </span>
+                    <span> {{ subnode[0] }}</span>
+                </button>
+            </div>
+            <div class="flex_1 pad_left_1" v-if="homepage.selectedNode !== '/'">
+                <button class="supermini"
+                    v-if="subnode[1] === 'file'"
+                    v-on:click="() => deleteFile(subnode[2])">🔥 ❌</button>
+                <button class="supermini"
+                    v-else
+                    v-on:click="() => deleteDirectory(subnode[2])">🔥 ❌</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="lsw_chart_builder">
+    <lsw-typical-title :buttons="false">
+        <div class="flex_row centered">
+            <div class="flex_100">📊 Constructor de gráficas</div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini" v-on:click="() => LswUtils.copyToClipboard('https://observablehq.com/plot/what-is-plot')">ℹ️</button>
+            </div>
+            <div class="flex_1 pad_left_1" v-if="selectedPage === 'grafica'">
+                <button class="supermini" v-on:click="() => goToEditor()">⬅️ ✏️</button>
+            </div>
+            <div class="flex_1 pad_left_1" v-if="selectedPage === 'editor'">
+                <button class="supermini" v-on:click="() => goToChart()">⬅️ 📊</button>
+            </div>
+        </div>
+    </lsw-typical-title>
+    <div class="" v-if="selectedPage === 'editor'">
+        <textarea class="" spellcheck="false" v-model="source" :placeholder="placeholder" style="height: 120px;"></textarea>
+    </div>
+    <div class="" v-if="selectedPage === 'grafica'">
+        <div class="" v-if="error">{{ error }}</div>
+        <div class="chart_holder" ref="chartHolder"></div>
+    </div>
+</div>

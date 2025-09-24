@@ -1,0 +1,11 @@
+.lsw_markdown_viewer ol,
+.lsw_markdown_viewer ul {
+    padding-left: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.lsw_markdown_viewer p {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}

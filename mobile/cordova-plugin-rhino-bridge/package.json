@@ -1,0 +1,15 @@
+{
+  "name": "cordova-plugin-rhinobridge",
+  "version": "1.0.0",
+  "description": "Rhino bridge to use JavaScript as native code",
+  "cordova": {
+    "id": "com.allnulled.rhinobridge",
+    "platforms": ["android"]
+  },
+  "keywords": [
+    "cordova",
+    "plugin"
+  ],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

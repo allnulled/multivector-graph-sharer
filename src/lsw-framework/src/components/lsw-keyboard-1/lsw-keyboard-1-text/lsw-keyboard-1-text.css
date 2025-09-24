@@ -1,0 +1,55 @@
+.lsw_keyboard_1_text {
+    font-family: monospace;
+}
+.lsw_keyboard_1_text .keyboard_text_container {
+    border: 1px solid #CCC;
+}
+.lsw_keyboard_1_text .keyboard_text_container.activated {
+    font-family: monospace;
+    border: 1px solid #333;
+}
+.lsw_keyboard_1_text .keyboard_text {
+    display: table;
+}
+.lsw_keyboard_1_text .line {
+    display: table-row;
+    min-width: 8px;
+    min-height: 16px;
+}
+.lsw_keyboard_1_text .line.activated {
+    background-color: rgba(223, 81, 25, 0.4);
+}
+.lsw_keyboard_1_text .cursor {
+    text-shadow: 0 0 4px black;
+    position: absolute;
+    left: -4px;
+}
+.lsw_keyboard_1_text .character {
+    display: table-cell;
+    position: relative;
+    user-select: none;
+    white-space: default;
+    min-width: 8px;
+    min-height: 16px;
+    border-right: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+}
+.lsw_keyboard_1_text .character.activated {
+    background-color: rgba(223, 81, 25, 0.8);
+}
+.lsw_keyboard_1_text .character.selected {
+    background-color: yellow;
+    color: black;
+}
+.lsw_keyboard_1_text .line_number {
+    padding-left: 8px;
+    padding-right: 8px;
+    border-right: 1px solid #333;
+}
+.marked_line {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.3);
+    min-height: 20px;
+}

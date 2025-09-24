@@ -1,0 +1,64 @@
+<div class="lsw_conductometria_reports">
+    <lsw-typical-title>Reporte: </lsw-typical-title>
+    <h3 class="pad_1">{{ reportId }}</h3>
+    <div v-if="!isLoaded">
+        <div class="">Reporte cargando. Un momento por favor...</div>
+    </div>
+    <div class="pad_1" v-else>
+        <div class="report_block" v-if="Array.isArray(report)">
+            <h4>
+                <div class="flex_row centered">
+                    <div class="flex_100">
+                        Contenido de reporte por dato:
+                    </div>
+                    <div class="flex_1">
+                        <button class="supermini" v-on:click="openReportSource">📄 ↗️</button>
+                    </div>
+                </div>
+            </h4>
+            <lsw-table :initial-input="report" :initial-settings="{title: reportId}" />
+        </div>
+        <div class="report_block" v-else-if="typeof report === 'object'">
+            <h4>
+                <div class="flex_row centered">
+                    <div class="flex_100">
+                        Índice de reporte por datos:
+                    </div>
+                    <div class="flex_1">
+                        <button class="supermini" v-on:click="openReportSource">📄 ↗️</button>
+                    </div>
+                </div>
+            </h4>
+            <ul>
+                <li v-for="reportItem, reportIndex in report"
+                    v-bind:key="'report-' + reportIndex">
+                    <div class="linkable_text has_light_bg" v-on:click="() => goToReportTitle(reportIndex)">{{ reportIndex }}</div>
+                </li>
+            </ul>
+            <h4>
+                <div class="flex_row centered">
+                    <div class="flex_100">
+                        Secciones de reporte por datos:
+                    </div>
+                </div>
+            </h4>
+            <div v-for="reportItem, reportIndex in report"
+                v-bind:key="'report-' + reportIndex">
+                <lsw-table :initial-input="reportItem" :initial-settings="{title: reportIndex}" :ref="'report_' + reportIndex" />
+            </div>
+        </div>
+        <div class="report_block" v-if="typeof report === 'string'">
+            <h4>
+                <div class="flex_row centered">
+                    <div class="flex_100">
+                        Contenido de reporte por plantilla:
+                    </div>
+                    <div class="flex_1">
+                        <button class="supermini" v-on:click="openReportSource">📄 ↗️</button>
+                    </div>
+                </div>
+            </h4>
+            <lsw-sourceable :source="report"></lsw-sourceable>
+        </div>
+    </div>
+</div>

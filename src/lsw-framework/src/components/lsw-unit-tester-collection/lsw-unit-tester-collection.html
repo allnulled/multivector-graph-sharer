@@ -1,0 +1,53 @@
+<div class="lsw_unit_tester_collection">
+    <!--lsw-pegjs-tester /-->
+    <div v-if="!autorun">
+        <div class="tester_title">
+            <div>☢️ All test collections: {{ allTests.length }}</div>
+        </div>
+        <div v-for="test, testIndex in allTests"
+            v-bind:key="'all_test_index_' + testIndex">
+            <div style="min-height: 1px;"></div>
+            <div v-if="typeof test.$lswTester === 'object' && (startedTests.indexOf(test) !== -1)">
+                <lsw-unit-tester :test="test" />
+            </div>
+            <div v-else>
+                <div class="supermini width_100 text_align_left pad_vertical_1">
+                    <div class="flex_row centered">
+                        <div class="flex_1">
+                            <button class="supermini"
+                                v-on:click="() => startTest(testIndex)">
+                                ▶️
+                            </button>
+                        </div>
+                        <div class="flex_100 pad_horizontal_1">
+                            <div>{{ testIndex + 1 }}. Run test {{ test.$lswTestId || (testIndex + 1) }}</div>
+                        </div>
+                        <div class="flex_1">
+                            <button class="supermini"
+                                v-on:click="() => startTest(testIndex)">
+                                ▶️
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div v-else>
+        <div class="tester_title">
+            <div>☢️ Started test collections: {{ startedTests.length }}/{{ allTests.length }}</div>
+        </div>
+        <div v-for="test, testIndex in startedTests"
+            v-bind:key="'started_test_index_' + testIndex">
+            <div style="min-height: 1px;"></div>
+            <lsw-unit-tester
+                :test="test"
+                :on-finish="report => nextTest(report)"
+            />
+        </div>
+        <div v-if="isCompleted" class="tester_title text_align_center pad_2">
+            <div v-if="isPassed === false">💥 Tests fallidos 💥</div>
+            <div v-else>🎉 Tests exitoso 🎉</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="lsw_volatile_ui">
+    <lsw-typical-title :buttons="tablesPageButtons">
+        ♨️ Base de datos volátil ♨️
+    </lsw-typical-title>
+    <div v-if="currentPage === 'tables'"
+        class="">
+        <lsw-loading-bar v-if="!isMetadataLoaded" />
+        <div v-else-if="allTables.length === 0"
+            class="pad_1">
+            🌵 No hay tablas actualmente 🌵
+        </div>
+        <div class="tables_list"
+            v-else>
+            <div class="flex_row centered"
+                v-for="table, tableIndex in allTables"
+                v-bind:key="'table_' + tableIndex">
+                <div class="flex_100">
+                    <div class="table_item"
+                        v-on:click="() => selectTable(table)">
+                        {{ tableIndex + 1 }}. {{ table }}
+                    </div>
+                </div>
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini"
+                        v-on:click="() => { deleteTable(table) }">
+                        🔥❌
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div v-else-if="currentPage === 'table'"
+        class="">
+        <hr />
+        <lsw-typical-title :buttons="tablePageButtons">Tabla: {{ currentTable }} [con {{ allRows.length }} ítems]</lsw-typical-title>
+        <!--pre>{{ allRows }}</pre-->
+        <lsw-loading-bar v-if="!isDataLoaded" />
+        <div class="" v-else>
+            <div class="fila"
+                v-for="row, rowIndex in allRows"
+                v-bind:key="'row_' + rowIndex">
+                <div class="flex_row centered">
+                    <div class="flex_100">{{ currentTable }} <b>#{{ row.id }}</b></div>
+                    <div class="flex_1">
+                        <button class="supermini"
+                            v-on:click="deleteRow(currentTable, row.id)">🔥❌</button>
+                    </div>
+                </div>
+                <div class="pad_top_1"></div>
+                <div class="propiedad_de_fila"
+                    v-for="valor, propiedad in row"
+                    v-if="propiedad !== 'id'"
+                    v-bind:key="'row_' + rowIndex + '_propname_' + propiedad">
+                    <div class="propiedad">
+                        {{ LswUtils.subtextualize(propiedad, 100) }}:
+                    </div>
+                    <div class="valor"
+                        v-if="((currentTable + '::' + row.id) in isExpandedRow) && (isExpandedRow[currentTable + '::' + row.id])"
+                        v-on:click="() => {return; unexpandValue(currentTable, row.id)}">
+                        {{ valor }}
+                    </div>
+                    <div class="valor"
+                        v-else
+                        v-on:click="() => expandValue(currentTable, row.id)">
+                        {{ LswUtils.subtextualize(valor, 30) }}
+                    </div>
+                    <button class="supermini" v-on:click="() => openEditRowPropertyDialog(currentTable, row.id, propiedad, valor)">✏️</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

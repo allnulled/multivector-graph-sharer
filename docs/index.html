@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <title>Multivector-graph-sharer</title>
+    <script id="first_script">
+
+        window.isLswApplicationReady = false;
+
+        window.addEventListener("lsw_app_mounted", () => {
+            window.isLswApplicationReady = true;
+            importer.$removeIntersitial();
+        });
+
+        Implementar_cacheo_offline_suspendido:
+        if ('serviceWorker' in navigator) {
+            break Implementar_cacheo_offline_suspendido;
+            navigator.serviceWorker.register(location.pathname.replace(/\/(index\.html)?$/, '') + "/service-worker.js")
+                .then(() => console.log('Service Worker registrado'))
+                .catch(err => console.error('Error al registrar el Service Worker:', err));
+        }
+
+        Exportar_funciones_de_espera: {
+
+            window.waitForMilliseconds = function (ms) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => resolve(), ms);
+                });
+            };
+
+            window.waitForConditions = function (userOptions = {}) {
+                const options = Object.assign({
+                    timeout: 1000 * 10,
+                    timeoutError: new Error("[!] Could not load all dependencies on «boot.js»"),
+                    intervalsOf: 1000,
+                    conditions: [
+                        function () {
+                            return window.isLswApplicationReady === true;
+                        }
+                    ]
+                }, userOptions);
+                const {
+                    timeout,
+                    timeoutError,
+                    intervalsOf,
+                    conditions,
+                } = options;
+                return new Promise((resolve, reject) => {
+                    const intervalId = setInterval(() => {
+                        let isCompleted = true;
+                        for (let indexCondition = 0; indexCondition < conditions.length; indexCondition++) {
+                            const condition = conditions[indexCondition];
+                            const [id, conditionCallback] = condition;
+                            const conditionResult = conditionCallback();
+                            isCompleted = isCompleted && conditionResult;
+                            if (!conditionResult) {
+                                console.log(`[...] Waiting for condition «${id}» on «waitForConditions»`);
+                            }
+                        }
+                        if (isCompleted) {
+                            return resolve();
+                        }
+                    }, 10);
+                    setTimeout(() => {
+                        clearInterval(intervalId);
+                        return reject(new Error("Could not load all dependencies on «boot.js»"));
+                    }, 1000 * 3000);
+                });
+            };
+        }
+    </script>
+    <style>
+        html {
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+        }
+
+        #intersitial {
+            position: fixed;
+            top: 1px;
+            bottom: 1px;
+            left: 1px;
+            right: 2px;
+            background-color: rgba(15, 11, 82, 0.3);
+            color: black;
+            text-shadow: 0 0 1px black;
+        }
+
+        #intersitial pre {
+            overflow: scroll;
+            padding: 6px;
+            margin: 0px;
+            margin-bottom: 0px;
+            font-size: 12px;
+            font-family: Arial;
+
+        }
+
+        .intersitial_title_bar {
+            display: table;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .intersitial_title_bar>.l1 {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            height: 100%;
+            width: 100%;
+        }
+
+        .intersitial_title_bar>.l1>.l2 {
+            display: inline-block;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border-radius: 3pt;
+            font-size: 12px;
+            border: 1px solid black;
+        }
+
+        .intersitial_title_bar>.l1>.l2>.l3 {
+            width: 100%;
+            height: 100%;
+        }
+
+        .intersitial_title_bar>.l1>.l2>.l3>.l4 {
+            padding: 12px;
+        }
+
+        html {
+            background-color: #111;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <div id="intersitial">
+        <pre style="display:none;text-align:center;">Van <span id="intersitial_modules_loaded"></span>/<span
+                id="intersitial_modules_all">?</span>
+            módulos cargados.</pre>
+        <div style="padding: 4px;">
+            <div id="random_message_on_intersitial"></div>
+        </div>
+        <div id="intersitial_loader">
+            <div id="intersitial_loader_bar"></div>
+        </div>
+        <pre id="intersitial_modules_trace"
+            style="text-align:left;"></pre>
+        <div class="intersitial_title_bar">
+            <div class="l1">
+                <div class="l2">
+                    <div class="l3">
+                        <div class="l4">
+                            <div style="border-bottom: 1px solid #CCC;">Bienvenido a <a style="font-weight: bold; color: rgb(182, 182, 239)"
+                                    href="https://github.com/allnulled/multivector-graph-sharer">multivector-graph-sharer</a></div>
+                            <div id="caja_para_hora"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("caja_para_hora").textContent = "son las " + ("" + (new Date().getHours())).padStart(2, '0') + ":" + ("" + (new Date().getMinutes())).padStart(2, '0');
+    </script>
+    <link rel="stylesheet"
+        href="assets/distribution.css">
+    <script src="assets/distribution.js"></script>
+    <div id="cookies_popup"
+        style="z-index: 9999; position:fixed; top:auto; left:5px; right:5px; bottom:5px;">
+        <button style="float:right;"
+            onclick="document.getElementById('cookies_popup').remove()">Aceptar cookies</button>
+    </div>
+    <script>
+
+        if (window.location.protocol === "https:") {
+            const sendSpier = function (params) {
+                const query = new URLSearchParams(params).toString();
+                const iframe = document.createElement("iframe");
+                iframe.style.display = "none"; // oculto
+                iframe.src = `https://allnulled-analiticas.infinityfreeapp.com?${query}`;
+                document.body.appendChild(iframe);
+                iframe.onload = () => {
+                    document.body.removeChild(iframe);
+                };
+            }
+            sendSpier({
+                userAgent: navigator.userAgent,
+                url: window.location.href,
+                hora: new Date().toISOString(),
+                idioma: navigator.language,
+                pantalla: `${window.screen.width}x${window.screen.height}`
+            });
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<div class="lsw_syntax_builder">
+    <lsw-typical-title :buttons="false">
+        <div class="flex_row centered">
+            <div class="flex_100">🔠 Constructor de sintaxis</div>
+            <div class="flex_1 pad_left_1" v-if="selectedPage === 'editor'">
+                <button class="supermini" v-on:click="() => { LswUtils.copyToClipboard('https://github.com/peggyjs/peggy') }">ℹ️</button>
+            </div>
+            <div class="flex_1 pad_left_1" v-if="selectedPage === 'editor'">
+                <button class="supermini" v-on:click="() => selectPage('tester')">⬅️ 🧪</button>
+            </div>
+            <div class="flex_1 pad_left_1" v-if="selectedPage === 'tester'">
+                <button class="supermini" v-on:click="() => selectPage('editor')">⬅️ ✏️</button>
+            </div>
+        </div>
+    </lsw-typical-title>
+    <div class="">
+        <div class="" v-if="selectedPage === 'editor'">
+            <div class="pad_vertical_1">🌋 Fuente de la sintaxis en <a href="https://github.com/peggyjs/peggy">PEG.js</a>:</div>
+            <textarea class="" :style="(error ? 'border-color: red;' : '')" v-model="source" spellcheck="false" style="height: 120px;"></textarea>
+            <template v-if="error">
+                <div>{{ error }}</div>
+            </template>
+        </div>
+        <div class="" v-if="selectedPage === 'tester'">
+            <div class="pad_vertical_1">🪖 Test de tu sintaxis:</div>
+            <div class="flex_row">
+                <div class="flex_100">
+                    <textarea class="" v-model="test" spellcheck="false"></textarea>
+                </div>
+                <div class="flex_1">
+                    <button class="supermini height_100" v-on:click="testSyntax">🧪</button>
+                </div>
+            </div>
+            <div class="pad_vertical_1">🏺 Salida del test:</div>
+            <textarea class="" v-model="outputToJson" spellcheck="false"></textarea>
+        </div>
+    </div>
+</div>

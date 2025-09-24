@@ -1,0 +1,67 @@
+:root {
+  --goals_bar_height: 20px;
+}
+
+.lsw_goals_viewer {
+    
+}
+
+.goals_list {
+  overflow: scroll;
+}
+
+.goal_item {
+  
+}
+
+.bar_separation {
+  min-height: 1px;
+}
+.bar_holder {
+  background-color: rgba(255,255,255,0.4);
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 2pt;
+  padding: 1px;
+  min-height: 24px;
+  cursor: pointer;
+}
+.bar_text {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding-left: 8px;
+  padding-top: 4px;
+  font-size: 10px;
+  color: black;
+  white-space: nowrap;
+}
+.bar_filler {
+  height: var(--goals_bar_height);
+  border-radius: 2pt;
+  box-shadow: 0 0 4px black;
+  min-width: 3px;
+}
+.concepto_box {
+  display: inline-block;
+  width: 100px;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.only_inlineblocks > div {
+  display: inline-block;
+}
+
+.goal_status_card {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 3pt;
+  border: 0px solid white;
+  padding: 4px;
+  padding-top: 0px;
+}
+
+.goal_status_card .goal_line {
+  border-bottom: 1px solid #333;
+}

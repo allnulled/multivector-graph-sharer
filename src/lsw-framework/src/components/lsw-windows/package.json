@@ -1,0 +1,14 @@
+{
+  "name": "lsw-windows",
+  "version": "1.0.0",
+  "description": "Windows manager tool for LSW",
+  "main": "lsw-windows.js",
+  "scripts": {
+    "build": "node bundler.js",
+    "test": "echo 'no test for lsw-windows'",
+    "versionate": "echo 'no versionate for lsw-windows'"
+  },
+  "keywords": [],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

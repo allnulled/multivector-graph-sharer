@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="cordova-plugin-rhinobridge" version="1.0.0"
+        xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Rhinobridge</name>
+    <description>Rhino bridge to use JavaScript as native code</description>
+    <author email="todosanulados@gmail.com" href="https://github.com/allnulled">
+        allnulled
+    </author>
+    <license>WTFPL</license>
+
+    <!-- Plataformas soportadas -->
+    <platform name="android">
+        <lib-file src="libs/rhino-1.7.13.jar" />
+        <source-file src="src/android/RhinobridgePlugin.java" target-dir="src/com/allnulled/rhinobridge" />
+        <source-file src="src/android/AndroidBridge.java" target-dir="src/com/allnulled/rhinobridge" />
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Rhinobridge">
+                <param name="android-package" value="com.allnulled.rhinobridge.RhinobridgePlugin" />
+            </feature>
+        </config-file>
+        <js-module src="www/rhinobridge.js" name="Rhinobridge">
+            <clobbers target="cordova.plugins.Rhinobridge" />
+        </js-module>
+    </platform>
+</plugin>

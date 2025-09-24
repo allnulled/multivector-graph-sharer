@@ -1,0 +1,64 @@
+<div class="lsw_search_replacer">
+    <div class="pad_1">
+        <div class="">
+            <div class="flex_row centered">
+                <div class="flex_1 nowrap">🔎 Buscar: </div>
+                <div class="flex_100 pad_left_1"></div>
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini activated has_light_bg" v-on:click="toggleRegexpMode">
+                        {{ searchAsRegexp ? "as: RegExp" : "as: Text" }}
+                    </button>
+                </div>
+                <div class="flex_1 pad_left_1">
+                    <!--button class="supermini" v-on:click="illuminateMatches">🔦</button-->
+                </div>
+            </div>
+            <div class="pad_top_1">
+                <textarea class="width_100"
+                    v-model="search"
+                    v-on:keyup.esc.prevent="cancel"
+                    v-focus></textarea>
+            </div>
+        </div>
+        <div class="pad_top_1">
+            <div class="flex_row centered">
+                <div class="flex_1 nowrap">↔️ Reemplazar: </div>
+                <div class="flex_100 pad_left_1"></div>
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini" v-on:click="replaceAllMatches">Visualizar ↔️*</button>
+                </div>
+            </div>
+            <div class="pad_top_1">
+                <textarea class="width_100"
+                    v-model="replace"
+                    v-on:keyup.esc.prevent="cancel"></textarea>
+            </div>
+        </div>
+        <hr />
+        <div class="pad_top_1">
+            <div class="flex_row centered">
+                <div class="flex_1 nowrap">💎 Salida: </div>
+                <div class="flex_100 pad_left_1"></div>
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini button_danger"
+                    v-on:click="accept">Aplicar cambios</button>
+                </div>
+            </div>
+            <div class="pad_top_1">
+                <pre class="codeblock pad_1" style="max-height: 600px; overflow: scroll;">{{ currentInput }}</pre>
+            </div>
+        </div>
+        <hr />
+        <div class="flex_row centered">
+            <div class="flex_100"></div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini button_danger"
+                    v-on:click="accept">Aplicar cambios</button>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini"
+                    v-on:click="cancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

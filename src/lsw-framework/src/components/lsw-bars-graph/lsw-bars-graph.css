@@ -1,0 +1,49 @@
+.lsw_bars_graph {}
+
+.barra_box {
+    position: relative;
+    width: 100%;
+    border: 1px solid #000000;
+    border-radius: 3pt;
+    height: 32px;
+    background-color: rgba(255,255,255,0.1);
+    overflow: hidden;
+}
+.barra_box:hover {
+
+}
+.barra_filler {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    bottom: 1px;
+    right: auto;
+    border: 0px solid rgb(0, 0, 0);
+    border-radius: 3pt;
+    background-color: rgba(2, 7, 33);
+    opacity: 0.4;
+    cursor: pointer;
+}
+.barra_box:hover .barra_filler {
+    background-color: rgba(2, 7, 33);
+    opacity: 0.5;
+}
+.barra_text {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: auto;
+    padding-top: 8px;
+    padding-left: 0px;
+    color: rgb(0, 0, 0);
+}
+.titulo_de_item {
+    padding-top: 4px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    font-size: 11px;
+}
+.texto_de_barra {
+    font-size: 10px;
+}

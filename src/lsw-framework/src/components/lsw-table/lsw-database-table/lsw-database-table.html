@@ -1,0 +1,205 @@
+<div class="lsw_table"
+    style="padding: 4px;">
+    <div>
+        <div class="lsw_table_top_panel">
+            <div class="flex_row centered">
+                <div class="flex_1">
+                    <button class="cursor_pointer"
+                        v-on:click="digestOutput">🛜</button>
+                </div>
+                <div class="flex_100 title_box">{{ title }}</div>
+                <div class="flex_1 lsw_table_top_button" v-for="topButton, topButtonIndex in attachedTopButtons" v-bind:key="'table-button-' + topButtonIndex">
+                    <button class="" v-on:click="topButton.event">
+                        {{ topButton.text }}
+                    </button>
+                </div>
+                <div class="flex_1">
+                    <button class="table_menu_div width_100"
+                        v-on:click="toggleMenu"
+                        :class="{activated: isShowingMenu === true}">
+                        <span v-if="hasFiltersApplying">🟡</span>
+                        <span v-else>⚪️</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div v-if="isShowingMenu">
+            <div class="">
+                <div class="table_navigation_menu_cell"
+                    colspan="1000">
+                    <div class="table_navigation_menu">
+                        <div class="flex_row centered">
+                            <div class="flex_1 nowrap">Estás en: </div>
+                            <div class="flex_100 left_padded_1">
+                                <select class="width_100 text_align_left"
+                                    v-model="isShowingSubpanel">
+                                    <option value="Extensor">Extensor ({{ extender.length }})</option>
+                                    <option value="Filtro">Filtro ({{ filter.length }})</option>
+                                    <option value="Ordenador">Ordenador ({{ sorter.length }})</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div v-if="isShowingSubpanel === 'Extensor'">
+                            <textarea spellcheck="false"
+                                v-model="extender"
+                                :placeholder="placeholderForExtensor"></textarea>
+                        </div>
+                        <div v-if="isShowingSubpanel === 'Filtro'">
+                            <textarea spellcheck="false"
+                                v-model="filter"
+                                :placeholder="placeholderForFiltro"></textarea>
+                        </div>
+                        <div v-if="isShowingSubpanel === 'Ordenador'">
+                            <textarea spellcheck="false"
+                                v-model="sorter"
+                                :placeholder="placeholderForOrdenador"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="paginator_widget this_code_is_duplicated_always">
+        <div>
+            <div>
+                <div class="flex_row centered">
+                    <div class="flex_1 pagination_button_box first_box">
+                        <div class="pagination_button first_button"
+                            v-on:click="goToFirstPage">⏪</div>
+                    </div>
+                    <div class="flex_1 pagination_button_box">
+                        <div class="pagination_button"
+                            v-on:click="decreasePage">◀️</div>
+                    </div>
+                    <div class="flex_100 text_align_center">{{ currentPage+1 }}</div>
+                    <div class="flex_1 pagination_button_box">
+                        <div class="pagination_button"
+                            v-on:click="increasePage">▶️</div>
+                    </div>
+                    <div class="flex_1 pagination_button_box last_box">
+                        <div class="pagination_button last_button"
+                            v-on:click="goToLastPage">⏩</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lsw_table_viewer">
+        <table class="collapsed_table lsw_table_itself translucid_background">
+            <thead v-if="paginatedOutput && headers">
+                <tr class="">
+                    <!--Id cell:-->
+                    <th>nº</th>
+                    <!--Selectable buttons headers:-->
+                    <th v-if="selectable === 1"></th>
+                    <th v-else-if="selectable === -1"></th>
+                    <!--Row buttons headers:-->
+                    <th class="button_header"
+                        v-for="attachedHeader, attachedHeaderIndex in attachedHeaders"
+                        v-bind:key="'attached-header-' + attachedHeaderIndex">{{ attachedHeader.text }}</th>
+                    <!--Object properties headers:-->
+                    <th v-for="header, headerIndex in headers"
+                        v-bind:key="'header-' + headerIndex">{{ header }}</th>
+                    <th>*size</th>
+                </tr>
+            </thead>
+            <template v-if="paginatedOutput && headers">
+                <tbody v-if="!paginatedOutput.length">
+                    <tr>
+                        <td colspan="1000"
+                            v-descriptor="'lsw_table.no_data_provided_message'">
+                            No data provided.
+                        </td>
+                    </tr>
+                </tbody>
+                <template v-else>
+                    <tbody>
+                        <template v-for="row, rowIndex in paginatedOutput">
+                            <tr class="row_for_table"
+                                :class="{ odd: rowIndex === 0 ? true : (rowIndex % 2 === 0) ? true : false }"
+                                v-bind:key="'row-for-table-' + rowIndex">
+                                <!--Id cell:-->
+                                <td class="index_cell">
+                                    <button v-on:click="() => toggleRow(rowIndex)"
+                                        :class="{activated: selectedRows.indexOf(row.id) !== -1}">
+                                        {{ rowIndex + (currentPage * itemsPerPage) }}
+                                    </button>
+                                </td>
+                                <!--Selectable cell:-->
+                                <td v-if="selectable === 1">
+                                    ...
+                                </td>
+                                <td v-else-if="selectable === -1">
+                                    ...
+                                </td>
+                                <!--Row buttons cells:-->
+                                <td class="button_cell" v-for="attachedColumn, attachedColumnIndex in attachedColumns"
+                                    v-bind:key="'attached-column-' + attachedColumnIndex">
+                                    <button v-on:click="() => rowButtons[attachedColumnIndex].event(row, rowIndex, attachedColumn)">{{ attachedColumn.text }}</button>
+                                </td>
+                                <!--Object properties cells:-->
+                                <td class="data_cell" v-for="columnKey, columnIndex in headers"
+                                    v-bind:key="'column-' + columnIndex"
+                                    :title="JSON.stringify(row[columnKey])">
+                                    <template v-if="columnsAsList.indexOf(columnKey) !== -1 && Array.isArray(row[columnKey])">
+                                        <ul>
+                                            <li v-for="item, itemIndex in row[columnKey]" v-bind:key="'column-' + columnIndex + '-item-' + itemIndex">
+                                                {{ itemIndex + 1 }}. {{ item }}
+                                            </li>
+                                        </ul>
+                                    </template>
+                                    <template v-else>
+                                        {{ row[columnKey] ?? "-" }}
+                                    </template>
+                                </td>
+                                <td class="data_cell metadata_cell">
+                                    {{ JSON.stringify(row).length }} bytes
+                                </td>
+                            </tr>
+                            <tr class="row_for_details"
+                                v-show="selectedRows.indexOf(rowIndex) !== -1"
+                                v-bind:key="'row-for-cell-' + rowIndex">
+                                <td class="data_cell details_cell"
+                                    colspan="1000">
+                                    <pre class="">{{ JSON.stringify(row, null, 2) }}</pre>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </template>
+            </template>
+            <tbody v-else>
+                <tr>
+                    <td colspan="1000">
+                        Un momento, por favor, la tabla está cargando...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="paginator_widget this_code_is_duplicated_always">
+        <div>
+            <div>
+                <div class="flex_row centered">
+                    <div class="flex_1 pagination_button_box first_box">
+                        <div class="pagination_button first_button"
+                            v-on:click="goToFirstPage">⏪</div>
+                    </div>
+                    <div class="flex_1 pagination_button_box">
+                        <div class="pagination_button"
+                            v-on:click="decreasePage">◀️</div>
+                    </div>
+                    <div class="flex_100 text_align_center">{{ currentPage+1 }}</div>
+                    <div class="flex_1 pagination_button_box">
+                        <div class="pagination_button"
+                            v-on:click="increasePage">▶️</div>
+                    </div>
+                    <div class="flex_1 pagination_button_box last_box">
+                        <div class="pagination_button last_button"
+                            v-on:click="goToLastPage">⏩</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="lsw_code_viewer">
+    <div class="flex_row">
+        <div class="flex_100"></div>
+        <div class="flex_1">
+            <button class="supermini" v-on:click="() => increaseFontsize(-1)">➖</button>
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini" v-on:click="() => increaseFontsize(1)">➕</button>
+        </div>
+    </div>
+    <pre class="lsw_code_viewer_area"><code :style="'font-size: ' + fontsize + 'px;'" :class="'language-' + language">{{ code }}</code></pre>
+</div>

@@ -1,0 +1,97 @@
+<div class="lsw_wiki_articulos">
+    <div class="flex_row centered">
+        <div class="flex_100">
+            <input class="width_100 wiki_buscador_texto"
+                style="min-height: 42px;"
+                v-model="searchText"
+                type="text"
+                placeholder="Buscar en artículos"
+                v-on:keyup="loadArticulosDelayed"
+                v-on:keyup.enter="loadArticulos" />
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button v-on:click="loadArticulos">🔎</button>
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button v-on:click="createArticulo">➕</button>
+        </div>
+    </div>
+    <div class="pad_top_1">
+        <div class="caja_de_mensaje_sobre_articulos">
+            <div class=""
+                v-if="isSearching">
+                Buscando artículos...
+            </div>
+            <div class=""
+                v-else-if="!articulos">
+                No se alcanzaron a encontrar los artículos.
+            </div>
+            <div class=""
+                v-else-if="!articulos.length">
+                No se encontraron artículos según la búsqueda.
+            </div>
+            <div class=""
+                v-else-if="articulos.length !== 1">
+                Se encontraron {{ articulos.length }} artículos coincidentes.
+            </div>
+            <div class=""
+                v-else-if="articulos.length === 1">
+                Se encontró {{ articulos.length }} artículo coincidente.
+            </div>
+        </div>
+    </div>
+    <div class="list_buttons articulos_box"
+        v-if="articulos && articulos.length">
+        <template v-for="articulo, articuloIndex in articulos">
+            <div class="articulo_box"
+                v-bind:key="'articulo_de_wiki_' + articulo.id">
+                <div class="flex_row centered pad_top_min">
+                    <button class="supermini list_button width_100"
+                        :class="{activated: openedArticulos.indexOf(articulo.id) !== -1}"
+                        v-on:click="() => toggleArticulo(articulo.id)">
+                        <div class="flex_column">
+                            <div class="flex_1 flex_row centered min_height_14px">
+                                <div class="flex_100 shortable_text text_align_left">
+                                    {{ articulo.tiene_titulo }}
+                                </div>
+                                <div class="flex_1 smallest_font nowrap secondary_text_color pad_left_1 pad_right_1 text_align_right"
+                                    style="border-left: 1px solid white; max-width: 90px;">
+                                    {{ articulo.tiene_fecha }}
+                                </div>
+                                <div class="flex_1 smallest_font nowrap secondary_text_color pad_left_1"
+                                    style="border-left: 1px solid white; min-width: 25px;">
+                                    {{ articulo.tiene_contenido?.length }}B
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="supermini margin_left_1"
+                        v-on:click="() => editArticulo(articulo)">↗️</button>
+                </div>
+                <div class="articulo_categorias_box" v-if="articulo.tiene_categorias">
+                    <div>🧲 {{ articulo.tiene_categorias }}</div>
+                </div>
+                <div class="pad_top_1"
+                    v-if="openedArticulos.indexOf(articulo.id) !== -1">
+                    <div class="position_relative">
+                        <div class="position_absolute top_0 right_0 flex_row centered pad_top_1 pad_right_1">
+                            <div class="flex_100"></div>
+                            <div class="flex_1">
+                                <button class="supermini" v-on:click="() => sendArticuloToNotas(articulo)">⬅️💬</button>
+                            </div>
+                            <div class="flex_1 pad_left_1">
+                                <button class="supermini" v-on:click="() => deleteArticulo(articulo)">❌</button>
+                            </div>
+                            <div class="flex_1 pad_left_1">
+                                <button class="supermini" v-on:click="() => editArticulo(articulo)">✏️</button>
+                            </div>
+                        </div>
+                        <div class="articulo_detalles texto_markdown rutiner_box pad_1 min_height_33px">
+                            <div v-html="LswMarkdown.global.parse(articulo.tiene_contenido)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+</div>

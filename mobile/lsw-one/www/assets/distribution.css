@@ -1,0 +1,5474 @@
+
+/* @vuebundler[Litestarter_app][0]=/home/carlos/Escritorio/dgn-cms/src/app/src/bootloader/preboot.js*/
+
+/* @vuebundler[Litestarter_app][1]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/lsw-framework.css*/
+
+/* @vuebundler[Lsw_framework_components][0]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/styles/lsw-styling-structure.css*/
+/* // @code.start: Lsw Styling Structure | @$section: Lsw Styles » Lsw Styling Structure */
+/* // @code.end: Lsw Styling Structure */
+
+/* @vuebundler[Lsw_framework_components][1]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/styles/lsw-styling-theme.css*/
+/* // @code.start: Lsw Styling Theme | @$section: Lsw Styles » Lsw Styling Theme */
+/* // @code.end: Lsw Styling Theme */
+
+/* @vuebundler[Lsw_framework_components][2]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/styles/lsw-styling-framework.css*/
+/* // @code.start: Lsw Styling Framework | @$section: Lsw Styles » Lsw Styling Framework */
+/* RESET STYLES */
+
+/* STYLE-BASED COMPONENTS */
+.pill_group {
+
+}
+.pill_group > * {
+    border-radius: 0pt;
+}
+.pill_group > *:first-child {
+    border-top-left-radius: 2pt;
+    border-bottom-left-radius: 2pt;
+}
+.pill_group > *:last-child {
+    border-top-right-radius: 2pt;
+    border-bottom-right-radius: 2pt;
+}
+
+table.collapsed_table {
+    border-collapse: collapse;
+    border: 1px solid #999;
+}
+.translucid_background {
+    background-color: rgba(255,255,255,0.1);
+}
+table.collapsed_table > thead > tr > th {
+    /*padding: 8px;*/
+    background-color: rgba(0,0,0,0.5);
+    font-weight: normal;
+    color: white;
+    border-right: 1px solid #999;
+    vertical-align: middle;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-bottom: 1px solid white;
+}
+table.collapsed_table > thead > tr > th:last-child {
+    border-right: none;
+}
+
+table.basic_table {
+    border-collapse: collapse;
+    border: 0px solid white;
+}
+table.basic_table > tbody > tr:nth-child(odd) {
+    background-color: #FFF;
+}
+table.basic_table > tbody > tr > td {
+    vertical-align: top;
+}
+table.basic_table > thead > tr,
+table.basic_table > tbody > tr:nth-child(even) {
+    background-color: #DDD;
+}
+table.basic_table > thead > tr > th {
+    
+}
+table.basic_table > thead > tr > th:last-child {
+    border-right: none solid white;
+}
+
+/* INLINE RULES */
+.display_block { display: block; }
+.display_flex_row { display: flex; flex-direction: row; }
+.display_flex_column { display: flex; flex-direction: column; }
+.display_inline_block { display: inline-block; }
+.text_align_center { text-align: center; }
+.text_align_left { text-align: left; }
+.text_align_right { text-align: right; }
+.width_100 { width: 100%; }
+.width_1 { width: 1%; }
+.width_auto { width: auto; }
+.height_100 { height: 100%; }
+.height_1 { height: 1%; }
+.height_auto { height: auto; }
+/* // @code.end: Lsw Styling Framework */
+
+/* @vuebundler[Lsw_framework_components][3]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/others/vue/vue2.min.js*/
+
+/* @vuebundler[Lsw_framework_components][4]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/others/vue.draggable/sortable.js*/
+
+/* @vuebundler[Lsw_framework_components][5]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/others/vue.draggable/vue.draggable.js*/
+
+/* @vuebundler[Lsw_framework_components][6]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/others/socket.io-client/socket.io-client.js*/
+
+/* @vuebundler[Lsw_framework_components][7]=/home/carlos/Escritorio/dgn-cms/src/app/src/assets/lib/marked/marked.js*/
+
+/* @vuebundler[Lsw_framework_components][8]=/home/carlos/Escritorio/dgn-cms/src/app/src/assets/lib/katex/katex.js*/
+
+/* @vuebundler[Lsw_framework_components][9]=/home/carlos/Escritorio/dgn-cms/src/app/src/assets/lib/katex/katex.css*/
+@font-face{font-family:KaTeX_AMS;font-style:normal;font-weight:400;src:url(fonts/KaTeX_AMS-Regular.woff2) format("woff2"),url(fonts/KaTeX_AMS-Regular.woff) format("woff"),url(fonts/KaTeX_AMS-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Caligraphic;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Caligraphic-Bold.woff2) format("woff2"),url(fonts/KaTeX_Caligraphic-Bold.woff) format("woff"),url(fonts/KaTeX_Caligraphic-Bold.ttf) format("truetype")}@font-face{font-family:KaTeX_Caligraphic;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Caligraphic-Regular.woff2) format("woff2"),url(fonts/KaTeX_Caligraphic-Regular.woff) format("woff"),url(fonts/KaTeX_Caligraphic-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Fraktur;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Fraktur-Bold.woff2) format("woff2"),url(fonts/KaTeX_Fraktur-Bold.woff) format("woff"),url(fonts/KaTeX_Fraktur-Bold.ttf) format("truetype")}@font-face{font-family:KaTeX_Fraktur;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Fraktur-Regular.woff2) format("woff2"),url(fonts/KaTeX_Fraktur-Regular.woff) format("woff"),url(fonts/KaTeX_Fraktur-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Main-Bold.woff2) format("woff2"),url(fonts/KaTeX_Main-Bold.woff) format("woff"),url(fonts/KaTeX_Main-Bold.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:italic;font-weight:700;src:url(fonts/KaTeX_Main-BoldItalic.woff2) format("woff2"),url(fonts/KaTeX_Main-BoldItalic.woff) format("woff"),url(fonts/KaTeX_Main-BoldItalic.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:italic;font-weight:400;src:url(fonts/KaTeX_Main-Italic.woff2) format("woff2"),url(fonts/KaTeX_Main-Italic.woff) format("woff"),url(fonts/KaTeX_Main-Italic.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Main-Regular.woff2) format("woff2"),url(fonts/KaTeX_Main-Regular.woff) format("woff"),url(fonts/KaTeX_Main-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Math;font-style:italic;font-weight:700;src:url(fonts/KaTeX_Math-BoldItalic.woff2) format("woff2"),url(fonts/KaTeX_Math-BoldItalic.woff) format("woff"),url(fonts/KaTeX_Math-BoldItalic.ttf) format("truetype")}@font-face{font-family:KaTeX_Math;font-style:italic;font-weight:400;src:url(fonts/KaTeX_Math-Italic.woff2) format("woff2"),url(fonts/KaTeX_Math-Italic.woff) format("woff"),url(fonts/KaTeX_Math-Italic.ttf) format("truetype")}@font-face{font-family:"KaTeX_SansSerif";font-style:normal;font-weight:700;src:url(fonts/KaTeX_SansSerif-Bold.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Bold.woff) format("woff"),url(fonts/KaTeX_SansSerif-Bold.ttf) format("truetype")}@font-face{font-family:"KaTeX_SansSerif";font-style:italic;font-weight:400;src:url(fonts/KaTeX_SansSerif-Italic.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Italic.woff) format("woff"),url(fonts/KaTeX_SansSerif-Italic.ttf) format("truetype")}@font-face{font-family:"KaTeX_SansSerif";font-style:normal;font-weight:400;src:url(fonts/KaTeX_SansSerif-Regular.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Regular.woff) format("woff"),url(fonts/KaTeX_SansSerif-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Script;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Script-Regular.woff2) format("woff2"),url(fonts/KaTeX_Script-Regular.woff) format("woff"),url(fonts/KaTeX_Script-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size1;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size1-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size1-Regular.woff) format("woff"),url(fonts/KaTeX_Size1-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size2;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size2-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size2-Regular.woff) format("woff"),url(fonts/KaTeX_Size2-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size3;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size3-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size3-Regular.woff) format("woff"),url(fonts/KaTeX_Size3-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size4;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size4-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size4-Regular.woff) format("woff"),url(fonts/KaTeX_Size4-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Typewriter;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Typewriter-Regular.woff2) format("woff2"),url(fonts/KaTeX_Typewriter-Regular.woff) format("woff"),url(fonts/KaTeX_Typewriter-Regular.ttf) format("truetype")}.katex{text-rendering:auto;font:normal 1.21em KaTeX_Main,Times New Roman,serif;line-height:1.2;text-indent:0}.katex *{-ms-high-contrast-adjust:none!important;border-color:currentColor}.katex .katex-version:after{content:"0.16.8"}.katex .katex-mathml{clip:rect(1px,1px,1px,1px);border:0;height:1px;overflow:hidden;padding:0;position:absolute;width:1px}.katex .katex-html>.newline{display:block}.katex .base{position:relative;white-space:nowrap;width:-webkit-min-content;width:-moz-min-content;width:min-content}.katex .base,.katex .strut{display:inline-block}.katex .textbf{font-weight:700}.katex .textit{font-style:italic}.katex .textrm{font-family:KaTeX_Main}.katex .textsf{font-family:KaTeX_SansSerif}.katex .texttt{font-family:KaTeX_Typewriter}.katex .mathnormal{font-family:KaTeX_Math;font-style:italic}.katex .mathit{font-family:KaTeX_Main;font-style:italic}.katex .mathrm{font-style:normal}.katex .mathbf{font-family:KaTeX_Main;font-weight:700}.katex .boldsymbol{font-family:KaTeX_Math;font-style:italic;font-weight:700}.katex .amsrm,.katex .mathbb,.katex .textbb{font-family:KaTeX_AMS}.katex .mathcal{font-family:KaTeX_Caligraphic}.katex .mathfrak,.katex .textfrak{font-family:KaTeX_Fraktur}.katex .mathtt{font-family:KaTeX_Typewriter}.katex .mathscr,.katex .textscr{font-family:KaTeX_Script}.katex .mathsf,.katex .textsf{font-family:KaTeX_SansSerif}.katex .mathboldsf,.katex .textboldsf{font-family:KaTeX_SansSerif;font-weight:700}.katex .mathitsf,.katex .textitsf{font-family:KaTeX_SansSerif;font-style:italic}.katex .mainrm{font-family:KaTeX_Main;font-style:normal}.katex .vlist-t{border-collapse:collapse;display:inline-table;table-layout:fixed}.katex .vlist-r{display:table-row}.katex .vlist{display:table-cell;position:relative;vertical-align:bottom}.katex .vlist>span{display:block;height:0;position:relative}.katex .vlist>span>span{display:inline-block}.katex .vlist>span>.pstrut{overflow:hidden;width:0}.katex .vlist-t2{margin-right:-2px}.katex .vlist-s{display:table-cell;font-size:1px;min-width:2px;vertical-align:bottom;width:2px}.katex .vbox{align-items:baseline;display:inline-flex;flex-direction:column}.katex .hbox{width:100%}.katex .hbox,.katex .thinbox{display:inline-flex;flex-direction:row}.katex .thinbox{max-width:0;width:0}.katex .msupsub{text-align:left}.katex .mfrac>span>span{text-align:center}.katex .mfrac .frac-line{border-bottom-style:solid;display:inline-block;width:100%}.katex .hdashline,.katex .hline,.katex .mfrac .frac-line,.katex .overline .overline-line,.katex .rule,.katex .underline .underline-line{min-height:1px}.katex .mspace{display:inline-block}.katex .clap,.katex .llap,.katex .rlap{position:relative;width:0}.katex .clap>.inner,.katex .llap>.inner,.katex .rlap>.inner{position:absolute}.katex .clap>.fix,.katex .llap>.fix,.katex .rlap>.fix{display:inline-block}.katex .llap>.inner{right:0}.katex .clap>.inner,.katex .rlap>.inner{left:0}.katex .clap>.inner>span{margin-left:-50%;margin-right:50%}.katex .rule{border:0 solid;display:inline-block;position:relative}.katex .hline,.katex .overline .overline-line,.katex .underline .underline-line{border-bottom-style:solid;display:inline-block;width:100%}.katex .hdashline{border-bottom-style:dashed;display:inline-block;width:100%}.katex .sqrt>.root{margin-left:.27777778em;margin-right:-.55555556em}.katex .fontsize-ensurer.reset-size1.size1,.katex .sizing.reset-size1.size1{font-size:1em}.katex .fontsize-ensurer.reset-size1.size2,.katex .sizing.reset-size1.size2{font-size:1.2em}.katex .fontsize-ensurer.reset-size1.size3,.katex .sizing.reset-size1.size3{font-size:1.4em}.katex .fontsize-ensurer.reset-size1.size4,.katex .sizing.reset-size1.size4{font-size:1.6em}.katex .fontsize-ensurer.reset-size1.size5,.katex .sizing.reset-size1.size5{font-size:1.8em}.katex .fontsize-ensurer.reset-size1.size6,.katex .sizing.reset-size1.size6{font-size:2em}.katex .fontsize-ensurer.reset-size1.size7,.katex .sizing.reset-size1.size7{font-size:2.4em}.katex .fontsize-ensurer.reset-size1.size8,.katex .sizing.reset-size1.size8{font-size:2.88em}.katex .fontsize-ensurer.reset-size1.size9,.katex .sizing.reset-size1.size9{font-size:3.456em}.katex .fontsize-ensurer.reset-size1.size10,.katex .sizing.reset-size1.size10{font-size:4.148em}.katex .fontsize-ensurer.reset-size1.size11,.katex .sizing.reset-size1.size11{font-size:4.976em}.katex .fontsize-ensurer.reset-size2.size1,.katex .sizing.reset-size2.size1{font-size:.83333333em}.katex .fontsize-ensurer.reset-size2.size2,.katex .sizing.reset-size2.size2{font-size:1em}.katex .fontsize-ensurer.reset-size2.size3,.katex .sizing.reset-size2.size3{font-size:1.16666667em}.katex .fontsize-ensurer.reset-size2.size4,.katex .sizing.reset-size2.size4{font-size:1.33333333em}.katex .fontsize-ensurer.reset-size2.size5,.katex .sizing.reset-size2.size5{font-size:1.5em}.katex .fontsize-ensurer.reset-size2.size6,.katex .sizing.reset-size2.size6{font-size:1.66666667em}.katex .fontsize-ensurer.reset-size2.size7,.katex .sizing.reset-size2.size7{font-size:2em}.katex .fontsize-ensurer.reset-size2.size8,.katex .sizing.reset-size2.size8{font-size:2.4em}.katex .fontsize-ensurer.reset-size2.size9,.katex .sizing.reset-size2.size9{font-size:2.88em}.katex .fontsize-ensurer.reset-size2.size10,.katex .sizing.reset-size2.size10{font-size:3.45666667em}.katex .fontsize-ensurer.reset-size2.size11,.katex .sizing.reset-size2.size11{font-size:4.14666667em}.katex .fontsize-ensurer.reset-size3.size1,.katex .sizing.reset-size3.size1{font-size:.71428571em}.katex .fontsize-ensurer.reset-size3.size2,.katex .sizing.reset-size3.size2{font-size:.85714286em}.katex .fontsize-ensurer.reset-size3.size3,.katex .sizing.reset-size3.size3{font-size:1em}.katex .fontsize-ensurer.reset-size3.size4,.katex .sizing.reset-size3.size4{font-size:1.14285714em}.katex .fontsize-ensurer.reset-size3.size5,.katex .sizing.reset-size3.size5{font-size:1.28571429em}.katex .fontsize-ensurer.reset-size3.size6,.katex .sizing.reset-size3.size6{font-size:1.42857143em}.katex .fontsize-ensurer.reset-size3.size7,.katex .sizing.reset-size3.size7{font-size:1.71428571em}.katex .fontsize-ensurer.reset-size3.size8,.katex .sizing.reset-size3.size8{font-size:2.05714286em}.katex .fontsize-ensurer.reset-size3.size9,.katex .sizing.reset-size3.size9{font-size:2.46857143em}.katex .fontsize-ensurer.reset-size3.size10,.katex .sizing.reset-size3.size10{font-size:2.96285714em}.katex .fontsize-ensurer.reset-size3.size11,.katex .sizing.reset-size3.size11{font-size:3.55428571em}.katex .fontsize-ensurer.reset-size4.size1,.katex .sizing.reset-size4.size1{font-size:.625em}.katex .fontsize-ensurer.reset-size4.size2,.katex .sizing.reset-size4.size2{font-size:.75em}.katex .fontsize-ensurer.reset-size4.size3,.katex .sizing.reset-size4.size3{font-size:.875em}.katex .fontsize-ensurer.reset-size4.size4,.katex .sizing.reset-size4.size4{font-size:1em}.katex .fontsize-ensurer.reset-size4.size5,.katex .sizing.reset-size4.size5{font-size:1.125em}.katex .fontsize-ensurer.reset-size4.size6,.katex .sizing.reset-size4.size6{font-size:1.25em}.katex .fontsize-ensurer.reset-size4.size7,.katex .sizing.reset-size4.size7{font-size:1.5em}.katex .fontsize-ensurer.reset-size4.size8,.katex .sizing.reset-size4.size8{font-size:1.8em}.katex .fontsize-ensurer.reset-size4.size9,.katex .sizing.reset-size4.size9{font-size:2.16em}.katex .fontsize-ensurer.reset-size4.size10,.katex .sizing.reset-size4.size10{font-size:2.5925em}.katex .fontsize-ensurer.reset-size4.size11,.katex .sizing.reset-size4.size11{font-size:3.11em}.katex .fontsize-ensurer.reset-size5.size1,.katex .sizing.reset-size5.size1{font-size:.55555556em}.katex .fontsize-ensurer.reset-size5.size2,.katex .sizing.reset-size5.size2{font-size:.66666667em}.katex .fontsize-ensurer.reset-size5.size3,.katex .sizing.reset-size5.size3{font-size:.77777778em}.katex .fontsize-ensurer.reset-size5.size4,.katex .sizing.reset-size5.size4{font-size:.88888889em}.katex .fontsize-ensurer.reset-size5.size5,.katex .sizing.reset-size5.size5{font-size:1em}.katex .fontsize-ensurer.reset-size5.size6,.katex .sizing.reset-size5.size6{font-size:1.11111111em}.katex .fontsize-ensurer.reset-size5.size7,.katex .sizing.reset-size5.size7{font-size:1.33333333em}.katex .fontsize-ensurer.reset-size5.size8,.katex .sizing.reset-size5.size8{font-size:1.6em}.katex .fontsize-ensurer.reset-size5.size9,.katex .sizing.reset-size5.size9{font-size:1.92em}.katex .fontsize-ensurer.reset-size5.size10,.katex .sizing.reset-size5.size10{font-size:2.30444444em}.katex .fontsize-ensurer.reset-size5.size11,.katex .sizing.reset-size5.size11{font-size:2.76444444em}.katex .fontsize-ensurer.reset-size6.size1,.katex .sizing.reset-size6.size1{font-size:.5em}.katex .fontsize-ensurer.reset-size6.size2,.katex .sizing.reset-size6.size2{font-size:.6em}.katex .fontsize-ensurer.reset-size6.size3,.katex .sizing.reset-size6.size3{font-size:.7em}.katex .fontsize-ensurer.reset-size6.size4,.katex .sizing.reset-size6.size4{font-size:.8em}.katex .fontsize-ensurer.reset-size6.size5,.katex .sizing.reset-size6.size5{font-size:.9em}.katex .fontsize-ensurer.reset-size6.size6,.katex .sizing.reset-size6.size6{font-size:1em}.katex .fontsize-ensurer.reset-size6.size7,.katex .sizing.reset-size6.size7{font-size:1.2em}.katex .fontsize-ensurer.reset-size6.size8,.katex .sizing.reset-size6.size8{font-size:1.44em}.katex .fontsize-ensurer.reset-size6.size9,.katex .sizing.reset-size6.size9{font-size:1.728em}.katex .fontsize-ensurer.reset-size6.size10,.katex .sizing.reset-size6.size10{font-size:2.074em}.katex .fontsize-ensurer.reset-size6.size11,.katex .sizing.reset-size6.size11{font-size:2.488em}.katex .fontsize-ensurer.reset-size7.size1,.katex .sizing.reset-size7.size1{font-size:.41666667em}.katex .fontsize-ensurer.reset-size7.size2,.katex .sizing.reset-size7.size2{font-size:.5em}.katex .fontsize-ensurer.reset-size7.size3,.katex .sizing.reset-size7.size3{font-size:.58333333em}.katex .fontsize-ensurer.reset-size7.size4,.katex .sizing.reset-size7.size4{font-size:.66666667em}.katex .fontsize-ensurer.reset-size7.size5,.katex .sizing.reset-size7.size5{font-size:.75em}.katex .fontsize-ensurer.reset-size7.size6,.katex .sizing.reset-size7.size6{font-size:.83333333em}.katex .fontsize-ensurer.reset-size7.size7,.katex .sizing.reset-size7.size7{font-size:1em}.katex .fontsize-ensurer.reset-size7.size8,.katex .sizing.reset-size7.size8{font-size:1.2em}.katex .fontsize-ensurer.reset-size7.size9,.katex .sizing.reset-size7.size9{font-size:1.44em}.katex .fontsize-ensurer.reset-size7.size10,.katex .sizing.reset-size7.size10{font-size:1.72833333em}.katex .fontsize-ensurer.reset-size7.size11,.katex .sizing.reset-size7.size11{font-size:2.07333333em}.katex .fontsize-ensurer.reset-size8.size1,.katex .sizing.reset-size8.size1{font-size:.34722222em}.katex .fontsize-ensurer.reset-size8.size2,.katex .sizing.reset-size8.size2{font-size:.41666667em}.katex .fontsize-ensurer.reset-size8.size3,.katex .sizing.reset-size8.size3{font-size:.48611111em}.katex .fontsize-ensurer.reset-size8.size4,.katex .sizing.reset-size8.size4{font-size:.55555556em}.katex .fontsize-ensurer.reset-size8.size5,.katex .sizing.reset-size8.size5{font-size:.625em}.katex .fontsize-ensurer.reset-size8.size6,.katex .sizing.reset-size8.size6{font-size:.69444444em}.katex .fontsize-ensurer.reset-size8.size7,.katex .sizing.reset-size8.size7{font-size:.83333333em}.katex .fontsize-ensurer.reset-size8.size8,.katex .sizing.reset-size8.size8{font-size:1em}.katex .fontsize-ensurer.reset-size8.size9,.katex .sizing.reset-size8.size9{font-size:1.2em}.katex .fontsize-ensurer.reset-size8.size10,.katex .sizing.reset-size8.size10{font-size:1.44027778em}.katex .fontsize-ensurer.reset-size8.size11,.katex .sizing.reset-size8.size11{font-size:1.72777778em}.katex .fontsize-ensurer.reset-size9.size1,.katex .sizing.reset-size9.size1{font-size:.28935185em}.katex .fontsize-ensurer.reset-size9.size2,.katex .sizing.reset-size9.size2{font-size:.34722222em}.katex .fontsize-ensurer.reset-size9.size3,.katex .sizing.reset-size9.size3{font-size:.40509259em}.katex .fontsize-ensurer.reset-size9.size4,.katex .sizing.reset-size9.size4{font-size:.46296296em}.katex .fontsize-ensurer.reset-size9.size5,.katex .sizing.reset-size9.size5{font-size:.52083333em}.katex .fontsize-ensurer.reset-size9.size6,.katex .sizing.reset-size9.size6{font-size:.5787037em}.katex .fontsize-ensurer.reset-size9.size7,.katex .sizing.reset-size9.size7{font-size:.69444444em}.katex .fontsize-ensurer.reset-size9.size8,.katex .sizing.reset-size9.size8{font-size:.83333333em}.katex .fontsize-ensurer.reset-size9.size9,.katex .sizing.reset-size9.size9{font-size:1em}.katex .fontsize-ensurer.reset-size9.size10,.katex .sizing.reset-size9.size10{font-size:1.20023148em}.katex .fontsize-ensurer.reset-size9.size11,.katex .sizing.reset-size9.size11{font-size:1.43981481em}.katex .fontsize-ensurer.reset-size10.size1,.katex .sizing.reset-size10.size1{font-size:.24108004em}.katex .fontsize-ensurer.reset-size10.size2,.katex .sizing.reset-size10.size2{font-size:.28929605em}.katex .fontsize-ensurer.reset-size10.size3,.katex .sizing.reset-size10.size3{font-size:.33751205em}.katex .fontsize-ensurer.reset-size10.size4,.katex .sizing.reset-size10.size4{font-size:.38572806em}.katex .fontsize-ensurer.reset-size10.size5,.katex .sizing.reset-size10.size5{font-size:.43394407em}.katex .fontsize-ensurer.reset-size10.size6,.katex .sizing.reset-size10.size6{font-size:.48216008em}.katex .fontsize-ensurer.reset-size10.size7,.katex .sizing.reset-size10.size7{font-size:.57859209em}.katex .fontsize-ensurer.reset-size10.size8,.katex .sizing.reset-size10.size8{font-size:.69431051em}.katex .fontsize-ensurer.reset-size10.size9,.katex .sizing.reset-size10.size9{font-size:.83317261em}.katex .fontsize-ensurer.reset-size10.size10,.katex .sizing.reset-size10.size10{font-size:1em}.katex .fontsize-ensurer.reset-size10.size11,.katex .sizing.reset-size10.size11{font-size:1.19961427em}.katex .fontsize-ensurer.reset-size11.size1,.katex .sizing.reset-size11.size1{font-size:.20096463em}.katex .fontsize-ensurer.reset-size11.size2,.katex .sizing.reset-size11.size2{font-size:.24115756em}.katex .fontsize-ensurer.reset-size11.size3,.katex .sizing.reset-size11.size3{font-size:.28135048em}.katex .fontsize-ensurer.reset-size11.size4,.katex .sizing.reset-size11.size4{font-size:.32154341em}.katex .fontsize-ensurer.reset-size11.size5,.katex .sizing.reset-size11.size5{font-size:.36173633em}.katex .fontsize-ensurer.reset-size11.size6,.katex .sizing.reset-size11.size6{font-size:.40192926em}.katex .fontsize-ensurer.reset-size11.size7,.katex .sizing.reset-size11.size7{font-size:.48231511em}.katex .fontsize-ensurer.reset-size11.size8,.katex .sizing.reset-size11.size8{font-size:.57877814em}.katex .fontsize-ensurer.reset-size11.size9,.katex .sizing.reset-size11.size9{font-size:.69453376em}.katex .fontsize-ensurer.reset-size11.size10,.katex .sizing.reset-size11.size10{font-size:.83360129em}.katex .fontsize-ensurer.reset-size11.size11,.katex .sizing.reset-size11.size11{font-size:1em}.katex .delimsizing.size1{font-family:KaTeX_Size1}.katex .delimsizing.size2{font-family:KaTeX_Size2}.katex .delimsizing.size3{font-family:KaTeX_Size3}.katex .delimsizing.size4{font-family:KaTeX_Size4}.katex .delimsizing.mult .delim-size1>span{font-family:KaTeX_Size1}.katex .delimsizing.mult .delim-size4>span{font-family:KaTeX_Size4}.katex .nulldelimiter{display:inline-block;width:.12em}.katex .delimcenter,.katex .op-symbol{position:relative}.katex .op-symbol.small-op{font-family:KaTeX_Size1}.katex .op-symbol.large-op{font-family:KaTeX_Size2}.katex .accent>.vlist-t,.katex .op-limits>.vlist-t{text-align:center}.katex .accent .accent-body{position:relative}.katex .accent .accent-body:not(.accent-full){width:0}.katex .overlay{display:block}.katex .mtable .vertical-separator{display:inline-block;min-width:1px}.katex .mtable .arraycolsep{display:inline-block}.katex .mtable .col-align-c>.vlist-t{text-align:center}.katex .mtable .col-align-l>.vlist-t{text-align:left}.katex .mtable .col-align-r>.vlist-t{text-align:right}.katex .svg-align{text-align:left}.katex svg{fill:currentColor;stroke:currentColor;fill-rule:nonzero;fill-opacity:1;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;display:block;height:inherit;position:absolute;width:100%}.katex svg path{stroke:none}.katex img{border-style:none;max-height:none;max-width:none;min-height:0;min-width:0}.katex .stretchy{display:block;overflow:hidden;position:relative;width:100%}.katex .stretchy:after,.katex .stretchy:before{content:""}.katex .hide-tail{overflow:hidden;position:relative;width:100%}.katex .halfarrow-left{left:0;overflow:hidden;position:absolute;width:50.2%}.katex .halfarrow-right{overflow:hidden;position:absolute;right:0;width:50.2%}.katex .brace-left{left:0;overflow:hidden;position:absolute;width:25.1%}.katex .brace-center{left:25%;overflow:hidden;position:absolute;width:50%}.katex .brace-right{overflow:hidden;position:absolute;right:0;width:25.1%}.katex .x-arrow-pad{padding:0 .5em}.katex .cd-arrow-pad{padding:0 .55556em 0 .27778em}.katex .mover,.katex .munder,.katex .x-arrow{text-align:center}.katex .boxpad{padding:0 .3em}.katex .fbox,.katex .fcolorbox{border:.04em solid;box-sizing:border-box}.katex .cancel-pad{padding:0 .2em}.katex .cancel-lap{margin-left:-.2em;margin-right:-.2em}.katex .sout{border-bottom-style:solid;border-bottom-width:.08em}.katex .angl{border-right:.049em solid;border-top:.049em solid;box-sizing:border-box;margin-right:.03889em}.katex .anglpad{padding:0 .03889em}.katex .eqn-num:before{content:"(" counter(katexEqnNo) ")";counter-increment:katexEqnNo}.katex .mml-eqn-num:before{content:"(" counter(mmlEqnNo) ")";counter-increment:mmlEqnNo}.katex .mtr-glue{width:50%}.katex .cd-vert-arrow{display:inline-block;position:relative}.katex .cd-label-left{display:inline-block;position:absolute;right:calc(50% + .3em);text-align:left}.katex .cd-label-right{display:inline-block;left:calc(50% + .3em);position:absolute;text-align:right}.katex-display{display:block;margin:1em 0;text-align:center}.katex-display>.katex{display:block;text-align:center;white-space:nowrap}.katex-display>.katex>.katex-html{display:block;position:relative}.katex-display>.katex>.katex-html>.tag{position:absolute;right:0}.katex-display.leqno>.katex>.katex-html>.tag{left:0;right:auto}.katex-display.fleqn>.katex{padding-left:2em;text-align:left}body{counter-reset:katexEqnNo mmlEqnNo}
+
+/* @vuebundler[Lsw_framework_components][10]=/home/carlos/Escritorio/dgn-cms/src/app/src/assets/lib/katex/marked-katex-extension.js*/
+
+/* @vuebundler[Lsw_framework_components][11]=/home/carlos/Escritorio/dgn-cms/src/app/src/assets/lib/mermaid/mermaid.js*/
+
+/* @vuebundler[Lsw_framework_components][12]=/home/carlos/Escritorio/dgn-cms/src/app/src/assets/lib/mermaid/mermaid.initializer.js*/
+
+/* @vuebundler[Lsw_framework_components][13]=/home/carlos/Escritorio/dgn-cms/src/app/src/bootloader/initialization.js*/
+
+/* @vuebundler[Lsw_framework_components][14]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-importer/importer.js*/
+
+/* @vuebundler[Lsw_framework_components][15]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-error-manager/lsw-error-manager.js*/
+
+/* @vuebundler[Lsw_framework_components][16]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-reloader/reloadable.js*/
+
+/* @vuebundler[Lsw_framework_components][17]=/home/carlos/Escritorio/dgn-cms/src/app/src-instrumented/lsw-framework/src/apis/lsw-ensurer/ensure.instr.js*/
+
+/* @vuebundler[Lsw_framework_components][18]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-asserter/lsw-asserter.js*/
+
+/* @vuebundler[Lsw_framework_components][19]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-test-context/lsw-test-context.js*/
+
+/* @vuebundler[Lsw_framework_components][20]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-constants/lsw-constants.js*/
+
+/* @vuebundler[Lsw_framework_components][21]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-constants/global-constants.js*/
+
+/* @vuebundler[Lsw_framework_components][22]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-lazy-loader/lsw-lazy-loader.js*/
+
+/* @vuebundler[Lsw_framework_components][23]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-lazy-loader/lazy-loads.js*/
+
+/* @vuebundler[Lsw_framework_components][24]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-tree-parser/tripilang.parser.js*/
+
+/* @vuebundler[Lsw_framework_components][25]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-tree-parser/lsw-tree-parser.js*/
+
+/* @vuebundler[Lsw_framework_components][26]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-tester/lsw-tester.js*/
+
+/* @vuebundler[Lsw_framework_components][27]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/new-canvas-experiment-1/new-canvas-experiment-1.html*/
+
+/* @vuebundler[Lsw_framework_components][27]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/new-canvas-experiment-1/new-canvas-experiment-1.js*/
+
+/* @vuebundler[Lsw_framework_components][27]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/new-canvas-experiment-1/new-canvas-experiment-1.css*/
+.new_canvas_experiment_1 {
+
+}
+.new_canvas_experiment_1_canvas_container {
+    border: 1px solid black;
+    text-align: center;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: rgb(0, 0, 0, 0.5);
+}
+.new_canvas_experiment_1_canvas {
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+    vertical-align: middle;
+    background-color: white;
+}
+
+/* @vuebundler[Lsw_framework_components][28]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-dom/lsw-dom.js*/
+
+/* @vuebundler[Lsw_framework_components][29]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-dom/lsw-dom-irruptor.js*/
+
+/* @vuebundler[Lsw_framework_components][30]=/home/carlos/Escritorio/dgn-cms/src/app/src-instrumented/lsw-framework/src/apis/lsw-dom/lsw-vue2.instr.js*/
+
+/* @vuebundler[Lsw_framework_components][31]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxifier/proxifier.unbundled.js*/
+
+/* @vuebundler[Lsw_framework_components][32]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-randomizer/lsw-randomizer.js*/
+
+/* @vuebundler[Lsw_framework_components][33]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-agenda-randomizer/lsw-agenda-randomizer.js*/
+
+/* @vuebundler[Lsw_framework_components][34]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-agenda-randomizer/lsw-agenda-randomizer-reglas.js*/
+
+/* @vuebundler[Lsw_framework_components][35]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-circuiter/async-circuit.js*/
+
+/* @vuebundler[Lsw_framework_components][36]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-commander/url-command.js*/
+
+/* @vuebundler[Lsw_framework_components][37]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-trigger/triggers-class.js*/
+
+/* @vuebundler[Lsw_framework_components][38]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-database/browsie.unbundled.js*/
+
+/* @vuebundler[Lsw_framework_components][39]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-database-query-language/browsie-script.js*/
+
+/* @vuebundler[Lsw_framework_components][40]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-database-query-language/lsw-database-query-language.js*/
+
+/* @vuebundler[Lsw_framework_components][41]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-logger/superlogger.unbundled.js*/
+
+/* @vuebundler[Lsw_framework_components][42]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-returner/controlled-function.js*/
+
+/* @vuebundler[Lsw_framework_components][43]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-store/dist/store.unbundled.js*/
+
+/* @vuebundler[Lsw_framework_components][44]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-timer/lsw-timer.bundled.js*/
+
+/* @vuebundler[Lsw_framework_components][45]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-temporizer/lsw-temporizer.js*/
+
+/* @vuebundler[Lsw_framework_components][46]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-intruder/lsw-intruder.js*/
+
+/* @vuebundler[Lsw_framework_components][47]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-cycler/lsw-cycler.js*/
+
+/* @vuebundler[Lsw_framework_components][48]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-lifecycle/lsw-lifecycle.js*/
+
+/* @vuebundler[Lsw_framework_components][49]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-compromiser/lsw-compromiser.js*/
+
+/* @vuebundler[Lsw_framework_components][50]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-utils/lsw-utils.js*/
+
+/* @vuebundler[Lsw_framework_components][51]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-filesystem/ufs-v1.0.2.js*/
+
+/* @vuebundler[Lsw_framework_components][52]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-filesystem/lsw-filesystem.unbundled.js*/
+
+/* @vuebundler[Lsw_framework_components][53]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-schema/lsw-schema.js*/
+
+/* @vuebundler[Lsw_framework_components][54]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-class-register/lsw-class-register.js*/
+
+/* @vuebundler[Lsw_framework_components][55]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-database-virtualizer/lsw-database-virtualizer.js*/
+
+/* @vuebundler[Lsw_framework_components][56]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-depender/lsw-depender.js*/
+
+/* @vuebundler[Lsw_framework_components][57]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-error-handler/lsw-error-handler.js*/
+
+/* @vuebundler[Lsw_framework_components][58]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-backuper/lsw-backuper.js*/
+
+/* @vuebundler[Lsw_framework_components][59]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-typer/lsw-typer.js*/
+
+/* @vuebundler[Lsw_framework_components][60]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-books/lsw-books.js*/
+
+/* @vuebundler[Lsw_framework_components][61]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-markdown/lsw-markdown.js*/
+
+/* @vuebundler[Lsw_framework_components][62]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/database-adapter/LswDatabaseAdapter.js*/
+
+/* @vuebundler[Lsw_framework_components][63]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-launcher/lsw-launcher.js*/
+
+/* @vuebundler[Lsw_framework_components][64]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-launcher/lsw-launchables.js*/
+
+/* @vuebundler[Lsw_framework_components][65]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/directives/v-descriptor/v-descriptor.js*/
+
+/* @vuebundler[Lsw_framework_components][66]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/directives/v-focus/v-focus.js*/
+
+/* @vuebundler[Lsw_framework_components][67]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/directives/v-xform/v-xform.js*/
+
+/* @vuebundler[Lsw_framework_components][68]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-homepage/lsw-homepage.html*/
+
+/* @vuebundler[Lsw_framework_components][68]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-homepage/lsw-homepage.js*/
+
+/* @vuebundler[Lsw_framework_components][68]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-homepage/lsw-homepage.css*/
+.lsw_homepage {}
+
+.lista_apps {
+
+}
+.lista_apps {
+    padding-left: 15px;
+}
+.lsw_homepage > .lista_apps {
+    padding-left: 0px;
+}
+.item_app {
+    display: inline-block;
+    padding-bottom: 1px;
+    padding-right: 4px;
+    font-size: 11px;
+}
+.nombre_app {
+    background-color: rgba(0,0,0,0.7);
+    color: rgba(255,255,255,1);
+
+    border: 1px solid #333;
+    border-radius: 3pt;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.nombre_app:hover {
+    background-color: rgba(0,0,0,0.6);
+}
+
+/* @vuebundler[Lsw_framework_components][69]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-sourceable/lsw-sourceable.html*/
+
+/* @vuebundler[Lsw_framework_components][69]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-sourceable/lsw-sourceable.js*/
+
+/* @vuebundler[Lsw_framework_components][69]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-sourceable/lsw-sourceable.css*/
+
+
+/* @vuebundler[Lsw_framework_components][70]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-typical-title/lsw-typical-title.html*/
+
+/* @vuebundler[Lsw_framework_components][70]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-typical-title/lsw-typical-title.js*/
+
+/* @vuebundler[Lsw_framework_components][70]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-typical-title/lsw-typical-title.css*/
+.lsw_typical_title button {
+    background-color: #65656587;
+    color: white;
+    border: 1px solid #3c3c3e;
+}
+
+/* @vuebundler[Lsw_framework_components][71]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-keyboard-1/lsw-keyboard-1.html*/
+
+/* @vuebundler[Lsw_framework_components][71]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-keyboard-1/lsw-keyboard-1.js*/
+
+/* @vuebundler[Lsw_framework_components][71]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-keyboard-1/lsw-keyboard-1.css*/
+.lsw_keyboard_1 {
+    
+}
+.lsw_keyboard_1 .keyboard_layer_1 {
+    position: fixed;
+    top: auto;
+    bottom: 1px;
+    left: 1px;
+    right: 2px;
+    z-index: 9999;
+    background-color: #333;
+    color: #FFF;
+    border: 2px solid #333;
+}
+.lsw_keyboard_1 .keyboard_layer_1:focus {
+    border: 2px solid #000;
+}
+.lsw_keyboard_1 .keyboard_layer_2 {
+    width: 100%;
+    height: 100%;
+    border: 0px solid black;
+    border-radius: 2pt;
+    box-shadow: 0 0 4px black;
+    background-color: #00000070;
+}
+
+.horizontally {
+    display: flex;
+    flex-direction: row;
+    justify-items: stretch;
+    width: 100%;
+}
+
+.vertically {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.horizontally > * {
+    flex: 1;
+}
+.vertically > * {
+    flex: 1;
+}
+
+.lsw_keyboard_1 .button_holder_type {
+    padding-bottom: 1px;
+    padding-right: 1px;
+}
+
+.lsw_keyboard_1 .button_type {
+    height: 100%;
+    width: 100%;
+    padding: 4px;
+    min-height: 20px;
+    min-width: 20px;
+    background-color: #000;
+    color: white;
+    white-space: nowrap;
+}
+.lsw_keyboard_1 .button_type:hover {
+    background-color: #115;
+    cursor: pointer;
+}
+.lsw_keyboard_1 .button_type.pressed {
+    background-color: rgb(5, 5, 69);
+}
+.lsw_keyboard_1 .button_type > .position_relative {
+    height: 100%;
+    width: 100%;
+    text-align: right;
+}
+
+.lsw_keyboard_1 .corner_top_left,
+.lsw_keyboard_1 .corner_top_right,
+.lsw_keyboard_1 .corner_bottom_left,
+.lsw_keyboard_1 .corner_bottom_right {
+    font-size: 8px;
+}
+
+
+/* @vuebundler[Lsw_framework_components][72]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-keyboard-1/lsw-keyboard-1-text/lsw-keyboard-1-text.html*/
+
+/* @vuebundler[Lsw_framework_components][72]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-keyboard-1/lsw-keyboard-1-text/lsw-keyboard-1-text.js*/
+
+/* @vuebundler[Lsw_framework_components][72]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-keyboard-1/lsw-keyboard-1-text/lsw-keyboard-1-text.css*/
+.lsw_keyboard_1_text {
+    font-family: monospace;
+}
+.lsw_keyboard_1_text .keyboard_text_container {
+    border: 1px solid #CCC;
+}
+.lsw_keyboard_1_text .keyboard_text_container.activated {
+    font-family: monospace;
+    border: 1px solid #333;
+}
+.lsw_keyboard_1_text .keyboard_text {
+    display: table;
+}
+.lsw_keyboard_1_text .line {
+    display: table-row;
+    min-width: 8px;
+    min-height: 16px;
+}
+.lsw_keyboard_1_text .line.activated {
+    background-color: rgba(223, 81, 25, 0.4);
+}
+.lsw_keyboard_1_text .cursor {
+    text-shadow: 0 0 4px black;
+    position: absolute;
+    left: -4px;
+}
+.lsw_keyboard_1_text .character {
+    display: table-cell;
+    position: relative;
+    user-select: none;
+    white-space: default;
+    min-width: 8px;
+    min-height: 16px;
+    border-right: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+}
+.lsw_keyboard_1_text .character.activated {
+    background-color: rgba(223, 81, 25, 0.8);
+}
+.lsw_keyboard_1_text .character.selected {
+    background-color: yellow;
+    color: black;
+}
+.lsw_keyboard_1_text .line_number {
+    padding-left: 8px;
+    padding-right: 8px;
+    border-right: 1px solid #333;
+}
+.marked_line {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.3);
+    min-height: 20px;
+}
+
+/* @vuebundler[Lsw_framework_components][73]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-debugger/lsw-debugger.api.js*/
+
+/* @vuebundler[Lsw_framework_components][74]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-debugger/lsw-debugger.html*/
+
+/* @vuebundler[Lsw_framework_components][74]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-debugger/lsw-debugger.js*/
+
+/* @vuebundler[Lsw_framework_components][74]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-debugger/lsw-debugger.css*/
+.lsw_debugger {
+
+}
+
+.lsw_debugger_container {
+    position: fixed;
+    top: 52px;
+    bottom: calc(env(safe-area-inset-bottom, 0) + 46px);
+    left: 4px;
+    right: 4px;
+}
+
+.lsw_debugger_content {
+    padding: 8px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* @vuebundler[Lsw_framework_components][75]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-sqlite-console/lsw-sqlite-console.html*/
+
+/* @vuebundler[Lsw_framework_components][75]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-sqlite-console/lsw-sqlite-console.js*/
+
+/* @vuebundler[Lsw_framework_components][75]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-sqlite-console/lsw-sqlite-console.css*/
+.sqlite_console {
+    font-family: monospace;
+    font-size: 10px;
+}
+.input_console {
+    background-color: black;
+    color: #0F0;
+    height: 150px;
+}
+.output_console {
+    white-space: pre;
+    background-color: black;
+    color: #FF0;
+    min-height: 150px;
+}
+
+/* @vuebundler[Lsw_framework_components][76]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-sqlite-explorer/lsw-sqlite-explorer.html*/
+
+/* @vuebundler[Lsw_framework_components][76]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-sqlite-explorer/lsw-sqlite-explorer.js*/
+
+/* @vuebundler[Lsw_framework_components][76]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-sqlite-explorer/lsw-sqlite-explorer.css*/
+.sqlite_console {
+    font-family: monospace;
+    font-size: 10px;
+}
+.input_console {
+    background-color: black;
+    color: #0F0;
+    height: 150px;
+}
+.output_console {
+    white-space: pre;
+    background-color: black;
+    color: #FF0;
+    min-height: 150px;
+}
+
+/* @vuebundler[Lsw_framework_components][77]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-coverage-viewer/lsw-coverage-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][77]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-coverage-viewer/lsw-coverage-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][77]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-coverage-viewer/lsw-coverage-viewer.css*/
+.coverage-report {
+    font-family: sans-serif;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.summary-table th,
+.summary-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.summary-table th {
+    
+}
+
+.high {
+    background-color: #5fe57e;
+    /* green */
+}
+
+.medium {
+    background-color: #dcbd58;
+    /* yellow */
+}
+
+.low {
+    background-color: #e7515e;
+    /* red */
+}
+
+.coverage_report_item {
+    margin-top: 4px;
+    padding: 4px;
+    box-shadow: 0 0 2px black;
+}
+.coverage_report_status_box {
+    padding: 2px;
+    border-radius: 3pt;
+    box-shadow: 0 0 3px black;
+}
+
+/* @vuebundler[Lsw_framework_components][78]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-js-file-coverage-viewer/lsw-js-file-coverage-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][78]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-js-file-coverage-viewer/lsw-js-file-coverage-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][78]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-js-file-coverage-viewer/lsw-js-file-coverage-viewer.css*/
+.coverage-table {
+    font-family: monospace;
+    font-size: 9px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.coverage-table table {
+    border-collapse: collapse;
+    border: none;
+}
+
+.line-row {
+    vertical-align: top;
+}
+
+.line-number {
+    width: 40px;
+    text-align: right;
+    padding-right: 2px;
+    user-select: none;
+    border-right: 1px solid #525252;
+}
+
+.line-code {
+    white-space: pre;
+}
+
+/* Ejemplo de estilos — tú los ajustarás luego */
+.hit {
+    color: #043304;
+    background-color: rgba(129, 226, 129, 0.4);
+}
+
+.miss {
+    color: #550a0a;
+    background-color: rgba(210, 96, 96, 0.4);
+}
+
+.statement-marker,
+.function-marker,
+.branch-marker {
+    border-bottom: 1px dashed gray;
+    cursor: zoom-in;
+    box-shadow: 0 0 2px black;
+    border-radius: 2pt;
+}
+
+.container_to_view {
+    max-height: 950px;
+    max-width: 95vw;
+    overflow: scroll;
+}
+
+button.supermini.for_line_coverage {
+    padding: 0px;
+    font-size: 8px !important;
+}
+
+/* @vuebundler[Lsw_framework_components][79]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-emojis-picker/lsw-emojis-picker.html*/
+
+/* @vuebundler[Lsw_framework_components][79]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-emojis-picker/lsw-emojis-picker.js*/
+
+/* @vuebundler[Lsw_framework_components][79]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-emojis-picker/lsw-emojis-picker.css*/
+.emojis_list {
+  font-size: 15px;
+  overflow: scroll;
+  border: 1px solid #BBB;
+  padding: 4px;
+  padding-right: 12px;
+  border-radius: 4pt;
+  height: 300px;
+  resize: vertical;
+}
+.emoji_button {
+  min-height: 33px;
+  min-width: 33px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  font-size: 25px;
+  border: 1px solid #333;
+}
+.emoji_button:hover {
+  border: 1px solid #333;
+}
+
+/* @vuebundler[Lsw_framework_components][80]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-clocktime-picker/lsw-clocktime-picker.html*/
+
+/* @vuebundler[Lsw_framework_components][80]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-clocktime-picker/lsw-clocktime-picker.js*/
+
+/* @vuebundler[Lsw_framework_components][80]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-clocktime-picker/lsw-clocktime-picker.css*/
+.lsw_clocktime_picker {
+    white-space: wrap;
+    text-align: left;
+}
+
+/* @vuebundler[Lsw_framework_components][81]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-calendario/lsw-calendario.html*/
+
+/* @vuebundler[Lsw_framework_components][81]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-calendario/lsw-calendario.js*/
+
+/* @vuebundler[Lsw_framework_components][81]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-calendario/lsw-calendario.css*/
+:root {
+    --altura_de_dias_de_calendario: 40px;
+}
+.visor_de_calendario {
+    max-width: 260px;
+    max-width: 100%;
+    border: 1px solid black;
+    border-radius: 2pt;
+    box-shadow: 0 0 4px black;
+    background-color: rgba(0,0,0,0.3);
+    padding: 4px;
+}
+.LswCalendario .like_table {
+    display: table;
+    width: 100%;
+}
+.LswCalendario .like_row {
+    display: table-row;
+}
+.LswCalendario .like_cell {
+    display: table-cell;
+}
+table.tabla_de_calendario {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+    margin-left: 1px;
+}
+button.boton_de_calendario {
+    min-width: auto;
+    width: auto;
+    padding: 2px;
+    min-width: 25px;
+}
+button.boton_de_dia_de_calendario {
+    min-width: 32px;
+}
+button.boton_de_dia_de_calendario.current {
+    background-color: rgb(97, 48, 46);
+    border-radius: 2pt;
+}
+
+button.boton_de_dia_de_calendario.active {
+    background-color: white;
+    color: black;
+    border: 2px solid #6fff00;
+    box-shadow: 0 0 8px rgb(255, 251, 0);
+}
+button.boton_de_dia_de_calendario.active.current {
+    
+}
+
+button.boton_de_mover_mes {
+    width: 100%;
+    min-width: 25px;
+}
+input.entrada_de_calendario {
+    min-width: auto;
+    width: auto;
+    text-align: center;
+}
+.chivato_de_fecha {
+    font-size: 10px;
+    font-family: Arial;
+    text-align: center;
+    vertical-align: midle;
+}
+table.tabla_para_horas {
+    width: 100%;
+    border-left: 1px solid white;
+}
+table.tabla_para_horas button {
+    width: 100%;
+    height: 100%;
+}
+table.tabla_para_horas input {
+    width: 100%;
+}
+.Component.LswCalendario button {
+    
+}
+tr.fila_de_dias_de_semana > td > div {
+    background-color: rgba(6, 2, 51, 0.4);
+    color: white;
+    text-align: center;
+    padding: 4px;
+    border: 1px solid transparent;
+    border-radius: 2pt;
+}
+tbody.dias_de_calendario > tr > td {
+    padding: 0px;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+tbody.dias_de_calendario > tr > td > span {
+    display: inline-block;
+    color: black;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    min-height: var(--altura_de_dias_de_calendario);
+}
+tbody.dias_de_calendario > tr > td > span > button {
+    width: 100%;
+    height: 100%;
+    min-height: var(--altura_de_dias_de_calendario);
+}
+.no_borders_table {
+    border-collapse: collapse;
+    border: none;
+}
+.fila_de_digito {
+    text-align: center;
+}
+.fila_de_digito > td {
+    vertical-align: middle;
+    padding-right: 1px;
+}
+.boton_de_ajuste_de_hora {
+    width: 100%;
+}
+.total_de_tareas_de_dia {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    font-size: 10px;
+}
+.total_de_tareas_de_dia > div {
+    text-align: center;
+    background-color: #336;
+    color: white;
+    text-shadow: 0 0 1px black;
+    min-width: 10px;
+    min-height: 10px;
+    border-radius: 1pt;
+    padding: 4px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+button.active > .total_de_tareas_de_dia > div {
+    background-color: #FFF;
+    color: black;
+}
+
+.dia_de_calendario_texto {
+    margin-top: -12px;
+}
+.subtitulo_de_seccion_de_calendario {
+    padding-top: 25px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.panel_de_hora_de_calendario {
+    background-color: rgba(255, 255, 255, 0.61);
+    border: 1px solid white;
+}
+
+/* @vuebundler[Lsw_framework_components][82]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-table/lsw-table/lsw-table.html*/
+
+/* @vuebundler[Lsw_framework_components][82]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-table/lsw-table/lsw-table.js*/
+
+/* @vuebundler[Lsw_framework_components][82]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-table/lsw-table/lsw-table.css*/
+.lsw_table {}
+
+.lsw_table .button_separation {
+    margin-left: 4px;
+}
+
+.lsw_table_itself {}
+
+.lsw_table_viewer {
+    flex: 100;
+    border-right: 1px solid #88888888;
+    padding: 0px;
+    overflow: scroll;
+    min-height: 180px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: 287px;
+    resize: vertical;
+}
+
+.lsw_table_viewer_container {
+    display: flex;
+    align-self: center;
+}
+
+.lsw_table_viewer_right_space {
+    flex: 1;
+    padding: 4px;
+}
+
+table.lsw_table_itself>thead>tr>th {
+    text-align: left;
+    padding: 4px;
+}
+
+.table_header_button {
+    padding: 0px;
+    font-size: 11px;
+    text-align: left;
+    min-height: auto;
+    width: 100%;
+}
+
+table.lsw_table_itself .max_row_height {
+    max-height: 25px;
+}
+
+table.lsw_table_itself>thead>tr>th.table_header {
+    padding: 4px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    text-align: left;
+}
+
+table.lsw_table_itself>thead>tr>th.button_header {
+    padding: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    text-align: center;
+    font-size: 8px;
+}
+
+.lsw_table .title_box {
+    padding-left: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.table_menu_button {
+    background-color: transparent;
+    color: black;
+    border: 1px solid #88888888;
+}
+
+.table_navigation_menu_cell {
+    padding: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.table_navigation_menu {
+    background-color: #0000001a;
+    color: black;
+    box-shadow: 0 0 0px black;
+    border-radius: 2pt;
+    border: 1px solid #88888888;
+    padding: 4px;
+}
+
+.lsw_table_itself>tbody>tr>td {
+    vertical-align: middle;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-left: 1px solid #999;
+    color: black;
+    text-shadow: 0 0 1px white;
+}
+
+.lsw_table_itself>tbody>tr>td:first-child {
+    border-left: 0px solid #999;
+}
+
+.lsw_table_itself>tbody>tr>td.index_cell {
+    text-align: right;
+    vertical-align: top;
+}
+
+.lsw_table_itself>tbody>tr>td.data_cell {
+    padding: 0px;
+    padding-bottom: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.lsw_table_itself>tbody>tr>td.data_cell>* {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.lsw_table_itself>tbody>tr>td.data_cell>pre {
+    margin: 0px;
+    border: 1px solid #88888888;
+    background-color: #FFF;
+    font-size: 12px;
+    font-family: Arial;
+    white-space: pre;
+    overflow: scroll;
+    padding: 4px;
+}
+
+.lsw_table_itself>tbody>tr>td.details_cell {
+    padding: 4px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.lsw_table_itself>tbody>tr.row_for_table ul {
+    margin: 0px;
+    padding-bottom: 6px;
+}
+
+.lsw_table_itself>tbody>tr.row_for_table.odd {
+    background-color: #cdcdcd88;
+}
+
+.lsw_table .pagination_button {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.lsw_table .pagination_button.deactivated {
+    cursor: not-allowed;
+}
+
+.lsw_table .pagination_button.cursor_default {
+    cursor: default;
+}
+
+.lsw_table .pagination_button_box {
+    padding-left: 1px;
+}
+
+.lsw_table .pagination_button_box.first_box {
+    padding-left: 0px;
+}
+
+.lsw_table_top_panel {
+    margin-bottom: 0px;
+}
+.lsw_table_top_panel_1 button,
+.lsw_table_top_panel_2 button,
+.lsw_table_top_panel_3 button {
+    font-size: 16px;
+    padding: 0px;
+    height: auto;
+    min-height: 25px;
+    min-width: auto;
+    border: 1px solid #88888888;
+}
+.lsw_table_top_button {
+    margin-right: 2px;
+}
+.lsw_table_config_panel > div.config_panel {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+.config_panel > h5 {
+    
+    border-bottom: 1px solid black;
+}
+.pagination_bar {
+    background-color: #070225d9;
+    color: white;
+    border-radius: 4pt;
+}
+
+.paginator_widget {
+    font-size: 10px;
+}
+
+/* @vuebundler[Lsw_framework_components][83]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-table/lsw-table-transformers/lsw-table-transformers.html*/
+
+/* @vuebundler[Lsw_framework_components][83]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-table/lsw-table-transformers/lsw-table-transformers.js*/
+
+/* @vuebundler[Lsw_framework_components][83]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-table/lsw-table-transformers/lsw-table-transformers.css*/
+.lsw_data_implorer {
+    
+}
+
+/* @vuebundler[Lsw_framework_components][84]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-code-viewer/lsw-code-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][84]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-code-viewer/lsw-code-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][84]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-code-viewer/lsw-code-viewer.css*/
+.lsw_code_viewer {}
+.lsw_code_viewer_area {
+    box-shadow: 0 0 4px black;
+    border: 1px solid black;
+    border-radius: 4pt;
+    overflow: hidden;
+    margin: 0px;
+    margin-top: 4px;
+}
+
+/* @vuebundler[Lsw_framework_components][85]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-data-explorer/lsw-data-explorer/lsw-data-explorer.html*/
+
+/* @vuebundler[Lsw_framework_components][85]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-data-explorer/lsw-data-explorer/lsw-data-explorer.js*/
+
+/* @vuebundler[Lsw_framework_components][85]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-data-explorer/lsw-data-explorer/lsw-data-explorer.css*/
+.lsw_data_explorer {
+    
+}
+.entry.flex_row {
+    align-items: center;
+}
+.prop_row {
+    white-space: nowrap;
+}
+.prop_cell {
+    color: #113;
+    font-style: italic;
+}
+.val_cell {
+    padding-left: 4px;
+    font-weight: bold;
+}
+.type_cell {
+    padding-left: 4px;
+    font-style: italic;
+    font-size: 10px;
+}
+.path_cell_container {
+    padding-left: 4px;
+    position: relative;
+}
+.path_cell {
+    font-size: 10px;
+    text-decoration: underline;
+    white-space: nowrap;
+}
+.level_cell {
+    font-size: 9px;
+}
+.path_row {
+    align-items: center;
+    padding-left: 20px;background: #333;
+    color: white;
+}
+.inner_sight_row {
+    
+}
+.top_panel_showable {
+    padding-left: 1px;
+    padding-right: 1px;
+}
+.top_panel_showable > .content {
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 2pt;
+    background-color: #DDD;
+}
+
+/* @vuebundler[Lsw_framework_components][86]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-data-explorer/lsw-data-implorer/lsw-data-implorer.html*/
+
+/* @vuebundler[Lsw_framework_components][86]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-data-explorer/lsw-data-implorer/lsw-data-implorer.js*/
+
+/* @vuebundler[Lsw_framework_components][86]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-data-explorer/lsw-data-implorer/lsw-data-implorer.css*/
+.lsw_data_implorer {
+    padding-top: 2px;
+}
+
+.lsw_data_implorer.paginated {
+    margin-left: 1px;
+    padding: 2px;
+}
+
+.lsw_data_implorer.paginated>.paginated_entry>.inner_sight_row {}
+
+.entry {}
+
+.entry.flex_row {
+    align-items: center;
+}
+
+.prop_row {
+    white-space: nowrap;
+}
+
+.prop_cell {
+    color: #113;
+}
+
+.val_cell {
+    padding-left: 4px;
+    font-weight: bold;
+}
+
+.type_cell {
+    padding-left: 4px;
+    font-size: 10px;
+}
+
+.path_cell_container {
+    padding-left: 4px;
+    position: relative;
+}
+
+.path_cell {
+    font-size: 10px;
+    text-decoration: underline;
+    white-space: nowrap;
+}
+
+.level_cell {
+    font-size: 9px;
+}
+
+.path_row {
+    display: none !important;
+    align-items: center;
+    padding-left: 20px;
+    background: #333;
+    color: white;
+    padding-bottom: 1px;
+}
+
+.inner_sight_row {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    box-shadow: 0 0 4px black;
+}
+
+.paginator button {
+    max-height: 18px;
+    padding-top: 0px;
+}
+.paginator > div {
+    padding-left: 1px;
+}
+.paginator > div:first-child {
+    padding-left: 0px;
+}
+.prop_id {
+    font-weight: bold;
+    text-decoration: underline;
+}
+.prop_type {
+    font-style: italic;
+}
+
+
+/* @vuebundler[Lsw_framework_components][87]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-data-printer-button/lsw-data-printer-button.html*/
+
+/* @vuebundler[Lsw_framework_components][87]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-data-printer-button/lsw-data-printer-button.js*/
+
+/* @vuebundler[Lsw_framework_components][87]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-data-printer-button/lsw-data-printer-button.css*/
+
+
+/* @vuebundler[Lsw_framework_components][88]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-data-printer-report/lsw-data-printer-report.html*/
+
+/* @vuebundler[Lsw_framework_components][88]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-data-printer-report/lsw-data-printer-report.js*/
+
+/* @vuebundler[Lsw_framework_components][88]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-data-printer-report/lsw-data-printer-report.css*/
+
+
+/* @vuebundler[Lsw_framework_components][89]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-dialogs/lsw-dialogs.html*/
+
+/* @vuebundler[Lsw_framework_components][89]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-dialogs/lsw-dialogs.js*/
+
+/* @vuebundler[Lsw_framework_components][89]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-dialogs/lsw-dialogs.css*/
+.lsw_dialogs_root {
+    
+}
+.lsw_dialogs {
+    position: fixed;
+    top: 52px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+}
+
+.lsw_dialogs_box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.dialog_window {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    right: 0;
+    bottom: calc(env(safe-area-inset-bottom, 0) + 46px);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 4pt;
+    background-color: #FFFFFFCC;
+    overflow: hidden;
+    box-shadow: 0 0 4px black;
+}
+.dialog_window .dialog_topbar {
+    padding: 4px;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.dialog_window .dialog_topbar .dialog_title {
+    flex: 100;
+}
+.dialog_window .dialog_topbar .dialog_topbar_buttons {
+    
+}
+.dialog_window .dialog_body {
+    position: relative;
+    flex: 100;
+    padding: 0px;
+    overflow: scroll;
+}
+.dialog_window .dialog_footer {
+    padding: 4px;
+    border-top: 1px solid black;
+    text-align: right;
+}
+
+/* @vuebundler[Lsw_framework_components][90]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-loading-bar/lsw-loading-bar.html*/
+
+/* @vuebundler[Lsw_framework_components][90]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-loading-bar/lsw-loading-bar.js*/
+
+/* @vuebundler[Lsw_framework_components][90]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-loading-bar/lsw-loading-bar.css*/
+.lsw_loading_space {
+    position: relative;
+    background-color: #0000FF;
+    min-height: 30px;
+    padding: 1px;
+    border-radius: 4pt;
+}
+.lsw_loaded_space {
+    border-radius: 4pt;
+    height: 100%;
+    min-height: 28px;
+    background-color: #00FF00;
+}
+.lsw_loading_text {
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding-top: 7px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* @vuebundler[Lsw_framework_components][91]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-volatile-db/lsw-volatile-db.js*/
+
+/* @vuebundler[Lsw_framework_components][92]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-volatile-db/components/lsw-volatile-ui/lsw-volatile-ui.html*/
+
+/* @vuebundler[Lsw_framework_components][92]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-volatile-db/components/lsw-volatile-ui/lsw-volatile-ui.js*/
+
+/* @vuebundler[Lsw_framework_components][92]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-volatile-db/components/lsw-volatile-ui/lsw-volatile-ui.css*/
+.tables_list {
+    padding-top: 2px;
+}
+.tables_list .table_item {
+    display: block;
+    padding: 4px;
+    margin-top: 2px;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 4pt;
+    cursor: pointer;
+}
+.tables_list .table_item:hover {
+    background-color: rgba(10, 25, 83, 0.5);
+}
+
+.propiedades_list {}
+.propiedades_list > .propiedad_item {
+    border: 1px solid #333;
+    padding: 4px;
+    margin-top: 4px;
+}
+
+.fila {
+    border: 1px solid black;
+    border-radius: 2pt;
+    padding: 4px;
+    padding-bottom: 2px;
+    margin-top: 4px;
+}
+.fila > .propiedad_de_fila {
+    display: inline-block;
+    padding: 2px;
+    border: 1px solid black;
+    border-radius: 2pt;
+    background-color: rgba(0,0,0,0.2);
+    margin-right: 2px;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+.fila > .propiedad_de_fila:hover {
+    
+}
+.fila > .propiedad_de_fila > .propiedad {
+    display: inline;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.fila > .propiedad_de_fila > .valor {
+    display: inline;
+    font-style: italic;
+}
+
+/* @vuebundler[Lsw_framework_components][93]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-windows/lsw-windows-main-tab/lsw-windows-main-tab.html*/
+
+/* @vuebundler[Lsw_framework_components][93]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-windows/lsw-windows-main-tab/lsw-windows-main-tab.js*/
+
+/* @vuebundler[Lsw_framework_components][93]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-windows/lsw-windows-main-tab/lsw-windows-main-tab.css*/
+.lsw_windows_main_tab {
+    position: fixed;
+    top: 54px;
+    bottom: calc(env(safe-area-inset-bottom, 0) + 46px);
+    left: 5px;
+    right: 5px;
+    color: black;
+}
+.lsw_windows_main_tab .main_tab_topbar {
+    border-bottom: 1px solid black;
+    padding: 4px;
+    padding-bottom: 3px;
+    background-color: #DFDFDF;
+    text-align: right;
+}
+.main_tab_topbar_button {
+    min-width: 30px;
+}
+.pad_normal {
+    padding: 4px;
+}
+
+.dialog_footer,
+.dialog_topbar {
+    background-color: white;
+}
+
+.process_manager_window {
+    bottom: calc(env(safe-area-inset-bottom, 0) + 8px);
+}
+
+/* @vuebundler[Lsw_framework_components][94]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-windows/lsw-windows-viewer/lsw-windows-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][94]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-windows/lsw-windows-viewer/lsw-windows-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][94]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-windows/lsw-windows-viewer/lsw-windows-viewer.css*/
+.windows_viewer {
+    z-index: 100;
+}
+
+/* @vuebundler[Lsw_framework_components][95]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-windows/lsw-windows-pivot-button/lsw-windows-pivot-button.html*/
+
+/* @vuebundler[Lsw_framework_components][95]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-windows/lsw-windows-pivot-button/lsw-windows-pivot-button.js*/
+
+/* @vuebundler[Lsw_framework_components][95]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-windows/lsw-windows-pivot-button/lsw-windows-pivot-button.css*/
+.lsw_windows_pivot_button {
+    position: fixed;
+    top: auto;
+    bottom: calc(env(safe-area-inset-bottom, 0) + 46px + 10px);
+    left: 9px;
+    right: auto;
+    padding: 0px;
+    border: 0px solid #000;
+    border-radius: 3pt;
+    cursor: default;
+    z-index: 500;
+}
+
+.lsw_windows_pivot_button:hover {}
+
+.lsw_windows_pivot_button>button {
+    max-height: 22px;
+    min-width: 22px;
+    vertical-align: middle;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent !important;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.lsw_windows_pivot_button>button:hover {
+    background-color: transparent;
+}
+
+.lsw_windows_pivot_button:hover>button {}
+
+.lsw_time_box {
+    text-decoration: underline;
+    color: black;
+    text-shadow: 0 0 2px white;
+    text-align: center;
+    margin-left: 5px;
+    border-radius: 0pt;
+    box-shadow: 0 0 2px black;
+    border: 0px solid #222;
+    border-radius: 8pt;
+    background-color: #FFFFFF30;
+    padding: 3px;
+    padding-left: 18px;
+    padding-right: 18px;
+    text-align: center;
+}
+
+/* @vuebundler[Lsw_framework_components][96]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-toasts/lsw-toasts.html*/
+
+/* @vuebundler[Lsw_framework_components][96]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-toasts/lsw-toasts.js*/
+
+/* @vuebundler[Lsw_framework_components][96]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-toasts/lsw-toasts.css*/
+.lsw_toasts {
+    position: fixed;
+    top: auto;
+    left: 30px;
+    right: 30px;
+    bottom: calc(env(safe-area-inset-bottom, 0) + 46px);
+}
+.lsw_toasts .toasts_box {
+    position: relative;
+}
+.lsw_toasts .toasts_box > .toast_list {
+    position: absolute;
+    top: auto;
+    bottom: calc(env(safe-area-inset-bottom, 0) + 46px);
+    left: 0;
+    right: 0;
+}
+
+.lsw_toasts .toast_box {
+    text-align: center;
+}
+.lsw_toasts .toast_box > .toast_item {
+    display: block;
+    width: auto;
+}
+.lsw_toasts .toast_box > .toast_item > .toast {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    border: 3px double black;
+    border-radius: 0pt;
+    box-shadow: 0 0 4px black;
+    min-height: 30px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding: 10px;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+
+/* @vuebundler[Lsw_framework_components][97]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-naty-script/naty-script.api.js*/
+
+/* @vuebundler[Lsw_framework_components][98]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-naty-script/naty-script-parser.js*/
+
+/* @vuebundler[Lsw_framework_components][99]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-console-hooker/console-hooker-api.js*/
+
+/* @vuebundler[Lsw_framework_components][100]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-console-hooker/console-hooker.html*/
+
+/* @vuebundler[Lsw_framework_components][100]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-console-hooker/console-hooker.js*/
+
+/* @vuebundler[Lsw_framework_components][100]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-console-hooker/console-hooker.css*/
+.console-hooker {
+    
+}
+
+/* @vuebundler[Lsw_framework_components][101]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/database-explorer/database-explorer.html*/
+
+/* @vuebundler[Lsw_framework_components][101]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/database-explorer/database-explorer.js*/
+
+/* @vuebundler[Lsw_framework_components][101]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/database-explorer/database-explorer.css*/
+
+
+
+/* @vuebundler[Lsw_framework_components][102]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/database-breadcrumb/database-breadcrumb.html*/
+
+/* @vuebundler[Lsw_framework_components][102]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/database-breadcrumb/database-breadcrumb.js*/
+
+/* @vuebundler[Lsw_framework_components][102]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/database-breadcrumb/database-breadcrumb.css*/
+.database_breadcrumb {
+    padding: 4px;
+}
+.database_breadcrumb_box {
+    padding: 4px;
+    border: 1px solid #999;
+    background-color: #DDD;
+    text-shadow: 0 0 1px black;
+}
+
+.hideBreadcrumb > div > h3,
+.hideBreadcrumb > div > .database_breadcrumb {
+    display: none;
+}
+
+/* @vuebundler[Lsw_framework_components][103]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-databases/page-databases.html*/
+
+/* @vuebundler[Lsw_framework_components][103]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-databases/page-databases.js*/
+
+/* @vuebundler[Lsw_framework_components][103]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-databases/page-databases.css*/
+
+
+/* @vuebundler[Lsw_framework_components][104]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-rows/page-rows.html*/
+
+/* @vuebundler[Lsw_framework_components][104]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-rows/page-rows.js*/
+
+/* @vuebundler[Lsw_framework_components][104]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-rows/page-rows.css*/
+
+
+/* @vuebundler[Lsw_framework_components][105]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-row/page-row.html*/
+
+/* @vuebundler[Lsw_framework_components][105]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-row/page-row.js*/
+
+/* @vuebundler[Lsw_framework_components][105]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-row/page-row.css*/
+table.top_aligned > tbody > tr > td {
+    vertical-align: top;
+}
+
+/* @vuebundler[Lsw_framework_components][106]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-schema/page-schema.html*/
+
+/* @vuebundler[Lsw_framework_components][106]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-schema/page-schema.js*/
+
+/* @vuebundler[Lsw_framework_components][106]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-schema/page-schema.css*/
+
+
+/* @vuebundler[Lsw_framework_components][107]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-tables/page-tables.html*/
+
+/* @vuebundler[Lsw_framework_components][107]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-tables/page-tables.js*/
+
+/* @vuebundler[Lsw_framework_components][107]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-database-ui/page-tables/page-tables.css*/
+.page_tables.page .lsw_table_itself > tbody > tr > td {
+    vertical-align: top !important;
+}
+
+/* @vuebundler[Lsw_framework_components][108]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-filesystem-explorer/lsw-filesystem-explorer/lsw-filesystem-explorer.html*/
+
+/* @vuebundler[Lsw_framework_components][108]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-filesystem-explorer/lsw-filesystem-explorer/lsw-filesystem-explorer.js*/
+
+/* @vuebundler[Lsw_framework_components][108]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-filesystem-explorer/lsw-filesystem-explorer/lsw-filesystem-explorer.css*/
+.lsw_filesystem_explorer {
+    
+}
+.lsw_filesystem_explorer.absolute_version {
+    position: absolute;
+    top: 0;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+}
+
+.lsw_filesystem_explorer > .current_node_box {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+    font-size: 12px;
+    font-family: Arial;
+    white-space: nowrap;
+    justify-content: stretch;
+    align-items: center;
+}
+.current_node_box > .current_node_filename,
+.current_node_box > .current_node_path {
+    display: inline-block;
+    padding: 4px;
+    align-self: stretch;
+    min-height: auto;
+}
+.current_node_box > .current_node_filename {
+    flex: 1;
+    border-left: 1px solid black;
+}
+.current_node_box > .current_node_path {
+    flex: 100;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+.current_node_box > .previous_node_path {
+    flex: 1;
+    align-self: center;
+    padding-left: 4px;
+}
+.current_node_box > .previous_node_path > .previous_node_button {
+    font-size: 10px;
+    padding: 3px;
+    text-align: center;
+    margin-left: 1px;
+    padding-top: 3px;
+    padding-bottom: 4px;
+}
+.reversed {
+    transform: rotate(180deg);
+}
+
+.lsw_filesystem_explorer .filesystem_ui {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(100% - 100px);
+    border: 1px solid #000;
+    border-top: 0px solid #000;
+}
+.lsw_filesystem_explorer .leftside {
+    flex: 1;
+}
+.lsw_filesystem_explorer .middleside {
+    flex: 100;
+    display: flex;
+    flex-direction: column;
+}
+.lsw_filesystem_explorer .rightside {
+    flex: 1;
+}
+.lsw_filesystem_explorer .headerside {
+    flex: 1;
+}
+.lsw_filesystem_explorer .bodyside {
+    flex: 100;
+    position: relative;
+}
+.lsw_filesystem_explorer .footerside {
+    flex: 1;
+}
+
+
+.lsw_filesystem_explorer .leftside,
+.lsw_filesystem_explorer .rightside,
+.lsw_filesystem_explorer .headerside,
+.lsw_filesystem_explorer .bodyside,
+.lsw_filesystem_explorer .footerside {
+    border: 0px solid black;
+}
+
+/* Start: Bordes de 1 sola línea entre paneles: */
+.lsw_filesystem_explorer .rightside {
+    border-left: 1px solid black;
+    min-width: 50px;
+}
+.lsw_filesystem_explorer .leftside {
+    border-right: 1px solid black;
+    min-width: 50px;
+}
+.lsw_filesystem_explorer .bodyside {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.lsw_filesystem_explorer .headerside,
+.lsw_filesystem_explorer .footerside {
+    min-height: 30px;
+}
+/* End */
+
+/* @vuebundler[Lsw_framework_components][109]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-filesystem-explorer/lsw-filesystem-buttons-panel/lsw-filesystem-buttons-panel.html*/
+
+/* @vuebundler[Lsw_framework_components][109]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-filesystem-explorer/lsw-filesystem-buttons-panel/lsw-filesystem-buttons-panel.js*/
+
+/* @vuebundler[Lsw_framework_components][109]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-filesystem-explorer/lsw-filesystem-buttons-panel/lsw-filesystem-buttons-panel.css*/
+.lsw_filesystem_buttons_panel {
+    width: 100%;
+    height: 100%;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.lsw_filesystem_buttons_panel > .buttons_panel {
+    width: 100%;
+    height: 100%;
+}
+.lsw_filesystem_buttons_panel > .buttons_panel.orientation_column > .button_cell {
+    padding-top: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.lsw_filesystem_buttons_panel > .buttons_panel.orientation_row > .button_cell {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 4px;
+}
+
+/* @vuebundler[Lsw_framework_components][110]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-filesystem-explorer/lsw-filesystem-editor/lsw-filesystem-editor.html*/
+
+/* @vuebundler[Lsw_framework_components][110]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-filesystem-explorer/lsw-filesystem-editor/lsw-filesystem-editor.js*/
+
+/* @vuebundler[Lsw_framework_components][110]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-filesystem-explorer/lsw-filesystem-editor/lsw-filesystem-editor.css*/
+.filesystem_ui {
+    min-height: 230px;
+}
+.lsw_filesystem_editor {
+    min-height: 230px;
+    padding: 1px;
+}
+.absolute_version .lsw_filesystem_editor {
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 0px;
+    right: 0px;
+    padding: 0px;
+
+    top: -3px;
+    bottom: -3px;
+    left: -3px;
+    right: -5px;
+}
+
+.lsw_filesystem_editor .editor {
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    resize: vertical;
+    border: 3px double #000;
+    border-radius: 0pt;
+    box-shadow: 0 0 2px black;
+    box-shadow: 0px 0px 8px black;
+    outline: none;
+    min-height: 230px;
+    overflow-x: scroll;
+    white-space: pre;
+    background-color: #E0E0E0;
+}
+.absolute_version .lsw_filesystem_editor .editor {
+    
+}
+.lsw_filesystem_editor .editor:focus {
+    background-color: #FFFFFF;
+}
+
+.lsw_filesystem_editor .editor_position_box {
+    background-color: rgba(255,255,255,0.5);
+    color: rgb(30, 30, 30);
+    border: 1px solid rgb(30, 30, 30);
+    padding: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    text-shadow: 0 0 0px transparent;
+}
+
+/* @vuebundler[Lsw_framework_components][111]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-filesystem-explorer/lsw-filesystem-treeviewer/lsw-filesystem-treeviewer.html*/
+
+/* @vuebundler[Lsw_framework_components][111]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-filesystem-explorer/lsw-filesystem-treeviewer/lsw-filesystem-treeviewer.js*/
+
+/* @vuebundler[Lsw_framework_components][111]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-filesystem-explorer/lsw-filesystem-treeviewer/lsw-filesystem-treeviewer.css*/
+.lsw_filesystem_treeviewer {}
+
+.treeviewer_row {
+    padding: 2px;
+    cursor: pointer;
+}
+.treeviewer_row a {
+    display: inline-block;
+    padding: 2px;
+}
+.treeviewer_row {
+    background-color: rgba(2, 2, 28, 0.7);
+    color: white;
+}
+.treeviewer_row:nth-last-child(odd) {
+    background-color: rgba(28, 28, 102, 0.7);
+    color: white;
+}
+.treeviewer_row .filename_link {
+    color: white;
+}
+.treeviewer_row:hover {
+    
+}
+.treeviewer_row:hover .filename_link {
+    color: #0F0;
+}
+table.filesystem_treeviewer_table {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+}
+table.filesystem_treeviewer_table {
+    padding: 2px;
+    font-weight: normal;
+    text-align: left;
+}
+table.filesystem_treeviewer_table > tbody > tr > td:nth-child(1) {
+    width: 1%;
+}
+table.filesystem_treeviewer_table > tbody > tr > td:nth-child(2) {
+    width: 100%;
+}
+.icon_cell {
+    padding: 4px;
+}
+
+/* @vuebundler[Lsw_framework_components][112]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-libros/lsw-wiki-libros.html*/
+
+/* @vuebundler[Lsw_framework_components][112]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-libros/lsw-wiki-libros.js*/
+
+/* @vuebundler[Lsw_framework_components][112]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-libros/lsw-wiki-libros.css*/
+.lsw_wiki_libros {}
+
+.lsw_wiki_libro_viewer_root {
+    background-color: rgba(0,0,0,.4);
+    position: relative;
+    border: 1px solid black;
+    margin-top: 1px;
+    box-shadow: 0 0 4px white;
+    border-radius: 2pt;
+    padding: 4px;
+}
+
+/* @vuebundler[Lsw_framework_components][113]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-libro-viewer/lsw-wiki-libro-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][113]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-libro-viewer/lsw-wiki-libro-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][113]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-libro-viewer/lsw-wiki-libro-viewer.css*/
+.lsw_wiki_libro_viewer {
+    padding-left: 0px;
+    padding-top: 0px;
+    font-size: 12px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+
+/* @vuebundler[Lsw_framework_components][114]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-articulos/lsw-wiki-articulos.html*/
+
+/* @vuebundler[Lsw_framework_components][114]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-articulos/lsw-wiki-articulos.js*/
+
+/* @vuebundler[Lsw_framework_components][114]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-articulos/lsw-wiki-articulos.css*/
+.lsw_wiki_articulos {}
+
+.articulo_detalles {
+    min-height: 40px;
+}
+
+.articulo_categorias_box {
+    color: rgb(0, 0, 0);
+    text-shadow: 0 0 1px black;
+    font-style: italic;
+    font-size: 10px;
+    padding: 1px;
+    padding-top: 4px;
+}
+
+/* @vuebundler[Lsw_framework_components][115]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-categorias/lsw-wiki-categorias.html*/
+
+/* @vuebundler[Lsw_framework_components][115]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-categorias/lsw-wiki-categorias.js*/
+
+/* @vuebundler[Lsw_framework_components][115]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-categorias/lsw-wiki-categorias.css*/
+.lsw_wiki_categorias {}
+
+/* @vuebundler[Lsw_framework_components][116]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-articulo-viewer/lsw-wiki-articulo-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][116]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-articulo-viewer/lsw-wiki-articulo-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][116]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-articulo-viewer/lsw-wiki-articulo-viewer.css*/
+.lsw_wiki_articulo_viewer {
+    
+}
+
+
+/* @vuebundler[Lsw_framework_components][117]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-revistas/lsw-wiki-revistas.html*/
+
+/* @vuebundler[Lsw_framework_components][117]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-revistas/lsw-wiki-revistas.js*/
+
+/* @vuebundler[Lsw_framework_components][117]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-revistas/lsw-wiki-revistas.css*/
+.lsw_wiki_revistas {}
+
+/* @vuebundler[Lsw_framework_components][118]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-tree/lsw-wiki-tree.html*/
+
+/* @vuebundler[Lsw_framework_components][118]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-tree/lsw-wiki-tree.js*/
+
+/* @vuebundler[Lsw_framework_components][118]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-tree/lsw-wiki-tree.css*/
+.lsw_wiki_tree {}
+
+/* @vuebundler[Lsw_framework_components][119]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-treenode/lsw-wiki-treenode.html*/
+
+/* @vuebundler[Lsw_framework_components][119]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-treenode/lsw-wiki-treenode.js*/
+
+/* @vuebundler[Lsw_framework_components][119]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-treenode/lsw-wiki-treenode.css*/
+.lsw_wiki_treenode {}
+
+/* @vuebundler[Lsw_framework_components][120]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki/lsw-wiki.html*/
+
+/* @vuebundler[Lsw_framework_components][120]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki/lsw-wiki.js*/
+
+/* @vuebundler[Lsw_framework_components][120]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki/lsw-wiki.css*/
+:root {
+    --wiki_articulos_color_borde: rgb(233, 236, 66);
+    --wiki_articulos_color_borde: rgb(0, 0, 0);
+    --wiki_articulos_color_borde_2: rgb(0, 0, 0);
+    --wiki_articulos_color_borde_2: rgba(0, 0, 0, 0.6);
+    --wiki_articulos_color_fondo: rgba(33, 240, 10, 0.3);
+    --wiki_articulos_color_fondo_activado: rgba(33, 240, 10, 0.6);
+    --wiki_articulos_color_letra: rgb(0, 0, 0);
+    --wiki_articulos_detalles_color_fondo: rgba(255, 255, 255, 0.7);
+
+}
+
+.lsw_wiki {}
+
+.lsw_wiki .wiki_searcher_1_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.lsw_wiki .wiki_searcher_1_input_cell {
+    flex: 100;
+    padding: 2px;
+}
+
+.lsw_wiki .wiki_searcher_1_input {
+    width: 100%;
+
+}
+
+.lsw_wiki .wiki_searcher_1_button_cell {
+    flex: 1;
+    padding: 2px;
+    padding-left: 0px;
+}
+
+.lsw_wiki .wiki_buscador input.wiki_buscador_texto {
+    background-color: white;
+    border: 1px solid #333;
+    border-radius: 2pt !important;
+}
+
+.lsw_wiki .wiki_buscador.esta_buscando input.wiki_buscador_texto {
+    background-color: rgb(233, 230, 194);
+    border: 1px solid #666;
+}
+
+.lsw_wiki .caja_de_mensaje_sobre_articulos {
+    box-shadow: 0 0 4px black;
+    border-radius: 2pt;
+    background-color: #ffffff69;
+    color: #000;
+    text-shadow: 0 0 1px black;
+    padding: 4px;
+    font-size: 10px;
+}
+
+.lista_articulos {
+    border-top: 1px solid var(--wiki_articulos_color_borde);
+    box-shadow: 0 0 4px black;
+}
+
+.item_articulo {
+    margin-bottom: 0px;
+    border: 1px solid var(--wiki_articulos_color_borde);
+    border-top: 0px solid white;
+    background-color: var(--wiki_articulos_color_fondo);
+    color: var(--wiki_articulos_color_letra);
+    text-shadow: 1px solid blue;
+    cursor: pointer;
+}
+
+.item_articulo.activated {
+    background-color: var(--wiki_articulos_color_fondo_activado);
+}
+
+.celda_articulo {
+    padding: 2px;
+}
+
+.articulo_detalles {
+    text-align: left;
+    background-color: var(--wiki_articulos_detalles_color_fondo);
+    border-top: 1px solid var(--wiki_articulos_color_borde_2);
+}
+
+.item_articulo .secondary_text_color {
+    color: rgb(234, 234, 234);
+}
+
+/* @vuebundler[Lsw_framework_components][121]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-wiki/lsw-wiki-utils/lsw-wiki-utils.js*/
+
+/* @vuebundler[Lsw_framework_components][122]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-book-factory/lsw-book-factory.html*/
+
+/* @vuebundler[Lsw_framework_components][122]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-book-factory/lsw-book-factory.js*/
+
+/* @vuebundler[Lsw_framework_components][122]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-book-factory/lsw-book-factory.css*/
+.lsw_book_factory {}
+
+/* @vuebundler[Lsw_framework_components][123]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-book-library/lsw-book-library.html*/
+
+/* @vuebundler[Lsw_framework_components][123]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-book-library/lsw-book-library.js*/
+
+/* @vuebundler[Lsw_framework_components][123]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-book-library/lsw-book-library.css*/
+.lsw_book_library {}
+
+/* @vuebundler[Lsw_framework_components][124]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-markdown-viewer/lsw-markdown-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][124]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-markdown-viewer/lsw-markdown-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][124]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-markdown-viewer/lsw-markdown-viewer.css*/
+.lsw_markdown_viewer ol,
+.lsw_markdown_viewer ul {
+    padding-left: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.lsw_markdown_viewer p {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+/* @vuebundler[Lsw_framework_components][125]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-clockwatcher/lsw-clockwatcher.html*/
+
+/* @vuebundler[Lsw_framework_components][125]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-clockwatcher/lsw-clockwatcher.js*/
+
+/* @vuebundler[Lsw_framework_components][125]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-clockwatcher/lsw-clockwatcher.css*/
+.clockwatcher_layer_1 {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -3;
+}
+.clockwatcher_layer_2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    margin-top: -60px;
+    color: black;
+    text-shadow: 0 0 1px white;
+}
+.clockwatcher_box {
+
+}
+.clock_message {
+    font-size: 13px;
+}
+
+/* @vuebundler[Lsw_framework_components][126]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-goals-viewer/lsw-goals-api.js*/
+
+/* @vuebundler[Lsw_framework_components][127]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-goals-viewer/lsw-goals-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][127]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-goals-viewer/lsw-goals-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][127]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-goals-viewer/lsw-goals-viewer.css*/
+:root {
+  --goals_bar_height: 20px;
+}
+
+.lsw_goals_viewer {
+    
+}
+
+.goals_list {
+  overflow: scroll;
+}
+
+.goal_item {
+  
+}
+
+.bar_separation {
+  min-height: 1px;
+}
+.bar_holder {
+  background-color: rgba(255,255,255,0.4);
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 2pt;
+  padding: 1px;
+  min-height: 24px;
+  cursor: pointer;
+}
+.bar_text {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding-left: 8px;
+  padding-top: 4px;
+  font-size: 10px;
+  color: black;
+  white-space: nowrap;
+}
+.bar_filler {
+  height: var(--goals_bar_height);
+  border-radius: 2pt;
+  box-shadow: 0 0 4px black;
+  min-width: 3px;
+}
+.concepto_box {
+  display: inline-block;
+  width: 100px;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.only_inlineblocks > div {
+  display: inline-block;
+}
+
+.goal_status_card {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 3pt;
+  border: 0px solid white;
+  padding: 4px;
+  padding-top: 0px;
+}
+
+.goal_status_card .goal_line {
+  border-bottom: 1px solid #333;
+}
+
+/* @vuebundler[Lsw_framework_components][128]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-goals-records-viewer/lsw-goals-records-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][128]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-goals-records-viewer/lsw-goals-records-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][128]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-goals-records-viewer/lsw-goals-records-viewer.css*/
+.lsw_goals_records_viewer {
+    
+}
+
+.titulo_de_record {
+  background-color: #847fb7e0;
+  color: black;
+  padding: 4px;
+  margin-bottom: 4px;
+  border-radius: 2pt;
+  border: 1px solid #333;
+}
+
+.carta_de_record {
+  display: inline-block;
+  margin-right: 4px;
+  border: 1px solid #222;
+  padding: 1px;
+  text-align: center;
+}
+
+.celda_de_concepto_de_record {
+  background-color: #111;
+  color: white;
+  margin-bottom: 1px;
+  padding: 4px;
+  font-weight: bold;
+}
+.celda_de_regla_de_record {
+  background-color: #111;
+  color: white;
+  margin-top: 1px;
+}
+
+/* Widget de checkbox */
+button.button_checkbox {
+  padding: 0px !important;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  vertical-align: top;
+  cursor: pointer;
+}
+button.button_checkbox > label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+button.button_checkbox > label > input[type="checkbox"] {
+  flex: 1;
+  min-height: auto;
+  cursor: pointer;
+}
+
+button.button_checkbox > label > span {
+  flex: 100;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* @vuebundler[Lsw_framework_components][129]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-bin-directory/lsw-bin-directory.html*/
+
+/* @vuebundler[Lsw_framework_components][129]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-bin-directory/lsw-bin-directory.js*/
+
+/* @vuebundler[Lsw_framework_components][129]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-bin-directory/lsw-bin-directory.css*/
+.lsw_bin_directory {}
+
+.binaries_list {}
+.binaries_list .binarie_item {
+    margin-top: 2px;
+}
+.binaries_list .binarie_item button {
+    min-height:25px;
+    border: 1px solid rgb(215, 222, 27);
+}
+.binaries_list .binarie_item button:hover {
+    border: 1px solid rgb(215, 222, 27);
+}
+
+.binaries_list.is_searching .binaries_searcher_input {
+    background-color: #dec275;
+}
+
+/* @vuebundler[Lsw_framework_components][130]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-event-tracker/lsw-event-tracker.html*/
+
+/* @vuebundler[Lsw_framework_components][130]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-event-tracker/lsw-event-tracker.js*/
+
+/* @vuebundler[Lsw_framework_components][130]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-event-tracker/lsw-event-tracker.css*/
+
+
+/* @vuebundler[Lsw_framework_components][131]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-search-replacer/lsw-search-replacer.html*/
+
+/* @vuebundler[Lsw_framework_components][131]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-search-replacer/lsw-search-replacer.js*/
+
+/* @vuebundler[Lsw_framework_components][131]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-search-replacer/lsw-search-replacer.css*/
+
+
+/* @vuebundler[Lsw_framework_components][132]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/lsw-agenda/lsw-agenda.html*/
+
+/* @vuebundler[Lsw_framework_components][132]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/lsw-agenda/lsw-agenda.js*/
+
+/* @vuebundler[Lsw_framework_components][132]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/lsw-agenda/lsw-agenda.css*/
+.lsw_agenda {}
+
+.calendar_viewer {
+    padding: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: -1px;
+}
+
+.lsw_agenda .visor_de_calendario>table.tabla_de_calendario {
+    border-collapse: collapse;
+    margin-left: -1px;
+}
+
+.no_tasks_message {
+    padding: 8px;
+    padding-bottom: 4px;
+}
+
+.hour_separator_cell {
+    background-color: #11113388;
+    color: white;
+    padding: 4px;
+    font-weight: bold;
+}
+
+.hour_lapse_separator {
+    background-color: #11113288;
+    color: white;
+    padding: 4px;
+}
+
+.hour_lapse_list {}
+
+.hour_task_block {
+    display: block;
+}
+
+.hour_task_pill {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.hour_task_pill>* {
+    flex: 1;
+    position: relative;
+}
+
+.hour_task_pill>.button_pill_cell {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.lighted_cell {
+    border: 1px solid white;
+    padding: 1px;
+    height: 100%;
+    color: #333;
+    text-shadow: 0 0 1px white;
+}
+
+.psicodelic_cell {
+    animation: fondoPsicodelicoTio 20s infinite, bordeLatido 2s infinite;
+    color: white;
+    text-shadow: 0 0 1px black;
+}
+
+.hour_task_pill>*>button {
+    border: 1px solid #c7c7c7;
+    border-radius: 0pt;
+}
+
+.hour_task_pill>.pill_end.button_pill_cell>button {
+    border-top-right-radius: 2pt;
+    border-bottom-right-radius: 2pt;
+}
+
+.button_pill_cell>button {
+    min-height: auto !important;
+    min-height: auto !important;
+    height: auto !important;
+    font-size: 12px !important;
+}
+
+.hour_task_dragger {
+    flex: 1;
+    background-color: orange;
+}
+
+.box_for_date_details {}
+
+.hour_task_details_start,
+.hour_task_details_duration {
+    background-color: rgba(229, 234, 125, 0.87);
+    color: #020d48;
+    text-shadow: 0 0 1px #9691b3;
+}
+
+.hour_task_name {
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+}
+
+.hour_compromises {
+    color: white;
+    text-shadow: 0 0 1px black;
+}
+
+.hour_table {}
+
+.accion_row {
+    align-items: stretch;
+    justify-items: stretch;
+
+    align-self: stretch;
+    justify-self: stretch;
+
+}
+
+.accion_row>div {
+    padding-left: 4px;
+}
+
+.accion_row>div:first-child {
+    padding-left: 0px;
+}
+
+.hour_task_block.is_failed .celda_de_concepto {
+    background-color: #5a202088;
+    color: black;
+    text-decoration: line-through;
+}
+
+.hour_task_block.is_completed .celda_de_concepto {
+    background-color: #2ea603d6;
+    color: black;
+    text-decoration: line-through;
+}
+
+.hour_task_block.is_pending .celda_de_concepto {
+    background-color: #f2ea0b99;
+    color: #040688;
+
+}
+
+.detalles_de_accion {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding: 4px;
+    border-radius: 3pt;
+    border: 0px solid #000;
+}
+
+.tabla_de_detalles {
+    display: table;
+    width: 100%;
+    padding-bottom: 4px;
+    background-color: rgba(255,255,255,0.7);
+    color: black;
+}
+
+.tabla_de_detalles>.campo {
+    display: table-row;
+}
+
+.tabla_de_detalles>.campo>.clave {
+    display: table-cell;
+    text-align: right;
+    border-right: 0px solid #444;
+    border-top: 0px solid #444;
+    padding-right: 4px;
+    color: #000000;
+    text-shadow: 0 0 1px black;
+    vertical-align: top;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.tabla_de_detalles>.campo:first-child>.clave {
+    border-top: 1px solid #444;
+}
+.tabla_de_detalles>.campo>.clave {
+    border-bottom: 1px solid #444;
+    border-left: 1px solid #444;
+    border-right: 0px solid #444;
+    padding-left: 4px;
+}
+.tabla_de_detalles>.campo:first-child>.valor {
+    border-top: 1px solid #444;
+}
+.tabla_de_detalles>.campo>.valor {
+    border-bottom: 1px solid #444;
+    border-left: 1px solid #444;
+    border-right: 1px solid #444;
+    display: table-cell;
+    width: 100%;
+    padding: 4px;
+    padding-bottom: 0px;
+}
+
+.tabla_de_detalles>.campo>.valor_de_estado {
+    text-transform: uppercase;
+}
+
+
+.pill_start,
+.pill_middle,
+.pill_end {}
+
+.pill_start {
+    border: 1px solid black;
+    border-radius: 2pt;
+    border-top-right-radius: 0pt;
+    border-bottom-right-radius: 0pt;
+    font-weight: bold;
+    white-space: nowrap;
+    padding-top: 2px;
+}
+
+.pill_middle,
+.pill_end {
+    border: 1px solid black;
+    border-left: none;
+    white-space: nowrap;
+}
+
+.pill_middle {
+    border-radius: 0pt;
+}
+
+.pill_end {
+    border: 1px solid black;
+    border-left: none;
+    border-radius: 2pt;
+    border-top-left-radius: 0pt;
+    border-bottom-left-radius: 0pt;
+    white-space: nowrap;
+}
+
+.hour_task_block.is_completed .hour_task_name {
+    background-color: #46c01a;
+}
+
+.hour_task_block.is_pending .hour_task_name {
+    background-color: #e5df23;
+}
+
+.hour_task_block.is_failed .hour_task_name {
+    background-color: #5a2020;
+    color: white;
+    text-shadow: 0 0 4px black;
+    text-decoration: line-through;
+    font-weight: bold;
+}
+
+.hour_task_editer {}
+
+.hour_task_deleter {}
+
+.hour_task_editer,
+.hour_task_deleter {
+    cursor: pointer;
+}
+
+.hidden_menu {
+    position: relative;
+}
+
+.hidden_menu_box {
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: auto;
+    padding: 4px;
+    padding-top: 4px;
+    padding-left: 0px;
+    z-index: 1001;
+}
+
+.hidden_menu_items {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid #999;
+    border-radius: 2pt;
+    border-top: 0px solid #999;
+    border-bottom: 1px solid #999;
+    box-shadow: 0 0 4px black;
+}
+
+.hidden_menu_items>div {
+    white-space: nowrap;
+    padding: 0px;
+    border-top: 1px solid #999;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    min-height: 30px;
+    height: 100%;
+}
+
+.hidden_menu_items>div:first-child {
+    border-top: 1px solid white;
+}
+
+.hidden_menu_items>div>button {
+    width: 100%;
+    padding: 2px;
+    text-align: left;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    min-height: 20px;
+    height: 100%;
+    min-height: 30px;
+    font-size: 10px !important;
+}
+
+.hidden_menu_items>.button_cell {
+    padding-bottom: 0px;
+}
+
+.hidden_menu_items>.separator {
+    width: 100%;
+    padding: 0px;
+    padding-bottom: 1px;
+    text-align: left;
+    min-height: 25px;
+    color: black;
+    /* @CAUTION: depends on button{height} */
+    display: flex;
+    align-items: center;
+}
+
+.hidden_menu_items>.title {
+    width: 100%;
+    padding: 0px;
+    font-weight: bold;
+    text-align: left;
+    min-height: 25px;
+    /* @CAUTION: depends on button{height} */
+    display: flex;
+    align-items: center;
+    border-bottom: 1px dotted #000;
+    background-color: #AAA8;
+    background-color: #33BC;
+    color: white;
+    padding: 2px;
+    padding-left: 2px;
+    padding-left: 0px;
+}
+
+.hidden_menu_fixed_layer {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.hidden_menu_absolute_layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: auto;
+    right: auto;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+.form_label {
+    padding-top: 4px;
+}
+
+input.form_control {
+    width: 100%;
+}
+
+
+.form_label {}
+
+@keyframes fondoPsicodelicoTio {
+    0% {
+        background-color: rgb(74, 0, 0);
+    }
+
+    16% {
+        background-color: rgb(74, 74, 0);
+    }
+
+    32% {
+        background-color: rgb(0, 74, 0);
+    }
+
+    48% {
+        background-color: rgb(0, 74, 74);
+    }
+
+    64% {
+        background-color: rgb(0, 0, 74);
+    }
+
+    80% {
+        background-color: rgb(74, 0, 74);
+    }
+
+    100% {
+        background-color: rgb(74, 0, 0);
+    }
+}
+
+@keyframes bordePsicodelicoTio {
+    0% {
+        background-color: rgb(74, 0, 0);
+    }
+
+    16% {
+        background-color: rgb(74, 74, 0);
+    }
+
+    32% {
+        background-color: rgb(0, 74, 0);
+    }
+
+    48% {
+        background-color: rgb(0, 74, 74);
+    }
+
+    64% {
+        background-color: rgb(0, 0, 74);
+    }
+
+    80% {
+        background-color: rgb(74, 0, 74);
+    }
+
+    100% {
+        background-color: rgb(74, 0, 0);
+    }
+}
+
+@keyframes bordeLatido {
+    0% {
+        border-color: #FFF;
+    }
+
+    20% {
+        border-color: #FFF;
+    }
+
+    25% {
+        border-color: #FFF;
+    }
+
+    30% {
+        border-color: #000;
+    }
+
+    40% {
+        border-color: #FFF;
+    }
+
+    43% {
+        border-color: #000;
+    }
+
+    50% {
+        border-color: #FFF;
+    }
+
+    100% {
+        border-color: #FFF;
+    }
+}
+
+.bordePsicodelicoTio {
+    animation: bordePsicodelicoTio 30s infinite;
+}
+
+.fondoPsicodelicoTio {
+    animation: fondoPsicodelicoTio 30s infinite;
+}
+
+/*
+RGB=
+100
+
+subir(G) 110
+bajar(R) 010
+subir(B) 011
+bajar(G) 001
+subir(R) 101
+bajar(B) 100
+
+=100
+74,0,0
+74,74,0
+0,74,0
+0,74,74
+0,0,74
+74,0,74
+74,0,0
+
+0,0,74
+0,74,0
+0,74,74
+74,0,0
+74,0,74
+74,74,0
+*/
+
+.form_label .enunciate_box {
+    display: inline-block;
+}
+
+.form_label .info_icon {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.form_label .explanation {
+    display: inline;
+    color: #777;
+}
+
+.form_title {
+    background-color: #555;
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+}
+
+.selected_day_title {
+    /*background-color: #0f0f0f61;*/
+    color: #FFF;
+    padding: 0px;
+    border: 0px solid black;
+    text-shadow: 0 0 2px black;
+    min-height: auto;
+    font-size: 10px;
+}
+
+.tasks_viewer {
+    padding: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/* @vuebundler[Lsw_framework_components][133]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-accion-add/lsw-agenda-accion-add.html*/
+
+/* @vuebundler[Lsw_framework_components][133]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-accion-add/lsw-agenda-accion-add.js*/
+
+/* @vuebundler[Lsw_framework_components][133]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-accion-add/lsw-agenda-accion-add.css*/
+.LswAgendaAccionAdd {
+
+}
+
+
+/* @vuebundler[Lsw_framework_components][134]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-accion-search/lsw-agenda-accion-search.html*/
+
+/* @vuebundler[Lsw_framework_components][134]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-accion-search/lsw-agenda-accion-search.js*/
+
+/* @vuebundler[Lsw_framework_components][134]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-accion-search/lsw-agenda-accion-search.css*/
+.LswAgendaAccionSearch {
+
+}
+
+/* @vuebundler[Lsw_framework_components][135]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-acciones-viewer/lsw-agenda-acciones-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][135]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-acciones-viewer/lsw-agenda-acciones-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][135]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-acciones-viewer/lsw-agenda-acciones-viewer.css*/
+.lsw_agenda_acciones_viewer {
+  
+}
+
+.fondo_clarito {
+    background-color: rgba(255,255,255,0.4) !important;
+}
+
+
+.border_circled {
+    border-radius: 50%;
+}
+.width_25px {
+    width: 25px;
+}
+.height_25px {
+    height: 25px;
+}
+
+.selected_date_on_tasks_viewer {
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    border-radius: 2pt;
+    border: 1px solid black;
+    padding-top: 1px;
+    font-size: 12px;
+    min-height: 40px;
+    padding-top: 12px;
+}
+.tasks_area {
+    min-height: 140px;
+}
+.notificacion_de_peligro {
+    min-height: 85px;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 12px;
+}
+
+/* @vuebundler[Lsw_framework_components][136]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-breadcrumb/lsw-agenda-breadcrumb.html*/
+
+/* @vuebundler[Lsw_framework_components][136]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-breadcrumb/lsw-agenda-breadcrumb.js*/
+
+/* @vuebundler[Lsw_framework_components][136]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-breadcrumb/lsw-agenda-breadcrumb.css*/
+.lsw_agenda_breadcrumb {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.agenda_breadcrumb {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    padding: 12px;
+}
+.agenda_breadcrumb_item {
+    flex: 1;
+}
+.agenda_breadcrumb_link {
+    color: black;
+    font-weight: normal;
+    cursor: pointer;
+}
+.agenda_breadcrumb_link:hover {
+    text-decoration: underline;
+}
+.agenda_breadcrumb_link.only_label {
+    font-weight: normal;
+    text-decoration: none;
+    cursor: inherit;
+}
+
+/* @vuebundler[Lsw_framework_components][137]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-concepto-add/lsw-agenda-concepto-add.html*/
+
+/* @vuebundler[Lsw_framework_components][137]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-concepto-add/lsw-agenda-concepto-add.js*/
+
+/* @vuebundler[Lsw_framework_components][137]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-concepto-add/lsw-agenda-concepto-add.css*/
+.LswAgendaConceptoAdd {
+
+}
+
+/* @vuebundler[Lsw_framework_components][138]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-concepto-search/lsw-agenda-concepto-search.html*/
+
+/* @vuebundler[Lsw_framework_components][138]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-concepto-search/lsw-agenda-concepto-search.js*/
+
+/* @vuebundler[Lsw_framework_components][138]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-concepto-search/lsw-agenda-concepto-search.css*/
+.LswAgendaConceptoSearch {
+
+}
+
+/* @vuebundler[Lsw_framework_components][139]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-evento-search/lsw-agenda-evento-search.html*/
+
+/* @vuebundler[Lsw_framework_components][139]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-evento-search/lsw-agenda-evento-search.js*/
+
+/* @vuebundler[Lsw_framework_components][139]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-evento-search/lsw-agenda-evento-search.css*/
+.LswAgendaEventoSearch {
+
+}
+
+/* @vuebundler[Lsw_framework_components][140]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-form/lsw-agenda-form.html*/
+
+/* @vuebundler[Lsw_framework_components][140]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-form/lsw-agenda-form.js*/
+
+/* @vuebundler[Lsw_framework_components][140]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-form/lsw-agenda-form.css*/
+.form_item {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-top: 1px solid #CCC;
+}
+select.form_control {
+    width: 100%;
+}
+.enunciate_box2 {
+    padding-bottom: 2px;
+}
+.enunciate {
+    font-weight: bold;
+    display: block;
+}
+.enunciate > .enunciate_text {
+    display: inline;
+    white-space: nowrap;
+}
+.enunciate_box {
+    padding-left: 4px;
+    float: right;
+}
+.enunciate > .coderef {
+    display: inline;
+    padding-bottom: 2px;
+}
+.enunciate > .coderef > .codenote {
+    display: inline;
+    font-weight: normal;
+    font-size: 9px;
+    white-space: nowrap;
+    padding-right: 2px;
+}
+.enunciate > .coderef > .codenote.as_note {
+    padding-left: 2px;
+}
+.enunciate > .coderef > .codetext {
+    display: inline;
+    font-weight: normal;
+    font-family: monospace;
+    font-size: 8px;
+    white-space: nowrap;
+}
+.enunciate > .coderef > .codetype {
+    font-size: 10px;
+    background-color: #CCC;
+    box-shadow: 0 0 2px black;
+    padding: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.validationBox {
+    display: none;
+    padding: 4px;
+    border: 1px solid #999;
+    margin-top: 1px;
+}
+.validationBox.errorBox {
+    display: block;
+    background-color: rgb(207, 100, 100);
+}
+.validationBox.successBox {
+    display: block;
+    background-color: rgb(127, 223, 127);
+}
+
+/* @vuebundler[Lsw_framework_components][141]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-impresion-add/lsw-agenda-impresion-add.html*/
+
+/* @vuebundler[Lsw_framework_components][141]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-impresion-add/lsw-agenda-impresion-add.js*/
+
+/* @vuebundler[Lsw_framework_components][141]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-impresion-add/lsw-agenda-impresion-add.css*/
+.LswAgendaImpresionAdd {
+
+}
+
+/* @vuebundler[Lsw_framework_components][142]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-impresion-search/lsw-agenda-impresion-search.html*/
+
+/* @vuebundler[Lsw_framework_components][142]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-impresion-search/lsw-agenda-impresion-search.js*/
+
+/* @vuebundler[Lsw_framework_components][142]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-impresion-search/lsw-agenda-impresion-search.css*/
+.LswAgendaImpresionSearch {
+
+}
+
+/* @vuebundler[Lsw_framework_components][143]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-infraccion-search/lsw-agenda-infraccion-search.html*/
+
+/* @vuebundler[Lsw_framework_components][143]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-infraccion-search/lsw-agenda-infraccion-search.js*/
+
+/* @vuebundler[Lsw_framework_components][143]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-infraccion-search/lsw-agenda-infraccion-search.css*/
+.LswAgendaInfraccionSearch {
+
+}
+
+/* @vuebundler[Lsw_framework_components][144]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-limitador-add/lsw-agenda-limitador-add.html*/
+
+/* @vuebundler[Lsw_framework_components][144]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-limitador-add/lsw-agenda-limitador-add.js*/
+
+/* @vuebundler[Lsw_framework_components][144]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-limitador-add/lsw-agenda-limitador-add.css*/
+.LswAgendaLimitadorAdd {
+
+}
+
+/* @vuebundler[Lsw_framework_components][145]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-limitador-search/lsw-agenda-limitador-search.html*/
+
+/* @vuebundler[Lsw_framework_components][145]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-limitador-search/lsw-agenda-limitador-search.js*/
+
+/* @vuebundler[Lsw_framework_components][145]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-limitador-search/lsw-agenda-limitador-search.css*/
+.LswAgendaLimitadorSearch {
+
+}
+
+/* @vuebundler[Lsw_framework_components][146]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-limitador-viewer/lsw-agenda-limitador-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][146]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-limitador-viewer/lsw-agenda-limitador-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][146]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-limitador-viewer/lsw-agenda-limitador-viewer.css*/
+.lsw_agenda_limitador_viewer {
+    
+}
+.infracciones_list {
+    padding-top: 8px;
+}
+.infraccion_item {
+    padding: 8px;
+    padding-top: 0px;
+}
+.infraccion_item > .infraccion_text {
+    background-color: rgba(115, 13, 13, 0.849);
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 2px black;
+    padding: 8px;
+}
+
+/* @vuebundler[Lsw_framework_components][147]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-postimpresion-search/lsw-agenda-postimpresion-search.html*/
+
+/* @vuebundler[Lsw_framework_components][147]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-postimpresion-search/lsw-agenda-postimpresion-search.js*/
+
+/* @vuebundler[Lsw_framework_components][147]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-postimpresion-search/lsw-agenda-postimpresion-search.css*/
+.LswAgendaPostimpresionSearch {
+
+}
+
+/* @vuebundler[Lsw_framework_components][148]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-propagacion-search/lsw-agenda-propagacion-search.html*/
+
+/* @vuebundler[Lsw_framework_components][148]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-propagacion-search/lsw-agenda-propagacion-search.js*/
+
+/* @vuebundler[Lsw_framework_components][148]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-propagacion-search/lsw-agenda-propagacion-search.css*/
+.LswAgendaPropagacionSearch {
+
+}
+
+/* @vuebundler[Lsw_framework_components][149]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-propagador-search/lsw-agenda-propagador-search.html*/
+
+/* @vuebundler[Lsw_framework_components][149]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-propagador-search/lsw-agenda-propagador-search.js*/
+
+/* @vuebundler[Lsw_framework_components][149]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-agenda/components/lsw-agenda-propagador-search/lsw-agenda-propagador-search.css*/
+.LswAgendaPropagadorSearch {
+
+}
+
+/* @vuebundler[Lsw_framework_components][150]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-conductometria/lsw-conductometria.html*/
+
+/* @vuebundler[Lsw_framework_components][150]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-conductometria/lsw-conductometria.js*/
+
+/* @vuebundler[Lsw_framework_components][150]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-conductometria/lsw-conductometria.css*/
+.LswConductometria {
+
+}
+
+/* @vuebundler[Lsw_framework_components][151]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-conductometria/lsw-conductometria.api.js*/
+
+/* @vuebundler[Lsw_framework_components][152]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-conductometria-report/lsw-conductometria-report.html*/
+
+/* @vuebundler[Lsw_framework_components][152]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-conductometria-report/lsw-conductometria-report.js*/
+
+/* @vuebundler[Lsw_framework_components][152]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-conductometria-report/lsw-conductometria-report.css*/
+.lsw_conductometria_reports {
+    
+}
+
+/* @vuebundler[Lsw_framework_components][153]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-conductometria-report/lsw-conductometria-report.api.js*/
+
+/* @vuebundler[Lsw_framework_components][154]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/api/api.js*/
+
+/* @vuebundler[Lsw_framework_components][155]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-form-builder/lsw-form-builder.html*/
+
+/* @vuebundler[Lsw_framework_components][155]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-form-builder/lsw-form-builder.js*/
+
+/* @vuebundler[Lsw_framework_components][155]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-form-builder/lsw-form-builder.css*/
+.lsw-form-builder {
+    
+}
+
+.errorBox {
+    background-color: rgb(206, 133, 133);
+    color: black;
+    font-weight: bold;
+    border: red;
+    border-radius: 2pt;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    padding: 8px;
+}
+
+/* @vuebundler[Lsw_framework_components][156]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/lsw-formtype.html*/
+
+/* @vuebundler[Lsw_framework_components][156]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/lsw-formtype.js*/
+
+/* @vuebundler[Lsw_framework_components][156]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/lsw-formtype.css*/
+.formtype_enunciate_block {
+    display: inline-block;
+}
+.formtype_label {
+    display: inline-block;
+}
+.formtype_info_button {
+    display: inline-block;
+}
+.formtype_enunciate_extra_info {
+    display: block;
+    border-top: 1px solid #888;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 10px;
+}
+
+/* @vuebundler[Lsw_framework_components][157]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/partials/lsw-control-label/lsw-control-label.html*/
+
+/* @vuebundler[Lsw_framework_components][157]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/partials/lsw-control-label/lsw-control-label.js*/
+
+/* @vuebundler[Lsw_framework_components][157]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/partials/lsw-control-label/lsw-control-label.css*/
+.formtype_label {
+    font-weight: bold;
+}
+
+/* @vuebundler[Lsw_framework_components][158]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/partials/lsw-control-error/lsw-control-error.html*/
+
+/* @vuebundler[Lsw_framework_components][158]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/partials/lsw-control-error/lsw-control-error.js*/
+
+/* @vuebundler[Lsw_framework_components][158]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/partials/lsw-control-error/lsw-control-error.css*/
+
+
+/* @vuebundler[Lsw_framework_components][159]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-text-control/lsw-text-control.html*/
+
+/* @vuebundler[Lsw_framework_components][159]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-text-control/lsw-text-control.js*/
+
+/* @vuebundler[Lsw_framework_components][159]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-text-control/lsw-text-control.css*/
+.lsw_text_control {
+    
+}
+
+/* @vuebundler[Lsw_framework_components][160]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-long-text-control/lsw-long-text-control.html*/
+
+/* @vuebundler[Lsw_framework_components][160]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-long-text-control/lsw-long-text-control.js*/
+
+/* @vuebundler[Lsw_framework_components][160]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-long-text-control/lsw-long-text-control.css*/
+.lsw_long_text_control {
+    
+}
+.lsw_long_text_control_textarea {
+    min-height: 260px;
+}
+
+/* @vuebundler[Lsw_framework_components][161]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-date-control/lsw-date-control.html*/
+
+/* @vuebundler[Lsw_framework_components][161]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-date-control/lsw-date-control.js*/
+
+/* @vuebundler[Lsw_framework_components][161]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-date-control/lsw-date-control.css*/
+.lsw_date_control {
+    
+}
+
+/* @vuebundler[Lsw_framework_components][162]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-duration-control/lsw-duration-control.html*/
+
+/* @vuebundler[Lsw_framework_components][162]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-duration-control/lsw-duration-control.js*/
+
+/* @vuebundler[Lsw_framework_components][162]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-duration-control/lsw-duration-control.css*/
+.lsw_duration_control {
+    
+}
+
+.duration_control_details_panel {
+    white-space: wrap;
+}
+
+.duration_control_option {
+    display: inline-block;
+    border: 1px solid #FFF4;
+    padding: 4px;
+    margin-right: 4px;
+    margin-top: 4px;
+    border-radius: 2pt;
+    cursor: pointer;
+}
+.duration_control_option:hover {
+    background-color: #FFF8;
+}
+
+
+/* @vuebundler[Lsw_framework_components][163]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-number-control/lsw-number-control.html*/
+
+/* @vuebundler[Lsw_framework_components][163]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-number-control/lsw-number-control.js*/
+
+/* @vuebundler[Lsw_framework_components][163]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-number-control/lsw-number-control.css*/
+.lsw_number_control {
+    
+}
+
+/* @vuebundler[Lsw_framework_components][164]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-options-control/lsw-options-control.html*/
+
+/* @vuebundler[Lsw_framework_components][164]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-options-control/lsw-options-control.js*/
+
+/* @vuebundler[Lsw_framework_components][164]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-options-control/lsw-options-control.css*/
+.lsw_options_control {
+    
+}
+
+/* @vuebundler[Lsw_framework_components][165]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-source-code-control/lsw-source-code-control.html*/
+
+/* @vuebundler[Lsw_framework_components][165]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-source-code-control/lsw-source-code-control.js*/
+
+/* @vuebundler[Lsw_framework_components][165]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-source-code-control/lsw-source-code-control.css*/
+.lsw_source_code_control {
+    
+}
+
+/* @vuebundler[Lsw_framework_components][166]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-ref-object-control/lsw-ref-object-control.html*/
+
+/* @vuebundler[Lsw_framework_components][166]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-ref-object-control/lsw-ref-object-control.js*/
+
+/* @vuebundler[Lsw_framework_components][166]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-ref-object-control/lsw-ref-object-control.css*/
+.lsw_ref_object_control {}
+
+/* @vuebundler[Lsw_framework_components][167]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-ref-object-by-label-control/lsw-ref-object-by-label-control.html*/
+
+/* @vuebundler[Lsw_framework_components][167]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-ref-object-by-label-control/lsw-ref-object-by-label-control.js*/
+
+/* @vuebundler[Lsw_framework_components][167]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-ref-object-by-label-control/lsw-ref-object-by-label-control.css*/
+.lsw_ref_object_control {}
+
+/* @vuebundler[Lsw_framework_components][168]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-ref-list-control/lsw-ref-list-control.html*/
+
+/* @vuebundler[Lsw_framework_components][168]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-ref-list-control/lsw-ref-list-control.js*/
+
+/* @vuebundler[Lsw_framework_components][168]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-ref-list-control/lsw-ref-list-control.css*/
+.lsw_ref_list_control {}
+
+/* @vuebundler[Lsw_framework_components][169]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-ref-relation-control/lsw-ref-relation-control.html*/
+
+/* @vuebundler[Lsw_framework_components][169]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-ref-relation-control/lsw-ref-relation-control.js*/
+
+/* @vuebundler[Lsw_framework_components][169]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-formtypes/components/lsw-formtype/type/lsw-ref-relation-control/lsw-ref-relation-control.css*/
+.lsw_ref_relation_control {}
+
+/* @vuebundler[Lsw_framework_components][170]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-schema-based-form/lsw-schema-based-form.html*/
+
+/* @vuebundler[Lsw_framework_components][170]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-schema-based-form/lsw-schema-based-form.js*/
+
+/* @vuebundler[Lsw_framework_components][170]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-schema-based-form/lsw-schema-based-form.css*/
+.lsw-schema-based-form {}
+
+.schema_form_top_panel {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.title_box_one_line {
+    display: flex;
+    flex-direction: column;
+}
+
+.title_text_cell {
+    flex: 1;
+    padding: 4px;
+    padding-left: 0px;
+}
+
+.title_database_id_cell {
+    flex: 1;
+    color: #000;
+    padding-bottom: 4px;
+}
+
+.schema_form_title_box {
+  font-size: 14px;
+  background: #a4a4a445;
+  border: 1px solid #transparent;
+}
+
+.subtitle_box {
+    background-color: #33333388;
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+}
+
+.bottom_title_box {
+    border: 0px solid black;
+    border-top: 0px solid black;
+}
+
+.schema_form_title_text {
+    text-shadow: 0 0 1px white;
+}
+
+.lsw_schema_form_container {
+    text-align: center;
+}
+
+.lsw_schema_form_content {
+    display: inline-block;
+    text-align: left;
+    max-width: 450px;
+    width: 100%;
+    resize: vertical;
+}
+
+
+
+/* @vuebundler[Lsw_framework_components][171]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-bars-graph/components/lsw-bars-graph-bar/lsw-bars-graph-bar.html*/
+
+/* @vuebundler[Lsw_framework_components][171]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-bars-graph/components/lsw-bars-graph-bar/lsw-bars-graph-bar.js*/
+
+/* @vuebundler[Lsw_framework_components][171]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-bars-graph/components/lsw-bars-graph-bar/lsw-bars-graph-bar.css*/
+
+
+/* @vuebundler[Lsw_framework_components][172]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-bars-graph/lsw-bars-graph.html*/
+
+/* @vuebundler[Lsw_framework_components][172]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-bars-graph/lsw-bars-graph.js*/
+
+/* @vuebundler[Lsw_framework_components][172]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-bars-graph/lsw-bars-graph.css*/
+.lsw_bars_graph {}
+
+.barra_box {
+    position: relative;
+    width: 100%;
+    border: 1px solid #000000;
+    border-radius: 3pt;
+    height: 32px;
+    background-color: rgba(255,255,255,0.1);
+    overflow: hidden;
+}
+.barra_box:hover {
+
+}
+.barra_filler {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    bottom: 1px;
+    right: auto;
+    border: 0px solid rgb(0, 0, 0);
+    border-radius: 3pt;
+    background-color: rgba(2, 7, 33);
+    opacity: 0.4;
+    cursor: pointer;
+}
+.barra_box:hover .barra_filler {
+    background-color: rgba(2, 7, 33);
+    opacity: 0.5;
+}
+.barra_text {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: auto;
+    padding-top: 8px;
+    padding-left: 0px;
+    color: rgb(0, 0, 0);
+}
+.titulo_de_item {
+    padding-top: 4px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    font-size: 11px;
+}
+.texto_de_barra {
+    font-size: 10px;
+}
+
+/* @vuebundler[Lsw_framework_components][173]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-bars-graph/lsw-bars-graph.api.js*/
+
+/* @vuebundler[Lsw_framework_components][174]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-notes/lsw-notes.html*/
+
+/* @vuebundler[Lsw_framework_components][174]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-notes/lsw-notes.js*/
+
+/* @vuebundler[Lsw_framework_components][174]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-notes/lsw-notes.css*/
+:root {
+    --middle-color: #000;
+}
+
+.lsw_notes {}
+
+.note_card > div {
+    border-left: 1px solid white;
+    padding: 4px;
+}
+
+.note_card > .date_cell {
+    border-left: 0px solid white;
+}
+
+.note_card {
+    border: 1px solid #CCC;
+    box-shadow: 0 0 3px black;
+    background-color: #111;
+    color: white;
+    padding: 0px;
+    margin-bottom: 0px;
+}
+
+@keyframes changeMiddle {
+    0% {
+      background-color: #26ff0070;
+    }
+    25% {
+      background-color: #ffbb0070;
+    }
+    50% {
+      background-color: #0084ff70;
+    }
+    75% {
+      background-color: #9000ff70;
+    }
+    100% {
+      background-color: #26ff0070;
+    }
+  }
+
+  @keyframes changeMiddle2 {
+    0% {
+      background-color: #0a44b970;
+    }
+    12% {
+      background-color: #ab09b470;
+    }
+    25% {
+      background-color: #9f020270;
+    }
+    50% {
+      background-color: #9c9c0670;
+    }
+    75% {
+      background-color: #01410d70;
+    }
+    100% {
+      background-color: #0a44b970;
+    }
+  }
+
+  @keyframes changeColor {
+    0% {
+      color: #FFF;
+      box-shadow: 0 0 1px black;
+    }
+    50% {
+      color: #9a9898;
+      box-shadow: 0 0 1px black;
+    }
+    100% {
+      color: #FFF;
+      box-shadow: 0 0 1px black;
+    }
+  }
+
+
+
+
+/* @vuebundler[Lsw_framework_components][175]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-configurations-page/lsw-configurations-page.html*/
+
+/* @vuebundler[Lsw_framework_components][175]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-configurations-page/lsw-configurations-page.js*/
+
+/* @vuebundler[Lsw_framework_components][175]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-configurations-page/lsw-configurations-page.css*/
+.configurations_page {}
+
+/* @vuebundler[Lsw_framework_components][176]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-home-top-panel/lsw-home-top-panel.html*/
+
+/* @vuebundler[Lsw_framework_components][176]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-home-top-panel/lsw-home-top-panel.js*/
+
+/* @vuebundler[Lsw_framework_components][176]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-home-top-panel/lsw-home-top-panel.css*/
+.lsw_home_top_panel {
+    
+}
+
+
+.automensaje_block {
+    border: 1px solid #333;
+    border-radius: 3pt;
+    padding: 0px;
+    font-weight: bold;
+    font-weight: normal;
+    text-shadow: 0 0 1px #000;
+    text-align: center;
+    cursor: pointer;
+    min-height: calc(var(--button_height) - 8px);
+    box-shadow: 0 0 2px black;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.37);
+    transition: background-color 0.2s linear;
+}
+
+.automensaje_block:hover {}
+
+.app_main_topbar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: auto;
+    background-color: #000000D8;
+    border-bottom: 1px solid #333;
+    box-shadow: 0 0 4px black;
+    padding-top: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    z-index: 999;
+}
+
+.app_main_panel {
+    margin-top: 54px;
+}
+
+/* @vuebundler[Lsw_framework_components][177]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-home-bottom-panel/lsw-home-bottom-panel.html*/
+
+/* @vuebundler[Lsw_framework_components][177]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-home-bottom-panel/lsw-home-bottom-panel.js*/
+
+/* @vuebundler[Lsw_framework_components][177]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-home-bottom-panel/lsw-home-bottom-panel.css*/
+
+
+/* @vuebundler[Lsw_framework_components][178]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-desktop-bottom-panel/lsw-desktop-bottom-panel.html*/
+
+/* @vuebundler[Lsw_framework_components][178]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-desktop-bottom-panel/lsw-desktop-bottom-panel.js*/
+
+/* @vuebundler[Lsw_framework_components][178]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-desktop-bottom-panel/lsw-desktop-bottom-panel.css*/
+.lsw_desktop_bottom_panel {
+    position: fixed;
+    top: auto;
+    bottom: 55px;
+    left: auto;
+    right: 9px;
+}
+
+/* @vuebundler[Lsw_framework_components][179]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-apps-viewer-button/lsw-apps-viewer-button.html*/
+
+/* @vuebundler[Lsw_framework_components][179]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-apps-viewer-button/lsw-apps-viewer-button.js*/
+
+/* @vuebundler[Lsw_framework_components][179]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-apps-viewer-button/lsw-apps-viewer-button.css*/
+.lsw_apps_viewer_button {
+
+}
+.scrollable_panel_viewer {
+    min-height: 3px;
+    max-height: 460px;
+    overflow: scroll;
+    border-top: 3px double #333;
+    border-bottom: 3px double #333;
+}
+.tarjetas_de_accion {
+    border-top: 0px solid #222;
+    border-right: 0px solid #222;
+}
+.tarjeta_de_accion {
+    display: flex;
+    flex-direction: row;
+    border-top: 0px solid #222;
+    border-right: 0px solid #222;
+}
+.tarjeta_de_accion > div {
+    white-space: no-wrap;
+    padding: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-top: 1px;
+    border: 0px solid #222;
+    border-right: 0px solid #222;
+    border-top: 0px solid #222;
+}
+.tarjeta_de_accion > div:first-child {
+    
+}
+.tarjeta_de_accion > .cell_en_concepto {
+    
+}
+.tarjeta_de_accion > .cell_en_estado {
+    color: black;
+    text-shadow: 0 0 1px black;
+    border-radius: 8pt;
+    cursor: pointer;
+}
+.tarjeta_de_accion > .cell_en_estado.estado_pendiente {
+    background-color: yellow;
+}
+.tarjeta_de_accion > .cell_en_estado.estado_completada {
+    background-color: rgb(30, 255, 0);
+}
+.tarjeta_de_accion > .cell_en_estado.estado_fallida {
+    background-color: red;
+}
+
+.application_button {
+    background-color: rgba(81, 175, 218, 0.5);
+}
+.application_button.activated,
+.application_button:hover {
+    background-color: rgba(3, 150, 218, 0.7);
+    border: 1px solid rgb(4, 4, 54);
+}
+.section_button {
+    background-color: rgba(68, 68, 68, 0.5);
+}
+.section_button.activated,
+.section_button:hover {
+    background-color: rgba(64, 64, 64, 0.764);
+    border: 1px solid rgb(4, 4, 54);
+}
+
+.side_panel .side_button {
+    min-width: 50px;
+    margin-bottom: 4px;
+}
+.top_panel {
+
+}
+.top_panel .top_button_cell {
+    padding-right: 4px;
+}
+.top_panel .top_button {
+    min-width: 50px;
+}
+
+.lsw_apps_button {
+    
+}
+
+.main_topbar_button {
+    border: 1px solid #333 !important;
+    border-radius: 0pt !important;
+    background-color: rgba(255,255,255,0.0);
+}
+
+/* @vuebundler[Lsw_framework_components][180]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-apps-viewer-panel/lsw-apps-viewer-panel.html*/
+
+/* @vuebundler[Lsw_framework_components][180]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-apps-viewer-panel/lsw-apps-viewer-panel.js*/
+
+/* @vuebundler[Lsw_framework_components][180]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-apps-viewer-panel/lsw-apps-viewer-panel.css*/
+.lsw_apps_viewer_panel {}
+
+.desktop_free_area {
+    padding-bottom: 100px;
+    max-width: 100%;
+}
+
+.desktop_free_available_area {
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    text-shadow: 0 0 1px black;
+    border-radius: 2pt;
+    border: 0px solid #ccc;
+}
+
+.padded_vertically_1 {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.celda_de_duracion {
+    white-space: nowrap;
+    font-size: 10px;
+}
+
+.celda_de_concepto {
+    border: 1px solid rgb(6, 60, 92);
+    border-radius: 3pt;
+    padding: 0px;
+    cursor: pointer;
+}
+
+.celda_de_hora {
+    text-shadow: 0 0 1px rgb(0, 0, 0);
+    text-align: left;
+    border: 1px solid rgb(42, 129, 181);
+    border-radius: 3pt;
+    cursor: pointer;
+    background-color: rgba(23, 11, 83, 0.55);
+    color: white;
+    text-shadow: 0 0 1px #000;
+    padding-right: 4px;
+    font-size: 10px;
+}
+.celda_de_hora:hover {
+    background-color: rgba(102, 88, 175, 0.55);
+}
+
+.celda_de_hora.activated {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: inherit;
+}
+
+.cell_en_concepto {
+    font-style: italic;
+}
+
+@keyframes celdaAlarmante {
+    0% {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white;
+        text-shadow: 0 0 1px rgb(0, 0, 0);
+    }
+    89% {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white;
+        text-shadow: 0 0 1px rgb(0, 0, 0);
+    }
+    90% {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: black;
+        text-shadow: 0 0 1px rgb(255, 255, 255);
+    }
+    99% {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: black;
+        text-shadow: 0 0 1px rgb(255, 255, 255);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white;
+        text-shadow: 0 0 1px rgb(0, 0, 0);
+    }
+}
+
+
+/* @vuebundler[Lsw_framework_components][181]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-languages/protolang/protolang.js*/
+
+/* @vuebundler[Lsw_framework_components][182]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-protolang-editor/lsw-protolang-editor.html*/
+
+/* @vuebundler[Lsw_framework_components][182]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-protolang-editor/lsw-protolang-editor.js*/
+
+/* @vuebundler[Lsw_framework_components][182]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-protolang-editor/lsw-protolang-editor.css*/
+
+
+/* @vuebundler[Lsw_framework_components][183]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-accion/lsw-spontaneous-form-accion.html*/
+
+/* @vuebundler[Lsw_framework_components][183]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-accion/lsw-spontaneous-form-accion.js*/
+
+/* @vuebundler[Lsw_framework_components][183]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-accion/lsw-spontaneous-form-accion.css*/
+
+
+/* @vuebundler[Lsw_framework_components][184]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-articulo/lsw-spontaneous-form-articulo.html*/
+
+/* @vuebundler[Lsw_framework_components][184]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-articulo/lsw-spontaneous-form-articulo.js*/
+
+/* @vuebundler[Lsw_framework_components][184]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-articulo/lsw-spontaneous-form-articulo.css*/
+
+
+/* @vuebundler[Lsw_framework_components][185]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-lista/lsw-spontaneous-form-lista.html*/
+
+/* @vuebundler[Lsw_framework_components][185]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-lista/lsw-spontaneous-form-lista.js*/
+
+/* @vuebundler[Lsw_framework_components][185]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-lista/lsw-spontaneous-form-lista.css*/
+
+
+/* @vuebundler[Lsw_framework_components][186]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-nota/lsw-spontaneous-form-nota.html*/
+
+/* @vuebundler[Lsw_framework_components][186]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-nota/lsw-spontaneous-form-nota.js*/
+
+/* @vuebundler[Lsw_framework_components][186]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-nota/lsw-spontaneous-form-nota.css*/
+
+
+/* @vuebundler[Lsw_framework_components][187]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-recordatorio/lsw-spontaneous-form-recordatorio.html*/
+
+/* @vuebundler[Lsw_framework_components][187]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-recordatorio/lsw-spontaneous-form-recordatorio.js*/
+
+/* @vuebundler[Lsw_framework_components][187]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-form-recordatorio/lsw-spontaneous-form-recordatorio.css*/
+
+
+/* @vuebundler[Lsw_framework_components][188]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-accion/lsw-spontaneous-table-accion.html*/
+
+/* @vuebundler[Lsw_framework_components][188]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-accion/lsw-spontaneous-table-accion.js*/
+
+/* @vuebundler[Lsw_framework_components][188]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-accion/lsw-spontaneous-table-accion.css*/
+
+
+/* @vuebundler[Lsw_framework_components][189]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-articulo/lsw-spontaneous-table-articulo.html*/
+
+/* @vuebundler[Lsw_framework_components][189]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-articulo/lsw-spontaneous-table-articulo.js*/
+
+/* @vuebundler[Lsw_framework_components][189]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-articulo/lsw-spontaneous-table-articulo.css*/
+
+
+/* @vuebundler[Lsw_framework_components][190]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-lista/lsw-spontaneous-table-lista.html*/
+
+/* @vuebundler[Lsw_framework_components][190]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-lista/lsw-spontaneous-table-lista.js*/
+
+/* @vuebundler[Lsw_framework_components][190]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-lista/lsw-spontaneous-table-lista.css*/
+
+
+/* @vuebundler[Lsw_framework_components][191]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-nota/lsw-spontaneous-table-nota.html*/
+
+/* @vuebundler[Lsw_framework_components][191]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-nota/lsw-spontaneous-table-nota.js*/
+
+/* @vuebundler[Lsw_framework_components][191]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-nota/lsw-spontaneous-table-nota.css*/
+.nota_button {
+    color: black;
+    text-shadow: 0 0 1px white;
+    background-color: rgba(200, 200, 200, 0.5);
+}
+
+.nota_title_text {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.celda_de_estado_de_nota {
+    background-color: #cfcfcf;
+    color: #000;
+    border: 1px solid #666;
+    box-shadow: 0 0 2px white;
+    padding-left: 1px;
+    padding-right: 1px;
+    border-radius: 2pt;
+}
+
+.celda_de_estado_de_nota.estado_urgente {
+    background-color: rgb(226, 141, 141);
+    color: black;
+    border: 1px solid rgb(64, 9, 9);
+    box-shadow: 0 0 2px white;
+    font-weight: bold;
+}
+
+/* @vuebundler[Lsw_framework_components][192]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-recordatorio/lsw-spontaneous-table-recordatorio.html*/
+
+/* @vuebundler[Lsw_framework_components][192]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-recordatorio/lsw-spontaneous-table-recordatorio.js*/
+
+/* @vuebundler[Lsw_framework_components][192]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-spontaneous-table-recordatorio/lsw-spontaneous-table-recordatorio.css*/
+
+
+/* @vuebundler[Lsw_framework_components][193]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-fast-datetime-control/lsw-fast-datetime-control.html*/
+
+/* @vuebundler[Lsw_framework_components][193]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-fast-datetime-control/lsw-fast-datetime-control.js*/
+
+/* @vuebundler[Lsw_framework_components][193]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-fast-datetime-control/lsw-fast-datetime-control.css*/
+
+
+/* @vuebundler[Lsw_framework_components][194]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-inline-tags-picker/lsw-inline-tags-picker.html*/
+
+/* @vuebundler[Lsw_framework_components][194]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-inline-tags-picker/lsw-inline-tags-picker.js*/
+
+/* @vuebundler[Lsw_framework_components][194]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-inline-tags-picker/lsw-inline-tags-picker.css*/
+.lsw_inline_tags_picker {}
+
+.inline_tags_picker_selectables {
+    height: 200px;
+    overflow: scroll;
+    resize: vertical;
+    border: 1px solid #CCC;
+    background-color: #00000033;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+}
+
+/* @vuebundler[Lsw_framework_components][195]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-js-inspector/lsw-js-inspector.api.js*/
+
+/* @vuebundler[Lsw_framework_components][196]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-js-inspector/lsw-js-inspector.html*/
+
+/* @vuebundler[Lsw_framework_components][196]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-js-inspector/lsw-js-inspector.js*/
+
+/* @vuebundler[Lsw_framework_components][196]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-js-inspector/lsw-js-inspector.css*/
+.colorize_for_type_function {
+    background-color: #5e2323;
+    color: #ccc;
+    text-shadow: 0 0 1px black;
+}
+button.colorize_for_type_function:hover {
+    background-color: #8e3737;
+}
+
+.colorize_for_type_object {
+    background-color: #b0b04e;
+    color: #222;
+    text-shadow: 0 0 1px black;
+}
+button.colorize_for_type_object:hover {
+    background-color: #d4d440;
+}
+
+.colorize_for_type_number {
+    background-color: #335e23;
+    color: #ccc;
+    text-shadow: 0 0 1px black;
+}
+button.colorize_for_type_number:hover {
+    background-color: #558e37;
+}
+
+.colorize_for_type_string {
+    background-color: #5b6fc8;
+    color: #000;
+    text-shadow: 0 0 1px black;
+}
+button.colorize_for_type_string:hover {
+    background-color: #2b3f98;
+}
+
+.colorize_for_type_boolean {
+    background-color: #b45fa0;
+    color: #000;
+    text-shadow: 0 0 1px black;
+}
+button.colorize_for_type_boolean:hover {
+    background-color: #782966;
+}
+
+.property_enumerator {
+    font-size: 7px;
+}
+
+div.codeblock {
+    background-color: rgb(160, 160, 197);
+    color: #111;
+    text-shadow: 0 0 1px black;
+    border-radius: 2pt;
+    padding: 4px;
+    border: 1px solid #333;
+    white-space: pre-wrap;
+}
+
+.js_inspector_typeof_box {
+    border: 1px solid #CCC;
+    border-radius: 3pt;
+    margin-top: 0px;
+    margin-bottom: 4px;
+    padding: 4px;
+}
+.js_inspector_value_box {
+    border: 1px solid #CCC;
+    border-radius: 3pt;
+    min-height: 25px;
+    display: block;
+    padding: 4px;
+}
+
+/* @vuebundler[Lsw_framework_components][197]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-languages/weeklang/weeklang.bundled.js*/
+
+/* @vuebundler[Lsw_framework_components][198]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-week-planner/lsw-week-planner.html*/
+
+/* @vuebundler[Lsw_framework_components][198]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-week-planner/lsw-week-planner.js*/
+
+/* @vuebundler[Lsw_framework_components][198]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-week-planner/lsw-week-planner.css*/
+
+
+/* @vuebundler[Lsw_framework_components][199]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-mermaid-viewer/lsw-mermaid-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][199]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-mermaid-viewer/lsw-mermaid-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][199]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-mermaid-viewer/lsw-mermaid-viewer.css*/
+.mermaid_contents {
+    min-height: 100px;
+    border: 1px solid black;
+}
+
+/* @vuebundler[Lsw_framework_components][200]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-pegjs-tester/lsw-pegjs-tester.html*/
+
+/* @vuebundler[Lsw_framework_components][200]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-pegjs-tester/lsw-pegjs-tester.js*/
+
+/* @vuebundler[Lsw_framework_components][200]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-pegjs-tester/lsw-pegjs-tester.css*/
+
+
+/* @vuebundler[Lsw_framework_components][201]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-nueva-feature/lsw-nueva-feature.html*/
+
+/* @vuebundler[Lsw_framework_components][201]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-nueva-feature/lsw-nueva-feature.js*/
+
+/* @vuebundler[Lsw_framework_components][201]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-nueva-feature/lsw-nueva-feature.css*/
+.hour_item {
+    margin-top: 4px;
+}
+
+/* @vuebundler[Lsw_framework_components][202]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-error-box/lsw-error-box.html*/
+
+/* @vuebundler[Lsw_framework_components][202]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-error-box/lsw-error-box.js*/
+
+/* @vuebundler[Lsw_framework_components][202]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-error-box/lsw-error-box.css*/
+.lsw_error_box {
+    position: relative;
+    border: 1px solid #6b0505;
+    border-radius: 3pt;
+    background-color: rgba(222, 151, 151, 0.4);
+    box-shadow: 0 0 4px white;
+    color: black;
+}
+.lsw_error_box_container {
+    
+}
+.error_main_block {
+    text-decoration: underline;
+    font-style: italic;
+    font-size: 11px;
+    padding: 4px;
+}
+.error_topbar {
+    border-bottom: 1px solid #6b0505;
+    background-color: #480b0b75;
+    padding: 4px;
+}
+.error_stack {
+    padding: 4px;
+    font-size: 11px;
+}
+
+/* @vuebundler[Lsw_framework_components][203]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-syntax-error-viewer/lsw-syntax-error-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][203]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-syntax-error-viewer/lsw-syntax-error-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][203]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-syntax-error-viewer/lsw-syntax-error-viewer.css*/
+
+
+/* @vuebundler[Lsw_framework_components][204]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-tests-page/lsw-tests-page.html*/
+
+/* @vuebundler[Lsw_framework_components][204]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-tests-page/lsw-tests-page.js*/
+
+/* @vuebundler[Lsw_framework_components][204]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-tests-page/lsw-tests-page.css*/
+.resource_path {
+    font-family: monospace;
+    font-size: 10px;
+    text-decoration: underline;
+}
+
+
+
+/* @vuebundler[Lsw_framework_components][205]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-tester-viewer/lsw-tester-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][205]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-tester-viewer/lsw-tester-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][205]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-tester-viewer/lsw-tester-viewer.css*/
+.esquema_de_tests {
+    font-size: 11px;
+}
+.like_link {
+    text-decoration: underline;
+    cursor: pointer;
+    outline: none;
+}
+
+.like_link.activated {
+    font-weight: bold;
+}
+
+.like_link.light {
+    color: rgb(163, 163, 201);
+}
+.like_link.light.activated {
+    
+}
+
+.like_link.dark {
+    color: rgb(6, 6, 51);
+}
+.like_link.dark.activated {
+    
+}
+
+.codeblock.consola_de_eventos_de_test {
+    /*max-height: 200px;*/
+    overflow: scroll;
+    background-color: #312e2e61;
+    color: #FFF;
+    resize: vertical;
+}
+
+.errors_box {
+    border: 1px solid #111;
+    box-shadow: 0 0 3px black;
+    border-radius: 3pt;
+    padding: 4px;
+    padding-top: 0px;
+}
+
+/* @vuebundler[Lsw_framework_components][206]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-tester-module-viewer/lsw-tester-module-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][206]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-tester-module-viewer/lsw-tester-module-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][206]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-tester-module-viewer/lsw-tester-module-viewer.css*/
+.lsw_tester_module_viewer {
+    padding-left: 15px;
+}
+
+/* @vuebundler[Lsw_framework_components][207]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-test-context-viewer/lsw-test-context-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][207]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-test-context-viewer/lsw-test-context-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][207]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-test-context-viewer/lsw-test-context-viewer.css*/
+.test_cronometer_time {
+    font-size: 9px;
+    color: #444;
+}
+.test_title {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    border-bottom: 1px solid #333;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    color: rgb(51, 6, 6);
+}
+.test_context_assertion_text {
+    font-size: 11px;
+}
+
+/* @vuebundler[Lsw_framework_components][208]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-diario/lsw-diario.html*/
+
+/* @vuebundler[Lsw_framework_components][208]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-diario/lsw-diario.js*/
+
+/* @vuebundler[Lsw_framework_components][208]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-diario/lsw-diario.css*/
+.lsw_diario {}
+.lsw_diario .diario_date_box {
+    padding: 4px;
+    background-color: #00000096;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 1px black;
+    border-radius: 2pt;
+    border: 1px solid black;
+    font-size: 11px;
+}
+.lsw_diario .diario_textarea {
+    width: 100%;
+    min-height: 300px;
+    border: 1px solid black;
+    box-shadow: 0 0 4px black;
+}
+.lsw_diario .diario_change_mode_button {
+    border: 1px solid black;
+}
+.lsw_diario .diario_little_right_side_button {
+    min-height: auto;
+    height:100%;
+    min-width: 30px;
+    max-height: 30px;
+    margin-bottom: 2px;
+}
+
+/* @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-js-viewer/lsw-js-viewer.html*/
+
+/* @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-js-viewer/lsw-js-viewer.js*/
+
+/* @vuebundler[Lsw_framework_components][209]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-js-viewer/lsw-js-viewer.css*/
+.js_viewer_tag {
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-size: 9px;
+    padding: 4px;
+    border-radius: 2pt;
+    border: 3px double #ECE1CC;
+    box-shadow: 0 0 4px black;
+    max-height: 200px;
+    overflow: scroll;
+}
+.js_viewer_tag.expanded {
+    max-height: 100%;
+}
+
+/* @vuebundler[Lsw_framework_components][210]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-android/lsw-android.js*/
+
+/* @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.html*/
+
+/* @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.js*/
+
+/* @vuebundler[Lsw_framework_components][211]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-equation-solver/lsw-equation-solver.css*/
+
+
+/* @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-molecules-renderer/lsw-molecules-renderer.html*/
+
+/* @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-molecules-renderer/lsw-molecules-renderer.js*/
+
+/* @vuebundler[Lsw_framework_components][212]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-molecules-renderer/lsw-molecules-renderer.css*/
+.molecules_canvas {
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    background-color: white;
+}
+
+/* @vuebundler[Lsw_framework_components][213]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-painter/lsw-painter.html*/
+
+/* @vuebundler[Lsw_framework_components][213]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-painter/lsw-painter.js*/
+
+/* @vuebundler[Lsw_framework_components][213]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-painter/lsw-painter.css*/
+.lsw_painter {}
+.lsw_painter .canvas_holder {
+    min-height: 250px;
+}
+
+/* @vuebundler[Lsw_framework_components][214]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-simple-chart/lsw-simple-chart.html*/
+
+/* @vuebundler[Lsw_framework_components][214]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-simple-chart/lsw-simple-chart.js*/
+
+/* @vuebundler[Lsw_framework_components][214]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-simple-chart/lsw-simple-chart.css*/
+.lsw_simple_chart {}
+.lsw_simple_chart .chart_holder {
+    border: 3px double black;
+    box-shadow: 0 0 4px black;
+}
+
+/* @vuebundler[Lsw_framework_components][215]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-chart-builder/lsw-chart-builder.html*/
+
+/* @vuebundler[Lsw_framework_components][215]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-chart-builder/lsw-chart-builder.js*/
+
+/* @vuebundler[Lsw_framework_components][215]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-chart-builder/lsw-chart-builder.css*/
+
+
+/* @vuebundler[Lsw_framework_components][216]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-syntax-builder/lsw-syntax-builder.html*/
+
+/* @vuebundler[Lsw_framework_components][216]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-syntax-builder/lsw-syntax-builder.js*/
+
+/* @vuebundler[Lsw_framework_components][216]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-syntax-builder/lsw-syntax-builder.css*/
+.lsw_syntax_builder {}
+
+/* @vuebundler[Lsw_framework_components][217]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.html*/
+
+/* @vuebundler[Lsw_framework_components][217]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.js*/
+
+/* @vuebundler[Lsw_framework_components][217]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/lsw-naty-script/editor/lsw-naty-script-editor.css*/
+.naty_file_item {
+    padding-top: 2px;
+}
+.naty_file_link {
+    padding: 4px;
+    border: 1px solid #333;
+    border-radius: 4pt;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.naty_file_link:hover {
+    background-color: #CCC;
+}
+
+/* @vuebundler[Lsw_framework_components][218]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Accion.js*/
+
+/* @vuebundler[Lsw_framework_components][219]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Banco_de_datos_principal.js*/
+
+/* @vuebundler[Lsw_framework_components][220]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Accion_virtual.js*/
+
+/* @vuebundler[Lsw_framework_components][221]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Concepto.js*/
+
+/* @vuebundler[Lsw_framework_components][222]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Categoria_de_concepto.js*/
+
+/* @vuebundler[Lsw_framework_components][223]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Propagador_prototipo.js*/
+
+/* @vuebundler[Lsw_framework_components][224]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Propagador_de_concepto.js*/
+
+/* @vuebundler[Lsw_framework_components][225]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Limitador.js*/
+
+/* @vuebundler[Lsw_framework_components][226]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Impresion.js*/
+
+/* @vuebundler[Lsw_framework_components][227]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Nota.js*/
+
+/* @vuebundler[Lsw_framework_components][228]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Entrada_de_diario.js*/
+
+/* @vuebundler[Lsw_framework_components][229]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Automensaje.js*/
+
+/* @vuebundler[Lsw_framework_components][230]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Lista.js*/
+
+/* @vuebundler[Lsw_framework_components][231]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Recordatorio.js*/
+
+/* @vuebundler[Lsw_framework_components][232]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/lsw-proxies/Articulo.js*/
+
+/* @vuebundler[Lsw_framework_components][233]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/dgn-fetch/dgn-fetch.js*/
+
+/* @vuebundler[Lsw_framework_components][234]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/apis/dgn-login-manager/dgn-login-manager.js*/
+
+/* @vuebundler[Lsw_framework_components][235]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-rest-ui/dgn-rest-homepage/dgn-rest-homepage.html*/
+
+/* @vuebundler[Lsw_framework_components][235]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-rest-ui/dgn-rest-homepage/dgn-rest-homepage.js*/
+
+/* @vuebundler[Lsw_framework_components][235]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-rest-ui/dgn-rest-homepage/dgn-rest-homepage.css*/
+.dgn_rest_homepage {}
+
+/* @vuebundler[Lsw_framework_components][236]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-rest-ui/dgn-rest-schema/dgn-rest-schema.html*/
+
+/* @vuebundler[Lsw_framework_components][236]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-rest-ui/dgn-rest-schema/dgn-rest-schema.js*/
+
+/* @vuebundler[Lsw_framework_components][236]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-rest-ui/dgn-rest-schema/dgn-rest-schema.css*/
+.dgn_rest_schema {}
+
+.dgn_rest_schema .columna_item {
+    border: 1px solid black;
+    border-radius: 2pt;
+    box-shadow: 0 0 4px black;
+    padding: 4px;
+    margin-top: 2px;
+}
+
+.dgn_rest_schema .columna_item:first-child {
+    margin-top: 0px;
+}
+
+
+/* @vuebundler[Lsw_framework_components][237]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-rest-ui/dgn-rest-table/dgn-rest-table.html*/
+
+/* @vuebundler[Lsw_framework_components][237]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-rest-ui/dgn-rest-table/dgn-rest-table.js*/
+
+/* @vuebundler[Lsw_framework_components][237]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-rest-ui/dgn-rest-table/dgn-rest-table.css*/
+.dgn_rest_table {}
+
+/* @vuebundler[Lsw_framework_components][238]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-rest-ui/dgn-rest-row/dgn-rest-row.html*/
+
+/* @vuebundler[Lsw_framework_components][238]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-rest-ui/dgn-rest-row/dgn-rest-row.js*/
+
+/* @vuebundler[Lsw_framework_components][238]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-rest-ui/dgn-rest-row/dgn-rest-row.css*/
+.dgn_rest_row {}
+
+/* @vuebundler[Lsw_framework_components][239]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-filesystem-ui/dgn-filesystem-homepage/dgn-filesystem-homepage.html*/
+
+/* @vuebundler[Lsw_framework_components][239]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-filesystem-ui/dgn-filesystem-homepage/dgn-filesystem-homepage.js*/
+
+/* @vuebundler[Lsw_framework_components][239]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-filesystem-ui/dgn-filesystem-homepage/dgn-filesystem-homepage.css*/
+
+
+/* @vuebundler[Lsw_framework_components][240]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-filesystem-ui/dgn-filesystem-explorer/dgn-filesystem-explorer.html*/
+
+/* @vuebundler[Lsw_framework_components][240]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-filesystem-ui/dgn-filesystem-explorer/dgn-filesystem-explorer.js*/
+
+/* @vuebundler[Lsw_framework_components][240]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-filesystem-ui/dgn-filesystem-explorer/dgn-filesystem-explorer.css*/
+
+
+/* @vuebundler[Lsw_framework_components][241]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-filesystem-ui/dgn-filesystem-editor/dgn-filesystem-editor.html*/
+
+/* @vuebundler[Lsw_framework_components][241]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-filesystem-ui/dgn-filesystem-editor/dgn-filesystem-editor.js*/
+
+/* @vuebundler[Lsw_framework_components][241]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/components/dgn-filesystem-ui/dgn-filesystem-editor/dgn-filesystem-editor.css*/
+
+
+/* @vuebundler[Lsw_framework_components][242]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/src/lsw-api.js*/
+
+/* @vuebundler[Lsw_framework_components][243]=/home/carlos/Escritorio/dgn-cms/src/app/src/modules/app/app.html*/
+
+/* @vuebundler[Lsw_framework_components][243]=/home/carlos/Escritorio/dgn-cms/src/app/src/modules/app/app.js*/
+
+/* @vuebundler[Lsw_framework_components][243]=/home/carlos/Escritorio/dgn-cms/src/app/src/modules/app/app.css*/
+:root {
+    --button_height: 42px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+html,
+button,
+.button_like,
+.like_button,
+input,
+textarea {
+    font-family: Arial;
+    font-size: 13px;
+    min-height: 40px;
+    min-height: var(--button_height);
+}
+
+input[type="checkbox"] {
+    min-height: auto;
+}
+
+.button_like,
+.like_button,
+button {
+    border: 1px solid #b1b1b1;
+    border: 1px solid #CCC;
+    border: 1px solid #CCCC;
+    border-radius: 2pt;
+    padding: 2px;
+    font-family: Arial;
+    font-size: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.50);
+    background-color: rgba(255, 255, 255, 0.20);
+    color: black;
+    margin-bottom: 0px;
+    min-width: var(--button_height);
+    min-height: var(--button_height);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.button_like,
+.like_button {
+    text-align: center;
+}
+
+.button_like:hover,
+.like_button:hover,
+button:hover {
+    /*background-color: rgb(6, 6, 29);*/
+    background-color: rgba(178, 178, 178, 0.50);
+    border: 1px solid rgb(227, 227, 227);
+    /*box-shadow: 0 0 2px black;*/
+}
+
+
+.button_like.activated,
+.like_button.activated,
+button.activated {
+    border: 1px solid rgb(227, 227, 227);
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.button_like.mini,
+.like_button.mini,
+button.mini {
+    padding: 4px;
+    padding-right: 4px;
+    padding-left: 4px;
+    min-width: var(--button_height);
+    font-size: 13px !important;
+}
+
+.button_like.supermini,
+.like_button.supermini,
+button.supermini {
+    min-width: auto;
+    min-width: 25px;
+    min-height: auto;
+    padding: 4px;
+    font-size: 12px !important;
+}
+
+.button_like.supermini.activated,
+.like_button.supermini.activated,
+button.supermini.activated {
+    border: default;
+    background-color: default;
+}
+
+.button_like.superbig,
+.like_button.superbig,
+button.superbig {
+    min-width: auto;
+    min-width: 25px;
+    min-height: auto;
+    padding: 4px;
+    font-size: 30px !important;
+}
+
+button.bright_border {
+    background-color: transparent;
+}
+
+button.iconized_button {
+    border: 1px solid #FFF3;
+    min-height: auto;
+    font-size: 12px;
+}
+
+.button_like.has_light_bg,
+.like_button.has_light_bg,
+button.has_light_bg {
+    background-color: #65656587;
+    color: black;
+    border: 1px solid #3c3c3e;
+}
+
+.button_like.has_light_bg:hover,
+.like_button.has_light_bg:hover,
+button.has_light_bg:hover {
+    background-color: #41416c87;
+}
+
+.button_like.has_light_bg.activated,
+.like_button.has_light_bg.activated,
+button.has_light_bg.activated {
+    background-color: #363673c7;
+    box-shadow: 0 0 3px white;
+    border: 1px solid black;
+    color: black;
+}
+
+button>span.button_text {
+    font-size: 13px !important;
+}
+
+.button_like.disabled,
+.like_button.disabled,
+button[disabled] {
+    cursor: default;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: #484848;
+}
+
+.button_like.disabled:hover,
+.like_button.disabled:hover,
+button[disabled]:hover {
+    box-shadow: 0 0 0px transparent;
+}
+
+textarea {
+    outline: none;
+    width: 100%;
+    min-height: 60px;
+    resize: vertical;
+    background-color: #FFFFFF88;
+    border: 1px solid #CCC;
+    white-space: pre;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+input[type="text"] {
+    min-height: 40px;
+    min-height: var(--button_height);
+    outline: none;
+    background-color: #FFFFFF88;
+    border: 1px solid #CCC;
+}
+
+select.supermini,
+input[type="text"].supermini,
+input[type="number"].supermini {
+    min-height: 25px;
+}
+
+select {
+    min-height: 40px;
+    min-height: var(--button_height);
+    background-color: #FFFFFF88;
+    border: 1px solid #CCC;
+}
+
+select,
+select>option {
+    font-family: Arial;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0px;
+}
+
+.h3 {
+    font-size: 13px;
+    background-color: rgba(255, 227, 0, 0.4);
+    border: 1px solid rgb(225, 214, 151);
+    border-radius: 2pt;
+    color: black;
+    text-shadow: 0 0 1px white;
+    font-weight: normal;
+    padding: 4px;
+    margin: 0px;
+}
+
+.h4 {
+    font-size: 11px;
+    background-color: rgba(128, 117, 38, 0.4);
+    border: 1px solid rgb(103, 88, 0);
+    border-radius: 2pt;
+    color: black;
+    text-shadow: 0 0 1px white;
+    font-weight: normal;
+    padding: 4px;
+    margin: 0px;
+}
+
+hr {
+    min-height: 1px;
+    border: none;
+    border-bottom: 1px solid #222;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+hr.dashed {
+    border-bottom: 1px dashed #222;
+}
+
+/* API de Conductometria */
+:root {
+    --cmt_border_color_1: #114;
+}
+
+.conductometria_viewer_1 {
+    max-height: 200px;
+    overflow: scroll;
+    border: 1px solid #333;
+    font-size: 10px;
+    font-family: monospace;
+    background-color: white;
+    margin: 0px;
+    margin-top: 4px;
+}
+
+table.tabla_de_conductometria {
+    width: 100%;
+    border-collapse: collapse;
+    border-left: 1px solid var(--cmt_border_color_1);
+    border-right: 1px solid var(--cmt_border_color_1);
+}
+
+table.tabla_de_conductometria td.celda_fecha {
+    padding: 8px;
+    background-color: #000;
+    color: white;
+    cursor: pointer;
+}
+
+table.tabla_de_conductometria td.celda_fecha.activated {
+    background-color: #333;
+    color: #FFF;
+}
+
+table.tabla_de_conductometria td.celda_hora,
+table.tabla_de_conductometria td.celda_contenido {
+    vertical-align: top;
+    border-bottom: 1px solid var(--cmt_border_color_1);
+}
+
+table.tabla_de_conductometria td.celda_hora {
+    background-color: #224;
+    color: white;
+    border-right: 1px solid var(--cmt_border_color_1);
+}
+
+table.tabla_de_conductometria td.celda_contenido {
+    width: 100%;
+    background-color: white;
+    vertical-align: middle;
+}
+
+table.tabla_de_conductometria td.celda_contenido>span {
+    display: inline-block;
+    height: 100%;
+}
+
+table.tabla_de_conductometria tr.passed td.celda_contenido {
+    background-color: orange;
+}
+
+table.tabla_de_conductometria tr.current td.celda_contenido {
+    background-color: red;
+}
+
+table.tabla_de_conductometria .minibutton {
+    min-width: 20px;
+    padding: 0px;
+}
+
+.conductometria_viewer_2 {}
+
+.event_badge {
+    border: 1px solid #333;
+    border-radius: 2pt;
+    padding: 0px;
+    padding-right: 2px;
+    margin-right: 2px;
+    background-color: #CCCCCC;
+    color: #000;
+    cursor: pointer;
+}
+
+.event_badge:hover {
+    background-color: #FFFFFF;
+}
+
+.scrollable_text_area {
+    white-space: pre;
+    overflow: scroll;
+}
+
+.home_bottom_panel {
+    position: fixed;
+    top: auto;
+    bottom: calc(env(safe-area-inset-bottom, 0) + 46px + 13px);
+    left: auto;
+    right: 9px;
+}
+
+.home_mobile_bottom_panel_container {
+    position: fixed;
+    top: auto;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: calc(env(safe-area-inset-bottom, 0) + 47px);
+}
+
+.home_mobile_bottom_panel {
+    height: 100%;
+    background-color: #000000D8;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-around;
+    justify-content: space-around;
+    box-shadow: 0 0 14px black;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
+}
+
+.mobile_bottom_panel_cell {
+    flex: 1;
+    text-align: center;
+    border-left: 1px solid #333;
+    height: 100%;
+    padding-top: 8px;
+    min-width: 30px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.mobile_bottom_panel_cell:hover {
+    background-color: rgba(178, 178, 178, 0.50);
+}
+
+div.codeblock_viewer {
+    position: relative;
+    max-width: 100%;
+    overflow: auto;
+}
+
+pre.codeblock {
+    background-color: #D0D0FF;
+    color: black;
+    font-size: 9px;
+    border: 1px solid black;
+    box-shadow: 0 0 2px black;
+    white-space: pre;
+    overflow: scroll;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.explanation_text {
+    font-size: 10px;
+}
+
+.rutiner_box {
+    background-color: rgba(135, 135, 135, 0.4);
+    border-radius: 3pt;
+    border: 1px solid white;
+    box-shadow: 0 0 4px black;
+    font-family: Arial;
+    font-size: 12px;
+    margin: 0px;
+}
+
+.lista_de_botones_unilinea {}
+
+.lista_de_botones_unilinea>button:first-child {
+    margin-top: 0px;
+}
+
+.linkable_button {
+    border: 0px solid white;
+    box-shadow: 0 0 2px black;
+    border-radius: 2pt;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 7px;
+    max-height: 10px;
+}
+
+.linkable_text {
+    text-decoration: underline;
+    color: rgb(216, 219, 251);
+    cursor: pointer;
+}
+
+.linkable_text:hover {
+    color: white;
+}
+
+.linkable_text.activated {
+    color: yellow;
+}
+
+.linkable_text.has_light_bg {
+    text-decoration: underline;
+    color: rgb(25, 24, 52);
+    cursor: pointer;
+}
+
+.linkable_text:hover.has_light_bg {
+    color: rgb(27, 23, 117);
+}
+
+.linkable_text.activated.has_light_bg {
+    color: rgb(58, 55, 116);
+}
+
+.list_buttons {
+    padding-top: 0px;
+    padding-bottom: 1px;
+}
+
+.list_button {
+    margin-top: 0px;
+    border: 1px solid white;
+    border-radius: 3pt;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: black;
+    text-shadow: 0 0 1px black;
+    cursor: pointer;
+}
+
+.list_button:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.list_button.activated {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.list_style_none {
+    padding: 0px;
+    padding-left: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+.list_style_0 {
+    padding: 0px;
+    padding-left: 16px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+.list_style_1 {
+    padding: 0px;
+    padding-left: 16px;
+    margin: 0px;
+    list-style-type: decimal;
+}
+
+.typical_title_1 {
+    font-size: 12px;
+    background-color: rgba(103, 118, 212, 0.4);
+    padding-top: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    box-shadow: 0 0 2px black;
+}
+
+.underlined {
+    text-decoration: underline;
+}
+
+.texto_markdown {
+    min-height: 32px;
+}
+
+.texto_markdown.light_bg {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.texto_markdown h1,
+.texto_markdown h2,
+.texto_markdown h3,
+.texto_markdown h4,
+.texto_markdown h5,
+.texto_markdown h6,
+.texto_markdown p {
+    margin: 0px;
+}
+
+.texto_markdown {
+    padding: 7px;
+    margin: 0px;
+    background-color: rgba(19, 3, 43, 0.7);
+    color: #FFF;
+    text-shadow: 0 0 1px #fff;
+    border: 3px double rgb(170, 133, 133);
+    border-radius: 3pt;
+    box-shadow: 0 0 4px black;
+    overflow: scroll;
+}
+
+.texto_markdown.sin_decorar {
+    border: 0px solid rgb(170, 133, 133);
+    border-radius: 0pt;
+}
+
+.texto_markdown>p:first-child {
+    margin-top: 0px;
+}
+
+.texto_markdown>p:last-child {
+    margin-bottom: 0px;
+}
+
+.texto_markdown ol,
+.texto_markdown ul {
+    margin: 0px;
+    padding-left: 12px;
+}
+
+/* WIDGET CLASSES */
+
+.rounded {
+    border-radius: 50%;
+}
+
+.small_font {
+    font-size: 11px;
+}
+
+/* CSS-CLASSES */
+:root {
+    --padding_min: 2px;
+    --padding_0: 0px;
+    --padding_1: 4px;
+    --padding_2: 8px;
+    --margin_0: 0px;
+    --margin_1: 4px;
+    --margin_2: 8px;
+}
+
+.pad_2 {
+    padding: var(--padding_2);
+}
+
+.pad_1 {
+    padding: var(--padding_1);
+}
+
+.pad_0 {
+    padding: var(--padding_0);
+}
+
+.pad_vertical_2 {
+    padding-top: var(--padding_2);
+    padding-bottom: var(--padding_2);
+}
+
+.pad_horizontal_2 {
+    padding-left: var(--padding_2);
+    padding-right: var(--padding_2);
+}
+
+.pad_vertical_1 {
+    padding-top: var(--padding_1);
+    padding-bottom: var(--padding_1);
+}
+
+.pad_horizontal_1 {
+    padding-left: var(--padding_1);
+    padding-right: var(--padding_1);
+}
+
+.pad_vertical_min {
+    padding-top: var(--padding_min);
+    padding-bottom: var(--padding_min);
+}
+
+.pad_horizontal_min {
+    padding-left: var(--padding_min);
+    padding-right: var(--padding_min);
+}
+
+.pad_vertical_0 {
+    padding-top: var(--padding_0);
+    padding-bottom: var(--padding_0);
+}
+
+.pad_horizontal_0 {
+    padding-left: var(--padding_0);
+    padding-right: var(--padding_0);
+}
+
+.pad_top_2 {
+    padding-top: var(--padding_2);
+}
+
+.pad_bottom_2 {
+    padding-bottom: var(--padding_2);
+}
+
+.pad_left_2 {
+    padding-left: var(--padding_2);
+}
+
+.pad_right_2 {
+    padding-right: var(--padding_2);
+}
+
+.pad_top_1 {
+    padding-top: var(--padding_1);
+}
+
+.pad_bottom_1 {
+    padding-bottom: var(--padding_1);
+}
+
+.pad_left_1 {
+    padding-left: var(--padding_1);
+}
+
+.pad_right_1 {
+    padding-right: var(--padding_1);
+}
+
+.pad_top_min {
+    padding-top: var(--padding_min);
+}
+
+.pad_bottom_min {
+    padding-bottom: var(--padding_min);
+}
+
+.pad_left_min {
+    padding-left: var(--padding_min);
+}
+
+.pad_right_min {
+    padding-right: var(--padding_min);
+}
+
+.pad_top_0 {
+    padding-top: var(--padding_0);
+}
+
+.pad_bottom_0 {
+    padding-bottom: var(--padding_0);
+}
+
+.pad_left_0 {
+    padding-left: var(--padding_0);
+}
+
+.pad_right_0 {
+    padding-right: var(--padding_0);
+}
+
+
+.margin_2 {
+    margin: var(--margin_2);
+}
+
+.margin_1 {
+    margin: var(--margin_1);
+}
+
+.margin_0 {
+    margin: var(--margin_0);
+}
+
+.margin_vertical_2 {
+    margin-top: var(--margin_2);
+    margin-bottom: var(--margin_2);
+}
+
+.margin_horizontal_2 {
+    margin-left: var(--margin_2);
+    margin-right: var(--margin_2);
+}
+
+.margin_vertical_1 {
+    margin-top: var(--margin_1);
+    margin-bottom: var(--margin_1);
+}
+
+.margin_horizontal_1 {
+    margin-left: var(--margin_1);
+    margin-right: var(--margin_1);
+}
+
+.margin_vertical_0 {
+    margin-top: var(--margin_0);
+    margin-bottom: var(--margin_0);
+}
+
+.margin_horizontal_0 {
+    margin-left: var(--margin_0);
+    margin-right: var(--margin_0);
+}
+
+.margin_top_2 {
+    margin-top: var(--margin_2);
+}
+
+.margin_bottom_2 {
+    margin-bottom: var(--margin_2);
+}
+
+.margin_left_2 {
+    margin-left: var(--margin_2);
+}
+
+.margin_right_2 {
+    margin-right: var(--margin_2);
+}
+
+.margin_top_1 {
+    margin-top: var(--margin_1);
+}
+
+.margin_bottom_1 {
+    margin-bottom: var(--margin_1);
+}
+
+.margin_left_1 {
+    margin-left: var(--margin_1);
+}
+
+.margin_right_1 {
+    margin-right: var(--margin_1);
+}
+
+.margin_top_0 {
+    margin-top: var(--margin_0);
+}
+
+.margin_bottom_0 {
+    margin-bottom: var(--margin_0);
+}
+
+.margin_left_0 {
+    margin-left: var(--margin_0);
+}
+
+.margin_right_0 {
+    margin-right: var(--margin_0);
+}
+
+.flex_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex_row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex_column.centered,
+.flex_row.centered {
+    align-items: center;
+}
+
+.align_self_start {
+    align-self: start;
+}
+
+.align_self_stretch {
+    align-self: stretch;
+}
+
+.vertical_align_top {
+    vertical-align: top;
+}
+
+.vertical_align_center {
+    vertical-align: center;
+}
+
+.vertical_align_bottom {
+    vertical-align: bottom;
+}
+
+.flex_1,
+.flex_cell {
+    flex: 1;
+}
+
+.flex_100,
+.flex_cell.expanded {
+    flex: 100;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+.white_space_normal {
+    white-space: normal;
+}
+.white_space_pre {
+    white-space: pre;
+}
+
+.position_relative {
+    position: relative;
+}
+
+.position_absolute {
+    position: absolute;
+}
+
+.position_absolute_fixed {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.corner_top_left {
+    top: 0px;
+    bottom: auto;
+    left: 0px;
+    right: auto;
+}
+.corner_top_right {
+    top: 0px;
+    bottom: auto;
+    left: auto;
+    right: 0px;
+}
+.corner_bottom_left {
+    top: auto;
+    bottom: 0px;
+    left: 0px;
+    right: auto;
+}
+.corner_bottom_right {
+    top: auto;
+    bottom: 0px;
+    left: auto;
+    right: 0px;
+}
+
+.position_fixed {
+    position: fixed;
+}
+
+.top_auto {
+    top: auto;
+}
+
+.top_0 {
+    top: 0;
+}
+
+.bottom_auto {
+    bottom: auto;
+}
+
+.bottom_0 {
+    bottom: 0;
+}
+
+.left_auto {
+    left: auto;
+}
+
+.left_0 {
+    left: 0;
+}
+
+.right_auto {
+    right: auto;
+}
+
+.right_0 {
+    right: 0;
+}
+
+.cursor_pointer {
+    cursor: pointer;
+}
+
+.float_right {
+    float: right;
+}
+
+.float_left {
+    float: left;
+}
+
+.visibility_hidden {
+    visibility: hidden;
+}
+
+.font_weight_bold {
+    font-weight: bold;
+}
+
+.font_style_italic {
+    font-style: italic;
+}
+
+.overflow_hidden {
+    overflow: hidden;
+}
+
+.overflow_scroll {
+    overflow: scroll;
+}
+
+.overflow_scroll_x {
+    overflow: scroll-x;
+}
+
+.overflow_scroll_y {
+    overflow: scroll-y;
+}
+
+.HiddenMenu {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.danger_button {
+    background-color: rgba(141, 6, 6, 0.25);
+}
+
+.danger_button:hover {
+    background-color: rgba(86, 3, 3, 0.5);
+    border-color: red;
+}
+
+.remarked_button {
+    background-color: rgba(65, 141, 6, 0.6);
+}
+
+.remarked_button:hover {
+    background-color: rgba(44, 220, 9, 0.8);
+    border-color: rgb(38, 255, 0);
+}
+
+.as_card {
+    border: 1px solid #333;
+    border-radius: 2pt;
+    background-color: #a39d9d;
+}
+
+.shortable_text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.font_black {
+    color: black;
+    text-shadow: 0 0 1px white;
+}
+
+.font_white {
+    color: white;
+    text-shadow: 0 0 1px black;
+}
+
+.unselectable_text {
+    user-select: none;
+}
+
+.margin_bottom_1px {
+    margin-bottom: 4px;
+}
+
+.monospace {
+    font-family: monospace;
+    font-size: 10px;
+}
+
+.smallest_font {
+    font-size: 9px !important;
+}
+
+.min_height_14px {
+    min-height: 14px;
+}
+
+.min_height_33px {
+    min-height: 33px;
+}
+
+.cursor_draggable {
+    cursor: grab;
+}
+
+/* @vuebundler[Lsw_framework_components][244]=/home/carlos/Escritorio/dgn-cms/src/app/src/bootloader/boot.js*/
+
+/* @vuebundler[Lsw_framework_components][245]=/home/carlos/Escritorio/dgn-cms/src/app/src/bootloader/framework-payload.js*/
+
+
+/* @vuebundler[Litestarter_app][2]=/home/carlos/Escritorio/dgn-cms/src/app/src/lsw-framework/lsw-framework.js*/
+
+/* @vuebundler[Litestarter_app][3]=/home/carlos/Escritorio/dgn-cms/src/app/src/modules/app/load.js*/
+
+/* @vuebundler[Litestarter_app][4]=/home/carlos/Escritorio/dgn-cms/src/app/src/modules/org.dgn.app/load.js*/
+
+/* @vuebundler[Litestarter_app][5]=/home/carlos/Escritorio/dgn-cms/src/app/src/bootloader/runner.js*/

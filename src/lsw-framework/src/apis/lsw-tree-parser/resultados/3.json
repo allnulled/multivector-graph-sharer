@@ -1,0 +1,73 @@
+{
+  "id": "Título del árbol",
+  "link": "Link asociado al árbol",
+  "definition": {
+    "mensaje": "Tripilang solo soportará 1 árbol por parseo"
+  },
+  "subtree": [
+    {
+      "id": "Branca 1",
+      "subtree": [
+        {
+          "id": "Branca 1.1",
+          "subtree": [
+            {
+              "id": "Branca 1.1.1"
+            },
+            {
+              "id": "Branca 1.1.2"
+            },
+            {
+              "id": "Branca 1.1.3"
+            },
+            {
+              "id": "Branca 1.1.4"
+            }
+          ]
+        },
+        {
+          "id": "Branca 1.2"
+        },
+        {
+          "id": "Branca 1.3"
+        },
+        {
+          "id": "Branca 1.4"
+        },
+        {
+          "id": "Branca 1.5"
+        },
+        {
+          "id": "Branca 1.6"
+        }
+      ]
+    },
+    {
+      "id": "Branca 2"
+    },
+    {
+      "id": "Branca 3"
+    },
+    {
+      "id": "Branca 4"
+    },
+    {
+      "id": "Branca 5"
+    },
+    {
+      "id": "Branca 6"
+    },
+    {
+      "id": "Branca 7"
+    },
+    {
+      "id": "Branca 8"
+    },
+    {
+      "id": "Branca 9"
+    },
+    {
+      "id": "Branca 10"
+    }
+  ]
+}

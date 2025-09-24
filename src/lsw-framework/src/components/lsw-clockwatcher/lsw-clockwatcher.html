@@ -1,0 +1,8 @@
+<div class="clockwatcher_component">
+    <div class="clockwatcher_layer_1">
+        <div class="clockwatcher_layer_2">
+            <div>{{ LswTimer.utils.formatDatestringFromDate(currentDate, false, true, false || false, true) }}</div>
+            <div class="clock_message" v-if="currentMessage">{{ currentMessage }}</div>
+        </div>
+    </div>
+</div>

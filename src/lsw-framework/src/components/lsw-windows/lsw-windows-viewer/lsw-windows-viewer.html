@@ -1,0 +1,7 @@
+<div class="lsw-windows-viewer">
+    <lsw-dialogs ref="dialogs" :as-windows="true" />
+    <lsw-windows-pivot-button :viewer="this" />
+    <template v-if="isShowing">
+        <lsw-windows-main-tab :viewer="this" />
+    </template>
+</div>

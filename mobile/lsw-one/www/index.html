@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <title>LSW</title>
+    <script id="first_script">
+
+        window.isLswApplicationReady = false;
+
+        window.addEventListener("lsw_app_mounted", () => {
+            window.isLswApplicationReady = true;
+            importer.$removeIntersitial();
+        });
+
+        Implementar_cacheo_offline_suspendido:
+        if ('serviceWorker' in navigator) {
+            break Implementar_cacheo_offline_suspendido;
+            navigator.serviceWorker.register(location.pathname.replace(/\/(index\.html)?$/, '') + "/service-worker.js")
+                .then(() => console.log('Service Worker registrado'))
+                .catch(err => console.error('Error al registrar el Service Worker:', err));
+        }
+
+        Exportar_funciones_de_espera: {
+
+            window.waitForMilliseconds = function (ms) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => resolve(), ms);
+                });
+            };
+
+            window.waitForConditions = function (userOptions = {}) {
+                const options = Object.assign({
+                    timeout: 1000 * 10,
+                    timeoutError: new Error("[!] Could not load all dependencies on «boot.js»"),
+                    intervalsOf: 1000,
+                    conditions: [
+                        function () {
+                            return window.isLswApplicationReady === true;
+                        }
+                    ]
+                }, userOptions);
+                const {
+                    timeout,
+                    timeoutError,
+                    intervalsOf,
+                    conditions,
+                } = options;
+                return new Promise((resolve, reject) => {
+                    const intervalId = setInterval(() => {
+                        let isCompleted = true;
+                        for (let indexCondition = 0; indexCondition < conditions.length; indexCondition++) {
+                            const condition = conditions[indexCondition];
+                            const [id, conditionCallback] = condition;
+                            const conditionResult = conditionCallback();
+                            isCompleted = isCompleted && conditionResult;
+                            if (!conditionResult) {
+                                console.log(`[...] Waiting for condition «${id}» on «waitForConditions»`);
+                            }
+                        }
+                        if (isCompleted) {
+                            return resolve();
+                        }
+                    }, 10);
+                    setTimeout(() => {
+                        clearInterval(intervalId);
+                        return reject(new Error("Could not load all dependencies on «boot.js»"));
+                    }, 1000 * 3000);
+                });
+            };
+        }
+    </script>
+    <style>
+        html {
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+        }
+
+        #intersitial {
+            position: fixed;
+            top: 1px;
+            bottom: 1px;
+            left: 1px;
+            right: 2px;
+            background-color: rgba(15, 11, 82, 0.3);
+            color: black;
+            text-shadow: 0 0 1px black;
+        }
+
+        #intersitial pre {
+            overflow: scroll;
+            padding: 6px;
+            margin: 0px;
+            margin-bottom: 0px;
+            font-size: 12px;
+            font-family: Arial;
+
+        }
+
+        .intersitial_title_bar {
+            display: table;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .intersitial_title_bar>.l1 {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            height: 100%;
+            width: 100%;
+        }
+
+        .intersitial_title_bar>.l1>.l2 {
+            display: inline-block;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border-radius: 3pt;
+            font-size: 12px;
+            border: 1px solid black;
+        }
+
+        .intersitial_title_bar>.l1>.l2>.l3 {
+            width: 100%;
+            height: 100%;
+        }
+
+        .intersitial_title_bar>.l1>.l2>.l3>.l4 {
+            padding: 12px;
+        }
+
+        #lsw_background_main {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        html {
+            background-color: #111;
+        }
+
+        #lsw_background_main_image_container {
+            position: relative;
+            margin: 0 auto;
+            height: 100%;
+        }
+
+        #lsw_background_main_image {
+            max-width: auto;
+            height: 100%;
+        }
+
+        #lsw_background_main_filter {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -100;
+            background-color: rgba(0, 0, 0, 0.25);
+            background-color: transparent;
+            backdrop-filter: blur(1px);
+            /* este es el blur real */
+            -webkit-backdrop-filter: blur(1px);
+            /* para Safari */
+        }
+    </style>
+    <script type="text/javascript">
+
+            const getRandomItemFromList = function (list) {
+                return list[Math.floor(Math.random() * list.length)];
+            };
+            const hasInternetPromise = (async function () {
+                try {
+                    const response = await fetch("https://images.unsplash.com", {
+                        method: "HEAD",
+                        cache: "no-store"
+                    });
+                    return response.ok;
+                } catch (e) {
+                    return false;
+                }
+            })();
+            Setup_background_randomizer: {
+                const allOfflineImages = [
+                    "assets/images/montania1.jpg",
+                    "assets/images/playa1.jpg",
+                    "assets/images/playa2.jpg",
+                ];
+                const allOnlineImages = [
+                    "https://images.unsplash.com/photo-1513002749550-c59d786b8e6c",
+                    "https://images.unsplash.com/photo-1506953823976-52e1fdc0149a",
+                    "https://images.unsplash.com/photo-1505142468610-359e7d316be0",
+                    "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1",
+                    "https://images.unsplash.com/photo-1414609245224-afa02bfb3fda",
+                    "https://images.unsplash.com/photo-1565138146061-e29b079736c0",
+                    "https://images.unsplash.com/photo-1473448912268-2022ce9509d8",
+                    "https://images.unsplash.com/photo-1440342359743-84fcb8c21f21",
+                    "https://images.unsplash.com/photo-1596237563267-84ffd99c80e1",
+                    "https://images.unsplash.com/photo-1503435824048-a799a3a84bf7",
+                    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
+                    "https://images.unsplash.com/photo-1494806812796-244fe51b774d",
+                    "https://images.unsplash.com/photo-1570641963303-92ce4845ed4c",
+                    "https://images.unsplash.com/photo-1445363692815-ebcd599f7621",
+                    "https://images.unsplash.com/photo-1542401886-65d6c61db217",
+                    "https://images.unsplash.com/photo-1511860810434-a92f84c6f01e",
+                    "https://images.unsplash.com/photo-1547234935-80c7145ec969",
+                    "https://images.unsplash.com/20/dusty-sky.JPG",
+                    "https://images.unsplash.com/photo-1568801556940-e5b3a55fa6ea",
+                    "https://images.unsplash.com/photo-1505521377774-103a8cc2f735",
+                    "https://images.unsplash.com/photo-1596625820723-f0f481ff80be",
+                    "https://images.unsplash.com/photo-1462331940025-496dfbfc7564",
+                    "https://images.unsplash.com/photo-1462332420958-a05d1e002413",
+                    "https://images.unsplash.com/photo-1484589065579-248aad0d8b13",
+                    "https://images.unsplash.com/photo-1567095761054-7a02e69e5c43",
+                ].concat(allOfflineImages);
+                window.LswBackgroundImages = [];
+                window.addBackgroundImages = function (someUrls = []) {
+                    for (let index = 0; index < someUrls.length; index++) {
+                        const image = someUrls[index];
+                        const pos = window.LswBackgroundImages.indexOf(image);
+                        if (pos === -1) {
+                            window.LswBackgroundImages.push(image);
+                        }
+                    }
+                };
+                window.LswBackgroundConfiguredPromise = (function () {
+                    return new Promise((resolve, reject) => {
+                        window.addEventListener("load", async function () {
+                            const hasInternet = await hasInternetPromise;
+                            window.LswHasInternet = hasInternet;
+                            window.addBackgroundImages(hasInternet ? allOnlineImages : allOfflineImages);
+                            let currentImageIndex = 0;
+                            let backgroundImage = document.body.querySelector("#lsw_background_main_image");
+                            window.changeBackgroundImage = function () {
+                                if (backgroundImage === null) {
+                                    backgroundImage = document.body.querySelector("#lsw_background_main_image");
+                                }
+                                if (backgroundImage === null) {
+                                    return;
+                                }
+                                currentImageIndex++;
+                                if (currentImageIndex >= window.LswBackgroundImages.length) {
+                                    currentImageIndex = 0;
+                                }
+                                // const currentImage = LswBackgroundImages[currentImageIndex];
+                                const srcImage = backgroundImage.getAttribute("src");
+                                const currentImage = getRandomItemFromList(window.LswBackgroundImages.filter(image => image !== srcImage));
+                                backgroundImage.setAttribute("src", currentImage);
+                            };
+                            setInterval(changeBackgroundImage, 1000 * 60 * 5);
+                            changeBackgroundImage();
+                            return resolve();
+                        });
+                    });
+                })();
+            }
+        </script>
+</head>
+
+<body>
+    <div>
+        <div id="lsw_background_main">
+            <img id="lsw_background_main_image"
+                src="assets/images/playa1.jpg" />
+        </div>
+        <div id="lsw_background_main_filter"></div>
+    </div>
+    <div id="app"></div>
+    <div id="intersitial">
+        <pre style="display:none;text-align:center;">Van <span id="intersitial_modules_loaded"></span>/<span
+                id="intersitial_modules_all">?</span>
+            módulos cargados.</pre>
+        <div style="padding: 4px;">
+            <div id="random_message_on_intersitial"></div>
+        </div>
+        <div id="intersitial_loader">
+            <div id="intersitial_loader_bar"></div>
+        </div>
+        <pre id="intersitial_modules_trace"
+            style="text-align:left;"></pre>
+        <div class="intersitial_title_bar">
+            <div class="l1">
+                <div class="l2">
+                    <div class="l3">
+                        <div class="l4">
+                            <div style="border-bottom: 1px solid #CCC;">Bienvenido a <a style="font-weight: bold; color: rgb(182, 182, 239)"
+                                    href="https://github.com/allnulled/lsw-one">lsw-one</a></div>
+                            <div id="caja_para_hora"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("caja_para_hora").textContent = "son las " + ("" + (new Date().getHours())).padStart(2, '0') + ":" + ("" + (new Date().getMinutes())).padStart(2, '0');
+    </script>
+    <link rel="stylesheet"
+        href="assets/distribution.css">
+    <script src="assets/distribution.js"></script>
+</body>
+
+</html>

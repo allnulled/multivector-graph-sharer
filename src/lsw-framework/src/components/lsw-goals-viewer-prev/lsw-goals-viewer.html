@@ -1,0 +1,45 @@
+<div class="lsw_goals_viewer">
+    <template v-if="isLoaded">
+        {{ goalsData }}
+        <div class="lsw_goals_panel margin_bottom_1">
+            <h4 class="">
+                <div class="flex_row centered">
+                    <div class="flex_100">
+                        🟢{{ completedGoalsCounter }} ➖ {{ missingGoalsCounter }}🔴 🔹 🧭🏁
+                    </div>
+                    <div class="flex_1 pad_right_1">
+                        <button class="supermini"
+                            v-on:click="emitClose">
+                            ❌
+                        </button>
+                    </div>
+                    <div class="flex_1 pad_right_1">
+                        <button class="supermini"
+                            v-on:click="openGoalsDirectory">
+                            📂 ↗️
+                        </button>
+                    </div>
+                    <div class="flex_1">
+                        <button class="supermini"
+                            :class="{activated: isShowingBars}"
+                            v-on:click="toggleBars">
+                            📈
+                        </button>
+                    </div>
+                </div>
+            </h4>
+            <div>
+                <lsw-bars-graph
+                    ref="barsGraph"
+                    :sample='adaptSample(goalsData)'
+                    :keys="[
+                        // 'está al',
+                        'falta el',
+                    ]"
+                    :negative-keys="['falta el']"
+                    prop-id="id"
+                />
+            </div>
+        </div>
+    </template>
+</div>

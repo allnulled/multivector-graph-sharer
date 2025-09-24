@@ -1,0 +1,11 @@
+.lsw_wiki_libros {}
+
+.lsw_wiki_libro_viewer_root {
+    background-color: rgba(0,0,0,.4);
+    position: relative;
+    border: 1px solid black;
+    margin-top: 1px;
+    box-shadow: 0 0 4px white;
+    border-radius: 2pt;
+    padding: 4px;
+}

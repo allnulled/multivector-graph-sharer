@@ -1,0 +1,27 @@
+.lsw_agenda_breadcrumb {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.agenda_breadcrumb {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    padding: 12px;
+}
+.agenda_breadcrumb_item {
+    flex: 1;
+}
+.agenda_breadcrumb_link {
+    color: black;
+    font-weight: normal;
+    cursor: pointer;
+}
+.agenda_breadcrumb_link:hover {
+    text-decoration: underline;
+}
+.agenda_breadcrumb_link.only_label {
+    font-weight: normal;
+    text-decoration: none;
+    cursor: inherit;
+}

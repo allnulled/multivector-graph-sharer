@@ -1,0 +1,51 @@
+.tables_list {
+    padding-top: 2px;
+}
+.tables_list .table_item {
+    display: block;
+    padding: 4px;
+    margin-top: 2px;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 4pt;
+    cursor: pointer;
+}
+.tables_list .table_item:hover {
+    background-color: rgba(10, 25, 83, 0.5);
+}
+
+.propiedades_list {}
+.propiedades_list > .propiedad_item {
+    border: 1px solid #333;
+    padding: 4px;
+    margin-top: 4px;
+}
+
+.fila {
+    border: 1px solid black;
+    border-radius: 2pt;
+    padding: 4px;
+    padding-bottom: 2px;
+    margin-top: 4px;
+}
+.fila > .propiedad_de_fila {
+    display: inline-block;
+    padding: 2px;
+    border: 1px solid black;
+    border-radius: 2pt;
+    background-color: rgba(0,0,0,0.2);
+    margin-right: 2px;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+.fila > .propiedad_de_fila:hover {
+    
+}
+.fila > .propiedad_de_fila > .propiedad {
+    display: inline;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.fila > .propiedad_de_fila > .valor {
+    display: inline;
+    font-style: italic;
+}

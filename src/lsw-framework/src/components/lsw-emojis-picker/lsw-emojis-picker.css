@@ -1,0 +1,21 @@
+.emojis_list {
+  font-size: 15px;
+  overflow: scroll;
+  border: 1px solid #BBB;
+  padding: 4px;
+  padding-right: 12px;
+  border-radius: 4pt;
+  height: 300px;
+  resize: vertical;
+}
+.emoji_button {
+  min-height: 33px;
+  min-width: 33px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  font-size: 25px;
+  border: 1px solid #333;
+}
+.emoji_button:hover {
+  border: 1px solid #333;
+}

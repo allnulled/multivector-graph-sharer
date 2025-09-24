@@ -1,0 +1,60 @@
+<div class="lsw_duration_control lsw_formtype lsw_form_control">
+    <lsw-control-label :settings="settings"
+        :parent-formtype="this"
+        v-if="skipLabel === false"
+    />
+    <lsw-error-box v-if="validateError" :error="validateError" />
+    <lsw-error-box v-if="submitError" :error="submitError" />
+    <div v-show="isEditable" v-else>
+        <div ref="controller"
+            v-xform.control="{
+                name: settings.name,
+                onValidate: settings?.column?.hasValidator || $noop,
+                onSetError: () => {
+                    isEditable = true;
+                }
+            }">
+            <div class="flex_row">
+                <div class="pad_right_1">
+                    <button
+                    class="has_light_bg"
+                    :class="{activated:isShowingDetails}" v-on:click="toggleDetails">⌛️</button>
+                </div>
+                <input class="flex_100"
+                    type="text"
+                    v-model="value"
+                    v-on="settings?.input?.events || {}"
+                    v-bind="settings?.input?.props || {}"
+                    v-xform.input="{name: '*'}"
+                    ref="textInput" />
+            </div>
+            <div class="duration_control_details_panel" v-if="isShowingDetails">
+                <div>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '1min'}" v-on:click="() => setValue('1min')">1min</button>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '5min'}" v-on:click="() => setValue('5min')">5min</button>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '10min'}" v-on:click="() => setValue('10min')">10min</button>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '15min'}" v-on:click="() => setValue('15min')">15min</button>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '20min'}" v-on:click="() => setValue('20min')">20min</button>
+                </div>
+                <div>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '30min'}" v-on:click="() => setValue('30min')">30min</button>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '40min'}" v-on:click="() => setValue('40min')">40min</button>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '45min'}" v-on:click="() => setValue('45min')">45min</button>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '50min'}" v-on:click="() => setValue('50min')">50min</button>
+                </div>
+                <div>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '1h'}" v-on:click="() => setValue('1h')">1h</button>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '2h'}" v-on:click="() => setValue('2h')">2h</button>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '3h'}" v-on:click="() => setValue('3h')">3h</button>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '4h'}" v-on:click="() => setValue('4h')">4h</button>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '5h'}" v-on:click="() => setValue('5h')">5h</button>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '6h'}" v-on:click="() => setValue('6h')">6h</button>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '7h'}" v-on:click="() => setValue('7h')">7h</button>
+                    <button class="has_light_bg supermini margin_top_1" :class="{activated: value === '8h'}" v-on:click="() => setValue('8h')">8h</button>
+                </div>
+            </div>
+            <lsw-control-error :error="submitError" v-if="submitError" />
+            <lsw-control-error :error="validateError" v-if="validateError" />
+        </div>
+    </div>
+</div>

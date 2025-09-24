@@ -1,0 +1,79 @@
+:root {
+    --middle-color: #000;
+}
+
+.lsw_notes {}
+
+.note_card > div {
+    border-left: 1px solid white;
+    padding: 4px;
+}
+
+.note_card > .date_cell {
+    border-left: 0px solid white;
+}
+
+.note_card {
+    border: 1px solid #CCC;
+    box-shadow: 0 0 3px black;
+    background-color: #111;
+    color: white;
+    padding: 0px;
+    margin-bottom: 0px;
+}
+
+@keyframes changeMiddle {
+    0% {
+      background-color: #26ff0070;
+    }
+    25% {
+      background-color: #ffbb0070;
+    }
+    50% {
+      background-color: #0084ff70;
+    }
+    75% {
+      background-color: #9000ff70;
+    }
+    100% {
+      background-color: #26ff0070;
+    }
+  }
+
+  @keyframes changeMiddle2 {
+    0% {
+      background-color: #0a44b970;
+    }
+    12% {
+      background-color: #ab09b470;
+    }
+    25% {
+      background-color: #9f020270;
+    }
+    50% {
+      background-color: #9c9c0670;
+    }
+    75% {
+      background-color: #01410d70;
+    }
+    100% {
+      background-color: #0a44b970;
+    }
+  }
+
+  @keyframes changeColor {
+    0% {
+      color: #FFF;
+      box-shadow: 0 0 1px black;
+    }
+    50% {
+      color: #9a9898;
+      box-shadow: 0 0 1px black;
+    }
+    100% {
+      color: #FFF;
+      box-shadow: 0 0 1px black;
+    }
+  }
+
+

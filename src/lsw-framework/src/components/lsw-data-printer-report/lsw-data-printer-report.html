@@ -1,0 +1,75 @@
+<div class="lsw_data_printer_report">
+    <div class="pad_2">
+        <h4>Reporte de impresión</h4>
+    </div>
+    <div class="flex_row centered  pad_1 pad_top_0">
+        <div class="flex_1">Versión: </div>
+        <select class="flex_100 width_100" v-model="selectedSection">
+            <option v-for="val, valIndex in availableOptions" :value="val">{{ val }}</option>
+        </select>
+    </div>
+    <div class="seccion pad_1 pad_top_0" v-if="selectedSection === 'Crudo'" v-bind:key="'section_Crudo'">
+        <div class="pad_1 flex_row centered">
+            <div class="flex_100">
+                <h5>Versión cruda</h5>
+            </div>
+            <div class="flex_1">
+                <button class="supermini" v-on:click="copyCrude">Copiar</button>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini" v-on:click="downloadCrude">Descargar</button>
+            </div>
+        </div>
+        <div class="pad_1">
+            <pre class="texto_markdown light_bg small_font">{{ input }}</pre>
+        </div>
+    </div>
+    <div class="seccion pad_1 pad_top_0" v-else-if="selectedSection === 'Natural'" v-bind:key="'section_Natural'">
+        <div class="pad_1 flex_row centered">
+            <div class="flex_100">
+                <h5>Versión natural</h5>
+            </div>
+            <div class="flex_1">
+                <button class="supermini" v-on:click="copyNatural">Copiar</button>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini" v-on:click="downloadNatural">Descargar</button>
+            </div>
+        </div>
+        <div class="pad_1">
+            <pre class="texto_markdown light_bg small_font">{{ inputNatural }}</pre>
+        </div>
+    </div>
+    <div class="seccion pad_1 pad_top_0" v-else-if="selectedSection === 'Markdown'" v-bind:key="'section_Markdown'">
+        <div class="pad_1 flex_row centered">
+            <div class="flex_100">
+                <h5>Versión markdown (interpretado como)</h5>
+            </div>
+            <div class="flex_1">
+                <button class="supermini" v-on:click="copyMarkdown">Copiar</button>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini" v-on:click="downloadMarkdown">Descargar</button>
+            </div>
+        </div>
+        <div class="pad_1">
+            <div class="texto_markdown light_bg small_font" v-html="inputMarkdown"></div>
+        </div>
+    </div>
+    <div class="seccion pad_1 pad_top_0" v-else-if="selectedSection === 'Solo texto plano'" v-bind:key="'section_Solo_texto_plano'">
+        <div class="pad_1 flex_row centered">
+            <div class="flex_100">
+                <h5>Versión texto plano (solo texto)</h5>
+            </div>
+            <div class="flex_1">
+                <button class="supermini" v-on:click="copyPlain">Copiar</button>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button class="supermini" v-on:click="downloadPlain">Descargar</button>
+            </div>
+        </div>
+        <div class="pad_1">
+            <pre class="texto_markdown light_bg small_font">{{ inputPlain }}</pre>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="dgn_rest_row">
+    <div>
+        <div class=""
+            v-for="column, columnIndex in homepage.schema[table].columns"
+            v-bind:key="'column_id_' + columnIndex">
+            <div class="pad_top_1">
+                <div class="pad_vertical_1">
+                    <span> {{ columnIndex + 1 }}. {{ column.nombre }}: </span>
+                    <span class="smallest_font"> [ {{ column.tipo }} {{ column.notNull ? 'NOT NULL' : '' }} {{ column.pk ? 'PRIMARY KEY' : '' }} {{ column.default ? 'DEFAULT ' + column.default : '' }} ] </span>
+                </div>
+                <template v-if="column.tipo === 'INTEGER'">
+                    <input class="supermini width_100"
+                        type="number"
+                        v-model="rowData[column.nombre]"
+                    />
+                </template>
+                <template v-else-if="column.tipo.startsWith('VARCHAR')">
+                    <textarea class="supermini width_100"
+                        spellcheck="false"
+                        v-model="rowData[column.nombre]"
+                    />
+                </template>
+                <template v-else>
+                    <textarea class="supermini width_100"
+                        spellcheck="false"
+                        v-model="rowData[column.nombre]"
+                    />
+                </template>
+            </div>
+        </div>
+    </div>
+</div>

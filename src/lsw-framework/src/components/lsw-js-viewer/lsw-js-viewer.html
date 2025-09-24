@@ -1,0 +1,19 @@
+<div class="lsw_js_viewer">
+    <div class="position_relative">
+        <div class="position_absolute_fixed" style="left: auto; right: 7px; top: 7px;">
+            <button class="supermini"
+                :class="{activated:isExpanded}"
+                v-on:click="toggleExpansion">
+                ↕️
+            </button>
+        </div>
+        <div v-if="isLoaded"
+            class="js_viewer_tag hljs"
+            :class="isExpanded ? 'expanded' : ''"
+            ref="sourceTag"
+            v-on:dblclick="toggleExpansion">{{ beautifiedSource || source }}</div>
+        <div class="pad_1" v-else>
+            Cargando...
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+{
+  "id": "Biología",
+  "link": "Introducción de Biología 1",
+  "subtree": [
+    {
+      "id": "Microbiología 1",
+      "link": "Introducción a la Microbiología"
+    },
+    {
+      "id": "Microbiología 2",
+      "link": "Introducción a la Microbiología"
+    },
+    {
+      "id": "Microbiología 3",
+      "link": "Introducción a la Microbiología"
+    },
+    {
+      "id": "Microbiología 4",
+      "link": "Introducción a la Microbiología"
+    },
+    {
+      "id": "Microbiología 5",
+      "link": "Introducción a la Microbiología"
+    }
+  ]
+}

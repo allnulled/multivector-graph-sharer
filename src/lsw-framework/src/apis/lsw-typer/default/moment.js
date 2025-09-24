@@ -1,0 +1,1 @@
+$lswTyper.define("moment", $lswTyper.$types["org.allnulled.lsw/type/moment.js"]);

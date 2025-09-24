@@ -1,0 +1,14 @@
+.js_viewer_tag {
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-size: 9px;
+    padding: 4px;
+    border-radius: 2pt;
+    border: 3px double #ECE1CC;
+    box-shadow: 0 0 4px black;
+    max-height: 200px;
+    overflow: scroll;
+}
+.js_viewer_tag.expanded {
+    max-height: 100%;
+}

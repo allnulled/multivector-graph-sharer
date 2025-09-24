@@ -1,0 +1,1069 @@
+:root {
+    --button_height: 42px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+html,
+button,
+.button_like,
+.like_button,
+input,
+textarea {
+    font-family: Arial;
+    font-size: 13px;
+    min-height: 40px;
+    min-height: var(--button_height);
+}
+
+input[type="checkbox"] {
+    min-height: auto;
+}
+
+.button_like,
+.like_button,
+button {
+    border: 1px solid #b1b1b1;
+    border: 1px solid #CCC;
+    border: 1px solid #CCCC;
+    border-radius: 2pt;
+    padding: 2px;
+    font-family: Arial;
+    font-size: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.50);
+    background-color: rgba(255, 255, 255, 0.20);
+    color: black;
+    margin-bottom: 0px;
+    min-width: var(--button_height);
+    min-height: var(--button_height);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.button_like,
+.like_button {
+    text-align: center;
+}
+
+.button_like:hover,
+.like_button:hover,
+button:hover {
+    /*background-color: rgb(6, 6, 29);*/
+    background-color: rgba(178, 178, 178, 0.50);
+    border: 1px solid rgb(227, 227, 227);
+    /*box-shadow: 0 0 2px black;*/
+}
+
+
+.button_like.activated,
+.like_button.activated,
+button.activated {
+    border: 1px solid rgb(227, 227, 227);
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.button_like.mini,
+.like_button.mini,
+button.mini {
+    padding: 4px;
+    padding-right: 4px;
+    padding-left: 4px;
+    min-width: var(--button_height);
+    font-size: 13px !important;
+}
+
+.button_like.supermini,
+.like_button.supermini,
+button.supermini {
+    min-width: auto;
+    min-width: 25px;
+    min-height: auto;
+    padding: 4px;
+    font-size: 12px !important;
+}
+
+.button_like.supermini.activated,
+.like_button.supermini.activated,
+button.supermini.activated {
+    border: default;
+    background-color: default;
+}
+
+.button_like.superbig,
+.like_button.superbig,
+button.superbig {
+    min-width: auto;
+    min-width: 25px;
+    min-height: auto;
+    padding: 4px;
+    font-size: 30px !important;
+}
+
+button.bright_border {
+    background-color: transparent;
+}
+
+button.iconized_button {
+    border: 1px solid #FFF3;
+    min-height: auto;
+    font-size: 12px;
+}
+
+.button_like.has_light_bg,
+.like_button.has_light_bg,
+button.has_light_bg {
+    background-color: #65656587;
+    color: black;
+    border: 1px solid #3c3c3e;
+}
+
+.button_like.has_light_bg:hover,
+.like_button.has_light_bg:hover,
+button.has_light_bg:hover {
+    background-color: #41416c87;
+}
+
+.button_like.has_light_bg.activated,
+.like_button.has_light_bg.activated,
+button.has_light_bg.activated {
+    background-color: #363673c7;
+    box-shadow: 0 0 3px white;
+    border: 1px solid black;
+    color: black;
+}
+
+button>span.button_text {
+    font-size: 13px !important;
+}
+
+.button_like.disabled,
+.like_button.disabled,
+button[disabled] {
+    cursor: default;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: #484848;
+}
+
+.button_like.disabled:hover,
+.like_button.disabled:hover,
+button[disabled]:hover {
+    box-shadow: 0 0 0px transparent;
+}
+
+textarea {
+    outline: none;
+    width: 100%;
+    min-height: 60px;
+    resize: vertical;
+    background-color: #FFFFFF88;
+    border: 1px solid #CCC;
+    white-space: pre;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+input[type="text"] {
+    min-height: 40px;
+    min-height: var(--button_height);
+    outline: none;
+    background-color: #FFFFFF88;
+    border: 1px solid #CCC;
+}
+
+select.supermini,
+input[type="text"].supermini,
+input[type="number"].supermini {
+    min-height: 25px;
+}
+
+select {
+    min-height: 40px;
+    min-height: var(--button_height);
+    background-color: #FFFFFF88;
+    border: 1px solid #CCC;
+}
+
+select,
+select>option {
+    font-family: Arial;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0px;
+}
+
+.h3 {
+    font-size: 13px;
+    background-color: rgba(255, 227, 0, 0.4);
+    border: 1px solid rgb(225, 214, 151);
+    border-radius: 2pt;
+    color: black;
+    text-shadow: 0 0 1px white;
+    font-weight: normal;
+    padding: 4px;
+    margin: 0px;
+}
+
+.h4 {
+    font-size: 11px;
+    background-color: rgba(128, 117, 38, 0.4);
+    border: 1px solid rgb(103, 88, 0);
+    border-radius: 2pt;
+    color: black;
+    text-shadow: 0 0 1px white;
+    font-weight: normal;
+    padding: 4px;
+    margin: 0px;
+}
+
+hr {
+    min-height: 1px;
+    border: none;
+    border-bottom: 1px solid #222;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+hr.dashed {
+    border-bottom: 1px dashed #222;
+}
+
+/* API de Conductometria */
+:root {
+    --cmt_border_color_1: #114;
+}
+
+.conductometria_viewer_1 {
+    max-height: 200px;
+    overflow: scroll;
+    border: 1px solid #333;
+    font-size: 10px;
+    font-family: monospace;
+    background-color: white;
+    margin: 0px;
+    margin-top: 4px;
+}
+
+table.tabla_de_conductometria {
+    width: 100%;
+    border-collapse: collapse;
+    border-left: 1px solid var(--cmt_border_color_1);
+    border-right: 1px solid var(--cmt_border_color_1);
+}
+
+table.tabla_de_conductometria td.celda_fecha {
+    padding: 8px;
+    background-color: #000;
+    color: white;
+    cursor: pointer;
+}
+
+table.tabla_de_conductometria td.celda_fecha.activated {
+    background-color: #333;
+    color: #FFF;
+}
+
+table.tabla_de_conductometria td.celda_hora,
+table.tabla_de_conductometria td.celda_contenido {
+    vertical-align: top;
+    border-bottom: 1px solid var(--cmt_border_color_1);
+}
+
+table.tabla_de_conductometria td.celda_hora {
+    background-color: #224;
+    color: white;
+    border-right: 1px solid var(--cmt_border_color_1);
+}
+
+table.tabla_de_conductometria td.celda_contenido {
+    width: 100%;
+    background-color: white;
+    vertical-align: middle;
+}
+
+table.tabla_de_conductometria td.celda_contenido>span {
+    display: inline-block;
+    height: 100%;
+}
+
+table.tabla_de_conductometria tr.passed td.celda_contenido {
+    background-color: orange;
+}
+
+table.tabla_de_conductometria tr.current td.celda_contenido {
+    background-color: red;
+}
+
+table.tabla_de_conductometria .minibutton {
+    min-width: 20px;
+    padding: 0px;
+}
+
+.conductometria_viewer_2 {}
+
+.event_badge {
+    border: 1px solid #333;
+    border-radius: 2pt;
+    padding: 0px;
+    padding-right: 2px;
+    margin-right: 2px;
+    background-color: #CCCCCC;
+    color: #000;
+    cursor: pointer;
+}
+
+.event_badge:hover {
+    background-color: #FFFFFF;
+}
+
+.scrollable_text_area {
+    white-space: pre;
+    overflow: scroll;
+}
+
+.home_bottom_panel {
+    position: fixed;
+    top: auto;
+    bottom: calc(env(safe-area-inset-bottom, 0) + 46px + 13px);
+    left: auto;
+    right: 9px;
+}
+
+.home_mobile_bottom_panel_container {
+    position: fixed;
+    top: auto;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: calc(env(safe-area-inset-bottom, 0) + 47px);
+}
+
+.home_mobile_bottom_panel {
+    height: 100%;
+    background-color: #000000D8;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-around;
+    justify-content: space-around;
+    box-shadow: 0 0 14px black;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
+}
+
+.mobile_bottom_panel_cell {
+    flex: 1;
+    text-align: center;
+    border-left: 1px solid #333;
+    height: 100%;
+    padding-top: 8px;
+    min-width: 30px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.mobile_bottom_panel_cell:hover {
+    background-color: rgba(178, 178, 178, 0.50);
+}
+
+div.codeblock_viewer {
+    position: relative;
+    max-width: 100%;
+    overflow: auto;
+}
+
+pre.codeblock {
+    background-color: #D0D0FF;
+    color: black;
+    font-size: 9px;
+    border: 1px solid black;
+    box-shadow: 0 0 2px black;
+    white-space: pre;
+    overflow: scroll;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.explanation_text {
+    font-size: 10px;
+}
+
+.rutiner_box {
+    background-color: rgba(135, 135, 135, 0.4);
+    border-radius: 3pt;
+    border: 1px solid white;
+    box-shadow: 0 0 4px black;
+    font-family: Arial;
+    font-size: 12px;
+    margin: 0px;
+}
+
+.lista_de_botones_unilinea {}
+
+.lista_de_botones_unilinea>button:first-child {
+    margin-top: 0px;
+}
+
+.linkable_button {
+    border: 0px solid white;
+    box-shadow: 0 0 2px black;
+    border-radius: 2pt;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 7px;
+    max-height: 10px;
+}
+
+.linkable_text {
+    text-decoration: underline;
+    color: rgb(216, 219, 251);
+    cursor: pointer;
+}
+
+.linkable_text:hover {
+    color: white;
+}
+
+.linkable_text.activated {
+    color: yellow;
+}
+
+.linkable_text.has_light_bg {
+    text-decoration: underline;
+    color: rgb(25, 24, 52);
+    cursor: pointer;
+}
+
+.linkable_text:hover.has_light_bg {
+    color: rgb(27, 23, 117);
+}
+
+.linkable_text.activated.has_light_bg {
+    color: rgb(58, 55, 116);
+}
+
+.list_buttons {
+    padding-top: 0px;
+    padding-bottom: 1px;
+}
+
+.list_button {
+    margin-top: 0px;
+    border: 1px solid white;
+    border-radius: 3pt;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: black;
+    text-shadow: 0 0 1px black;
+    cursor: pointer;
+}
+
+.list_button:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.list_button.activated {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.list_style_none {
+    padding: 0px;
+    padding-left: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+.list_style_0 {
+    padding: 0px;
+    padding-left: 16px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+.list_style_1 {
+    padding: 0px;
+    padding-left: 16px;
+    margin: 0px;
+    list-style-type: decimal;
+}
+
+.typical_title_1 {
+    font-size: 12px;
+    background-color: rgba(103, 118, 212, 0.4);
+    padding-top: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    box-shadow: 0 0 2px black;
+}
+
+.underlined {
+    text-decoration: underline;
+}
+
+.texto_markdown {
+    min-height: 32px;
+}
+
+.texto_markdown.light_bg {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.texto_markdown h1,
+.texto_markdown h2,
+.texto_markdown h3,
+.texto_markdown h4,
+.texto_markdown h5,
+.texto_markdown h6,
+.texto_markdown p {
+    margin: 0px;
+}
+
+.texto_markdown {
+    padding: 7px;
+    margin: 0px;
+    background-color: rgba(19, 3, 43, 0.7);
+    color: #FFF;
+    text-shadow: 0 0 1px #fff;
+    border: 3px double rgb(170, 133, 133);
+    border-radius: 3pt;
+    box-shadow: 0 0 4px black;
+    overflow: scroll;
+}
+
+.texto_markdown.sin_decorar {
+    border: 0px solid rgb(170, 133, 133);
+    border-radius: 0pt;
+}
+
+.texto_markdown>p:first-child {
+    margin-top: 0px;
+}
+
+.texto_markdown>p:last-child {
+    margin-bottom: 0px;
+}
+
+.texto_markdown ol,
+.texto_markdown ul {
+    margin: 0px;
+    padding-left: 12px;
+}
+
+/* WIDGET CLASSES */
+
+.rounded {
+    border-radius: 50%;
+}
+
+.small_font {
+    font-size: 11px;
+}
+
+/* CSS-CLASSES */
+:root {
+    --padding_min: 2px;
+    --padding_0: 0px;
+    --padding_1: 4px;
+    --padding_2: 8px;
+    --margin_0: 0px;
+    --margin_1: 4px;
+    --margin_2: 8px;
+}
+
+.pad_2 {
+    padding: var(--padding_2);
+}
+
+.pad_1 {
+    padding: var(--padding_1);
+}
+
+.pad_0 {
+    padding: var(--padding_0);
+}
+
+.pad_vertical_2 {
+    padding-top: var(--padding_2);
+    padding-bottom: var(--padding_2);
+}
+
+.pad_horizontal_2 {
+    padding-left: var(--padding_2);
+    padding-right: var(--padding_2);
+}
+
+.pad_vertical_1 {
+    padding-top: var(--padding_1);
+    padding-bottom: var(--padding_1);
+}
+
+.pad_horizontal_1 {
+    padding-left: var(--padding_1);
+    padding-right: var(--padding_1);
+}
+
+.pad_vertical_min {
+    padding-top: var(--padding_min);
+    padding-bottom: var(--padding_min);
+}
+
+.pad_horizontal_min {
+    padding-left: var(--padding_min);
+    padding-right: var(--padding_min);
+}
+
+.pad_vertical_0 {
+    padding-top: var(--padding_0);
+    padding-bottom: var(--padding_0);
+}
+
+.pad_horizontal_0 {
+    padding-left: var(--padding_0);
+    padding-right: var(--padding_0);
+}
+
+.pad_top_2 {
+    padding-top: var(--padding_2);
+}
+
+.pad_bottom_2 {
+    padding-bottom: var(--padding_2);
+}
+
+.pad_left_2 {
+    padding-left: var(--padding_2);
+}
+
+.pad_right_2 {
+    padding-right: var(--padding_2);
+}
+
+.pad_top_1 {
+    padding-top: var(--padding_1);
+}
+
+.pad_bottom_1 {
+    padding-bottom: var(--padding_1);
+}
+
+.pad_left_1 {
+    padding-left: var(--padding_1);
+}
+
+.pad_right_1 {
+    padding-right: var(--padding_1);
+}
+
+.pad_top_min {
+    padding-top: var(--padding_min);
+}
+
+.pad_bottom_min {
+    padding-bottom: var(--padding_min);
+}
+
+.pad_left_min {
+    padding-left: var(--padding_min);
+}
+
+.pad_right_min {
+    padding-right: var(--padding_min);
+}
+
+.pad_top_0 {
+    padding-top: var(--padding_0);
+}
+
+.pad_bottom_0 {
+    padding-bottom: var(--padding_0);
+}
+
+.pad_left_0 {
+    padding-left: var(--padding_0);
+}
+
+.pad_right_0 {
+    padding-right: var(--padding_0);
+}
+
+
+.margin_2 {
+    margin: var(--margin_2);
+}
+
+.margin_1 {
+    margin: var(--margin_1);
+}
+
+.margin_0 {
+    margin: var(--margin_0);
+}
+
+.margin_vertical_2 {
+    margin-top: var(--margin_2);
+    margin-bottom: var(--margin_2);
+}
+
+.margin_horizontal_2 {
+    margin-left: var(--margin_2);
+    margin-right: var(--margin_2);
+}
+
+.margin_vertical_1 {
+    margin-top: var(--margin_1);
+    margin-bottom: var(--margin_1);
+}
+
+.margin_horizontal_1 {
+    margin-left: var(--margin_1);
+    margin-right: var(--margin_1);
+}
+
+.margin_vertical_0 {
+    margin-top: var(--margin_0);
+    margin-bottom: var(--margin_0);
+}
+
+.margin_horizontal_0 {
+    margin-left: var(--margin_0);
+    margin-right: var(--margin_0);
+}
+
+.margin_top_2 {
+    margin-top: var(--margin_2);
+}
+
+.margin_bottom_2 {
+    margin-bottom: var(--margin_2);
+}
+
+.margin_left_2 {
+    margin-left: var(--margin_2);
+}
+
+.margin_right_2 {
+    margin-right: var(--margin_2);
+}
+
+.margin_top_1 {
+    margin-top: var(--margin_1);
+}
+
+.margin_bottom_1 {
+    margin-bottom: var(--margin_1);
+}
+
+.margin_left_1 {
+    margin-left: var(--margin_1);
+}
+
+.margin_right_1 {
+    margin-right: var(--margin_1);
+}
+
+.margin_top_0 {
+    margin-top: var(--margin_0);
+}
+
+.margin_bottom_0 {
+    margin-bottom: var(--margin_0);
+}
+
+.margin_left_0 {
+    margin-left: var(--margin_0);
+}
+
+.margin_right_0 {
+    margin-right: var(--margin_0);
+}
+
+.flex_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex_row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex_column.centered,
+.flex_row.centered {
+    align-items: center;
+}
+
+.align_self_start {
+    align-self: start;
+}
+
+.align_self_stretch {
+    align-self: stretch;
+}
+
+.vertical_align_top {
+    vertical-align: top;
+}
+
+.vertical_align_center {
+    vertical-align: center;
+}
+
+.vertical_align_bottom {
+    vertical-align: bottom;
+}
+
+.flex_1,
+.flex_cell {
+    flex: 1;
+}
+
+.flex_100,
+.flex_cell.expanded {
+    flex: 100;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+.white_space_normal {
+    white-space: normal;
+}
+.white_space_pre {
+    white-space: pre;
+}
+
+.position_relative {
+    position: relative;
+}
+
+.position_absolute {
+    position: absolute;
+}
+
+.position_absolute_fixed {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.corner_top_left {
+    top: 0px;
+    bottom: auto;
+    left: 0px;
+    right: auto;
+}
+.corner_top_right {
+    top: 0px;
+    bottom: auto;
+    left: auto;
+    right: 0px;
+}
+.corner_bottom_left {
+    top: auto;
+    bottom: 0px;
+    left: 0px;
+    right: auto;
+}
+.corner_bottom_right {
+    top: auto;
+    bottom: 0px;
+    left: auto;
+    right: 0px;
+}
+
+.position_fixed {
+    position: fixed;
+}
+
+.top_auto {
+    top: auto;
+}
+
+.top_0 {
+    top: 0;
+}
+
+.bottom_auto {
+    bottom: auto;
+}
+
+.bottom_0 {
+    bottom: 0;
+}
+
+.left_auto {
+    left: auto;
+}
+
+.left_0 {
+    left: 0;
+}
+
+.right_auto {
+    right: auto;
+}
+
+.right_0 {
+    right: 0;
+}
+
+.cursor_pointer {
+    cursor: pointer;
+}
+
+.float_right {
+    float: right;
+}
+
+.float_left {
+    float: left;
+}
+
+.visibility_hidden {
+    visibility: hidden;
+}
+
+.font_weight_bold {
+    font-weight: bold;
+}
+
+.font_style_italic {
+    font-style: italic;
+}
+
+.overflow_hidden {
+    overflow: hidden;
+}
+
+.overflow_scroll {
+    overflow: scroll;
+}
+
+.overflow_scroll_x {
+    overflow: scroll-x;
+}
+
+.overflow_scroll_y {
+    overflow: scroll-y;
+}
+
+.HiddenMenu {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.danger_button {
+    background-color: rgba(141, 6, 6, 0.25);
+}
+
+.danger_button:hover {
+    background-color: rgba(86, 3, 3, 0.5);
+    border-color: red;
+}
+
+.remarked_button {
+    background-color: rgba(65, 141, 6, 0.6);
+}
+
+.remarked_button:hover {
+    background-color: rgba(44, 220, 9, 0.8);
+    border-color: rgb(38, 255, 0);
+}
+
+.as_card {
+    border: 1px solid #333;
+    border-radius: 2pt;
+    background-color: #a39d9d;
+}
+
+.shortable_text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.font_black {
+    color: black;
+    text-shadow: 0 0 1px white;
+}
+
+.font_white {
+    color: white;
+    text-shadow: 0 0 1px black;
+}
+
+.unselectable_text {
+    user-select: none;
+}
+
+.margin_bottom_1px {
+    margin-bottom: 4px;
+}
+
+.monospace {
+    font-family: monospace;
+    font-size: 10px;
+}
+
+.smallest_font {
+    font-size: 9px !important;
+}
+
+.min_height_14px {
+    min-height: 14px;
+}
+
+.min_height_33px {
+    min-height: 33px;
+}
+
+.cursor_draggable {
+    cursor: grab;
+}
+
+
+
+/* AGREGADOS */
+.marco_de_visualizacion_container {
+    padding: 4px;
+}
+.marco_de_visualizacion {
+    background-color: white;
+    color: black;
+    padding: 8px;
+}
+.editor_en_cuestion {
+    font-family: monospace;
+    font-size: 11px;
+    background-color: white;
+}
+.color_white {
+    color: white;
+}

@@ -1,0 +1,36 @@
+<div class="lsw_home_top_panel">
+    <div class="app_main_topbar">
+        <div class="flex_row">
+            <div class="flex_1 pad_right_1 pad_left_1" v-if="isMounted">
+                <button
+                    class="main_topbar_button rounded superbig"
+                    v-on:click="() => selectApplication('homepage')">
+                    📟️
+                </button>
+            </div>
+            <div class="flex_100 automensaje_block position_relative"
+                :style="{ fontSize: selectedFontsize + 'px' }"
+                v-on:click="refreshAutomessaging">
+                <div class="position_absolute_fixed flex_row centered">
+                    <div class="flex_1" v-if="selectedAutomensaje">
+                        {{ selectedAutomensaje }}
+                    </div>
+                    <div class="flex_1" v-else>
+                        Eslóganes para ti aquí.
+                    </div>
+                </div>
+            </div>
+            <div class="flex_1 pad_left_1">
+                <button
+                    class="main_topbar_button rounded superbig"
+                    id="the_picas_button"
+                    v-on:click="() => LswLauncher.global.start('calendario')">
+                    📆
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="app_main_panel pad_1">
+        <lsw-apps-viewer-panel ref="appPanel" />
+    </div>
+</div>

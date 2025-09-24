@@ -1,0 +1,30 @@
+{
+  "name": "@allnulled/lsw",
+  "version": "1.0.0",
+  "description": "Boilerplate for web applications",
+  "main": "src/index.html",
+  "scripts": {
+    "code": "bash code.sh",
+    "serve": "npx http-server -c-1 docs -o index.html",
+    "up": "bash up.sh",
+    "dev": "npx nodemon --legacy-watch -x 'npm run build' --ignore '**/*.instr.js' --ext 'js,css,html,md,txt,json' $(cat devfiles.txt | xargs -n1 echo -w)",
+    "build": "bash crono.sh start && npm run build:docs && node dev/bundlers/lsw-framework/bundler.js && node dev/bundlers/distribution/bundler.js && bash crono.sh stop",
+    "build:docs:off": "node dev/documentation/documentation.js",
+    "build:docs": "echo 'nodocs now'",
+    "build:framework": "node dev/bundlers/lsw-framework/bundler.js",
+    "build:distribution": "node dev/bundlers/distribution/bundler.js",
+    "build:dist": "node dev/bundlers/distribution/bundler.js",
+    "build:mobile": "npm run build && bash mobile/lsw-one/rebuild.sh",
+    "reloader": "node src/lsw-framework/src/apis/lsw-reloader/starter.js"
+  },
+  "keywords": [],
+  "author": "allnulled",
+  "license": "WTFPL",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "fs-extra": "^11.3.0",
+    "istanbul-lib-instrument": "^6.0.3"
+  }
+}

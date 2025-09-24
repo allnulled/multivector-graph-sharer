@@ -1,0 +1,57 @@
+<div class="lsw_bin_directory">
+    <div class="flex_row centered">
+        <div class="flex_100">
+            <h4>💣 Binarios rápidos:</h4>
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini"
+                v-on:click="loadBinaries">🛜</button>
+        </div>
+        <div class="flex_1 pad_left_1">
+            <button class="supermini"
+                v-on:click="openBinarios">📂↗️</button>
+        </div>
+    </div>
+    <template v-if="!isLoaded">
+        Un momento, se están cargando...
+    </template>
+    <lsw-error-box :error="hasError"
+        v-else-if="hasError" />
+    <div class="binaries_list"
+        :class="{is_searching: isAboutSearching}"
+        v-else>
+        <div class="flex_row centered pad_top_1">
+            <div class="flex_100 pad_right_1">
+                <input class="supermini width_100 binaries_searcher_input"
+                    type="text"
+                    v-model="searchText"
+                    v-on:keyup="digestDelayed"
+                    v-on:keypress.enter="digestOutput" />
+            </div>
+            <div class="flex_1">
+                <button class="supermini"
+                    v-on:click="digestOutput">🔎</button>
+            </div>
+        </div>
+        <template v-if="binariesInSelection && binariesInSelection.length">
+            <div class="binarie_item display_inline_block pad_right_1"
+                v-for="binarie, binarieIndex in binariesInSelection"
+                v-bind:key="'binarie_' + binarieIndex">
+                <div class="flex_row centered">
+                    <button class="supermini text_align_left pill_start"
+                        v-on:click="() => executeBin(binarie)">
+                        <div class="flex_row centered">
+                            <div class="flex_100 smallest_font">{{ formatFilepathForUser(binarie.filepath) }}</div>
+                            <div class="flex_1 pad_left_1 smallest_font">{{ binarie.content.length }}B</div>
+                        </div>
+                    </button><button class="supermini smallest_font pill_end"
+                        style="margin-left: -1px;"
+                        v-on:click="() => editBin(binarie)">↗️</button>
+                </div>
+            </div>
+        </template>
+        <template v-else>
+            <div class="pad_top_2">No se encontraron binarios con el patrón de búsqueda actual.</div>
+        </template>
+    </div>
+</div>

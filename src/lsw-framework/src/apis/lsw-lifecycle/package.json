@@ -1,0 +1,14 @@
+{
+  "name": "lsw-lifecycle",
+  "version": "1.0.0",
+  "description": "Lifecycle tool for LSW.",
+  "main": "lsw-lifecycle.js",
+  "scripts": {
+    "build": "echo 'no building for @allnulled/lsw-lifecycle'",
+    "versionate": "echo 'no versionate for @allnulled/lsw-lifecycle'",
+    "test": "echo 'no test for @allnulled/lifecycle'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

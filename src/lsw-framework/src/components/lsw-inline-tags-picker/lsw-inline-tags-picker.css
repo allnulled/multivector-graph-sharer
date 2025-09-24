@@ -1,0 +1,12 @@
+.lsw_inline_tags_picker {}
+
+.inline_tags_picker_selectables {
+    height: 200px;
+    overflow: scroll;
+    resize: vertical;
+    border: 1px solid #CCC;
+    background-color: #00000033;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+}

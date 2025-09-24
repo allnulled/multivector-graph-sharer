@@ -1,0 +1,14 @@
+{
+  "name": "lsw-class-register",
+  "version": "1.0.0",
+  "description": "Class registrator tool for LSW.",
+  "main": "lsw-class-register.js",
+  "scripts": {
+    "build": "echo 'no building for @allnulled/lsw-class-register'",
+    "versionate": "echo 'no versionate for @allnulled/lsw-class-register'",
+    "test": "echo 'no test for @allnulled/class-register'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

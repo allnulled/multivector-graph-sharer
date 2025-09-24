@@ -1,0 +1,46 @@
+.lsw_filesystem_treeviewer {}
+
+.treeviewer_row {
+    padding: 2px;
+    cursor: pointer;
+}
+.treeviewer_row a {
+    display: inline-block;
+    padding: 2px;
+}
+.treeviewer_row {
+    background-color: rgba(2, 2, 28, 0.7);
+    color: white;
+}
+.treeviewer_row:nth-last-child(odd) {
+    background-color: rgba(28, 28, 102, 0.7);
+    color: white;
+}
+.treeviewer_row .filename_link {
+    color: white;
+}
+.treeviewer_row:hover {
+    
+}
+.treeviewer_row:hover .filename_link {
+    color: #0F0;
+}
+table.filesystem_treeviewer_table {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+}
+table.filesystem_treeviewer_table {
+    padding: 2px;
+    font-weight: normal;
+    text-align: left;
+}
+table.filesystem_treeviewer_table > tbody > tr > td:nth-child(1) {
+    width: 1%;
+}
+table.filesystem_treeviewer_table > tbody > tr > td:nth-child(2) {
+    width: 100%;
+}
+.icon_cell {
+    padding: 4px;
+}

@@ -1,0 +1,144 @@
+{
+  "id": "Boot",
+  "link": "Artículo para el boot",
+  "definition": {
+    "categorias": [],
+    "asco": [],
+    "de": [],
+    "persona": [],
+    "universal": "ok"
+  },
+  "subtree": [
+    {
+      "id": "Capítulo 2",
+      "link": "Capitulo 2",
+      "definition": {
+        "autor": "github.com/allnulled",
+        "mensaje": "...",
+        "año": 2025
+      },
+      "subtree": [
+        {
+          "id": "Parte 1",
+          "link": "Capitulo 2/Parte 1"
+        },
+        {
+          "id": "Parte 2",
+          "link": "Capitulo 2/Parte 2"
+        },
+        {
+          "id": "Parte 3",
+          "link": "Capitulo 2/Parte 3"
+        },
+        {
+          "id": "Parte 4",
+          "link": "Capitulo 2/Parte 4"
+        },
+        {
+          "id": "Parte 5",
+          "link": "Capitulo 2/Parte 5"
+        }
+      ]
+    },
+    {
+      "id": "Capítulo 3",
+      "subtree": [
+        {
+          "id": "Parte 1",
+          "link": "Capitulo 2/Parte 1"
+        },
+        {
+          "id": "Parte 2",
+          "link": "Capitulo 2/Parte 2"
+        },
+        {
+          "id": "Parte 3",
+          "link": "Capitulo 2/Parte 3"
+        },
+        {
+          "id": "Parte 4",
+          "link": "Capitulo 2/Parte 4"
+        },
+        {
+          "id": "Parte 5",
+          "link": "Capitulo 2/Parte 5"
+        }
+      ]
+    },
+    {
+      "id": "Capítulo 4",
+      "subtree": [
+        {
+          "id": "Parte 1",
+          "link": "Capitulo 2/Parte 1"
+        },
+        {
+          "id": "Parte 2",
+          "link": "Capitulo 2/Parte 2"
+        },
+        {
+          "id": "Parte 3",
+          "link": "Capitulo 2/Parte 3"
+        },
+        {
+          "id": "Parte 4",
+          "link": "Capitulo 2/Parte 4"
+        },
+        {
+          "id": "Parte 5",
+          "link": "Capitulo 2/Parte 5"
+        }
+      ]
+    },
+    {
+      "id": "Capítulo 5",
+      "subtree": [
+        {
+          "id": "Parte 1",
+          "link": "Capitulo 2/Parte 1"
+        },
+        {
+          "id": "Parte 2",
+          "link": "Capitulo 2/Parte 2"
+        },
+        {
+          "id": "Parte 3",
+          "link": "Capitulo 2/Parte 3"
+        },
+        {
+          "id": "Parte 4",
+          "link": "Capitulo 2/Parte 4"
+        },
+        {
+          "id": "Parte 5",
+          "link": "Capitulo 2/Parte 5"
+        }
+      ]
+    },
+    {
+      "id": "Capítulo 6",
+      "subtree": [
+        {
+          "id": "Parte 1",
+          "link": "Capitulo 2/Parte 1"
+        },
+        {
+          "id": "Parte 2",
+          "link": "Capitulo 2/Parte 2"
+        },
+        {
+          "id": "Parte 3",
+          "link": "Capitulo 2/Parte 3"
+        },
+        {
+          "id": "Parte 4",
+          "link": "Capitulo 2/Parte 4"
+        },
+        {
+          "id": "Parte 5",
+          "link": "Capitulo 2/Parte 5"
+        }
+      ]
+    }
+  ]
+}

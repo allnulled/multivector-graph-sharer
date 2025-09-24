@@ -1,0 +1,77 @@
+/* // @code.start: Lsw Styling Framework | @$section: Lsw Styles » Lsw Styling Framework */
+/* RESET STYLES */
+
+/* STYLE-BASED COMPONENTS */
+.pill_group {
+
+}
+.pill_group > * {
+    border-radius: 0pt;
+}
+.pill_group > *:first-child {
+    border-top-left-radius: 2pt;
+    border-bottom-left-radius: 2pt;
+}
+.pill_group > *:last-child {
+    border-top-right-radius: 2pt;
+    border-bottom-right-radius: 2pt;
+}
+
+table.collapsed_table {
+    border-collapse: collapse;
+    border: 1px solid #999;
+}
+.translucid_background {
+    background-color: rgba(255,255,255,0.1);
+}
+table.collapsed_table > thead > tr > th {
+    /*padding: 8px;*/
+    background-color: rgba(0,0,0,0.5);
+    font-weight: normal;
+    color: white;
+    border-right: 1px solid #999;
+    vertical-align: middle;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-bottom: 1px solid white;
+}
+table.collapsed_table > thead > tr > th:last-child {
+    border-right: none;
+}
+
+table.basic_table {
+    border-collapse: collapse;
+    border: 0px solid white;
+}
+table.basic_table > tbody > tr:nth-child(odd) {
+    background-color: #FFF;
+}
+table.basic_table > tbody > tr > td {
+    vertical-align: top;
+}
+table.basic_table > thead > tr,
+table.basic_table > tbody > tr:nth-child(even) {
+    background-color: #DDD;
+}
+table.basic_table > thead > tr > th {
+    
+}
+table.basic_table > thead > tr > th:last-child {
+    border-right: none solid white;
+}
+
+/* INLINE RULES */
+.display_block { display: block; }
+.display_flex_row { display: flex; flex-direction: row; }
+.display_flex_column { display: flex; flex-direction: column; }
+.display_inline_block { display: inline-block; }
+.text_align_center { text-align: center; }
+.text_align_left { text-align: left; }
+.text_align_right { text-align: right; }
+.width_100 { width: 100%; }
+.width_1 { width: 1%; }
+.width_auto { width: auto; }
+.height_100 { height: 100%; }
+.height_1 { height: 1%; }
+.height_auto { height: auto; }
+/* // @code.end: Lsw Styling Framework */

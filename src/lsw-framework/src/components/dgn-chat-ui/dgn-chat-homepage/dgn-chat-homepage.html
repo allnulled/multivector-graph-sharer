@@ -1,0 +1,9 @@
+<div class="dgn_chat_homepage">
+    <lsw-typical-title :buttons="chatButtons">💬 Chat</lsw-typical-title>
+    <div v-if="connectedSocket">
+        <div v-for="uid, uidIndex in listedSockets"
+            v-bind:key="'socket_uid_' + uidIndex">
+            {{ uid }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="lsw_markdown_viewer">
+    <div class="">
+        <lsw-error-box v-if="parsingEjsError" :error="parsingEjsError" context="Error parseando EJS" />
+        <lsw-error-box v-if="parsingMarkdownError" :error="parsingMarkdownError" context="Error parseando Markdown" />
+        <div v-if="output">
+            <lsw-sourceable :source="'<div>' + output + '</div>'" />
+        </div>
+    </div>
+</div>

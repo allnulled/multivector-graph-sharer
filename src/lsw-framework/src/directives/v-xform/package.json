@@ -1,0 +1,14 @@
+{
+  "name": "v-xform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "v-xform.js",
+  "scripts": {
+    "build": "echo 'no 'build process for v-xform",
+    "test": "echo 'no 'test process for v-xform",
+    "versionate": "echo 'no versionate process for v-xform'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,40 @@
+<div class="lsw_bars_graph">
+    <div class="titulo_de_item" v-if="typeof currentPropertyView !== 'undefined'">
+        {{ "Según «" + currentSample.numerables[currentPropertyView] + "»:" }}
+    </div>
+    <template v-if="typeof currentPropertyView === 'undefined'">
+        <div class=""
+            v-for="row, rowIndex in currentSample.output"
+            v-bind:key="'bar_graph_row_' + rowIndex">
+            <div class="titulo_de_item">
+                <b>#{{ rowIndex + 1 }}: </b>
+                <span>{{ row.id }}</span>
+            </div>
+            <div class="bars_of_item"
+                v-for="value, valueIndex in row.values"
+                v-bind:key="'row_' + rowIndex + '_subvalue_' + valueIndex">
+                <div class="" style="min-height: 1px;"></div>
+                <lsw-bars-graph-bar 
+                    :color="getColor(currentSample.numerables[valueIndex], value)"
+                    :value="value"
+                    :text="$lsw.utils.capitalize(currentSample.numerables[valueIndex]) + ': ' + value + '%'"
+                    :on-click="() => selectPropertyView(valueIndex)" />
+            </div>
+        </div>
+    </template>
+    <template v-else>
+        <div class=""
+            v-for="row, rowIndex in currentSample.output"
+            v-bind:key="'bar_graph_row_' + rowIndex">
+            <div class="" style="min-height: 1px;"></div>
+            <lsw-bars-graph-bar
+                :color="getColor(currentSample.numerables[currentPropertyView], row.values[currentPropertyView])"
+                :value="row.values[currentPropertyView]"
+                :text="row.values[currentPropertyView] + '%: ' + row.id"
+                :on-click="() => selectPropertyView(currentPropertyView)"
+            />
+            <!--
+             -->
+        </div>
+    </template>
+</div>

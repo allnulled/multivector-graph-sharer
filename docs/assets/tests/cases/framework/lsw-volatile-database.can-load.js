@@ -1,0 +1,1 @@
+assert.as("LswVolatileDatabase is accessible").that(typeof LswVolatileDatabase !== "undefined");

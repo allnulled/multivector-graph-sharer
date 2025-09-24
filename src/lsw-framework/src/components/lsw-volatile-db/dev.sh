@@ -1,0 +1,1 @@
+npx nodemon -w lsw-volatile-db.js -w test.js -e 'js' -x 'node test.js'

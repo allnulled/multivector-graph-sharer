@@ -1,0 +1,159 @@
+<div class="lsw_unit_tester">
+    <div v-if="error" class="pad_vertical_1">
+        {{ error.name }}: {{ error.message }}
+    </div>
+    <div v-else-if="autorun && (!hasRunTests)" class="">
+        <div class="width_100 text_align_left pad_vertical_1">
+            <div class="flex_row centered">
+                <div class="flex_1 pad_right_1">
+                    <button class="supermini">
+                        ⏳
+                    </button>
+                </div>
+                <div class="flex_100">
+                    Running test... wait, please.
+                </div>
+                <div class="flex_1 pad_left_1">
+                    <button class="supermini">
+                        ⏳
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div v-else-if="!hasRunTests"
+        class="">
+        <button class="supermini width_100 text_align_left"
+            v-on:click="runTest">▶️ Run test</button>
+    </div>
+    <table class="tester_report_table"
+        v-if="report"
+        :class="report.result">
+        <tbody>
+            <tr>
+                <td class="width_100 text_align_left cursor_pointer collection_id_cell"
+                    colspan="1000"
+                    v-on:click="toggleDetails">
+                    <div class="flex_row centered">
+                        <div class="flex_1 pad_right_1">
+                            <span class="minimum_width_1"
+                                v-if="!isExpanded">➕</span>
+                            <span class="minimum_width_1"
+                                v-else>➖</span>
+                        </div>
+                        <div class="flex_100">
+                            <span>Collection: <b>{{report.testCollectionId}}: </b></span>
+                            <span>{{report.result}}</span>
+                            <span>[+{{report.took}}ms]</span>
+                        </div>
+                        <div class="flex_1 pad_left_1">
+                            <button class="supermini"
+                                :class="{activated: isSourceAccessed}"
+                                v-on:click.stop="toggleSource">📜</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <template v-if="isExpanded && false">
+                <tr>
+                    <td class="cell_1 text_align_right">Finally:</td>
+                    <td class="cell_2 text_align_left">{{report.result}}</td>
+                </tr>
+                <tr>
+                    <td class="cell_1 text_align_right">Took:</td>
+                    <td class="cell_2 text_align_left">{{report.took}} milliseconds</td>
+                </tr>
+                <tr>
+                    <td class="cell_1 text_align_right">Created at:</td>
+                    <td class="cell_2 text_align_left">{{report.createdAt}}</td>
+                </tr>
+                <tr>
+                    <td class="cell_1 text_align_right">Started at:</td>
+                    <td class="cell_2 text_align_left">{{report.startedAt}}</td>
+                </tr>
+                <tr>
+                    <td class="cell_1 text_align_right">Finished at:</td>
+                    <td class="cell_2 text_align_left">{{report.finishedAt}}</td>
+                </tr>
+                <!--tr>
+                    <td class="cell_1 text_align_right">Loaded at:</td>
+                    <td class="cell_2 text_align_left">{{report.loadedAt}}</td>
+                </tr-->
+                <tr>
+                    <td class="cell_1 text_align_right">Timeout at:</td>
+                    <td class="cell_2 text_align_left">{{report.timeoutLimit}}</td>
+                </tr>
+            </template>
+        </tbody>
+    </table>
+    <div class="tester_tests_list"
+        v-if="report.tests && isExpanded"
+        :class="report.result">
+        <div class=""
+            v-for="testObject, testIndex in report.tests.all"
+            v-bind:key="'lsw_unit_tester_report_test_' + testIndex">
+            <template v-if="testObject">
+                <table class="tester_report_table border_separator_on_bottom_1"
+                    :class="testObject.currently">
+                    <tbody>
+                        <tr>
+                            <td class="width_100 text_align_left test_id_cell"
+                                colspan="1000">
+                                <div class="flex_row centered">
+                                    <div class="flex_1 pad_right_1">
+                                        <span class="minimum_width_1"
+                                            v-if="testObject.currently === 'defined'">🟰</span>
+                                        <span class="minimum_width_1"
+                                            v-else-if="selectedTests.indexOf(testIndex) !== -1">➖</span>
+                                        <span class="minimum_width_1"
+                                            v-else>➕</span>
+                                    </div>
+                                    <div class="flex_100">
+                                        <span>Test {{ testIndex + 1 }}: <b>{{testObject.id}}:</b> </span>
+                                        <span>{{testObject.currently}}</span>
+                                        <span v-if="typeof testObject.took === 'number'">[{{testObject.took}}ms]</span>
+                                        <span v-else>[omitted]</span>
+                                    </div>
+                                    <div class="flex_1">
+                                        <button class="supermini"
+                                            :class="{activated: (selectedTests.indexOf(testIndex) !== -1)}"
+                                            v-on:click="() => toggleTest(testIndex)">💡</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <template v-if="(testObject.currently !== 'defined') && (selectedTests.indexOf(testIndex) !== -1)">
+                            <tr>
+                                <td class="cell_1 text_align_right border_separator_on_top_1">Currently:</td>
+                                <td class="cell_2 text_align_left border_separator_on_top_1">{{testObject.currently}}</td>
+                            </tr>
+                            <tr>
+                                <td class="cell_1 text_align_right">Took:</td>
+                                <td class="cell_2 text_align_left">{{typeof testObject.took === 'number' ? testObject.took :
+                                    'none'}}
+                                    milliseconds</td>
+                            </tr>
+                            <tr v-if="testObject.mode">
+                                <td class="cell_1 text_align_right">Mode:</td>
+                                <td class="cell_2 text_align_left">{{testObject.mode}}</td>
+                            </tr>
+                            <tr v-if="testObject.startedAt">
+                                <td class="cell_1 text_align_right">Started at:</td>
+                                <td class="cell_2 text_align_left">{{testObject.startedAt}}</td>
+                            </tr>
+                            <tr v-if="testObject.finishedAt">
+                                <td class="cell_1 text_align_right">Finished at:</td>
+                                <td class="cell_2 text_align_left">{{testObject.finishedAt}}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+        </div>
+    </div>
+    <div v-if="isSourceAccessed"
+        class="pad_1">
+        <lsw-js-viewer :source="test.toString()" />
+    </div>
+    <!--pre class="codeblock margin_top_1">{{ report }}</pre-->
+</div>

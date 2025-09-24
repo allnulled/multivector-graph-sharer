@@ -1,0 +1,105 @@
+<div class="lsw_goals_records_viewer">
+    <div class=""
+        v-if="isLoaded">
+        <div class="titulo_de_record">
+            <div class="flex_row centered">
+                <div class="flex_100">🏁 Objetivos extraídos:</div>
+                <div class="flex_1 pad_right_1">
+                    <button class="supermini" v-on:click="toggleAllSelectedGoals">☑️</button>
+                </div>
+                <div class="flex_1" v-on:click="toggleGoals">
+                    <button class="supermini" v-if="!isShowingGoals">➕</button>
+                    <button class="supermini" v-else>➖</button>
+                </div>
+            </div>
+        </div>
+        <div class="available_goals_list" v-if="isShowingGoals">
+            <div class="display_inline_block"
+                v-for="goalId, goalIndex in availableGoals"
+                v-bind:key="'goal_id_' + goalId">
+                <button class="supermini button_checkbox">
+                    <label class="">
+                        <input class=""
+                            type="checkbox"
+                            v-model="selectedGoals"
+                            :value="goalId" />
+                        <span class="pad_1">{{ goalId }}</span>
+                    </label>
+                </button>
+            </div>
+        </div>
+        <div class=""
+            v-for="record, recordIndex in records">
+            <div class="titulo_de_record">📸 Tomada en: {{ record.date }}</div>
+            <template v-for="goal, goalIndex in record.goals">
+                <div class="display_inline_block pad_bottom_1"
+                    v-if="(!selectedGoals) || (selectedGoals.length === 0) || (selectedGoals.indexOf(goal.originalConcept) !== -1)"
+                    v-bind:key="'record-' + recordIndex + '-goal-' + goalIndex">
+                    <div class="carta_de_record smallest_font">
+                        <div class="celda_de_concepto_de_record flex_row"
+                            style="justify-content: start;"
+                            :style="{backgroundColor: goal.color, color: goal.foregroundColor || 'black'}">
+                            <div class="flex_100">
+                                <div class="">
+                                    {{ goal.originalConcept }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_row"
+                            style="justify-content: start; display: none;">
+                            <div class="flex_1">
+                                <div class=""
+                                    >
+                                    {{ goal.colorMeaning }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_row text_align_left"
+                            style="justify-content: start;">
+                            <div class="flex_100">
+                                <div class="">
+                                    <span v-if="goal.type === 'by duration'">
+                                        🟢 {{ goal.currentDuration }}
+                                    </span>
+                                    <span v-else-if="goal.type === 'by times'">
+                                        🟢 {{ goal.currentTimes }} {{ goal.currentTimes === 1 ? "vez" : "veces" }}
+                                    </span>
+                                    <span> | {{ goal.filled }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_row text_align_left"
+                            style="justify-content: start;">
+                            <div class="flex_100">
+                                <div class="">
+                                    <span v-if="goal.type === 'by duration'">
+                                        🔴 {{ goal.missingDuration }}
+                                    </span>
+                                    <span v-else-if="goal.type === 'by times'">
+                                        🔴 {{ goal.missingTimes }} {{ goal.missingTimes === 1 ? "vez" : "veces" }}
+                                    </span>
+                                    <span> | {{ goal.missing }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex_row celda_de_regla_de_record"
+                            style="justify-content: start;">
+                            <div class="flex_100">
+                                <div class="">
+                                    {{ goal.expectedAs }}
+                                    <span v-if="goal.type === 'by duration'">
+                                        {{ goal.expectedDuration }}
+                                    </span>
+                                    <span v-else-if="goal.type === 'by times'">
+                                        {{ goal.expectedTimes }} {{ goal.expectedTimes === 1 ? "vez" : "veces" }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--pre class="codeblock">{{ goal }}</pre-->
+                </div>
+            </template>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+{
+  "name": "lsw-database-virtualizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lsw-database-virtualizer.js",
+  "scripts": {
+    "build": "echo 'no build process for lsw-database-virtualizer'",
+    "test": "echo 'no test process for lsw-database-virtualizer'",
+    "versionate": "echo 'no versionate process for lsw-database-virtualizer'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

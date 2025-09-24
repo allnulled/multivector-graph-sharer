@@ -1,0 +1,12 @@
+<div class="database_breadcrumb">
+    <span>🔸 Estás en: </span>
+    <template v-for="item, itemIndex in breadcrumb">
+        <span v-bind:key="'breadcrumb_item_' + itemIndex">
+            <span v-if="itemIndex !== 0"> » </span>
+            <a v-if="!item.current" href="javascript:void(0)" v-on:click="() => selectPage(item.page, item.args)">
+                {{ item.name }}
+            </a>
+            <span v-else>{{ item.name }}</span>
+        </span>
+    </template>
+</div>

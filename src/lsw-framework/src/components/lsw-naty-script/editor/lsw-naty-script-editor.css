@@ -1,0 +1,13 @@
+.naty_file_item {
+    padding-top: 2px;
+}
+.naty_file_link {
+    padding: 4px;
+    border: 1px solid #333;
+    border-radius: 4pt;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.naty_file_link:hover {
+    background-color: #CCC;
+}

@@ -1,0 +1,34 @@
+inc ./conceptos
+inc ./funciones
+inc ./relaciones
+
+def desayunar, comer, cenar, limpiar, pasear
+
+fun multiplicador de tiempo: concepto, multiplicador {
+    const triggerId = it.en_concepto;
+    const result = await this.$lsw.database.select("");
+}
+
+rel consumir leche
+  > calcio * 0.3
+  > pesadez * 2
+  >> yo.consumir.alimento
+
+rel correr
+  > ansiedad * 0.1
+  > calma * 0.3
+  > musculación * 0.2
+  >> multiplicador de tiempo: ansiedad, 0.1
+  >> multiplicador de tiempo: calma, 0.3
+  >> multiplicador de tiempo: musculacion, 0.2
+
+rel caminar
+  > calma * 0.2
+  > musculación * 0.1
+  >> yo.caminar 
+
+rel pasear perrillo
+  > caminar * 1
+  > socialización * 0.7
+  >> yo.pasear.perrillo
+

@@ -1,0 +1,112 @@
+.lsw_filesystem_explorer {
+    
+}
+.lsw_filesystem_explorer.absolute_version {
+    position: absolute;
+    top: 0;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+}
+
+.lsw_filesystem_explorer > .current_node_box {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+    font-size: 12px;
+    font-family: Arial;
+    white-space: nowrap;
+    justify-content: stretch;
+    align-items: center;
+}
+.current_node_box > .current_node_filename,
+.current_node_box > .current_node_path {
+    display: inline-block;
+    padding: 4px;
+    align-self: stretch;
+    min-height: auto;
+}
+.current_node_box > .current_node_filename {
+    flex: 1;
+    border-left: 1px solid black;
+}
+.current_node_box > .current_node_path {
+    flex: 100;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+.current_node_box > .previous_node_path {
+    flex: 1;
+    align-self: center;
+    padding-left: 4px;
+}
+.current_node_box > .previous_node_path > .previous_node_button {
+    font-size: 10px;
+    padding: 3px;
+    text-align: center;
+    margin-left: 1px;
+    padding-top: 3px;
+    padding-bottom: 4px;
+}
+.reversed {
+    transform: rotate(180deg);
+}
+
+.lsw_filesystem_explorer .filesystem_ui {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(100% - 100px);
+    border: 1px solid #000;
+    border-top: 0px solid #000;
+}
+.lsw_filesystem_explorer .leftside {
+    flex: 1;
+}
+.lsw_filesystem_explorer .middleside {
+    flex: 100;
+    display: flex;
+    flex-direction: column;
+}
+.lsw_filesystem_explorer .rightside {
+    flex: 1;
+}
+.lsw_filesystem_explorer .headerside {
+    flex: 1;
+}
+.lsw_filesystem_explorer .bodyside {
+    flex: 100;
+    position: relative;
+}
+.lsw_filesystem_explorer .footerside {
+    flex: 1;
+}
+
+
+.lsw_filesystem_explorer .leftside,
+.lsw_filesystem_explorer .rightside,
+.lsw_filesystem_explorer .headerside,
+.lsw_filesystem_explorer .bodyside,
+.lsw_filesystem_explorer .footerside {
+    border: 0px solid black;
+}
+
+/* Start: Bordes de 1 sola línea entre paneles: */
+.lsw_filesystem_explorer .rightside {
+    border-left: 1px solid black;
+    min-width: 50px;
+}
+.lsw_filesystem_explorer .leftside {
+    border-right: 1px solid black;
+    min-width: 50px;
+}
+.lsw_filesystem_explorer .bodyside {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.lsw_filesystem_explorer .headerside,
+.lsw_filesystem_explorer .footerside {
+    min-height: 30px;
+}
+/* End */

@@ -1,0 +1,18 @@
+{
+  "name": "@allnulled/lsw-circuiter",
+  "version": "1.0.0",
+  "description": "Permite pasar árboles de sync, serie, parallel y race a función asíncrona.",
+  "main": "async-circuit.js",
+  "scripts": {
+    "build": "echo 'no building for @allnulled/lsw-circuiter'",
+    "test": "npx mocha test.js",
+    "versionate": "echo 'no versionate for @allnulled/lsw-circuiter'"
+  },
+  "keywords": [
+    "async",
+    "utils",
+    "circuit"
+  ],
+  "author": "allnulled",
+  "license": "WTFPL"
+}

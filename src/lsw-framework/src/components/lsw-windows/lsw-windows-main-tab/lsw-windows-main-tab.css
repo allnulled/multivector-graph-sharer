@@ -1,0 +1,30 @@
+.lsw_windows_main_tab {
+    position: fixed;
+    top: 54px;
+    bottom: calc(env(safe-area-inset-bottom, 0) + 46px);
+    left: 5px;
+    right: 5px;
+    color: black;
+}
+.lsw_windows_main_tab .main_tab_topbar {
+    border-bottom: 1px solid black;
+    padding: 4px;
+    padding-bottom: 3px;
+    background-color: #DFDFDF;
+    text-align: right;
+}
+.main_tab_topbar_button {
+    min-width: 30px;
+}
+.pad_normal {
+    padding: 4px;
+}
+
+.dialog_footer,
+.dialog_topbar {
+    background-color: white;
+}
+
+.process_manager_window {
+    bottom: calc(env(safe-area-inset-bottom, 0) + 8px);
+}
